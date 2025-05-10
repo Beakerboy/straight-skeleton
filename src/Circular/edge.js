@@ -46,7 +46,7 @@ class Edge extends CircularNode {
 
     this.LineLinear2d = new LineLinear2d(begin, end);
     this.Norm = end.Sub(begin).Normalized();
-	}
+  }
 
   ToString() {
     return `Edge [p1=${this.Begin}, p2=${this.End}]`;
