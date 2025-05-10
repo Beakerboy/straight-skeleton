@@ -40,12 +40,12 @@ class Vertex extends CircularNode {
   /**
    * @type {FaceNode}
    */
-  rightFace: FaceNode = null;
+  rightFace = null;
 
   /**
    * @type {boolean}
    */
-  isProcessed: boolean;
+  isProcessed;
 
   /**
    * @param {Vector2d}
@@ -57,14 +57,14 @@ class Vertex extends CircularNode {
 	constructor(point, distance, bisector, previousEdge, nextEdge) {
     super();
 
-		this.point = point;
-		this.distance = +distance.toFixed(this.RoundDigitCount);
-		this.bisector = bisector;
-		this.previousEdge = previousEdge;
-		this.nextEdge = nextEdge;
+    this.point = point;
+    this.distance = +distance.toFixed(this.RoundDigitCount);
+    this.bisector = bisector;
+    this.previousEdge = previousEdge;
+    this.nextEdge = nextEdge;
 
-		this.isProcessed = false;
-	}
+    this.isProcessed = false;
+  }
 
   /**
    * @return {string}
