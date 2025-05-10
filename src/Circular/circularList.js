@@ -110,16 +110,16 @@ class CircularList extends CircularNode {
 
 	*generator() {
     let current = this.first;
-		let i = 0;
+    let i = 0;
 
-		while (current !== null) {
-			yield current;
+    while (current !== null) {
+      yield current;
 
-			if (++i === this.Size) {
-				return;
-			}
+      if (++i === this.size) {
+        return;
+      }
 
-			current = <T>current.Next;
-		}
-	}
+      current = current.next;
+    }
+  }
 }
