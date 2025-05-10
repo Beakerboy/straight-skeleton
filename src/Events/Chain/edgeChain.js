@@ -1,4 +1,4 @@
-const EdgeEvent = require('../EdgeEvent');
+import {EdgeEvent} from '../EdgeEvent';
 const { List } = require('../../Utils');
 const Edge = require('../../Circular/Edge');
 const Vertex = require('../../Circular/Vertex');
