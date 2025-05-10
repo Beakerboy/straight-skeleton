@@ -1,12 +1,23 @@
-import CircularNode from "./CircularNode";
-import Vector2d from "../Primitives/Vector2d";
-import LineLinear2d from "../Primitives/LineLinear2d";
-import LineParametric2d from "../Primitives/LineParametric2d";
+import CircularNode from './CircularNode';
+import Vector2d from '../Primitives/Vector2d';
+import LineLinear2d from '../Primitives/LineLinear2d';
+import LineParametric2d from '../Primitives/LineParametric2d';
 
-export default class Edge extends CircularNode {
-	public readonly Begin: Vector2d;
-	public readonly End: Vector2d;
-	public readonly Norm: Vector2d;
+class Edge extends CircularNode {
+  /**
+   * @type {Vector2d}
+   */
+	begin;
+
+  /**
+   * @type {Vector2d}
+   */
+	end;
+
+  /**
+   * @type {Vector2d}
+   */
+	norm;
 
 	public readonly LineLinear2d: LineLinear2d;
 	public BisectorNext: LineParametric2d = null;
