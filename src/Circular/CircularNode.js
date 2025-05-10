@@ -1,11 +1,11 @@
 import {ICircularList} from "./CircularList";
 
 export default class CircularNode {
-	public List: ICircularList = null;
-	public Next: CircularNode = null;
-	public Previous: CircularNode = null;
+	const list = new ICircularList();
+  const next = new CircularNode();
+	const previous = new CircularNode();
 
-	public AddNext(node: CircularNode) {
+	public AddNext(node) {
 		this.List.AddNext(this, node);
 	}
 
