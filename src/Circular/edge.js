@@ -34,17 +34,21 @@ class Edge extends CircularNode {
    */
   BisectorPrevious = null;
 
-	constructor(begin: Vector2d, end: Vector2d) {
-		super();
+  /**
+   * @param {Vector2d}
+   * @param {Vector2d}
+   */
+  constructor(begin, end) {
+    super();
 
-		this.Begin = begin;
-		this.End = end;
+    this.Begin = begin;
+    this.End = end;
 
-		this.LineLinear2d = new LineLinear2d(begin, end);
-		this.Norm = end.Sub(begin).Normalized();
+    this.LineLinear2d = new LineLinear2d(begin, end);
+    this.Norm = end.Sub(begin).Normalized();
 	}
 
-	public ToString(): string {
+	ToString(): string {
 		return `Edge [p1=${this.Begin}, p2=${this.End}]`;
-	}
+  }
 }
