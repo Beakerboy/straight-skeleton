@@ -5,11 +5,12 @@ import VertexSplitEvent from '../VertexSplitEvent';
 import SplitEvent from '../SplitEvent';
 
 class SplitChain {
-	private readonly _splitEvent: SplitEvent;
+  //splitevent
+  splitEvent;
 
-	constructor(event: SplitEvent) {
-		this._splitEvent = event;
-	}
+  constructor(event: SplitEvent) {
+    this._splitEvent = event;
+  }
 
 	public get OppositeEdge(): Edge {
 		if (!(this._splitEvent instanceof VertexSplitEvent))
