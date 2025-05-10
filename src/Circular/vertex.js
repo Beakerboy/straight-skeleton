@@ -54,7 +54,7 @@ class Vertex extends CircularNode {
    * @param {Edge}
    * @param {Edge}
    */
-	constructor(point, distance, bisector, previousEdge, nextEdge) {
+  constructor(point, distance, bisector, previousEdge, nextEdge) {
     super();
 
     this.point = point;
