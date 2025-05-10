@@ -32,7 +32,7 @@ class CircularList extends CircularNode {
    */
 	addPrevious(node, newNode) {
 		if (newNode.List !== null)
-			throw new Error("Node is already assigned to different list!");
+			throw new Error('Node is already assigned to different list!');
 
 		newNode.List = this;
 
