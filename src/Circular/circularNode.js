@@ -1,4 +1,4 @@
-import {ICircularList} from "./CircularList";
+import {ICircularList} from './CircularList';
 
 class CircularNode {
   list = new ICircularList();
@@ -9,9 +9,9 @@ class CircularNode {
     this.list.addNext(this, node);
   }
 
-	addPrevious(node) {
-		this.list.addPrevious(this, node);
-	}
+  addPrevious(node) {
+    this.list.addPrevious(this, node);
+  }
 
 	remove() {
 		this.list.remove(this);
