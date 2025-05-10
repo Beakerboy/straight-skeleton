@@ -4,7 +4,7 @@ class CircularList extends CircularNode {
   /**
   * @type {CircularList}
   */
-  first: T = null;
+  first = null;
 
   /**
   * @type {number}
