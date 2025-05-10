@@ -8,22 +8,22 @@ class EdgeEvent extends SkeletonEvent {
   //Vertex
   PreviousVertex;
 
-	IsObsolete() {
-		return this.PreviousVertex.IsProcessed || this.NextVertex.IsProcessed;
-	}
+  IsObsolete() {
+    return this.PreviousVertex.IsProcessed || this.NextVertex.IsProcessed;
+  }
 
-	constructor(point, distance, previousVertex, nextVertex) {
-		super(point, distance);
+  constructor(point, distance, previousVertex, nextVertex) {
+    super(point, distance);
 
-		this.PreviousVertex = previousVertex;
-		this.NextVertex = nextVertex;
-	}
+    this.PreviousVertex = previousVertex;
+    this.NextVertex = nextVertex;
+  }
 
-	ToString() {
-		return "EdgeEvent [V=" + this.V + ", PreviousVertex="
-			+ (this.PreviousVertex !== null ? this.PreviousVertex.Point.ToString() : "null") +
-			", NextVertex="
-			+ (this.NextVertex !== null ? this.NextVertex.Point.ToString() : "null") + ", Distance=" +
-			this.Distance + "]";
-	}
+  ToString() {
+    return 'EdgeEvent [V=' + this.V + ', PreviousVertex='
+      + (this.PreviousVertex !== null ? this.PreviousVertex.Point.ToString() : 'null') +
+      ', NextVertex='
+      + (this.NextVertex !== null ? this.NextVertex.Point.ToString() : 'null') + ', Distance=' +
+      this.Distance + ']';
+  }
 }
