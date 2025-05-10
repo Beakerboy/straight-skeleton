@@ -53,7 +53,7 @@ class CircularList extends CircularNode {
 			throw new Error("Node is already assigned to different list!");
 
 		if (this.first === null) {
-			this.first = node as T;
+			this.first = node;
 
 			node.List = this;
 			node.Next = node;
