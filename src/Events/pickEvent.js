@@ -1,17 +1,19 @@
-import SkeletonEvent from "./SkeletonEvent";
-import Vector2d from "../Primitives/Vector2d";
-import EdgeChain from "./Chains/EdgeChain";
+import SkeletonEvent from './SkeletonEvent';
+import Vector2d from '../Primitives/Vector2d';
+import EdgeChain from './Chains/EdgeChain';
 
-export default class PickEvent extends SkeletonEvent {
-	public readonly Chain: EdgeChain;
+class PickEvent extends SkeletonEvent {
+  //EdgeChain
+  Chain;
 
-	public override get IsObsolete(): boolean {
-		return false;
-	}
+  public override get IsObsolete() {
+    return false;
+  }
 
-	constructor(point: Vector2d, distance: number, chain: EdgeChain) {
-		super(point, distance);
+  constructor(point, distance, chain) {
+    super(point, distance);
 
-		this.Chain = chain;
-	}
+    this.Chain = chain;
+  }
 }
+export {PickEvent};
