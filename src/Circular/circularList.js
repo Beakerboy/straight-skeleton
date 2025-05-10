@@ -73,7 +73,7 @@ class CircularList extends CircularNode {
 			throw new Error('Node is not assigned to this list!');
 
 		if (this._size <= 0)
-			throw new Error('List is empty can't remove!');
+			throw new Error('List is empty can\'t remove!');
 
 		node.List = null;
 
