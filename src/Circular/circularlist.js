@@ -1,4 +1,4 @@
-import CircularNode from './CircularNode';
+import {CircularNode} from './circularnode.js';
 
 class CircularList extends CircularNode {
   /**
