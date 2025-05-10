@@ -26,7 +26,11 @@ class CircularList extends CircularNode {
 		this.size++;
 	}
 
-	AddPrevious(node: CircularNode, newNode: CircularNode) {
+  /**
+   * @param {CircularNode}
+   * @param {CircularNode}
+  /*
+	addPrevious(node, newNode) {
 		if (newNode.List !== null)
 			throw new Error("Node is already assigned to different list!");
 
@@ -41,7 +45,10 @@ class CircularList extends CircularNode {
 		this.size++;
 	}
 
-	AddLast(node: CircularNode) {
+  /**
+   * @param {CircularNode}
+  /*
+	addLast(node) {
 		if (node.List !== null)
 			throw new Error("Node is already assigned to different list!");
 
@@ -57,7 +64,11 @@ class CircularList extends CircularNode {
 			this.AddPrevious(this.first, node);
 	}
 
-	Remove(node: CircularNode) {
+  /**
+   * @param {CircularNode}
+   * @param {CircularNode}
+  /*
+	remove(node) {
 		if (node.List !== this)
 			throw new Error("Node is not assigned to this list!");
 
@@ -83,11 +94,17 @@ class CircularList extends CircularNode {
 		this.size--;
 	}
 
-	public get Size(): number {
+  /**
+   * @return {number}
+  /*
+	public get Size() {
 		return this.size;
 	}
 
-	public First(): T {
+  /**
+   * @return {T}
+  /*
+	public First() {
 		return this.first;
 	}
 
