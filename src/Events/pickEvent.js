@@ -6,7 +6,7 @@ class PickEvent extends SkeletonEvent {
   //EdgeChain
   Chain;
 
-  public override get IsObsolete() {
+  IsObsolete() {
     return false;
   }
 
