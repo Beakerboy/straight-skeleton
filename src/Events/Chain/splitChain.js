@@ -13,34 +13,36 @@ class SplitChain {
     this.splitEvent = event;
   }
 
-	OppositeEdge() {
-		if (!(this.splitEvent instanceof VertexSplitEvent))
-			return this.splitEvent.OppositeEdge;
+  OppositeEdge() {
+    if (!(this.splitEvent instanceof VertexSplitEvent))
+      return this.splitEvent.OppositeEdge;
 
-		return null;
-	}
+    return null;
+  }
 
-	PreviousEdge() {
-		return this.splitEvent.Parent.PreviousEdge;
-	}
+  PreviousEdge() {
+    return this.splitEvent.Parent.PreviousEdge;
+  }
 
-	NextEdge() {
-		return this.splitEvent.Parent.NextEdge;
-	}
+  NextEdge() {
+    return this.splitEvent.Parent.NextEdge;
+  }
 
-	PreviousVertex() {
-		return this.splitEvent.Parent.Previous;
-	}
+  PreviousVertex() {
+    return this.splitEvent.Parent.Previous;
+  }
 
-	NextVertex() {
-		return this.splitEvent.Parent.Next;
-	}
+  
+  NextVertex() {
+    return this.splitEvent.Parent.Next;
+  }
 
-	CurrentVertex() {
-		return this.splitEvent.Parent;
-	}
+  CurrentVertex() {
+    return this.splitEvent.Parent;
+  }
 
-	ChainType() {
-		return ChainType.Split;
-	}
+  ChainType() {
+    return ChainType.Split;
+  }
 }
+export {SplitChain};
