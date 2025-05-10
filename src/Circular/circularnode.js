@@ -6,11 +6,11 @@ class CircularNode {
   previous = new CircularNode();
 
   addNext(node) {
-    this.list.addNext(this, node);
+    this.list.addNext(node);
   }
 
   addPrevious(node) {
-    this.list.addPrevious(this, node);
+    this.list.addPrevious(node);
   }
 
   remove() {
