@@ -1,5 +1,5 @@
 import {Edge} from '../../Circular/Edge.js';
-import {Vertex} from '../../Circular/Vertex.js;
+import {Vertex} from '../../Circular/Vertex.js';
 import {ChainType} from './ChainType';
 
 class SingleEdgeChain {
