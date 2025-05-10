@@ -8,12 +8,13 @@ class SplitChain {
   //splitevent
   splitEvent;
 
-  constructor(event: SplitEvent) {
+  //@param splitEvent
+  constructor(event) {
     this.splitEvent = event;
   }
 
 	OppositeEdge() {
-		if (!(this._splitEvent instanceof VertexSplitEvent))
+		if (!(this.splitEvent instanceof VertexSplitEvent))
 			return this.splitEvent.OppositeEdge;
 
 		return null;
