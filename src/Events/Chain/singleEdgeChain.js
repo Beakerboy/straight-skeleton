@@ -10,33 +10,33 @@ class SingleEdgeChain {
   //vertex
   previousVertex;
 
-  constructor(oppositeEdge: Edge, nextVertex: Vertex) {
+  constructor(oppositeEdge, nextVertex) {
     this.oppositeEdge = oppositeEdge;
     this.nextVertex = nextVertex;
-    this.previousVertex = nextVertex.Previous as Vertex;
+    this.previousVertex = nextVertex.Previous;
   }
 
-  public get PreviousEdge(): Edge {
+  public get PreviousEdge() {
     return this.oppositeEdge;
 	}
 
-  public get NextEdge(): Edge {
+  public get NextEdge() {
     return this.oppositeEdge;
   }
 
-  public get PreviousVertex(): Vertex {
+  public get PreviousVertex() {
     return this.previousVertex;
   }
 
-  public get NextVertex(): Vertex {
+  public get NextVertex() {
     return this.nextVertex;
   }
 
-  public get CurrentVertex(): Vertex {
+  public get CurrentVertex() {
     return null;
   }
 
-  public get ChainType(): ChainType {
+  public get ChainType() {
     return ChainType.Split;
   }
 }
