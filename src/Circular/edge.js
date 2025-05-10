@@ -1,5 +1,5 @@
-import CircularNode from './CircularNode';
-import Vector2d from '../Primitives/Vector2d';
+import {CircularNode} from './circularnode.js';
+import {Vector2d} from '../Primitives/vector2d.js';
 import LineLinear2d from '../Primitives/LineLinear2d';
 import LineParametric2d from '../Primitives/LineParametric2d';
 
