@@ -40,12 +40,12 @@ class Vertex extends CircularNode {
   /**
    * @type {FaceNode}
    */
-  public RightFace: FaceNode = null;
+  rightFace: FaceNode = null;
 
   /**
    * @type {boolean}
    */
-  public IsProcessed: boolean;
+  isProcessed: boolean;
 
   /**
    * @param {Vector2d}
@@ -70,8 +70,8 @@ class Vertex extends CircularNode {
    * @return {string}
    */
   public ToString() {
-		return 'Vertex [v=' + this.Point + ', IsProcessed=' + this.IsProcessed +
-			', Bisector=' + this.Bisector + ', PreviousEdge=' + this.PreviousEdge +
-			', NextEdge=' + this.NextEdge;
-	}
+    return 'Vertex [v=' + this.Point + ', IsProcessed=' + this.IsProcessed +
+      ', Bisector=' + this.Bisector + ', PreviousEdge=' + this.PreviousEdge +
+      ', NextEdge=' + this.NextEdge;
+  }
 }
