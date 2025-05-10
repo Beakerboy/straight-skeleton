@@ -29,11 +29,11 @@ class SplitChain {
 	}
 
 	PreviousVertex() {
-		return this.splitEvent.Parent.Previous as Vertex;
+		return this.splitEvent.Parent.Previous;
 	}
 
 	NextVertex() {
-		return this.splitEvent.Parent.Next as Vertex;
+		return this.splitEvent.Parent.Next;
 	}
 
 	CurrentVertex() {
