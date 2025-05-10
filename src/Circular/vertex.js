@@ -40,31 +40,38 @@ class Vertex extends CircularNode {
   /**
    * @type {FaceNode}
    */
-  RightFace = null;
+  public RightFace: FaceNode = null;
 
   /**
-   * @type {bool}
+   * @type {boolean}
    */
-  IsProcessed: boolean;
+  public IsProcessed: boolean;
 
   /**
    * @param {Vector2d}
+   * @param {number}
+   * @param {LineParametric2d}
+   * @param {Edge}
+   * @param {Edge}
    */
-  constructor(point: Vector2d, distance: number, bisector: LineParametric2d, previousEdge: Edge, nextEdge: Edge) {
-		super();
+	constructor(point, distance, bisector, previousEdge, nextEdge) {
+    super();
 
-		this.Point = point;
-		this.Distance = +distance.toFixed(this.RoundDigitCount);
-		this.Bisector = bisector;
-		this.PreviousEdge = previousEdge;
-		this.NextEdge = nextEdge;
+		this.point = point;
+		this.distance = +distance.toFixed(this.RoundDigitCount);
+		this.bisector = bisector;
+		this.previousEdge = previousEdge;
+		this.nextEdge = nextEdge;
 
-		this.IsProcessed = false;
+		this.isProcessed = false;
 	}
 
-	public ToString(): string {
-		return "Vertex [v=" + this.Point + ", IsProcessed=" + this.IsProcessed +
-			", Bisector=" + this.Bisector + ", PreviousEdge=" + this.PreviousEdge +
-			", NextEdge=" + this.NextEdge;
+  /**
+   * @return {string}
+   */
+  public ToString() {
+		return 'Vertex [v=' + this.Point + ', IsProcessed=' + this.IsProcessed +
+			', Bisector=' + this.Bisector + ', PreviousEdge=' + this.PreviousEdge +
+			', NextEdge=' + this.NextEdge;
 	}
 }
