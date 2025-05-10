@@ -1,4 +1,4 @@
-export default class Vector2d {
+class Vector2d {
 	public static Empty: Vector2d = new Vector2d(Number.MIN_VALUE, Number.MIN_VALUE);
 
 	public X: number = 0;
