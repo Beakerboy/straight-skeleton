@@ -108,8 +108,8 @@ class CircularList extends CircularNode {
 		//return this.first;
 	//}
 
-	function* generator() {
-		let current = this.first;
+	*generator() {
+    let current = this.first;
 		let i = 0;
 
 		while (current !== null) {
