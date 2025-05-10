@@ -11,8 +11,8 @@ class CircularList extends CircularNode {
    */
   size = 0;
 
-	addNext(node, newNode) {
-		if (newNode.List !== null)
+  addNext(node, newNode) {
+    if (newNode.List !== null)
 			throw new Error("Node is already assigned to different list!");
 
 		newNode.List = this;
@@ -108,7 +108,7 @@ class CircularList extends CircularNode {
 		//return this.first;
 	//}
 
-	public* Iterate(): Generator<T> {
+	function* generator() {
 		let current = this.first;
 		let i = 0;
 
