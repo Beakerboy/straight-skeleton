@@ -13,7 +13,7 @@ class CircularNode {
     this.list.addPrevious(this, node);
   }
 
-	remove() {
-		this.list.remove(this);
-	}
+  remove() {
+    this.list.remove(this);
+  }
 }
