@@ -13,18 +13,18 @@ class CircularList extends CircularNode {
 
   addNext(node, newNode) {
     if (newNode.List !== null)
-			throw new Error('Node is already assigned to different list!');
+      throw new Error('Node is already assigned to different list!');
 
-		newNode.List = this;
+    newNode.List = this;
 
-		newNode.Previous = node;
-		newNode.Next = node.Next;
+    newNode.Previous = node;
+    newNode.Next = node.Next;
 
-		node.Next.Previous = newNode;
-		node.Next = newNode;
+    node.Next.Previous = newNode;
+    node.Next = newNode;
 
-		this.size++;
-	}
+    this.size++;
+  }
 
   /**
    * @param {CircularNode}
