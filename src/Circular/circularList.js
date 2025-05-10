@@ -97,16 +97,16 @@ class CircularList extends CircularNode {
   /**
    * @return {number}
    */
-	public get Size() {
-		return this.size;
-	}
+	//get size() {
+		//return this.size;
+	//}
 
   /**
    * @return {T}
    */
-	public First() {
-		return this.first;
-	}
+  //first() {
+		//return this.first;
+	//}
 
 	public* Iterate(): Generator<T> {
 		let current = this.first;
