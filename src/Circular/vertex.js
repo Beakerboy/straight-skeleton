@@ -22,10 +22,20 @@ class Vertex extends CircularNode {
    */
   bisector = null;
 
-	public readonly NextEdge: Edge = null;
-	public readonly PreviousEdge: Edge = null;
+  /**
+   * @type {Edge}
+   */
+  nextEdge = null;
 
-	public LeftFace: FaceNode = null;
+  /**
+   * @type {Edge}
+   */
+  previousEdge = null;
+
+  /**
+   * @type {FaceNode}
+   */
+  leftFace = null;
 	public RightFace: FaceNode = null;
 
 	public IsProcessed: boolean;
