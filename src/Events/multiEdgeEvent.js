@@ -6,7 +6,7 @@ class MultiEdgeEvent extends SkeletonEvent {
   //EdgeChain
   chain;
 
- IsObsolete() {
+  IsObsolete() {
     return false;
   }
 
