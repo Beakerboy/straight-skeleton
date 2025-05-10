@@ -1,13 +1,14 @@
-import CircularNode from "./CircularNode";
-import Vector2d from "../Primitives/Vector2d";
-import LineParametric2d from "../Primitives/LineParametric2d";
-import Edge from "./Edge";
-import {FaceNode} from "../Path/FaceNode";
+import CircularNode from './CircularNode';
+import Vector2d from '../Primitives/Vector2d';
+import LineParametric2d from '../Primitives/LineParametric2d';
+import Edge from './Edge';
+import {FaceNode} from '../Path/FaceNode';
 
-export default class Vertex extends CircularNode {
-	readonly RoundDigitCount = 5;
+class Vertex extends CircularNode {
+  RoundDigitCount = 5;
 
-	public Point: Vector2d = null;
+  
+  Point: Vector2d = null;
 	public readonly Distance: number;
 	public readonly Bisector: LineParametric2d = null;
 
