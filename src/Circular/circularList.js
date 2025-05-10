@@ -2,13 +2,13 @@ import CircularNode from "./CircularNode";
 
 class CircularList extends CircularNode {
   /**
-  * @type {CircularList}
-  */
+   * @type {CircularList}
+   */
   first = null;
 
   /**
-  * @type {number}
-  */
+   * @type {number}
+   */
   size = 0;
 
 	addNext(node, newNode) {
@@ -29,7 +29,7 @@ class CircularList extends CircularNode {
   /**
    * @param {CircularNode}
    * @param {CircularNode}
-  /*
+   */
 	addPrevious(node, newNode) {
 		if (newNode.List !== null)
 			throw new Error("Node is already assigned to different list!");
@@ -47,7 +47,7 @@ class CircularList extends CircularNode {
 
   /**
    * @param {CircularNode}
-  /*
+   */
 	addLast(node) {
 		if (node.List !== null)
 			throw new Error("Node is already assigned to different list!");
@@ -67,7 +67,7 @@ class CircularList extends CircularNode {
   /**
    * @param {CircularNode}
    * @param {CircularNode}
-  /*
+   */
 	remove(node) {
 		if (node.List !== this)
 			throw new Error("Node is not assigned to this list!");
@@ -96,14 +96,14 @@ class CircularList extends CircularNode {
 
   /**
    * @return {number}
-  /*
+   */
 	public get Size() {
 		return this.size;
 	}
 
   /**
    * @return {T}
-  /*
+   */
 	public First() {
 		return this.first;
 	}
