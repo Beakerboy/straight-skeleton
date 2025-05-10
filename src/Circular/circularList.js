@@ -1,22 +1,10 @@
 import CircularNode from "./CircularNode";
 
-export interface ICircularList {
-	readonly Size: number;
+class CircularList extends CircularNode {
+  private _first: T = null;
+  private _size: number = 0;
 
-	AddNext(node: CircularNode, newNode: CircularNode): void;
-
-	AddPrevious(node: CircularNode, newNode: CircularNode): void;
-
-	AddLast(node: CircularNode): void;
-
-	Remove(node: CircularNode): void;
-}
-
-export default class CircularList<T extends CircularNode> implements ICircularList {
-	private _first: T = null;
-	private _size: number = 0;
-
-	public AddNext(node: CircularNode, newNode: CircularNode) {
+	addNext(node, newNode) {
 		if (newNode.List !== null)
 			throw new Error("Node is already assigned to different list!");
 
