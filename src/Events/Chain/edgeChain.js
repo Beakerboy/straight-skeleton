@@ -1,4 +1,3 @@
-const IChain = require('./IChain');
 const EdgeEvent = require('../EdgeEvent');
 const { List } = require('../../Utils');
 const Edge = require('../../Circular/Edge');
