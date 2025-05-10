@@ -7,10 +7,20 @@ import {FaceNode} from '../Path/FaceNode';
 class Vertex extends CircularNode {
   RoundDigitCount = 5;
 
-  
-  Point: Vector2d = null;
-	public readonly Distance: number;
-	public readonly Bisector: LineParametric2d = null;
+  /**
+   * @type {Vector2d}
+   */
+  point = null;
+
+  /**
+   * @type {number}
+   */
+  distance;
+
+  /**
+   * @type {LineParametric2d}
+   */
+  bisector = null;
 
 	public readonly NextEdge: Edge = null;
 	public readonly PreviousEdge: Edge = null;
