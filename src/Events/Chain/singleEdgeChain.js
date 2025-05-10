@@ -18,7 +18,7 @@ class SingleEdgeChain {
 
   PreviousEdge() {
     return this.oppositeEdge;
-	}
+  }
 
   NextEdge() {
     return this.oppositeEdge;
@@ -28,7 +28,7 @@ class SingleEdgeChain {
     return this.previousVertex;
   }
 
- NextVertex() {
+  NextVertex() {
     return this.nextVertex;
   }
 
