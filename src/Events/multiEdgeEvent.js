@@ -3,7 +3,8 @@ import Vector2d from '../Primitives/Vector2d';
 import EdgeChain from './Chains/EdgeChain';
 
 class MultiEdgeEvent extends SkeletonEvent {
-  public readonly Chain: EdgeChain;
+  //EdgeChain
+  chain;
 
  IsObsolete() {
     return false;
