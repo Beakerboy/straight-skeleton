@@ -9,37 +9,37 @@ class SplitChain {
   splitEvent;
 
   constructor(event: SplitEvent) {
-    this._splitEvent = event;
+    this.splitEvent = event;
   }
 
-	public get OppositeEdge(): Edge {
+	OppositeEdge() {
 		if (!(this._splitEvent instanceof VertexSplitEvent))
-			return this._splitEvent.OppositeEdge;
+			return this.splitEvent.OppositeEdge;
 
 		return null;
 	}
 
-	public get PreviousEdge(): Edge {
-		return this._splitEvent.Parent.PreviousEdge;
+	PreviousEdge() {
+		return this.splitEvent.Parent.PreviousEdge;
 	}
 
-	public get NextEdge(): Edge {
-		return this._splitEvent.Parent.NextEdge;
+	NextEdge() {
+		return this.splitEvent.Parent.NextEdge;
 	}
 
-	public get PreviousVertex(): Vertex {
-		return this._splitEvent.Parent.Previous as Vertex;
+	PreviousVertex() {
+		return this.splitEvent.Parent.Previous as Vertex;
 	}
 
-	public get NextVertex(): Vertex {
-		return this._splitEvent.Parent.Next as Vertex;
+	NextVertex() {
+		return this.splitEvent.Parent.Next as Vertex;
 	}
 
-	public get CurrentVertex(): Vertex {
-		return this._splitEvent.Parent;
+	CurrentVertex() {
+		return this.splitEvent.Parent;
 	}
 
-	public get ChainType(): ChainType {
+	ChainType() {
 		return ChainType.Split;
 	}
 }
