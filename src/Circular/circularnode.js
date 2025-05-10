@@ -1,7 +1,5 @@
-import {CircularList} from './circularlist.js';
-
 class CircularNode {
-  list = new CircularList();
+  list
   next = new CircularNode();
   previous = new CircularNode();
 
