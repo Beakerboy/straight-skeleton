@@ -6,9 +6,9 @@ import Vector2d from '../Primitives/Vector2d';
 class MultiSplitEvent extends SkeletonEvent {
   Chains;
 
-	IsObsolete() {
-		return false;
-	}
+  IsObsolete() {
+    return false;
+  }
 
   constructor(point, distance, chains) {
     super(point, distance);
