@@ -1,9 +1,9 @@
 import {ICircularList} from "./CircularList";
 
-export default class CircularNode {
+class CircularNode {
   const list = new ICircularList();
   const next = new CircularNode();
-	const previous = new CircularNode();
+  const previous = new CircularNode();
 
 	public addNext(node) {
 		this.list.addNext(this, node);
