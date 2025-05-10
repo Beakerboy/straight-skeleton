@@ -16,27 +16,27 @@ class SingleEdgeChain {
     this.previousVertex = nextVertex.Previous;
   }
 
-  public get PreviousEdge() {
+  PreviousEdge() {
     return this.oppositeEdge;
 	}
 
-  public get NextEdge() {
+  NextEdge() {
     return this.oppositeEdge;
   }
 
-  public get PreviousVertex() {
+  PreviousVertex() {
     return this.previousVertex;
   }
 
-  public get NextVertex() {
+ NextVertex() {
     return this.nextVertex;
   }
 
-  public get CurrentVertex() {
+  CurrentVertex() {
     return null;
   }
 
-  public get ChainType() {
+  ChainType() {
     return ChainType.Split;
   }
 }
