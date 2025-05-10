@@ -7,21 +7,32 @@ class Edge extends CircularNode {
   /**
    * @type {Vector2d}
    */
-	begin;
+  begin;
 
   /**
    * @type {Vector2d}
    */
-	end;
+  end;
 
   /**
    * @type {Vector2d}
    */
-	norm;
+  norm;
 
-	public readonly LineLinear2d: LineLinear2d;
-	public BisectorNext: LineParametric2d = null;
-	public BisectorPrevious: LineParametric2d = null;
+  /**
+   * @type {LineLinear2d}
+   */
+  LineLinear2d;
+
+  /**
+   * @type {LineParametric2d}
+   */
+  BisectorNext = null;
+
+  /**
+   * @type {LineParametric2d}
+   */
+  BisectorPrevious = null;
 
 	constructor(begin: Vector2d, end: Vector2d) {
 		super();
