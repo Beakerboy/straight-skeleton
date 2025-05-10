@@ -68,31 +68,31 @@ class CircularList extends CircularNode {
    * @param {CircularNode}
    * @param {CircularNode}
    */
-	remove(node) {
-		if (node.List !== this)
-			throw new Error('Node is not assigned to this list!');
+  remove(node) {
+    if (node.List !== this)
+      throw new Error('Node is not assigned to this list!');
 
-		if (this._size <= 0)
-			throw new Error('List is empty can\'t remove!');
+    if (this._size <= 0)
+      throw new Error('List is empty can\'t remove!');
 
-		node.List = null;
+    node.List = null;
 
-		if (this._size === 1)
-			this.first = null;
+    if (this._size === 1)
+      this.first = null;
 
-		else {
-			if (this.first === node)
-				this.first = this.first.Next;
+    else {
+      if (this.first === node)
+        this.first = this.first.Next;
 
-			node.Previous.Next = node.Next;
-			node.Next.Previous = node.Previous;
-		}
+      node.Previous.Next = node.Next;
+      node.Next.Previous = node.Previous;
+    }
 
-		node.Previous = null;
-		node.Next = null;
+    node.Previous = null;
+    node.Next = null;
 
-		this.size--;
-	}
+    this.size--;
+  }
 
   /**
    * @return {number}
