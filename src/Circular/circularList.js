@@ -1,8 +1,15 @@
 import CircularNode from "./CircularNode";
 
 class CircularList extends CircularNode {
-  private _first: T = null;
-  private _size: number = 0;
+  /**
+  * @type {CircularList}
+  */
+  first: T = null;
+
+  /**
+  * @type {number}
+  */
+  size = 0;
 
 	addNext(node, newNode) {
 		if (newNode.List !== null)
@@ -16,7 +23,7 @@ class CircularList extends CircularNode {
 		node.Next.Previous = newNode;
 		node.Next = newNode;
 
-		this._size++;
+		this.size++;
 	}
 
 	AddPrevious(node: CircularNode, newNode: CircularNode) {
@@ -31,15 +38,15 @@ class CircularList extends CircularNode {
 		node.Previous.Next = newNode;
 		node.Previous = newNode;
 
-		this._size++;
+		this.size++;
 	}
 
 	AddLast(node: CircularNode) {
 		if (node.List !== null)
 			throw new Error("Node is already assigned to different list!");
 
-		if (this._first === null) {
-			this._first = node as T;
+		if (this.first === null) {
+			this.first = node as T;
 
 			node.List = this;
 			node.Next = node;
@@ -47,7 +54,7 @@ class CircularList extends CircularNode {
 
 			this._size++;
 		} else
-			this.AddPrevious(this._first, node);
+			this.AddPrevious(this.first, node);
 	}
 
 	Remove(node: CircularNode) {
@@ -60,11 +67,11 @@ class CircularList extends CircularNode {
 		node.List = null;
 
 		if (this._size === 1)
-			this._first = null;
+			this.first = null;
 
 		else {
-			if (this._first === node)
-				this._first = <T>this._first.Next;
+			if (this.first === node)
+				this.first = this.first.Next;
 
 			node.Previous.Next = node.Next;
 			node.Next.Previous = node.Previous;
@@ -73,19 +80,19 @@ class CircularList extends CircularNode {
 		node.Previous = null;
 		node.Next = null;
 
-		this._size--;
+		this.size--;
 	}
 
 	public get Size(): number {
-		return this._size;
+		return this.size;
 	}
 
 	public First(): T {
-		return this._first;
+		return this.first;
 	}
 
 	public* Iterate(): Generator<T> {
-		let current = this._first;
+		let current = this.first;
 		let i = 0;
 
 		while (current !== null) {
