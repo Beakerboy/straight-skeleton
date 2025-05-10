@@ -1,19 +1,19 @@
 import {ICircularList} from "./CircularList";
 
 export default class CircularNode {
-	const list = new ICircularList();
+  const list = new ICircularList();
   const next = new CircularNode();
 	const previous = new CircularNode();
 
-	public AddNext(node) {
-		this.List.AddNext(this, node);
+	public addNext(node) {
+		this.list.addNext(this, node);
 	}
 
-	public AddPrevious(node: CircularNode) {
-		this.List.AddPrevious(this, node);
+	public addPrevious(node) {
+		this.list.addPrevious(this, node);
 	}
 
-	public Remove() {
-		this.List.Remove(this);
+	public remove() {
+		this.list.remove(this);
 	}
 }
