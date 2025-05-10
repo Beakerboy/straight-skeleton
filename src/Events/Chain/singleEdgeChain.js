@@ -3,30 +3,33 @@ import {Vertex} from '../../Circular/Vertex.js;
 import {ChainType} from './ChainType';
 
 class SingleEdgeChain {
-  private readonly _nextVertex: Vertex;
-  private readonly _oppositeEdge: Edge;
-  private readonly _previousVertex: Vertex;
+  //vertex
+  nextVertex;
+  //edge
+  oppositeEdge;
+  //vertex
+  previousVertex;
 
   constructor(oppositeEdge: Edge, nextVertex: Vertex) {
-    this._oppositeEdge = oppositeEdge;
-    this._nextVertex = nextVertex;
-    this._previousVertex = nextVertex.Previous as Vertex;
+    this.oppositeEdge = oppositeEdge;
+    this.nextVertex = nextVertex;
+    this.previousVertex = nextVertex.Previous as Vertex;
   }
 
   public get PreviousEdge(): Edge {
-    return this._oppositeEdge;
+    return this.oppositeEdge;
 	}
 
   public get NextEdge(): Edge {
-    return this._oppositeEdge;
+    return this.oppositeEdge;
   }
 
   public get PreviousVertex(): Vertex {
-    return this._previousVertex;
+    return this.previousVertex;
   }
 
   public get NextVertex(): Vertex {
-    return this._nextVertex;
+    return this.nextVertex;
   }
 
   public get CurrentVertex(): Vertex {
@@ -37,3 +40,5 @@ class SingleEdgeChain {
     return ChainType.Split;
   }
 }
+
+export {SingleEdgeChain};
