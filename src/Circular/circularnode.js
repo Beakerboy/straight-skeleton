@@ -1,7 +1,7 @@
 class CircularNode {
-  list
-  next = new CircularNode();
-  previous = new CircularNode();
+  list;
+  next;
+  previous;
 
   addNext(node) {
     this.list.addNext(node);
