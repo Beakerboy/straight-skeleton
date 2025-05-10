@@ -1,22 +1,25 @@
-import Vector2d from "../Primitives/Vector2d";
+import Vector2d from '../Primitives/Vector2d';
 
-export default abstract class SkeletonEvent {
-	public V: Vector2d = null;
+// Abstract Class
+class SkeletonEvent {
+  //Vector2d
+  V = null;
+  //number
+  Distance;
 
-	public Distance: number;
+  IsObsolete() {
+  }
 
-	public abstract get IsObsolete(): boolean;
+  constructor(point, distance) {
+    this.V = point;
+    this.Distance = distance;
+  }
 
-	protected constructor(point: Vector2d, distance: number) {
-		this.V = point;
-		this.Distance = distance;
-	}
+  ToString() {
+    return 'IntersectEntry [V=' + this.V + ', Distance=' + this.Distance + ']';
+  }
 
-	public ToString(): string {
-		return "IntersectEntry [V=" + this.V + ", Distance=" + this.Distance + "]";
-	}
-
-	public GetType(): string {
-		return this.constructor.name;
-	}
+  GetType() {
+    return this.constructor.name;
+  }
 }
