@@ -1,4 +1,4 @@
-import CircularNode from "./CircularNode";
+import CircularNode from './CircularNode';
 
 class CircularList extends CircularNode {
   /**
@@ -13,7 +13,7 @@ class CircularList extends CircularNode {
 
   addNext(node, newNode) {
     if (newNode.List !== null)
-			throw new Error("Node is already assigned to different list!");
+			throw new Error('Node is already assigned to different list!');
 
 		newNode.List = this;
 
@@ -50,7 +50,7 @@ class CircularList extends CircularNode {
    */
 	addLast(node) {
 		if (node.List !== null)
-			throw new Error("Node is already assigned to different list!");
+			throw new Error('Node is already assigned to different list!');
 
 		if (this.first === null) {
 			this.first = node;
@@ -70,10 +70,10 @@ class CircularList extends CircularNode {
    */
 	remove(node) {
 		if (node.List !== this)
-			throw new Error("Node is not assigned to this list!");
+			throw new Error('Node is not assigned to this list!');
 
 		if (this._size <= 0)
-			throw new Error("List is empty can't remove!");
+			throw new Error('List is empty can't remove!');
 
 		node.List = null;
 
