@@ -32,7 +32,6 @@ class SplitChain {
     return this.splitEvent.Parent.Previous;
   }
 
-  
   NextVertex() {
     return this.splitEvent.Parent.Next;
   }
