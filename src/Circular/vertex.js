@@ -36,11 +36,21 @@ class Vertex extends CircularNode {
    * @type {FaceNode}
    */
   leftFace = null;
-	public RightFace: FaceNode = null;
 
-	public IsProcessed: boolean;
+  /**
+   * @type {FaceNode}
+   */
+  RightFace = null;
 
-	constructor(point: Vector2d, distance: number, bisector: LineParametric2d, previousEdge: Edge, nextEdge: Edge) {
+  /**
+   * @type {bool}
+   */
+  IsProcessed: boolean;
+
+  /**
+   * @param {Vector2d}
+   */
+  constructor(point: Vector2d, distance: number, bisector: LineParametric2d, previousEdge: Edge, nextEdge: Edge) {
 		super();
 
 		this.Point = point;
