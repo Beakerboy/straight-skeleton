@@ -77,26 +77,25 @@ class PathQueue {
       }
     }
 
-		node.Previous = null;
-		node.Next = null;
+    node.Previous = null;
+    node.Next = null;
 
-		this.Size--;
+    this.Size--;
 
-		return previous;
-	}
+    return previous;
+  }
 
-	public* Iterate(): Generator<T> {
-		let current: T = <T>(this.First !== null ? this.First.FindEnd() : null);
-		let i = 0;
+  *Iterate() {
+    let current = (this.First !== null ? this.First.FindEnd() : null);
+    let i = 0;
 
-		while (current !== null)
-		{
-			yield current;
+    while (current !== null) {
+      yield current;
 
-			if (++i === this.Size)
-				return;
+      if (++i === this.Size)
+        return;
 
-			current = <T>current.Next;
-		}
-	}
+      current = current.Next;
+    }
+  }
 }
