@@ -11,7 +11,7 @@ class FaceNode extends PathQueueNode {
   }
 
   FaceQueue() {
-    return <FaceQueue>this.List;
+    return this.List;
   }
 
   IsQueueUnconnected() {
