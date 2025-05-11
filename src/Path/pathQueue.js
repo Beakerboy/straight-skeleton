@@ -29,41 +29,39 @@ class PathQueue {
 		}
 	}
 
-	public AddFirst(node: T) {
-		if (node.List !== null)
-			throw new Error("Node is already assigned to different list!");
+  AddFirst(node) {
+    if (node.List !== null)
+      throw new Error("Node is already assigned to different list!");
 
-		if (this.First === null) {
-			this.First = node;
+    if (this.First === null) {
+      this.First = node;
 
-			node.List = this;
-			node.Next = null;
-			node.Previous = null;
+      node.List = this;
+      node.Next = null;
+      node.Previous = null;
+      this.Size+;
+    } else
+      throw new Error("First element already exist!");
+  }
 
-			this.Size++;
-		} else
-			throw new Error("First element already exist!");
-	}
+  Pop(node) {
+    if (node.List !== this)
+      throw new Error("Node is not assigned to this list!");
 
-	public Pop(node) {
-		if (node.List !== this)
-			throw new Error("Node is not assigned to this list!");
+    if (this.Size <= 0)
+      throw new Error("List is empty can't remove!");
 
-		if (this.Size <= 0)
-			throw new Error("List is empty can't remove!");
+    if (!node.IsEnd)
+      throw new Error("Can pop only from end of queue!");
 
-		if (!node.IsEnd)
-			throw new Error("Can pop only from end of queue!");
-
-		node.List = null;
-
-		let previous: PathQueueNode<T> = null;
-
-		if (this.Size === 1)
-			this.First = null;
-		else {
-			if (this.First === node) {
-				if (node.Next !== null)
+    node.List = null;
+    let previous: PathQueueNode<T> = null;
+    
+    if (this.Size === 1)
+      this.First = null;
+    else {
+      if (this.First === node) {
+        if (node.Next !== null)
 					this.First = node.Next;
 				else if (node.Previous !== null)
 					this.First = node.Previous;
