@@ -11,7 +11,7 @@ class FaceQueue extends PathQueue {
 		return this.Edge === null;
 	}
 
-  public override AddPush(node, newNode) {
+  AddPush(node, newNode) {
     if (this.Closed) {
       throw new Error("Can't add node to closed FaceQueue");
     }
