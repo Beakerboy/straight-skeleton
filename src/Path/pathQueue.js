@@ -39,7 +39,7 @@ class PathQueue {
       node.List = this;
       node.Next = null;
       node.Previous = null;
-      this.Size+;
+      this.Size++;
     } else
       throw new Error("First element already exist!");
   }
