@@ -2,10 +2,10 @@ import PathQueueNode from "./PathQueueNode";
 
 class PathQueue {
   // number
-	public Size = 0;
+  Size = 0;
   // PathQueueNode
-  public First = PathQueueNode;
-  public AddPush(node, newNode) {
+  First = PathQueueNode;
+  AddPush(node, newNode) {
     if (newNode.List !== null)
 			throw new Error('Node is already assigned to different list!');
 
