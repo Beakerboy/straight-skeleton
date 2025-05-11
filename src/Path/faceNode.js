@@ -5,7 +5,7 @@ import FaceQueue from './FaceQueue';
 class FaceNode extends PathQueueNode {
   Vertex = null;
 
-  constructor(vertex: Vertex) {
+  constructor(vertex) {
     super();
     this.Vertex = vertex;
   }
