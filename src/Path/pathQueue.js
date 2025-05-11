@@ -1,4 +1,4 @@
-import PathQueueNode from "./PathQueueNode";
+import PathQueueNode from './PathQueueNode';
 
 class PathQueue {
   // number
@@ -10,8 +10,8 @@ class PathQueue {
 			throw new Error('Node is already assigned to different list!');
 
 		if (node.Next !== null && node.Previous !== null)
-			throw new Error("Can't push new node. Node is inside a Quere. " +
-				"New node can by added only at the end of queue.");
+			throw new Error('Can\'t push new node. Node is inside a Quere. ' +
+				'New node can by added only at the end of queue.');
 
 		newNode.List = this;
 		this.Size++;
@@ -31,7 +31,7 @@ class PathQueue {
 
   AddFirst(node) {
     if (node.List !== null)
-      throw new Error("Node is already assigned to different list!");
+      throw new Error('Node is already assigned to different list!');
 
     if (this.First === null) {
       this.First = node;
@@ -41,18 +41,18 @@ class PathQueue {
       node.Previous = null;
       this.Size++;
     } else
-      throw new Error("First element already exist!");
+      throw new Error('First element already exist!');
   }
 
   Pop(node) {
     if (node.List !== this)
-      throw new Error("Node is not assigned to this list!");
+      throw new Error('Node is not assigned to this list!');
 
     if (this.Size <= 0)
-      throw new Error("List is empty can't remove!");
+      throw new Error('List is empty can\'t remove!');
 
     if (!node.IsEnd)
-      throw new Error("Can pop only from end of queue!");
+      throw new Error('Can pop only from end of queue!');
 
     node.List = null;
     let previous = null;
