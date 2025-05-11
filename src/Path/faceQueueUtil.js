@@ -16,11 +16,11 @@ class FaceQueueUtil {
 
       firstFace.QueueClose();
       return;
-		}
+    }
 
     if (!firstFace.IsQueueUnconnected && !secondFace.IsQueueUnconnected)
       throw new Error(
-				'can\'t connect two diffrent queues if each of them is connected to edge');
+        'can\'t connect two diffrent queues if each of them is connected to edge');
 
     if (!firstFace.IsQueueUnconnected) {
       const qLeft = secondFace.FaceQueue;
