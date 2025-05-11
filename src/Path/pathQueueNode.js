@@ -5,7 +5,7 @@ class PathQueueNode {
   Next = null;
   Previous = null;
 
-  IsEnd(): boolean {
+  IsEnd() {
     return this.Next === null || this.Previous === null;
   }
 
