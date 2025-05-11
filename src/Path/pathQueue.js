@@ -56,7 +56,7 @@ class PathQueue {
 
     node.List = null;
     let previous = null;
-    
+
     if (this.Size === 1)
       this.First = null;
     else {
@@ -66,7 +66,7 @@ class PathQueue {
         else if (node.Previous !== null)
           this.First = node.Previous;
         else
-          throw new Error("Ups ?");
+          throw new Error('Ups ?');
       }
       if (node.Next !== null) {
         node.Next.Previous = null;
