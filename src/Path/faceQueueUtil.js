@@ -33,7 +33,7 @@ class FaceQueueUtil {
     }
   }
 
-  static MoveNodes(firstFace: FaceNode, secondFace: FaceNode) {
+  static MoveNodes(firstFace, secondFace) {
     firstFace.AddQueue(secondFace);
   }
 }
