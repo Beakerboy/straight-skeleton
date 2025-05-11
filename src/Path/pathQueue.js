@@ -55,27 +55,27 @@ class PathQueue {
       throw new Error("Can pop only from end of queue!");
 
     node.List = null;
-    let previous: PathQueueNode<T> = null;
+    let previous = null;
     
     if (this.Size === 1)
       this.First = null;
     else {
       if (this.First === node) {
         if (node.Next !== null)
-					this.First = node.Next;
-				else if (node.Previous !== null)
-					this.First = node.Previous;
-				else
-					throw new Error("Ups ?");
-			}
-			if (node.Next !== null) {
-				node.Next.Previous = null;
-				previous = node.Next;
-			} else if (node.Previous !== null) {
-				node.Previous.Next = null;
-				previous = node.Previous;
-			}
-		}
+          this.First = node.Next;
+        else if (node.Previous !== null)
+          this.First = node.Previous;
+        else
+          throw new Error("Ups ?");
+      }
+      if (node.Next !== null) {
+        node.Next.Previous = null;
+        previous = node.Next;
+      } else if (node.Previous !== null) {
+        node.Previous.Next = null;
+        previous = node.Previous;
+      }
+    }
 
 		node.Previous = null;
 		node.Next = null;
