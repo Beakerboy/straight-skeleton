@@ -16,10 +16,9 @@ export default class SplitEvent extends SkeletonEvent {
     this.OppositeEdge = oppositeEdge;
   }
 
-  IsObsolete(): boolean {
+  IsObsolete() {
     return this.Parent.IsProcessed;
   }
-
   
   ToString() {
     return 'SplitEvent [V=' + this.V + ', Parent=' + (this.Parent !== null ? this.Parent.Point.ToString() : 'null') +
