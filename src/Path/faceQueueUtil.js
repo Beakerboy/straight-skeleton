@@ -1,11 +1,11 @@
-import {FaceNode} from "./FaceNode";
+import {FaceNode} from './FaceNode';
 
-export default class FaceQueueUtil {
-	public static ConnectQueues(firstFace: FaceNode, secondFace: FaceNode) {
+class FaceQueueUtil {
+  ConnectQueues(firstFace, secondFace) {
 		if (firstFace.List === null)
-			throw new Error("firstFace.list cannot be null.");
+			throw new Error('firstFace.list cannot be null.');
 		if (secondFace.List === null)
-			throw new Error("secondFace.list cannot be null.");
+			throw new Error('secondFace.list cannot be null.');
 
 		if (firstFace.List === secondFace.List) {
 			if (!firstFace.IsEnd || !secondFace.IsEnd)
@@ -37,3 +37,4 @@ export default class FaceQueueUtil {
 		firstFace.AddQueue(secondFace);
 	}
 }
+export {FaceQueueUtil};
