@@ -9,10 +9,10 @@ class FaceQueueUtil {
 
     if (firstFace.List === secondFace.List) {
       if (!firstFace.IsEnd || !secondFace.IsEnd)
-        throw new Error("try to connect the same list not on end nodes");
+        throw new Error('try to connect the same list not on end nodes');
 
       if (firstFace.IsQueueUnconnected || secondFace.IsQueueUnconnected)
-        throw new Error("can't close node queue not conected with edges");
+        throw new Error('can\'t close node queue not conected with edges');
 
       firstFace.QueueClose();
       return;
