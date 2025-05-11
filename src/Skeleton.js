@@ -3,11 +3,14 @@ import EdgeResult from "./EdgeResult";
 import {Dictionary, List} from "./Utils";
 
 export class Skeleton {
-	public readonly Edges: List<EdgeResult> = null;
-	public readonly Distances: Dictionary<Vector2d, number> = null;
+  // list(edgeresult)
+  Edges = null;
+  // dict(vector2d, number)
+  Distances: = null;
 
-	constructor(edges: List<EdgeResult>, distances: Dictionary<Vector2d, number>) {
-		this.Edges = edges;
-		this.Distances = distances;
-	}
+  constructor(edges, distances) {
+    this.Edges = edges;
+    this.Distances = distances;
+  }
 }
+export {Skeleton};
