@@ -7,27 +7,27 @@ class PathQueue {
   First = PathQueueNode;
   AddPush(node, newNode) {
     if (newNode.List !== null)
-			throw new Error('Node is already assigned to different list!');
+      throw new Error('Node is already assigned to different list!');
 
-		if (node.Next !== null && node.Previous !== null)
-			throw new Error('Can\'t push new node. Node is inside a Quere. ' +
-				'New node can by added only at the end of queue.');
+    if (node.Next !== null && node.Previous !== null)
+      throw new Error('Can\'t push new node. Node is inside a Quere. ' +
+                      'New node can by added only at the end of queue.');
 
-		newNode.List = this;
-		this.Size++;
+    newNode.List = this;
+    this.Size++;
 
-		if (node.Next === null) {
-			newNode.Previous = node;
-			newNode.Next = null;
+    if (node.Next === null) {
+      newNode.Previous = node;
+      newNode.Next = null;
 
-			node.Next = newNode;
-		} else {
-			newNode.Previous = null;
-			newNode.Next = node;
+      node.Next = newNode;
+    } else {
+      newNode.Previous = null;
+      newNode.Next = node;
 
-			node.Previous = newNode;
-		}
-	}
+      node.Previous = newNode;
+    }
+  }
 
   AddFirst(node) {
     if (node.List !== null)
