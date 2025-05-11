@@ -13,7 +13,7 @@ class PathQueueNode {
     this.List.AddPush(this, node);
   }
 
-  AddQueue(queue: PathQueueNode<T>): PathQueueNode<T> {
+  AddQueue(queue) {
     if (this.List === queue.List)
       return null;
 
@@ -37,7 +37,7 @@ class PathQueueNode {
     if (this.IsEnd)
       return this;
 
-    let current: PathQueueNode<T> = this;
+    let current = this;
 
     while (current.Previous !== null)
     current = current.Previous;
