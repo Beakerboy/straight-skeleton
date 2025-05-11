@@ -1,12 +1,13 @@
 import PathQueueNode from "./PathQueueNode";
 
-export default class PathQueue<T extends PathQueueNode<T>> {
-	public Size: number = 0;
-	public First: PathQueueNode<T> = null;
-
-	public AddPush(node: PathQueueNode<T>, newNode: PathQueueNode<T>) {
-		if (newNode.List !== null)
-			throw new Error("Node is already assigned to different list!");
+class PathQueue {
+  // number
+	public Size = 0;
+  // PathQueueNode
+  public First = PathQueueNode;
+  public AddPush(node, newNode) {
+    if (newNode.List !== null)
+			throw new Error('Node is already assigned to different list!');
 
 		if (node.Next !== null && node.Previous !== null)
 			throw new Error("Can't push new node. Node is inside a Quere. " +
@@ -44,7 +45,7 @@ export default class PathQueue<T extends PathQueueNode<T>> {
 			throw new Error("First element already exist!");
 	}
 
-	public Pop(node: PathQueueNode<T>): PathQueueNode<T> {
+	public Pop(node) {
 		if (node.List !== this)
 			throw new Error("Node is not assigned to this list!");
 
