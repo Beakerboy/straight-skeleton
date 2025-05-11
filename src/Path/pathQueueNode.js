@@ -40,7 +40,7 @@ class PathQueueNode {
     let current = this;
 
     while (current.Previous !== null)
-    current = current.Previous;
+      current = current.Previous;
 
     return current;
   }
