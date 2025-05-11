@@ -17,7 +17,7 @@ class PathQueueNode {
     if (this.List === queue.List)
       return null;
 
-    let currentQueue: PathQueueNode<T> = this;
+    let currentQueue = this;
 
     let current = queue;
 
