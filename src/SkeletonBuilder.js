@@ -677,7 +677,7 @@ export default class SkeletonBuilder {
 		}
 	}
 
-	private static ComputeSplitEvents(vertex, edge, queue, distanceSquared) {
+	static ComputeSplitEvents(vertex, edge, queue, distanceSquared) {
 		const source = vertex.Point;
 		const oppositeEdges = this.CalcOppositeEdges(vertex, edges);
 
@@ -698,12 +698,12 @@ export default class SkeletonBuilder {
 		}
 	}
 
-	private static ComputeEvents(vertex, queue, edges) {
+	static ComputeEvents(vertex, queue, edges) {
 		const distanceSquared = this.ComputeCloserEdgeEvent(vertex, queue);
 		this.ComputeSplitEvents(vertex, edges, queue, distanceSquared);
 	}
 
-	private static ComputeCloserEdgeEvent(vertex, queue) {
+	static ComputeCloserEdgeEvent(vertex, queue) {
 		const nextVertex = vertex.Next;
 		const previousVertex = vertex.Previous;
 
@@ -731,17 +731,17 @@ export default class SkeletonBuilder {
 		return distance1 < distance2 ? distance1 : distance2;
 	}
 
-	private static CreateEdgeEvent(point, previousVertex, nextVertex) {
+	static CreateEdgeEvent(point, previousVertex, nextVertex) {
 		return new EdgeEvent(point, this.CalcDistance(point, previousVertex.NextEdge), previousVertex, nextVertex);
 	}
 
-	private static ComputeEdgeEvents(previousVertex, nextVertex, queue) {
+	static ComputeEdgeEvents(previousVertex, nextVertex, queue) {
 		const point = this.ComputeIntersectionBisectors(previousVertex, nextVertex);
 		if (point.NotEquals(Vector2d.Empty))
 			queue.Add(this.CreateEdgeEvent(point, previousVertex, nextVertex));
 	}
 
-	private static CalcOppositeEdges(vertex, edges) {
+	static CalcOppositeEdges(vertex, edges) {
 		const ret = new List();
 
 		for (const edgeEntry of edges) {
@@ -759,11 +759,11 @@ export default class SkeletonBuilder {
 		return ret;
 	}
 
-	private static EdgeBehindBisector(bisector, edge) {
+	static EdgeBehindBisector(bisector, edge) {
 		return LineParametric2d.Collide(bisector, edge, this.SplitEpsilon).Equals(Vector2d.Empty);
 	}
 
-	private static CalcCandidatePointForSplit(vertex, edge) {
+	static CalcCandidatePointForSplit(vertex, edge) {
 		const vertexEdge = this.ChoseLessParallelVertexEdge(vertex, edge);
 		if (vertexEdge === null)
 			return null;
@@ -797,7 +797,7 @@ export default class SkeletonBuilder {
 		return null;
 	}
 
-	private static ChoseLessParallelVertexEdge(vertex, edge) {
+	static ChoseLessParallelVertexEdge(vertex, edge) {
 		const edgeA = vertex.PreviousEdge;
 		const edgeB = vertex.NextEdge;
 
@@ -815,7 +815,7 @@ export default class SkeletonBuilder {
 		return vertexEdge;
 	}
 
-	private static ComputeIntersectionBisectors(vertexPrevious: Vertex, vertexNext: Vertex): Vector2d {
+	static ComputeIntersectionBisectors(vertexPrevious: Vertex, vertexNext: Vertex): Vector2d {
 		const bisectorPrevious = vertexPrevious.Bisector;
 		const bisectorNext = vertexNext.Bisector;
 
@@ -828,12 +828,12 @@ export default class SkeletonBuilder {
 		return intersect;
 	}
 
-	private static FindOppositeEdgeLav(sLav: HashSet<CircularList<Vertex>>, oppositeEdge: Edge, center: Vector2d): Vertex {
+	static FindOppositeEdgeLav(sLav, oppositeEdge, center) {
 		const edgeLavs = this.FindEdgeLavs(sLav, oppositeEdge, null);
 		return this.ChooseOppositeEdgeLav(edgeLavs, oppositeEdge, center);
 	}
 
-	private static ChooseOppositeEdgeLav(edgeLavs: List<Vertex>, oppositeEdge: Edge, center: Vector2d): Vertex {
+	static ChooseOppositeEdgeLav(edgeLavs, oppositeEdge, center) {
 		if (!edgeLavs.Any())
 			return null;
 
@@ -872,7 +872,7 @@ export default class SkeletonBuilder {
 		throw new Error("Could not find lav for opposite edge, it could be correct but need some test data to check.");
 	}
 
-	private static FindEdgeLavs(sLav: HashSet<CircularList<Vertex>>, oppositeEdge: Edge, skippedLav: CircularList<Vertex>): List<Vertex> {
+	static FindEdgeLavs(sLav: HashSet<CircularList<Vertex>>, oppositeEdge: Edge, skippedLav: CircularList<Vertex>): List<Vertex> {
 		const edgeLavs = new List<Vertex>();
 		for (const lav of sLav) {
 			if (lav === skippedLav)
@@ -885,7 +885,7 @@ export default class SkeletonBuilder {
 		return edgeLavs;
 	}
 
-	private static GetEdgeInLav(lav: CircularList<Vertex>, oppositeEdge: Edge): Vertex {
+	static GetEdgeInLav(lav: CircularList<Vertex>, oppositeEdge: Edge): Vertex {
 		for (const node of lav.Iterate())
 			if (oppositeEdge === node.PreviousEdge ||
 				oppositeEdge === node.Previous.Next)
@@ -894,25 +894,25 @@ export default class SkeletonBuilder {
 		return null;
 	}
 
-	private static AddFaceBack(newVertex: Vertex, va: Vertex, vb: Vertex) {
+	static AddFaceBack(newVertex: Vertex, va: Vertex, vb: Vertex) {
 		const fn = new FaceNode(newVertex);
 		va.RightFace.AddPush(fn);
 		FaceQueueUtil.ConnectQueues(fn, vb.LeftFace);
 	}
 
-	private static AddFaceRight(newVertex: Vertex, vb: Vertex) {
+	static AddFaceRight(newVertex: Vertex, vb: Vertex) {
 		const fn = new FaceNode(newVertex);
 		vb.RightFace.AddPush(fn);
 		newVertex.RightFace = fn;
 	}
 
-	private static AddFaceLeft(newVertex: Vertex, va: Vertex) {
+	static AddFaceLeft(newVertex: Vertex, va: Vertex) {
 		const fn = new FaceNode(newVertex);
 		va.LeftFace.AddPush(fn);
 		newVertex.LeftFace = fn;
 	}
 
-	private static CalcDistance(intersect: Vector2d, currentEdge: Edge): number {
+	static CalcDistance(intersect: Vector2d, currentEdge: Edge): number {
 		const edge = currentEdge.End.Sub(currentEdge.Begin);
 		const vector = intersect.Sub(currentEdge.Begin);
 
