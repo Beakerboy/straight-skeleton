@@ -96,17 +96,17 @@ export default class SkeletonBuilder {
 					continue;
 
 				if (event instanceof EdgeEvent)
-					throw new Error("All edge@events should be converted to MultiEdgeEvents for given level");
+					throw new Error('All edge@events should be converted to MultiEdgeEvents for given level');
 				if (event instanceof SplitEvent)
-					throw new Error("All split events should be converted to MultiSplitEvents for given level");
+					throw new Error('All split events should be converted to MultiSplitEvents for given level');
 				if (event instanceof MultiSplitEvent)
-					this.MultiSplitEvent(<MultiSplitEvent>event, sLav, queue, edges);
+					this.MultiSplitEvent(event, sLav, queue, edges);
 				else if (event instanceof PickEvent)
-					this.PickEvent(<PickEvent>event);
+					this.PickEvent(event);
 				else if (event instanceof MultiEdgeEvent)
-					this.MultiEdgeEvent(<MultiEdgeEvent>event, queue, edges);
+					this.MultiEdgeEvent(event, queue, edges);
 				else
-					throw new Error("Unknown event type: " + event.GetType());
+					throw new Error('Unknown event type: ' + event.GetType());
 			}
 
 			this.ProcessTwoNodeLavs(sLav);
@@ -117,17 +117,17 @@ export default class SkeletonBuilder {
 		return this.AddFacesToOutput(faces);
 	}
 
-	private static InitPolygon(polygon: List<Vector2d>): List<Vector2d> {
+	private static InitPolygon(polygon) {
 		if (polygon === null)
-			throw new Error("polygon can't be null");
+			throw new Error('polygon can\'t be null');
 
 		if (polygon[0].Equals(polygon[polygon.Count - 1]))
-			throw new Error("polygon can't start and end with the same point");
+			throw new Error('polygon can\'t start and end with the same point');
 
 		return this.MakeCounterClockwise(polygon);
 	}
 
-	private static ProcessTwoNodeLavs(sLav: HashSet<CircularList<Vertex>>) {
+	private static ProcessTwoNodeLavs(sLav) {
 		for (const lav of sLav) {
 			if (lav.Size === 2) {
 				const first = lav.First();
