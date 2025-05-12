@@ -131,7 +131,8 @@ export default class SkeletonBuilder {
 		for (const lav of sLav) {
 			if (lav.Size === 2) {
 				const first = lav.First();
-				const last = first.Next as Vertex;
+				// as Vertex
+				const last = first.Next;
 
 				FaceQueueUtil.ConnectQueues(first.LeftFace, last.RightFace);
 				FaceQueueUtil.ConnectQueues(first.RightFace, last.LeftFace);
