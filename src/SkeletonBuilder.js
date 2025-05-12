@@ -968,8 +968,8 @@ class ChainComparer {
   }
 }
 
-class SplitCandidateComparer implements IComparer<SplitCandidate> {
-  public Compare(left: SplitCandidate, right: SplitCandidate): number {
+class SplitCandidateComparer {
+  public Compare(left, right) {
     if (left.Distance > right.Distance)
       return 1;
     if (left.Distance < right.Distance)
