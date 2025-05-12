@@ -944,24 +944,24 @@ class SkeletonEventDistanseComparer {
   }
 }
 
-class ChainComparer implements IComparer<IChain> {
-  private readonly _center: Vector2d;
+class ChainComparer {
+  center;
 
   constructor(center) {
-    this._center = center;
+    this.center = center;
   }
 
-  public Compare(x, y) {
+  Compare(x, y) {
     if (x === y)
       return 0;
 
-    const angle1 = ChainComparer.Angle(this._center, x.PreviousEdge.Begin);
-    const angle2 = ChainComparer.Angle(this._center, y.PreviousEdge.Begin);
+    const angle1 = ChainComparer.Angle(this.center, x.PreviousEdge.Begin);
+    const angle2 = ChainComparer.Angle(this.center, y.PreviousEdge.Begin);
 
     return angle1 > angle2 ? 1 : -1;
   }
 
-  private static Angle(p0: Vector2d, p1: Vector2d): number {
+  static Angle(p0, p1) {
     const dx = p1.X - p0.X;
     const dy = p1.Y - p0.Y;
     return Math.atan2(dy, dx);
