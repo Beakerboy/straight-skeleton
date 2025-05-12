@@ -894,31 +894,31 @@ export default class SkeletonBuilder {
 		return null;
 	}
 
-	static AddFaceBack(newVertex, va, vb) {
-		const fn = new FaceNode(newVertex);
-		va.RightFace.AddPush(fn);
-		FaceQueueUtil.ConnectQueues(fn, vb.LeftFace);
-	}
+  static AddFaceBack(newVertex, va, vb) {
+    const fn = new FaceNode(newVertex);
+    va.RightFace.AddPush(fn);
+    FaceQueueUtil.ConnectQueues(fn, vb.LeftFace);
+  }
 
-	static AddFaceRight(newVertex, vb) {
-		const fn = new FaceNode(newVertex);
-		vb.RightFace.AddPush(fn);
-		newVertex.RightFace = fn;
-	}
+  static AddFaceRight(newVertex, vb) {
+    const fn = new FaceNode(newVertex);
+    vb.RightFace.AddPush(fn);
+    newVertex.RightFace = fn;
+  }
 
-	static AddFaceLeft(newVertex, va) {
-		const fn = new FaceNode(newVertex);
-		va.LeftFace.AddPush(fn);
-		newVertex.LeftFace = fn;
-	}
+  static AddFaceLeft(newVertex, va) {
+    const fn = new FaceNode(newVertex);
+    va.LeftFace.AddPush(fn);
+    newVertex.LeftFace = fn;
+  }
 
-	static CalcDistance(intersect, currentEdge) {
-		const edge = currentEdge.End.Sub(currentEdge.Begin);
-		const vector = intersect.Sub(currentEdge.Begin);
+  static CalcDistance(intersect, currentEdge) {
+    const edge = currentEdge.End.Sub(currentEdge.Begin);
+    const vector = intersect.Sub(currentEdge.Begin);
 
-		const pointOnVector = PrimitiveUtils.OrthogonalProjection(edge, vector);
-		return vector.DistanceTo(pointOnVector);
-	}
+    const pointOnVector = PrimitiveUtils.OrthogonalProjection(edge, vector);
+    return vector.DistanceTo(pointOnVector);
+  }
 
   static CalcBisector(p, e1, e2) {
     const norm1 = e1.Norm;
@@ -928,7 +928,7 @@ export default class SkeletonBuilder {
     return new LineParametric2d(p, bisector);
   }
 
-  private static CalcVectorBisector(norm1, norm2) {
+  static CalcVectorBisector(norm1, norm2) {
     return PrimitiveUtils.BisectorNormalized(norm1, norm2);
   }
 }
