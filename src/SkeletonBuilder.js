@@ -624,7 +624,7 @@ export default class SkeletonBuilder {
     }
 
     for (const vertex of lav.Iterate()) {
-      const next = vertex.Next as Vertex;
+      const next = vertex.Next;
       const rightFace = new FaceNode(vertex);
 
       const faceQueue = new FaceQueue();
@@ -671,7 +671,7 @@ export default class SkeletonBuilder {
 
 		for (const lav of sLav) {
 			for (const vertex of lav.Iterate()) {
-				const nextVertex = vertex.Next as Vertex;
+				const nextVertex = vertex.Next;
 				this.ComputeEdgeEvents(vertex, nextVertex, queue);
 			}
 		}
@@ -704,8 +704,8 @@ export default class SkeletonBuilder {
 	}
 
 	private static ComputeCloserEdgeEvent(vertex, queue) {
-		const nextVertex = vertex.Next as Vertex;
-		const previousVertex = vertex.Previous as Vertex;
+		const nextVertex = vertex.Next;
+		const previousVertex = vertex.Previous;
 
 		const point = vertex.Point;
 
@@ -731,18 +731,18 @@ export default class SkeletonBuilder {
 		return distance1 < distance2 ? distance1 : distance2;
 	}
 
-	private static CreateEdgeEvent(point: Vector2d, previousVertex: Vertex, nextVertex: Vertex): SkeletonEvent {
+	private static CreateEdgeEvent(point, previousVertex, nextVertex) {
 		return new EdgeEvent(point, this.CalcDistance(point, previousVertex.NextEdge), previousVertex, nextVertex);
 	}
 
-	private static ComputeEdgeEvents(previousVertex: Vertex, nextVertex: Vertex, queue: PriorityQueue<SkeletonEvent>) {
+	private static ComputeEdgeEvents(previousVertex, nextVertex, queue) {
 		const point = this.ComputeIntersectionBisectors(previousVertex, nextVertex);
 		if (point.NotEquals(Vector2d.Empty))
 			queue.Add(this.CreateEdgeEvent(point, previousVertex, nextVertex));
 	}
 
-	private static CalcOppositeEdges(vertex: Vertex, edges: List<Edge>): List<SplitCandidate> {
-		const ret = new List<SplitCandidate>();
+	private static CalcOppositeEdges(vertex, edges) {
+		const ret = new List();
 
 		for (const edgeEntry of edges) {
 			const edge = edgeEntry.LineLinear2d;
@@ -759,11 +759,11 @@ export default class SkeletonBuilder {
 		return ret;
 	}
 
-	private static EdgeBehindBisector(bisector: LineParametric2d, edge: LineLinear2d): boolean {
+	private static EdgeBehindBisector(bisector, edge) {
 		return LineParametric2d.Collide(bisector, edge, this.SplitEpsilon).Equals(Vector2d.Empty);
 	}
 
-	private static CalcCandidatePointForSplit(vertex: Vertex, edge: Edge): SplitCandidate {
+	private static CalcCandidatePointForSplit(vertex, edge) {
 		const vertexEdge = this.ChoseLessParallelVertexEdge(vertex, edge);
 		if (vertexEdge === null)
 			return null;
@@ -797,7 +797,7 @@ export default class SkeletonBuilder {
 		return null;
 	}
 
-	private static ChoseLessParallelVertexEdge(vertex: Vertex, edge: Edge): Edge {
+	private static ChoseLessParallelVertexEdge(vertex, edge) {
 		const edgeA = vertex.PreviousEdge;
 		const edgeB = vertex.NextEdge;
 
