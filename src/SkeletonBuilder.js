@@ -845,7 +845,7 @@ export default class SkeletonBuilder {
 		const centerVector = center.Sub(edgeStart);
 		const centerDot = edgeNorm.Dot(centerVector);
 		for (const end of edgeLavs) {
-			const begin = end.Previous as Vertex;
+			const begin = end.Previous;
 
 			const beginVector = begin.Point.Sub(edgeStart);
 			const endVector = end.Point.Sub(edgeStart);
@@ -860,11 +860,11 @@ export default class SkeletonBuilder {
 
 		for (const end of edgeLavs) {
 			const size = end.List.Size;
-			const points = new List<Vector2d>(size);
+			const points = new List(size);
 			let next = end;
 			for (let i = 0; i < size; i++) {
 				points.Add(next.Point);
-				next = next.Next as Vertex;
+				next = next.Next;
 			}
 			if (PrimitiveUtils.IsPointInsidePolygon(center, points))
 				return end;
@@ -872,7 +872,7 @@ export default class SkeletonBuilder {
 		throw new Error("Could not find lav for opposite edge, it could be correct but need some test data to check.");
 	}
 
-	static FindEdgeLavs(sLav: HashSet<CircularList<Vertex>>, oppositeEdge: Edge, skippedLav: CircularList<Vertex>): List<Vertex> {
+	static FindEdgeLavs(sLav, oppositeEdge, skippedLav) {
 		const edgeLavs = new List<Vertex>();
 		for (const lav of sLav) {
 			if (lav === skippedLav)
@@ -885,7 +885,7 @@ export default class SkeletonBuilder {
 		return edgeLavs;
 	}
 
-	static GetEdgeInLav(lav: CircularList<Vertex>, oppositeEdge: Edge): Vertex {
+	static GetEdgeInLav(lav, oppositeEdge) {
 		for (const node of lav.Iterate())
 			if (oppositeEdge === node.PreviousEdge ||
 				oppositeEdge === node.Previous.Next)
@@ -894,25 +894,25 @@ export default class SkeletonBuilder {
 		return null;
 	}
 
-	static AddFaceBack(newVertex: Vertex, va: Vertex, vb: Vertex) {
+	static AddFaceBack(newVertex, va, vb) {
 		const fn = new FaceNode(newVertex);
 		va.RightFace.AddPush(fn);
 		FaceQueueUtil.ConnectQueues(fn, vb.LeftFace);
 	}
 
-	static AddFaceRight(newVertex: Vertex, vb: Vertex) {
+	static AddFaceRight(newVertex, vb) {
 		const fn = new FaceNode(newVertex);
 		vb.RightFace.AddPush(fn);
 		newVertex.RightFace = fn;
 	}
 
-	static AddFaceLeft(newVertex: Vertex, va: Vertex) {
+	static AddFaceLeft(newVertex, va) {
 		const fn = new FaceNode(newVertex);
 		va.LeftFace.AddPush(fn);
 		newVertex.LeftFace = fn;
 	}
 
-	static CalcDistance(intersect: Vector2d, currentEdge: Edge): number {
+	static CalcDistance(intersect, currentEdge) {
 		const edge = currentEdge.End.Sub(currentEdge.Begin);
 		const vector = intersect.Sub(currentEdge.Begin);
 
