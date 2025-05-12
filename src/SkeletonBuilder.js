@@ -524,7 +524,7 @@ export default class SkeletonBuilder {
 		}
 	}
 
-	static CreateLevelEvent(eventCenter: Vector2d, distance: number, eventCluster: List<SkeletonEvent>): SkeletonEvent {
+	static CreateLevelEvent(eventCenter, distance, eventCluster) {
 		const chains = this.CreateChains(eventCluster);
 
 		if (chains.Count === 1) {
