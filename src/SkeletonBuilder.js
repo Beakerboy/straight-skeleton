@@ -117,7 +117,7 @@ export default class SkeletonBuilder {
 		return this.AddFacesToOutput(faces);
 	}
 
-	private static InitPolygon(polygon) {
+	static InitPolygon(polygon) {
 		if (polygon === null)
 			throw new Error('polygon can\'t be null');
 
@@ -127,7 +127,7 @@ export default class SkeletonBuilder {
 		return this.MakeCounterClockwise(polygon);
 	}
 
-	private static ProcessTwoNodeLavs(sLav) {
+	static ProcessTwoNodeLavs(sLav) {
 		for (const lav of sLav) {
 			if (lav.Size === 2) {
 				const first = lav.First();
@@ -145,11 +145,11 @@ export default class SkeletonBuilder {
 		}
 	}
 
-	private static RemoveEmptyLav(sLav: HashSet<CircularList<Vertex>>) {
+	static RemoveEmptyLav(sLav: HashSet<CircularList<Vertex>>) {
 		sLav.RemoveWhere(circularList => circularList.Size === 0);
 	}
 
-	private static MultiEdgeEvent(event: MultiEdgeEvent, queue: PriorityQueue<SkeletonEvent>, edges: List<Edge>) {
+	static MultiEdgeEvent(event: MultiEdgeEvent, queue: PriorityQueue<SkeletonEvent>, edges: List<Edge>) {
 		const center = event.V;
 		const edgeList = event.Chain.EdgeList;
 
@@ -174,7 +174,7 @@ export default class SkeletonBuilder {
 		this.ComputeEvents(edgeVertex, queue, edges);
 	}
 
-	private static AddMultiBackFaces(edgeList: List<EdgeEvent>, edgeVertex: Vertex) {
+	static AddMultiBackFaces(edgeList: List<EdgeEvent>, edgeVertex: Vertex) {
 		for (const edgeEvent of edgeList) {
 			const leftVertex = edgeEvent.PreviousVertex;
 			leftVertex.IsProcessed = true;
@@ -188,7 +188,7 @@ export default class SkeletonBuilder {
 		}
 	}
 
-	private static PickEvent(event: PickEvent) {
+	static PickEvent(event: PickEvent) {
 		const center = event.V;
 		const edgeList = event.Chain.EdgeList;
 
@@ -198,7 +198,7 @@ export default class SkeletonBuilder {
 		this.AddMultiBackFaces(edgeList, vertex);
 	}
 
-	private static MultiSplitEvent(event: MultiSplitEvent, sLav: HashSet<CircularList<Vertex>>, queue: PriorityQueue<SkeletonEvent>, edges: List<Edge>) {
+	static MultiSplitEvent(event: MultiSplitEvent, sLav: HashSet<CircularList<Vertex>>, queue: PriorityQueue<SkeletonEvent>, edges: List<Edge>) {
 		const chains = event.Chains;
 		const center = event.V;
 
@@ -252,7 +252,7 @@ export default class SkeletonBuilder {
 		}
 	}
 
-	private static CorrectBisectorDirection(bisector: LineParametric2d, beginNextVertex: Vertex, endPreviousVertex: Vertex, beginEdge: Edge, endEdge: Edge) {
+	static CorrectBisectorDirection(bisector: LineParametric2d, beginNextVertex: Vertex, endPreviousVertex: Vertex, beginEdge: Edge, endEdge: Edge) {
 		const beginEdge2 = beginNextVertex.PreviousEdge;
 		const endEdge2 = endPreviousVertex.NextEdge;
 
@@ -269,7 +269,7 @@ export default class SkeletonBuilder {
 		}
 	}
 
-	private static AddSplitFaces(lastFaceNode: FaceNode, chainBegin: IChain, chainEnd: IChain, newVertex: Vertex): FaceNode {
+	static AddSplitFaces(lastFaceNode: FaceNode, chainBegin: IChain, chainEnd: IChain, newVertex: Vertex): FaceNode {
 		if (chainBegin instanceof SingleEdgeChain) {
 			if (lastFaceNode === null) {
 				const beginVertex = this.CreateOppositeEdgeVertex(newVertex);
@@ -308,7 +308,7 @@ export default class SkeletonBuilder {
 		return lastFaceNode;
 	}
 
-	private static CreateOppositeEdgeVertex(newVertex: Vertex): Vertex {
+	static CreateOppositeEdgeVertex(newVertex: Vertex): Vertex {
 		const vertex = new Vertex(newVertex.Point, newVertex.Distance, newVertex.Bisector, newVertex.PreviousEdge, newVertex.NextEdge);
 
 		const fn = new FaceNode(vertex);
@@ -321,7 +321,7 @@ export default class SkeletonBuilder {
 		return vertex;
 	}
 
-	private static CreateOppositeEdgeChains(sLav: HashSet<CircularList<Vertex>>, chains: List<IChain>, center: Vector2d) {
+	static CreateOppositeEdgeChains(sLav: HashSet<CircularList<Vertex>>, chains: List<IChain>, center: Vector2d) {
 		const oppositeEdges = new HashSet<Edge>();
 
 		const oppositeEdgeChains = new List<IChain>();
@@ -352,12 +352,12 @@ export default class SkeletonBuilder {
 		chains.AddRange(oppositeEdgeChains);
 	}
 
-	private static CreateMultiSplitVertex(nextEdge: Edge, previousEdge: Edge, center: Vector2d, distance: number): Vertex {
+	static CreateMultiSplitVertex(nextEdge: Edge, previousEdge: Edge, center: Vector2d, distance: number): Vertex {
 		const bisector = this.CalcBisector(center, previousEdge, nextEdge);
 		return new Vertex(center, distance, bisector, previousEdge, nextEdge);
 	}
 
-	private static CreateChains(cluster: List<SkeletonEvent>): List<IChain> {
+	static CreateChains(cluster: List<SkeletonEvent>): List<IChain> {
 		const edgeCluster = new List<EdgeEvent>();
 		const splitCluster = new List<SplitEvent>();
 		const vertexEventsParents = new HashSet<Vertex>();
@@ -411,14 +411,14 @@ export default class SkeletonBuilder {
 		return chains;
 	}
 
-	private static IsInEdgeChain(split: SplitEvent, chain: EdgeChain): boolean {
+	static IsInEdgeChain(split: SplitEvent, chain: EdgeChain): boolean {
 		const splitParent = split.Parent;
 		const edgeList = chain.EdgeList;
 
 		return edgeList.Any(edgeEvent => edgeEvent.PreviousVertex === splitParent || edgeEvent.NextVertex === splitParent);
 	}
 
-	private static CreateEdgeChain(edgeCluster: List<EdgeEvent>): List<EdgeEvent> {
+	static CreateEdgeChain(edgeCluster: List<EdgeEvent>): List<EdgeEvent> {
 		const edgeList = new List<EdgeEvent>();
 
 		edgeList.Add(edgeCluster[0]);
@@ -451,7 +451,7 @@ export default class SkeletonBuilder {
 		return edgeList;
 	}
 
-	private static RemoveEventsUnderHeight(queue: PriorityQueue<SkeletonEvent>, levelHeight: number) {
+	static RemoveEventsUnderHeight(queue: PriorityQueue<SkeletonEvent>, levelHeight: number) {
 		while (!queue.Empty) {
 			if (queue.Peek().Distance > levelHeight + this.SplitEpsilon)
 				break;
@@ -459,12 +459,12 @@ export default class SkeletonBuilder {
 		}
 	}
 
-	private static LoadAndGroupLevelEvents(queue: PriorityQueue<SkeletonEvent>): List<SkeletonEvent> {
+	static LoadAndGroupLevelEvents(queue: PriorityQueue<SkeletonEvent>): List<SkeletonEvent> {
 		const levelEvents = this.LoadLevelEvents(queue);
 		return this.GroupLevelEvents(levelEvents);
 	}
 
-	private static GroupLevelEvents(levelEvents: List<SkeletonEvent>): List<SkeletonEvent> {
+	static GroupLevelEvents(levelEvents: List<SkeletonEvent>): List<SkeletonEvent> {
 		const ret = new List<SkeletonEvent>();
 
 		const parentGroup = new HashSet<Vertex>();
@@ -505,7 +505,7 @@ export default class SkeletonBuilder {
 		return ret;
 	}
 
-	private static IsEventInGroup(parentGroup: HashSet<Vertex>, event: SkeletonEvent): boolean {
+	static IsEventInGroup(parentGroup: HashSet<Vertex>, event: SkeletonEvent): boolean {
 		if (event instanceof SplitEvent)
 			return parentGroup.Contains((<SplitEvent>event).Parent);
 		if (event instanceof EdgeEvent)
@@ -514,7 +514,7 @@ export default class SkeletonBuilder {
 		return false;
 	}
 
-	private static AddEventToGroup(parentGroup: HashSet<Vertex>, event: SkeletonEvent) {
+	static AddEventToGroup(parentGroup: HashSet<Vertex>, event: SkeletonEvent) {
 		if (event instanceof SplitEvent)
 			parentGroup.Add((<SplitEvent>event).Parent);
 		else if (event instanceof EdgeEvent) {
@@ -523,7 +523,7 @@ export default class SkeletonBuilder {
 		}
 	}
 
-	private static CreateLevelEvent(eventCenter: Vector2d, distance: number, eventCluster: List<SkeletonEvent>): SkeletonEvent {
+	static CreateLevelEvent(eventCenter: Vector2d, distance: number, eventCluster: List<SkeletonEvent>): SkeletonEvent {
 		const chains = this.CreateChains(eventCluster);
 
 		if (chains.Count === 1) {
@@ -541,7 +541,7 @@ export default class SkeletonBuilder {
 		return new MultiSplitEvent(eventCenter, distance, chains);
 	}
 
-	private static LoadLevelEvents(queue: PriorityQueue<SkeletonEvent>): List<SkeletonEvent> {
+	static LoadLevelEvents(queue: PriorityQueue<SkeletonEvent>): List<SkeletonEvent> {
 		const level = new List<SkeletonEvent>();
 		let levelStart: SkeletonEvent;
 
@@ -568,14 +568,14 @@ export default class SkeletonBuilder {
 		return level;
 	}
 
-	private static AssertMaxNumberOfInteraction(count: number): number {
+	static AssertMaxNumberOfInteraction(count: number): number {
 		count++;
 		if (count > 10000)
 			throw new Error("Too many interaction: bug?");
 		return count;
 	}
 
-	private static MakeClockwise(holes: List<List<Vector2d>>): List<List<Vector2d>> {
+	static MakeClockwise(holes: List<List<Vector2d>>): List<List<Vector2d>> {
 		if (holes === null)
 			return null;
 
@@ -591,11 +591,11 @@ export default class SkeletonBuilder {
 		return ret;
 	}
 
-	private static MakeCounterClockwise(polygon: List<Vector2d>): List<Vector2d> {
+	static MakeCounterClockwise(polygon: List<Vector2d>): List<Vector2d> {
 		return PrimitiveUtils.MakeCounterClockwise(polygon);
 	}
 
-	private static InitSlav(polygon: List<Vector2d>, sLav: HashSet<CircularList<Vertex>>, edges: List<Edge>, faces: List<FaceQueue>) {
+	static InitSlav(polygon: List<Vector2d>, sLav: HashSet<CircularList<Vertex>>, edges: List<Edge>, faces: List<FaceQueue>) {
 		const edgesList = new CircularList<Edge>();
 
 		const size = polygon.Count;
@@ -639,7 +639,7 @@ export default class SkeletonBuilder {
 		}
 	}
 
-	private static AddFacesToOutput(faces: List<FaceQueue>): Skeleton {
+	static AddFacesToOutput(faces: List<FaceQueue>): Skeleton {
 		const edgeOutputs = new List<EdgeResult>();
 		const distances = new Dictionary<Vector2d, number>();
 
@@ -662,7 +662,7 @@ export default class SkeletonBuilder {
 		return new Skeleton(edgeOutputs, distances);
 	}
 
-	private static InitEvents(sLav: HashSet<CircularList<Vertex>>, queue: PriorityQueue<SkeletonEvent>, edges: List<Edge>) {
+	static InitEvents(sLav: HashSet<CircularList<Vertex>>, queue: PriorityQueue<SkeletonEvent>, edges: List<Edge>) {
 		for (const lav of sLav) {
 			for (const vertex of lav.Iterate())
 				this.ComputeSplitEvents(vertex, edges, queue, -1);
