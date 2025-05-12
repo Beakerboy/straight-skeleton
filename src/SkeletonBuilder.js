@@ -530,9 +530,9 @@ export default class SkeletonBuilder {
 		if (chains.Count === 1) {
 			const chain = chains[0];
 			if (chain.ChainType === ChainType.ClosedEdge)
-				return new PickEvent(eventCenter, distance, <EdgeChain>chain);
+				return new PickEvent(eventCenter, distance, chain);
 			if (chain.ChainType === ChainType.Edge)
-				return new MultiEdgeEvent(eventCenter, distance, <EdgeChain>chain);
+				return new MultiEdgeEvent(eventCenter, distance, chain);
 			if (chain.ChainType === ChainType.Split)
 				return new MultiSplitEvent(eventCenter, distance, chains);
 		}
@@ -934,38 +934,38 @@ export default class SkeletonBuilder {
 }
 
 class SkeletonEventDistanseComparer implements IComparer<SkeletonEvent> {
-	public Compare(left: SkeletonEvent, right: SkeletonEvent): number {
-		if (left.Distance > right.Distance)
-			return 1;
-		if (left.Distance < right.Distance)
-			return -1;
+  public Compare(left: SkeletonEvent, right: SkeletonEvent): number {
+    if (left.Distance > right.Distance)
+      return 1;
+    if (left.Distance < right.Distance)
+      return -1;
 
-		return 0;
-	}
+    return 0;
+  }
 }
 
 class ChainComparer implements IComparer<IChain> {
   private readonly _center: Vector2d;
 
-  constructor(center: Vector2d) {
+  constructor(center) {
     this._center = center;
   }
 
-  public Compare(x: IChain, y: IChain): number {
-		if (x === y)
-			return 0;
+  public Compare(x, y) {
+    if (x === y)
+      return 0;
 
-		const angle1 = ChainComparer.Angle(this._center, x.PreviousEdge.Begin);
-		const angle2 = ChainComparer.Angle(this._center, y.PreviousEdge.Begin);
+    const angle1 = ChainComparer.Angle(this._center, x.PreviousEdge.Begin);
+    const angle2 = ChainComparer.Angle(this._center, y.PreviousEdge.Begin);
 
-		return angle1 > angle2 ? 1 : -1;
-	}
+    return angle1 > angle2 ? 1 : -1;
+  }
 
-	private static Angle(p0: Vector2d, p1: Vector2d): number {
-		const dx = p1.X - p0.X;
-		const dy = p1.Y - p0.Y;
-		return Math.atan2(dy, dx);
-	}
+  private static Angle(p0: Vector2d, p1: Vector2d): number {
+    const dx = p1.X - p0.X;
+    const dy = p1.Y - p0.Y;
+    return Math.atan2(dy, dx);
+  }
 }
 
 class SplitCandidateComparer implements IComparer<SplitCandidate> {
