@@ -365,12 +365,12 @@ export default class SkeletonBuilder {
 
 		for (const skeletonEvent of cluster) {
 			if (skeletonEvent instanceof EdgeEvent)
-				edgeCluster.Add(<EdgeEvent>skeletonEvent);
+				edgeCluster.Add(skeletonEvent);
 			else {
 				if (skeletonEvent instanceof VertexSplitEvent) {
 
 				} else if (skeletonEvent instanceof SplitEvent) {
-					const splitEvent = <SplitEvent>skeletonEvent;
+					const splitEvent = skeletonEvent;
 					vertexEventsParents.Add(splitEvent.Parent);
 					splitCluster.Add(splitEvent);
 				}
@@ -379,7 +379,7 @@ export default class SkeletonBuilder {
 
 		for (let skeletonEvent of cluster) {
 			if (skeletonEvent instanceof VertexSplitEvent) {
-				const vertexEvent = <VertexSplitEvent>skeletonEvent;
+				const vertexEvent = skeletonEvent;
 				if (!vertexEventsParents.Contains(vertexEvent.Parent)) {
 					vertexEventsParents.Add(vertexEvent.Parent);
 					splitCluster.Add(vertexEvent);
@@ -387,12 +387,12 @@ export default class SkeletonBuilder {
 			}
 		}
 
-		const edgeChains = new List<EdgeChain>();
+		const edgeChains = new List();
 
 		while (edgeCluster.Count > 0)
 			edgeChains.Add(new EdgeChain(this.CreateEdgeChain(edgeCluster)));
 
-		const chains = new List<IChain>(edgeChains.Count);
+		const chains = new List(edgeChains.Count);
 		for (const edgeChain of edgeChains)
 			chains.Add(edgeChain);
 
