@@ -873,7 +873,7 @@ export default class SkeletonBuilder {
 	}
 
 	static FindEdgeLavs(sLav, oppositeEdge, skippedLav) {
-		const edgeLavs = new List<Vertex>();
+		const edgeLavs = new List();
 		for (const lav of sLav) {
 			if (lav === skippedLav)
 				continue;
@@ -933,8 +933,8 @@ export default class SkeletonBuilder {
   }
 }
 
-class SkeletonEventDistanseComparer implements IComparer<SkeletonEvent> {
-  public Compare(left: SkeletonEvent, right: SkeletonEvent): number {
+class SkeletonEventDistanseComparer {
+  Compare(left, right) {
     if (left.Distance > right.Distance)
       return 1;
     if (left.Distance < right.Distance)
