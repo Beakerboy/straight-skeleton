@@ -22,7 +22,7 @@ import SplitChain from './Events/Chains/SplitChain';
 import SplitEvent from './Events/SplitEvent';
 import VertexSplitEvent from './Events/VertexSplitEvent';
 import EdgeChain from './Events/Chains/EdgeChain';
-import LineLinear2d from "'./Primitives/LineLinear2d';
+import LineLinear2d from './Primitives/LineLinear2d';
 import EdgeResult from './EdgeResult';
 import ChainType from './Events/Chains/ChainType';
 
