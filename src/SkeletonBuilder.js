@@ -29,9 +29,9 @@ import ChainType from "./Events/Chains/ChainType";
 export default class SkeletonBuilder {
   static SplitEpsilon = 1e-10;
 
-  static BuildFromGeoJSON(multipolygon: GeoJSONMultipolygon): Skeleton {
-    const allEdges: List<EdgeResult> = new List();
-    const allDistances: Dictionary<Vector2d, number> = new Dictionary();
+  static BuildFromGeoJSON(multipolygon) {
+    const allEdges = new List();
+    const allDistances = new Dictionary();
 
     for (const polygon of multipolygon) {
       if (polygon.length > 0) {
@@ -57,8 +57,8 @@ export default class SkeletonBuilder {
     return new Skeleton(allEdges, allDistances);
   }
 
-  static ListFromCoordinatesArray(arr: [number, number][]): List<Vector2d> {
-    const list: List<Vector2d> = new List();
+  static ListFromCoordinatesArray(arr) {
+    const list = new List();
 
     for (const [x, y] of arr) {
       list.Add(new Vector2d(x, y));
@@ -67,7 +67,7 @@ export default class SkeletonBuilder {
     return list;
   }
 
-  static Build(polygon: List<Vector2d>, holes: List<List<Vector2d>> = null): Skeleton {
+  static Build(polygon, holes = null) {
     polygon = this.InitPolygon(polygon);
     holes = this.MakeClockwise(holes);
 
