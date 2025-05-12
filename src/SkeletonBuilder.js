@@ -224,7 +224,7 @@ export default class SkeletonBuilder {
 			if (LavUtil.IsSameLav(beginNextVertex, endPreviousVertex)) {
 				const lavPart = LavUtil.CutLavPart(beginNextVertex, endPreviousVertex);
 
-				const lav = new CircularList<Vertex>();
+				const lav = new CircularList();
 				sLav.Add(lav);
 				lav.AddLast(newVertex);
 				for (const vertex of lavPart)
