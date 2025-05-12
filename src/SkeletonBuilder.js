@@ -969,10 +969,10 @@ class ChainComparer {
 }
 
 class SplitCandidateComparer {
-  public Compare(left, right) {
-    if (left.Distance > right.Distance)
+  compare(left, right) {
+    if (left.distance > right.distance)
       return 1;
-    if (left.Distance < right.Distance)
+    if (left.distance < right.distance)
       return -1;
 
     return 0;
@@ -980,16 +980,16 @@ class SplitCandidateComparer {
 }
 
 class SplitCandidate {
-  Distance;
-  OppositeEdge = null;
-  OppositePoint = null;
-  Point = null;
+  distance;
+  oppositeEdge = null;
+  oppositePoint = null;
+  point = null;
 
   constructor(point, distance, oppositeEdge, oppositePoint) {
-    this.Point = point;
-    this.Distance = distance;
-    this.OppositeEdge = oppositeEdge;
-    this.OppositePoint = oppositePoint;
+    this.point = point;
+    this.distance = distance;
+    this.oppositeEdge = oppositeEdge;
+    this.oppositePoint = oppositePoint;
   }
 }
 
