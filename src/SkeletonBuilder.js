@@ -207,7 +207,7 @@ export default class SkeletonBuilder {
 
 		chains.Sort(new ChainComparer(center));
 
-		let lastFaceNode: FaceNode = null;
+		let lastFaceNode = null;
 
 		let edgeListSize = chains.Count;
 		for (let i = 0; i < edgeListSize; i++) {
@@ -358,10 +358,10 @@ export default class SkeletonBuilder {
 		return new Vertex(center, distance, bisector, previousEdge, nextEdge);
 	}
 
-	static CreateChains(cluster: List<SkeletonEvent>): List<IChain> {
-		const edgeCluster = new List<EdgeEvent>();
-		const splitCluster = new List<SplitEvent>();
-		const vertexEventsParents = new HashSet<Vertex>();
+	static CreateChains(cluster) {
+		const edgeCluster = new List();
+		const splitCluster = new List();
+		const vertexEventsParents = new HashSet();
 
 		for (const skeletonEvent of cluster) {
 			if (skeletonEvent instanceof EdgeEvent)
@@ -420,7 +420,7 @@ export default class SkeletonBuilder {
 	}
 
 	static CreateEdgeChain(edgeCluster) {
-		const edgeList = new List<EdgeEvent>();
+		const edgeList = new List();
 
 		edgeList.Add(edgeCluster[0]);
 		edgeCluster.RemoveAt(0);
@@ -460,7 +460,7 @@ export default class SkeletonBuilder {
 		}
 	}
 
-	static LoadAndGroupLevelEvents(queue: PriorityQueue<SkeletonEvent>): List<SkeletonEvent> {
+	static LoadAndGroupLevelEvents(queue) {
 		const levelEvents = this.LoadLevelEvents(queue);
 		return this.GroupLevelEvents(levelEvents);
 	}
