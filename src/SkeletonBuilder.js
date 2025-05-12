@@ -618,7 +618,7 @@ export default class SkeletonBuilder {
     sLav.Add(lav);
 
     for (const edge of edgesList.Iterate()) {
-      const nextEdge = edge.Next as Edge;
+      const nextEdge = edge.Next;
       const vertex = new Vertex(edge.End, 0, edge.BisectorNext, edge, nextEdge);
       lav.AddLast(vertex);
     }
