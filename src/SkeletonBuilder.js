@@ -559,7 +559,7 @@ export default class SkeletonBuilder {
 
 		level.Add(levelStart);
 
-		let event: SkeletonEvent;
+		let event;
 		while ((event = queue.Peek()) !== null &&
 		Math.abs(event.Distance - levelStartHeight) < this.SplitEpsilon) {
 			const nextLevelEvent = queue.Next();
