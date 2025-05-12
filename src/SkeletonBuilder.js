@@ -596,49 +596,49 @@ export default class SkeletonBuilder {
 		return PrimitiveUtils.MakeCounterClockwise(polygon);
 	}
 
-	static InitSlav(polygon, sLav, edges, faces) {
-		const edgesList = new CircularList();
+  static InitSlav(polygon, sLav, edges, faces) {
+    const edgesList = new CircularList();
 
-		const size = polygon.Count;
-		for (let i = 0; i < size; i++) {
-			const j = (i + 1) % size;
-			edgesList.AddLast(new Edge(polygon[i], polygon[j]));
-		}
+    const size = polygon.Count;
+    for (let i = 0; i < size; i++) {
+      const j = (i + 1) % size;
+      edgesList.AddLast(new Edge(polygon[i], polygon[j]));
+    }
 
-		for (const edge of edgesList.Iterate()) {
-			const nextEdge = edge.Next as Edge;
-			const bisector = this.CalcBisector(edge.End, edge, nextEdge);
+    for (const edge of edgesList.Iterate()) {
+      const nextEdge = edge.Next;
+      const bisector = this.CalcBisector(edge.End, edge, nextEdge);
 
-			edge.BisectorNext = bisector;
-			nextEdge.BisectorPrevious = bisector;
-			edges.Add(edge);
-		}
+      edge.BisectorNext = bisector;
+      nextEdge.BisectorPrevious = bisector;
+      edges.Add(edge);
+    }
 
-		const lav = new CircularList();
-		sLav.Add(lav);
+    const lav = new CircularList();
+    sLav.Add(lav);
 
-		for (const edge of edgesList.Iterate()) {
-			const nextEdge = edge.Next as Edge;
-			const vertex = new Vertex(edge.End, 0, edge.BisectorNext, edge, nextEdge);
-			lav.AddLast(vertex);
-		}
+    for (const edge of edgesList.Iterate()) {
+      const nextEdge = edge.Next as Edge;
+      const vertex = new Vertex(edge.End, 0, edge.BisectorNext, edge, nextEdge);
+      lav.AddLast(vertex);
+    }
 
-		for (const vertex of lav.Iterate()) {
-			const next = vertex.Next as Vertex;
-			const rightFace = new FaceNode(vertex);
+    for (const vertex of lav.Iterate()) {
+      const next = vertex.Next as Vertex;
+      const rightFace = new FaceNode(vertex);
 
-			const faceQueue = new FaceQueue();
-			faceQueue.Edge = (vertex.NextEdge);
+      const faceQueue = new FaceQueue();
+      faceQueue.Edge = (vertex.NextEdge);
 
-			faceQueue.AddFirst(rightFace);
-			faces.Add(faceQueue);
-			vertex.RightFace = rightFace;
+      faceQueue.AddFirst(rightFace);
+      faces.Add(faceQueue);
+      vertex.RightFace = rightFace;
 
-			const leftFace = new FaceNode(next);
-			rightFace.AddPush(leftFace);
-			next.LeftFace = leftFace;
-		}
-	}
+      const leftFace = new FaceNode(next);
+      rightFace.AddPush(leftFace);
+      next.LeftFace = leftFace;
+    }
+  }
 
 	static AddFacesToOutput(faces) {
 		const edgeOutputs = new List();
