@@ -323,14 +323,14 @@ export default class SkeletonBuilder {
 	}
 
 	static CreateOppositeEdgeChains(sLav, chains, center) {
-		const oppositeEdges = new HashSet<Edge>();
+		const oppositeEdges = new HashSet();
 
-		const oppositeEdgeChains = new List<IChain>();
-		const chainsForRemoval = new List<IChain>();
+		const oppositeEdgeChains = new List();
+		const chainsForRemoval = new List();
 
 		for (const chain of chains) {
 			if (chain instanceof SplitChain) {
-				const splitChain = <SplitChain>chain;
+				const splitChain = chain;
 				const oppositeEdge = splitChain.OppositeEdge;
 
 				if (oppositeEdge !== null && !oppositeEdges.Contains(oppositeEdge)) {
@@ -452,7 +452,7 @@ export default class SkeletonBuilder {
 		return edgeList;
 	}
 
-	static RemoveEventsUnderHeight(queue: PriorityQueue<SkeletonEvent>, levelHeight: number) {
+	static RemoveEventsUnderHeight(queue, levelHeight) {
 		while (!queue.Empty) {
 			if (queue.Peek().Distance > levelHeight + this.SplitEpsilon)
 				break;
