@@ -465,10 +465,10 @@ export default class SkeletonBuilder {
 		return this.GroupLevelEvents(levelEvents);
 	}
 
-	static GroupLevelEvents(levelEvents: List<SkeletonEvent>): List<SkeletonEvent> {
-		const ret = new List<SkeletonEvent>();
+	static GroupLevelEvents(levelEvents) {
+		const ret = new List();
 
-		const parentGroup = new HashSet<Vertex>();
+		const parentGroup = new HashSet();
 
 		while (levelEvents.Count > 0) {
 			parentGroup.Clear();
@@ -480,7 +480,7 @@ export default class SkeletonBuilder {
 
 			this.AddEventToGroup(parentGroup, event);
 
-			const cluster = new List<SkeletonEvent>();
+			const cluster = new List();
 			cluster.Add(event);
 
 			for (let j = 0; j < levelEvents.Count; j++) {
@@ -506,21 +506,21 @@ export default class SkeletonBuilder {
 		return ret;
 	}
 
-	static IsEventInGroup(parentGroup: HashSet<Vertex>, event: SkeletonEvent): boolean {
+	static IsEventInGroup(parentGroup, event) {
 		if (event instanceof SplitEvent)
-			return parentGroup.Contains((<SplitEvent>event).Parent);
+			return parentGroup.Contains((event).Parent);
 		if (event instanceof EdgeEvent)
-			return parentGroup.Contains((<EdgeEvent>event).PreviousVertex)
-				|| parentGroup.Contains((<EdgeEvent>event).NextVertex);
+			return parentGroup.Contains((event).PreviousVertex)
+				|| parentGroup.Contains((event).NextVertex);
 		return false;
 	}
 
-	static AddEventToGroup(parentGroup: HashSet<Vertex>, event: SkeletonEvent) {
+	static AddEventToGroup(parentGroup, event) {
 		if (event instanceof SplitEvent)
-			parentGroup.Add((<SplitEvent>event).Parent);
+			parentGroup.Add((event).Parent);
 		else if (event instanceof EdgeEvent) {
-			parentGroup.Add((<EdgeEvent>event).PreviousVertex);
-			parentGroup.Add((<EdgeEvent>event).NextVertex);
+			parentGroup.Add((event).PreviousVertex);
+			parentGroup.Add((event).NextVertex);
 		}
 	}
 
@@ -538,13 +538,13 @@ export default class SkeletonBuilder {
 		}
 
 		if (chains.Any(chain => chain.ChainType === ChainType.ClosedEdge))
-			throw new Error("Found closed chain of events for single point, but found more then one chain");
+			throw new Error('Found closed chain of events for single point, but found more then one chain');
 		return new MultiSplitEvent(eventCenter, distance, chains);
 	}
 
-	static LoadLevelEvents(queue: PriorityQueue<SkeletonEvent>): List<SkeletonEvent> {
-		const level = new List<SkeletonEvent>();
-		let levelStart: SkeletonEvent;
+	static LoadLevelEvents(queue) {
+		const level = new List();
+		let levelStart;
 
 		do {
 			levelStart = queue.Empty ? null : queue.Next();
@@ -569,18 +569,18 @@ export default class SkeletonBuilder {
 		return level;
 	}
 
-	static AssertMaxNumberOfInteraction(count: number): number {
+	static AssertMaxNumberOfInteraction(count) {
 		count++;
 		if (count > 10000)
-			throw new Error("Too many interaction: bug?");
+			throw new Error('Too many interaction: bug?');
 		return count;
 	}
 
-	static MakeClockwise(holes: List<List<Vector2d>>): List<List<Vector2d>> {
+	static MakeClockwise(holes) {
 		if (holes === null)
 			return null;
 
-		const ret = new List<List<Vector2d>>(holes.Count);
+		const ret = new List(holes.Count);
 		for (const hole of holes) {
 			if (PrimitiveUtils.IsClockwisePolygon(hole))
 				ret.Add(hole);
@@ -592,11 +592,11 @@ export default class SkeletonBuilder {
 		return ret;
 	}
 
-	static MakeCounterClockwise(polygon: List<Vector2d>): List<Vector2d> {
+	static MakeCounterClockwise(polygon) {
 		return PrimitiveUtils.MakeCounterClockwise(polygon);
 	}
 
-	static InitSlav(polygon: List<Vector2d>, sLav: HashSet<CircularList<Vertex>>, edges: List<Edge>, faces: List<FaceQueue>) {
+	static InitSlav(polygon, sLav, edges, faces) {
 		const edgesList = new CircularList<Edge>();
 
 		const size = polygon.Count;
@@ -920,17 +920,17 @@ export default class SkeletonBuilder {
 		return vector.DistanceTo(pointOnVector);
 	}
 
-	private static CalcBisector(p: Vector2d, e1: Edge, e2: Edge): LineParametric2d {
-		const norm1 = e1.Norm;
-		const norm2 = e2.Norm;
+  static CalcBisector(p, e1, e2) {
+    const norm1 = e1.Norm;
+    const norm2 = e2.Norm;
 
-		const bisector = this.CalcVectorBisector(norm1, norm2);
-		return new LineParametric2d(p, bisector);
-	}
+    const bisector = this.CalcVectorBisector(norm1, norm2);
+    return new LineParametric2d(p, bisector);
+  }
 
-	private static CalcVectorBisector(norm1: Vector2d, norm2: Vector2d): Vector2d {
-		return PrimitiveUtils.BisectorNormalized(norm1, norm2);
-	}
+  private static CalcVectorBisector(norm1, norm2) {
+    return PrimitiveUtils.BisectorNormalized(norm1, norm2);
+  }
 }
 
 class SkeletonEventDistanseComparer implements IComparer<SkeletonEvent> {
@@ -945,13 +945,13 @@ class SkeletonEventDistanseComparer implements IComparer<SkeletonEvent> {
 }
 
 class ChainComparer implements IComparer<IChain> {
-	private readonly _center: Vector2d;
+  private readonly _center: Vector2d;
 
-	constructor(center: Vector2d) {
-		this._center = center;
-	}
+  constructor(center: Vector2d) {
+    this._center = center;
+  }
 
-	public Compare(x: IChain, y: IChain): number {
+  public Compare(x: IChain, y: IChain): number {
 		if (x === y)
 			return 0;
 
@@ -969,27 +969,27 @@ class ChainComparer implements IComparer<IChain> {
 }
 
 class SplitCandidateComparer implements IComparer<SplitCandidate> {
-	public Compare(left: SplitCandidate, right: SplitCandidate): number {
-		if (left.Distance > right.Distance)
-			return 1;
-		if (left.Distance < right.Distance)
-			return -1;
+  public Compare(left: SplitCandidate, right: SplitCandidate): number {
+    if (left.Distance > right.Distance)
+      return 1;
+    if (left.Distance < right.Distance)
+      return -1;
 
-		return 0;
-	}
+    return 0;
+  }
 }
 
 class SplitCandidate {
-	public readonly Distance: number;
-	public readonly OppositeEdge: Edge = null;
-	public readonly OppositePoint: Vector2d = null;
-	public readonly Point: Vector2d = null;
+  Distance;
+  OppositeEdge = null;
+  OppositePoint = null;
+  Point = null;
 
-	constructor(point: Vector2d, distance: number, oppositeEdge: Edge, oppositePoint: Vector2d) {
-		this.Point = point;
-		this.Distance = distance;
-		this.OppositeEdge = oppositeEdge;
-		this.OppositePoint = oppositePoint;
-	}
+  constructor(point, distance, oppositeEdge, oppositePoint) {
+    this.Point = point;
+    this.Distance = distance;
+    this.OppositeEdge = oppositeEdge;
+    this.OppositePoint = oppositePoint;
+  }
 }
 
