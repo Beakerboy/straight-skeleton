@@ -57,7 +57,7 @@ export default class SkeletonBuilder {
     return new Skeleton(allEdges, allDistances);
   }
 
-  private static ListFromCoordinatesArray(arr: [number, number][]): List<Vector2d> {
+  static ListFromCoordinatesArray(arr: [number, number][]): List<Vector2d> {
     const list: List<Vector2d> = new List();
 
     for (const [x, y] of arr) {
