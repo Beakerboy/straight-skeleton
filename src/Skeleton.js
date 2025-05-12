@@ -13,4 +13,3 @@ export class Skeleton {
     this.Distances = distances;
   }
 }
-export {Skeleton};
