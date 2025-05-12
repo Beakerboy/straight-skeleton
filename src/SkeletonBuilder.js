@@ -815,18 +815,18 @@ export default class SkeletonBuilder {
 		return vertexEdge;
 	}
 
-	static ComputeIntersectionBisectors(vertexPrevious: Vertex, vertexNext: Vertex): Vector2d {
-		const bisectorPrevious = vertexPrevious.Bisector;
-		const bisectorNext = vertexNext.Bisector;
+  static ComputeIntersectionBisectors(vertexPrevious, vertexNext) {
+    const bisectorPrevious = vertexPrevious.Bisector;
+    const bisectorNext = vertexNext.Bisector;
 
-		const intersectRays2d = PrimitiveUtils.IntersectRays2D(bisectorPrevious, bisectorNext);
-		const intersect = intersectRays2d.Intersect;
+    const intersectRays2d = PrimitiveUtils.IntersectRays2D(bisectorPrevious, bisectorNext);
+    const intersect = intersectRays2d.Intersect;
 
-		if (vertexPrevious.Point.Equals(intersect) || vertexNext.Point.Equals(intersect))
-			return Vector2d.Empty;
+    if (vertexPrevious.Point.Equals(intersect) || vertexNext.Point.Equals(intersect))
+      return Vector2d.Empty;
 
-		return intersect;
-	}
+    return intersect;
+  }
 
 	static FindOppositeEdgeLav(sLav, oppositeEdge, center) {
 		const edgeLavs = this.FindEdgeLavs(sLav, oppositeEdge, null);
