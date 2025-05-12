@@ -27,52 +27,52 @@ import EdgeResult from "./EdgeResult";
 import ChainType from "./Events/Chains/ChainType";
 
 export default class SkeletonBuilder {
-	private static readonly SplitEpsilon = 1e-10;
+  private static readonly SplitEpsilon = 1e-10;
 
-	public static BuildFromGeoJSON(multipolygon: GeoJSONMultipolygon): Skeleton {
-		const allEdges: List<EdgeResult> = new List();
-		const allDistances: Dictionary<Vector2d, number> = new Dictionary();
+  public static BuildFromGeoJSON(multipolygon: GeoJSONMultipolygon): Skeleton {
+    const allEdges: List<EdgeResult> = new List();
+    const allDistances: Dictionary<Vector2d, number> = new Dictionary();
 
-		for (const polygon of multipolygon) {
-			if (polygon.length > 0) {
-				const outer = this.ListFromCoordinatesArray(polygon[0]);
-				const holes: List<List<Vector2d>> = new List();
+    for (const polygon of multipolygon) {
+      if (polygon.length > 0) {
+        const outer = this.ListFromCoordinatesArray(polygon[0]);
+        const holes: List<List<Vector2d>> = new List();
 
-				for (let i = 1; i < polygon.length; i++) {
-					holes.Add(this.ListFromCoordinatesArray(polygon[i]));
-				}
+        for (let i = 1; i < polygon.length; i++) {
+          holes.Add(this.ListFromCoordinatesArray(polygon[i]));
+        }
 
-				const skeleton = this.Build(outer, holes);
+        const skeleton = this.Build(outer, holes);
 
-				for (const edge of skeleton.Edges) {
-					allEdges.Add(edge);
-				}
+        for (const edge of skeleton.Edges) {
+          allEdges.Add(edge);
+        }
 
-				for (const [key, distance] of skeleton.Distances.entries()) {
-					allDistances.Add(key, distance);
-				}
-			}
-		}
+        for (const [key, distance] of skeleton.Distances.entries()) {
+          allDistances.Add(key, distance);
+        }
+      }
+    }
 
-		return new Skeleton(allEdges, allDistances);
-	}
+    return new Skeleton(allEdges, allDistances);
+  }
 
-	private static ListFromCoordinatesArray(arr: [number, number][]): List<Vector2d> {
-		const list: List<Vector2d> = new List();
+  private static ListFromCoordinatesArray(arr: [number, number][]): List<Vector2d> {
+    const list: List<Vector2d> = new List();
 
-		for (const [x, y] of arr) {
-			list.Add(new Vector2d(x, y));
-		}
+    for (const [x, y] of arr) {
+      list.Add(new Vector2d(x, y));
+    }
 
-		return list;
-	}
+    return list;
+  }
 
-	public static Build(polygon: List<Vector2d>, holes: List<List<Vector2d>> = null): Skeleton {
-		polygon = this.InitPolygon(polygon);
-		holes = this.MakeClockwise(holes);
+  static Build(polygon: List<Vector2d>, holes: List<List<Vector2d>> = null): Skeleton {
+    polygon = this.InitPolygon(polygon);
+    holes = this.MakeClockwise(holes);
 
-		const queue = new PriorityQueue<SkeletonEvent>(3, new SkeletonEventDistanseComparer());
-		const sLav = new HashSet<CircularList<Vertex>>();
+    const queue = new PriorityQueue<SkeletonEvent>(3, new SkeletonEventDistanseComparer());
+    const sLav = new HashSet<CircularList<Vertex>>();
 		const faces = new List<FaceQueue>();
 		const edges = new List<Edge>();
 
