@@ -597,7 +597,7 @@ export default class SkeletonBuilder {
 	}
 
 	static InitSlav(polygon, sLav, edges, faces) {
-		const edgesList = new CircularList<Edge>();
+		const edgesList = new CircularList();
 
 		const size = polygon.Count;
 		for (let i = 0; i < size; i++) {
@@ -614,7 +614,7 @@ export default class SkeletonBuilder {
 			edges.Add(edge);
 		}
 
-		const lav = new CircularList<Vertex>();
+		const lav = new CircularList();
 		sLav.Add(lav);
 
 		for (const edge of edgesList.Iterate()) {
@@ -640,13 +640,13 @@ export default class SkeletonBuilder {
 		}
 	}
 
-	static AddFacesToOutput(faces: List<FaceQueue>): Skeleton {
-		const edgeOutputs = new List<EdgeResult>();
-		const distances = new Dictionary<Vector2d, number>();
+	static AddFacesToOutput(faces) {
+		const edgeOutputs = new List();
+		const distances = new Dictionary();
 
 		for (const face of faces) {
 			if (face.Size > 0) {
-				const faceList = new List<Vector2d>();
+				const faceList = new List();
 
 				for (const fn of face.Iterate()) {
 					const point = fn.Vertex.Point;
@@ -663,7 +663,7 @@ export default class SkeletonBuilder {
 		return new Skeleton(edgeOutputs, distances);
 	}
 
-	static InitEvents(sLav: HashSet<CircularList<Vertex>>, queue: PriorityQueue<SkeletonEvent>, edges: List<Edge>) {
+	static InitEvents(sLav, queue, edges) {
 		for (const lav of sLav) {
 			for (const vertex of lav.Iterate())
 				this.ComputeSplitEvents(vertex, edges, queue, -1);
@@ -677,7 +677,7 @@ export default class SkeletonBuilder {
 		}
 	}
 
-	private static ComputeSplitEvents(vertex: Vertex, edges: List<Edge>, queue: PriorityQueue<SkeletonEvent>, distanceSquared: number) {
+	private static ComputeSplitEvents(vertex, edge, queue, distanceSquared) {
 		const source = vertex.Point;
 		const oppositeEdges = this.CalcOppositeEdges(vertex, edges);
 
@@ -698,12 +698,12 @@ export default class SkeletonBuilder {
 		}
 	}
 
-	private static ComputeEvents(vertex: Vertex, queue: PriorityQueue<SkeletonEvent>, edges: List<Edge>) {
+	private static ComputeEvents(vertex, queue, edges) {
 		const distanceSquared = this.ComputeCloserEdgeEvent(vertex, queue);
 		this.ComputeSplitEvents(vertex, edges, queue, distanceSquared);
 	}
 
-	private static ComputeCloserEdgeEvent(vertex: Vertex, queue: PriorityQueue<SkeletonEvent>): number {
+	private static ComputeCloserEdgeEvent(vertex, queue) {
 		const nextVertex = vertex.Next as Vertex;
 		const previousVertex = vertex.Previous as Vertex;
 
