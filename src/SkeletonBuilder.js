@@ -146,11 +146,11 @@ export default class SkeletonBuilder {
 		}
 	}
 
-	static RemoveEmptyLav(sLav: HashSet<CircularList<Vertex>>) {
+	static RemoveEmptyLav(sLav) {
 		sLav.RemoveWhere(circularList => circularList.Size === 0);
 	}
 
-	static MultiEdgeEvent(event: MultiEdgeEvent, queue: PriorityQueue<SkeletonEvent>, edges: List<Edge>) {
+	static MultiEdgeEvent(event, queue, edges) {
 		const center = event.V;
 		const edgeList = event.Chain.EdgeList;
 
@@ -175,7 +175,7 @@ export default class SkeletonBuilder {
 		this.ComputeEvents(edgeVertex, queue, edges);
 	}
 
-	static AddMultiBackFaces(edgeList: List<EdgeEvent>, edgeVertex: Vertex) {
+	static AddMultiBackFaces(edgeList, edgeVertex) {
 		for (const edgeEvent of edgeList) {
 			const leftVertex = edgeEvent.PreviousVertex;
 			leftVertex.IsProcessed = true;
@@ -189,7 +189,7 @@ export default class SkeletonBuilder {
 		}
 	}
 
-	static PickEvent(event: PickEvent) {
+	static PickEvent(event) {
 		const center = event.V;
 		const edgeList = event.Chain.EdgeList;
 
@@ -199,7 +199,7 @@ export default class SkeletonBuilder {
 		this.AddMultiBackFaces(edgeList, vertex);
 	}
 
-	static MultiSplitEvent(event: MultiSplitEvent, sLav: HashSet<CircularList<Vertex>>, queue: PriorityQueue<SkeletonEvent>, edges: List<Edge>) {
+	static MultiSplitEvent(event, sLav, queue, edges) {
 		const chains = event.Chains;
 		const center = event.V;
 
@@ -253,7 +253,7 @@ export default class SkeletonBuilder {
 		}
 	}
 
-	static CorrectBisectorDirection(bisector: LineParametric2d, beginNextVertex: Vertex, endPreviousVertex: Vertex, beginEdge: Edge, endEdge: Edge) {
+	static CorrectBisectorDirection(bisector, beginNextVertex, endPreviousVertex, beginEdge, endEdge) {
 		const beginEdge2 = beginNextVertex.PreviousEdge;
 		const endEdge2 = endPreviousVertex.NextEdge;
 
@@ -270,7 +270,7 @@ export default class SkeletonBuilder {
 		}
 	}
 
-	static AddSplitFaces(lastFaceNode: FaceNode, chainBegin: IChain, chainEnd: IChain, newVertex: Vertex): FaceNode {
+	static AddSplitFaces(lastFaceNode, chainBegin, chainEnd, newVertex) {
 		if (chainBegin instanceof SingleEdgeChain) {
 			if (lastFaceNode === null) {
 				const beginVertex = this.CreateOppositeEdgeVertex(newVertex);
@@ -309,7 +309,7 @@ export default class SkeletonBuilder {
 		return lastFaceNode;
 	}
 
-	static CreateOppositeEdgeVertex(newVertex: Vertex): Vertex {
+	static CreateOppositeEdgeVertex(newVertex) {
 		const vertex = new Vertex(newVertex.Point, newVertex.Distance, newVertex.Bisector, newVertex.PreviousEdge, newVertex.NextEdge);
 
 		const fn = new FaceNode(vertex);
@@ -322,7 +322,7 @@ export default class SkeletonBuilder {
 		return vertex;
 	}
 
-	static CreateOppositeEdgeChains(sLav: HashSet<CircularList<Vertex>>, chains: List<IChain>, center: Vector2d) {
+	static CreateOppositeEdgeChains(sLav, chains, center) {
 		const oppositeEdges = new HashSet<Edge>();
 
 		const oppositeEdgeChains = new List<IChain>();
@@ -353,7 +353,7 @@ export default class SkeletonBuilder {
 		chains.AddRange(oppositeEdgeChains);
 	}
 
-	static CreateMultiSplitVertex(nextEdge: Edge, previousEdge: Edge, center: Vector2d, distance: number): Vertex {
+	static CreateMultiSplitVertex(nextEdge, previousEdge, center, distance) {
 		const bisector = this.CalcBisector(center, previousEdge, nextEdge);
 		return new Vertex(center, distance, bisector, previousEdge, nextEdge);
 	}
@@ -412,14 +412,14 @@ export default class SkeletonBuilder {
 		return chains;
 	}
 
-	static IsInEdgeChain(split: SplitEvent, chain: EdgeChain): boolean {
+	static IsInEdgeChain(split, chain) {
 		const splitParent = split.Parent;
 		const edgeList = chain.EdgeList;
 
 		return edgeList.Any(edgeEvent => edgeEvent.PreviousVertex === splitParent || edgeEvent.NextVertex === splitParent);
 	}
 
-	static CreateEdgeChain(edgeCluster: List<EdgeEvent>): List<EdgeEvent> {
+	static CreateEdgeChain(edgeCluster) {
 		const edgeList = new List<EdgeEvent>();
 
 		edgeList.Add(edgeCluster[0]);
