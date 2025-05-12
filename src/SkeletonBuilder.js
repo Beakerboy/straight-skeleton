@@ -71,10 +71,10 @@ export default class SkeletonBuilder {
     polygon = this.InitPolygon(polygon);
     holes = this.MakeClockwise(holes);
 
-    const queue = new PriorityQueue<SkeletonEvent>(3, new SkeletonEventDistanseComparer());
-    const sLav = new HashSet<CircularList<Vertex>>();
-		const faces = new List<FaceQueue>();
-		const edges = new List<Edge>();
+    const queue = new PriorityQueue(3, new SkeletonEventDistanseComparer());
+    const sLav = new HashSet();
+    const faces = new List();
+    const edges = new List();
 
 		this.InitSlav(polygon, sLav, edges, faces);
 
