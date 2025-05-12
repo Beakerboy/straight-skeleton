@@ -36,7 +36,7 @@ export default class SkeletonBuilder {
     for (const polygon of multipolygon) {
       if (polygon.length > 0) {
         const outer = this.ListFromCoordinatesArray(polygon[0]);
-        const holes: List<List<Vector2d>> = new List();
+        const holes = new List();
 
         for (let i = 1; i < polygon.length; i++) {
           holes.Add(this.ListFromCoordinatesArray(polygon[i]));
