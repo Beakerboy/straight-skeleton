@@ -27,7 +27,7 @@ import EdgeResult from "./EdgeResult";
 import ChainType from "./Events/Chains/ChainType";
 
 export default class SkeletonBuilder {
-  static readonly SplitEpsilon = 1e-10;
+  static SplitEpsilon = 1e-10;
 
   static BuildFromGeoJSON(multipolygon: GeoJSONMultipolygon): Skeleton {
     const allEdges: List<EdgeResult> = new List();
