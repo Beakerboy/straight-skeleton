@@ -76,27 +76,27 @@ export default class SkeletonBuilder {
     const faces = new List();
     const edges = new List();
 
-		this.InitSlav(polygon, sLav, edges, faces);
+    this.InitSlav(polygon, sLav, edges, faces);
 
-		if (holes !== null) {
-			for (const inner of holes) {
-				this.InitSlav(inner, sLav, edges, faces);
-			}
-		}
+    if (holes !== null) {
+      for (const inner of holes) {
+        this.InitSlav(inner, sLav, edges, faces);
+      }
+    }
 
-		this.InitEvents(sLav, queue, edges);
+    this.InitEvents(sLav, queue, edges);
 
-		let count = 0;
-		while (!queue.Empty) {
-			count = this.AssertMaxNumberOfInteraction(count);
-			const levelHeight = queue.Peek().Distance;
+    let count = 0;
+    while (!queue.Empty) {
+      count = this.AssertMaxNumberOfInteraction(count);
+      const levelHeight = queue.Peek().Distance;
 
-			for (const event of this.LoadAndGroupLevelEvents(queue)) {
-				if (event.IsObsolete)
-					continue;
+      for (const event of this.LoadAndGroupLevelEvents(queue)) {
+        if (event.IsObsolete)
+          continue;
 
-				if (event instanceof EdgeEvent)
-					throw new Error('All edge@events should be converted to MultiEdgeEvents for given level');
+        if (event instanceof EdgeEvent)
+          throw new Error('All edge@events should be converted to MultiEdgeEvents for given level');
 				if (event instanceof SplitEvent)
 					throw new Error('All split events should be converted to MultiSplitEvents for given level');
 				if (event instanceof MultiSplitEvent)
