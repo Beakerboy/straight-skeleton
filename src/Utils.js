@@ -4,8 +4,6 @@ function insertInArray(array, inde, item) {
 	return [].concat(array.slice(0, index), items, array.slice(index));
 }
 
-export type GeoJSONMultipolygon = [number, number][][][];
-
 export class List {
   arr;
 	constructor(capacity = 0) {
