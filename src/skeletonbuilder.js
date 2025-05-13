@@ -1,7 +1,7 @@
 import {Skeleton} from './Skeleton';
 import {HashSet, List, IComparer, Dictionary, GeoJSONMultipolygon} from './utils';
 import Vector2d from './Primitives/vector2d';
-import PriorityQueue from './Primitives/priorityqueue"';
+import PriorityQueue from './Primitives/priorityqueue';
 import Edge from './Circular/edge';
 import Vertex from './Circular/vertex';
 import CircularList from './Circular/circularlist';
