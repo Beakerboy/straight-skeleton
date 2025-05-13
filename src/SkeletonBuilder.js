@@ -279,7 +279,7 @@ export default class SkeletonBuilder {
         lastFaceNode = beginVertex.LeftFace;
       } else {
         if (newVertex.RightFace !== null)
-          throw new Error("newVertex.RightFace should be null");
+          throw new Error('newVertex.RightFace should be null');
 
         newVertex.RightFace = lastFaceNode;
         lastFaceNode = null;
@@ -297,7 +297,7 @@ export default class SkeletonBuilder {
         lastFaceNode = endVertex.LeftFace;
       } else {
         if (newVertex.LeftFace !== null)
-          throw new Error("newVertex.LeftFace should be null.");
+          throw new Error('newVertex.LeftFace should be null.');
         newVertex.LeftFace = lastFaceNode;
 
         lastFaceNode = null;
