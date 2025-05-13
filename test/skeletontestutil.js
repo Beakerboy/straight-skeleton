@@ -1,3 +1,5 @@
+import {List} from '../src/utils.js';
+
 export default class SkeletinTestUtil {
 
   equalEpsilon(d1, d2) {
@@ -5,7 +7,7 @@ export default class SkeletinTestUtil {
   }
 
   containsEpsilon(list, p) {
-    return list.any(l => equalEpsilon(l.x, p.x) && equalEpsilon(l.y, p.y));
+    return list.any(l => this.equalEpsilon(l.x, p.x) && this.equalEpsilon(l.y, p.y));
   }
 
   /**
@@ -18,7 +20,7 @@ export default class SkeletinTestUtil {
     for (edgeOutput of sk.Edges) {
       points = edgeOutput.Polygon;
       for (vector2d of points) {
-        if (!ContainsEpsilon(ret, vector2d))
+        if (!this.ContainsEpsilon(ret, vector2d))
           ret.add(vector2d);
       }
     }
