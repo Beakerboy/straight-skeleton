@@ -177,18 +177,18 @@ export default class PrimitiveUtils {
         return new IntersectPoints(IO);
     }
 
-    private static InCollinearRay(p, rayStart, rayDirection) {
+    static InCollinearRay(p, rayStart, rayDirection) {
         const collideVector = p.Sub(rayStart);
         const dot = rayDirection.Dot(collideVector);
 
         return !(dot < 0);
     }
 
-    private static Dot(u, v) {
+    static Dot(u, v) {
         return u.Dot(v);
     }
 
-    private static Perp(u, v) {
+    static Perp(u, v) {
         return u.X * v.Y - u.Y * v.X;
     }
 
