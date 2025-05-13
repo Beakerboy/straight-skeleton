@@ -11,7 +11,7 @@ test('Circular Add Test', () => {
   polygon.add(new Vector2d(50, 100));
 
   const expected = new List();
-  expected.add(new Vector2d(75.000000, 75.000000)]);
+  expected.add(new Vector2d(75.000000, 75.000000));
   expected.addRange(polygon);
 
   const sk = SkeletonBuilder.build(polygon);
