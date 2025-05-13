@@ -1,6 +1,6 @@
 import {SkeletonBuilder} from '../src/straight-skeleton';
 import {List} from '../src/utils.js';
-import Vector2D from '../src/Primatives/vector2d.js';
+import Vector2d from '../src/Primatives/vector2d.js';
 
 test('Circular Add Test', () => {
 
