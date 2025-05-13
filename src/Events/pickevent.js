@@ -1,11 +1,8 @@
-import SkeletonEvent from './SkeletonEvent';
-import Vector2d from '../Primitives/Vector2d';
-import EdgeChain from './Chains/EdgeChain';
+export default class PickEvent extends SkeletonEvent {
+  // @type {EdgeChain}
+  chain = null;
 
-class PickEvent extends SkeletonEvent {
-  //EdgeChain
-  Chain;
-
+  // @inheritDoc
   IsObsolete() {
     return false;
   }
@@ -13,7 +10,6 @@ class PickEvent extends SkeletonEvent {
   constructor(point, distance, chain) {
     super(point, distance);
 
-    this.Chain = chain;
+    this.chain = chain;
   }
 }
-export {PickEvent};
