@@ -19,7 +19,7 @@ export class List {
 
     this.arr.length = newArr.length;
 
-    for(let i = 0; i < newArr.length; i++) {
+    for (let i = 0; i < newArr.length; i++) {
       this.arr[i] = newArr[i];
     }
   }
@@ -66,7 +66,7 @@ export class List {
 
     this.arr.length = newArr.length;
 
-    for(let i = 0; i < newArr.length; i++) {
+    for (let i = 0; i < newArr.length; i++) {
       this.arr[i] = newArr[i];
     }
   }
@@ -115,7 +115,7 @@ export class HashSet {
 
   *[Symbol.iterator]() {
     for (const item of this.Set.values()) {
-        yield item;
+      yield item;
     }
   }
 
