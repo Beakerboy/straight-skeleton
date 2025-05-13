@@ -22,7 +22,7 @@ export default class LavUtil {
 
 		for (let i = 0; i < size; i++) {
 			const current = next;
-			next = current.Next as Vertex;
+			next = current.Next;
 			current.Remove();
 			ret.Add(current);
 
@@ -37,7 +37,7 @@ export default class LavUtil {
 		const size = merged.List.Size;
 
 		for (let i = 0; i < size; i++) {
-			const nextMerged = merged.Next as Vertex;
+			const nextMerged = merged.Next;
 			nextMerged.Remove();
 
 			base.AddPrevious(nextMerged);
@@ -48,7 +48,7 @@ export default class LavUtil {
 		const size = vertex.List.Size;
 		for (let i = 0; i < size; i++) {
 			const ver = vertex;
-			vertex = vertex.Next as Vertex;
+			vertex = vertex.Next;
 			ver.Remove();
 			newLaw.AddLast(ver);
 		}
