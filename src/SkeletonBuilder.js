@@ -97,68 +97,68 @@ export default class SkeletonBuilder {
 
         if (event instanceof EdgeEvent)
           throw new Error('All edge@events should be converted to MultiEdgeEvents for given level');
-				if (event instanceof SplitEvent)
-					throw new Error('All split events should be converted to MultiSplitEvents for given level');
-				if (event instanceof MultiSplitEvent)
-					this.MultiSplitEvent(event, sLav, queue, edges);
-				else if (event instanceof PickEvent)
-					this.PickEvent(event);
-				else if (event instanceof MultiEdgeEvent)
-					this.MultiEdgeEvent(event, queue, edges);
-				else
-					throw new Error('Unknown event type: ' + event.GetType());
-			}
+        if (event instanceof SplitEvent)
+          throw new Error('All split events should be converted to MultiSplitEvents for given level');
+        if (event instanceof MultiSplitEvent)
+          this.MultiSplitEvent(event, sLav, queue, edges);
+        else if (event instanceof PickEvent)
+          this.PickEvent(event);
+        else if (event instanceof MultiEdgeEvent)
+          this.MultiEdgeEvent(event, queue, edges);
+        else
+          throw new Error('Unknown event type: ' + event.GetType());
+      }
 
-			this.ProcessTwoNodeLavs(sLav);
-			this.RemoveEventsUnderHeight(queue, levelHeight);
-			this.RemoveEmptyLav(sLav);
-		}
+      this.ProcessTwoNodeLavs(sLav);
+      this.RemoveEventsUnderHeight(queue, levelHeight);
+      this.RemoveEmptyLav(sLav);
+    }
 
-		return this.AddFacesToOutput(faces);
-	}
+    return this.AddFacesToOutput(faces);
+  }
 
-	static InitPolygon(polygon) {
-		if (polygon === null)
-			throw new Error('polygon can\'t be null');
+  static InitPolygon(polygon) {
+    if (polygon === null)
+      throw new Error('polygon can\'t be null');
 
-		if (polygon[0].Equals(polygon[polygon.Count - 1]))
-			throw new Error('polygon can\'t start and end with the same point');
+    if (polygon[0].Equals(polygon[polygon.Count - 1]))
+      throw new Error('polygon can\'t start and end with the same point');
 
-		return this.MakeCounterClockwise(polygon);
-	}
+    return this.MakeCounterClockwise(polygon);
+  }
 
-	static ProcessTwoNodeLavs(sLav) {
-		for (const lav of sLav) {
-			if (lav.Size === 2) {
-				const first = lav.First();
-				// as Vertex
-				const last = first.Next;
+  static ProcessTwoNodeLavs(sLav) {
+    for (const lav of sLav) {
+      if (lav.Size === 2) {
+        const first = lav.First();
+        // as Vertex
+        const last = first.Next;
 
-				FaceQueueUtil.ConnectQueues(first.LeftFace, last.RightFace);
-				FaceQueueUtil.ConnectQueues(first.RightFace, last.LeftFace);
+        FaceQueueUtil.ConnectQueues(first.LeftFace, last.RightFace);
+        FaceQueueUtil.ConnectQueues(first.RightFace, last.LeftFace);
 
-				first.IsProcessed = true;
-				last.IsProcessed = true;
+        first.IsProcessed = true;
+        last.IsProcessed = true;
 
-				LavUtil.RemoveFromLav(first);
-				LavUtil.RemoveFromLav(last);
-			}
-		}
-	}
+        LavUtil.RemoveFromLav(first);
+        LavUtil.RemoveFromLav(last);
+      }
+    }
+  }
 
-	static RemoveEmptyLav(sLav) {
-		sLav.RemoveWhere(circularList => circularList.Size === 0);
-	}
+  static RemoveEmptyLav(sLav) {
+    sLav.RemoveWhere(circularList => circularList.Size === 0);
+  }
 
-	static MultiEdgeEvent(event, queue, edges) {
-		const center = event.V;
-		const edgeList = event.Chain.EdgeList;
+  static MultiEdgeEvent(event, queue, edges) {
+    const center = event.V;
+    const edgeList = event.Chain.EdgeList;
 
-		const previousVertex = event.Chain.PreviousVertex;
-		previousVertex.IsProcessed = true;
+    const previousVertex = event.Chain.PreviousVertex;
+    previousVertex.IsProcessed = true;
 
-		const nextVertex = event.Chain.NextVertex;
-		nextVertex.IsProcessed = true;
+    const nextVertex = event.Chain.NextVertex;
+    nextVertex.IsProcessed = true;
 
 		const bisector = this.CalcBisector(center, previousVertex.PreviousEdge, nextVertex.NextEdge);
 		const edgeVertex = new Vertex(center, event.Distance, bisector, previousVertex.PreviousEdge,
