@@ -1,6 +1,11 @@
 export default class SkeletinTestUtil {
-  containsEpsilon(List<Vector2d> list, Vector2d p) {
-    return list.Any(l => EqualEpsilon(l.X, p.X) && EqualEpsilon(l.Y, p.Y));
+
+  equalEpsilon(d1, d2) {
+    return Math.abs(d1 - d2) < 5E-6;
+  }
+
+  containsEpsilon(list, p) {
+    return list.any(l => equalEpsilon(l.x, p.x) && equalEpsilon(l.y, p.y));
   }
 
   /**
