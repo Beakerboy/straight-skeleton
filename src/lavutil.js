@@ -1,6 +1,6 @@
-import Vertex from './Circular/Vertex';
-import {List} from './Utils';
-import CircularList from './Circular/CircularList';
+import Vertex from './Circular/vertex';
+import {List} from './utils';
+import CircularList from './Circular/circularlist';
 
 export default class LavUtil {
   static IsSameLav(v1, v2) {
