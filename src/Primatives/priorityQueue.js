@@ -53,7 +53,7 @@ export default class PriorityQueue {
 
       if (this.comparer.Compare(this.heap[p], (this.heap[c])) <= 0) break;
 
-      const tmp: T = this.heap[p];
+      const tmp = this.heap[p];
       this.heap[p] = this.heap[c];
       this.heap[c] = tmp;
       p = c;
