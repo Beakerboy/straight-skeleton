@@ -11,7 +11,7 @@ test('Circular Add Test', () => {
       new Vector2d(100, 100),
       new Vector2d(50, 100)
     ]
-    );
+  );
 
   var expected = new List([new Vector2d(75.000000, 75.000000)]);
   expected.AddRange(polygon);
