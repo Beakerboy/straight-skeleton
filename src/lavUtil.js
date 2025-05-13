@@ -30,7 +30,7 @@ export default class LavUtil {
         return ret;
     }
 
-    throw new Error("End vertex can't be found in start vertex lav");
+    throw new Error('End vertex can\'t be found in start vertex lav');
   }
 
   static MergeBeforeBaseVertex(base, merged) {
