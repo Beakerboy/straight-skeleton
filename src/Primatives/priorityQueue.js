@@ -1,63 +1,63 @@
-import {IComparer, List} from "../Utils";
+import {IComparer, List} from '../Utils';
 
 export default class PriorityQueue<T> {
-	private readonly _comparer: IComparer<T> = null;
-	private readonly _heap: List<T> = null;
+	comparer = null;
+	heap = null;
 
-	constructor(capacity: number, comparer: IComparer<T>) {
-		this._heap = new List<T>(capacity);
-		this._comparer = comparer;
+	constructor(capacity, comparer) {
+		this.heap = new List(capacity);
+		this.comparer = comparer;
 	}
 
 	public Clear() {
-		this._heap.Clear();
+		this.heap.Clear();
 	}
 
-	public Add(item: T) {
-		let n = this._heap.Count;
-		this._heap.Add(item);
+	public Add(item) {
+		let n = this.heap.Count;
+		this.heap.Add(item);
 		while (n !== 0) {
 			const p = Math.floor(n / 2);
-			if (this._comparer.Compare(this._heap[n], (this._heap[p])) >= 0) break;
-			const tmp: T = this._heap[n];
-			this._heap[n] = this._heap[p];
-			this._heap[p] = tmp;
+			if (this.comparer.Compare(this.heap[n], (this.heap[p])) >= 0) break;
+			const tmp: T = this.heap[n];
+			this.heap[n] = this.heap[p];
+			this.heap[p] = tmp;
 			n = p;
 		}
 	}
 
-	get Count(): number {
-		return this._heap.Count;
+	Count() {
+		return this.heap.Count;
 	}
 
-	get Empty(): boolean {
-		return this._heap.Count === 0;
+	Empty() {
+		return this.heap.Count === 0;
 	}
 
-	public Peek(): T {
-		return !this._heap.Any() ? null : this._heap[0];
+	Peek() {
+		return !this.heap.Any() ? null : this.heap[0];
 	}
 
-	public Next(): T {
-		const val: T = this._heap[0];
-		const nMax = this._heap.Count - 1;
-		this._heap[0] = this._heap[nMax];
-		this._heap.RemoveAt(nMax);
+  Next() {
+		const val: T = this.heap[0];
+		const nMax = this.heap.Count - 1;
+		this.heap[0] = this.heap[nMax];
+		this.heap.RemoveAt(nMax);
 
 		let p = 0;
 		while (true) {
 			let c = p * 2;
 			if (c >= nMax) break;
 
-			if (c + 1 < nMax && this._comparer.Compare(this._heap[c + 1], this._heap[c]) < 0) c++;
+			if (c + 1 < nMax && this.comparer.Compare(this.heap[c + 1], this.heap[c]) < 0) c++;
 
-			if (this._comparer.Compare(this._heap[p], (this._heap[c])) <= 0) break;
+			if (this.comparer.Compare(this.heap[p], (this.heap[c])) <= 0) break;
 
-			const tmp: T = this._heap[p];
-			this._heap[p] = this._heap[c];
-			this._heap[c] = tmp;
+			const tmp: T = this.heap[p];
+			this.heap[p] = this.heap[c];
+			this.heap[c] = tmp;
 			p = c;
 		}
 		return val;
-	}
+  }
 }
