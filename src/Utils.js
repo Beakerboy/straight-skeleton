@@ -10,11 +10,11 @@ export class List {
 		this.arr = [];
 	}
 
-	Add(item: T) {
+	Add(item) {
 		this.arr.push(item);
 	}
 
-	Insert(index: number, item: T) {
+	Insert(index, item) {
 		const newArr = insertInArray(this.arr, index, item);
 
 		this.arr.length = newArr.length;
@@ -32,7 +32,7 @@ export class List {
 		this.arr.length = 0;
 	}
 
-	Count(): number {
+	Count() {
 		return this.arr.length;
 	}
 
@@ -54,7 +54,7 @@ export class List {
 		this.arr.splice(index, 1);
 	}
 
-	Remove(itemToRemove: T) {
+	Remove(itemToRemove) {
 		const newArr = this.arr.filter(item => item !== itemToRemove);
 
 		this.arr.length = newArr.length;
@@ -75,22 +75,22 @@ export class List {
 	}
 }
 
-export class HashSet<T> implements Iterable<T> {
-	private Set: Set<T>;
+export class HashSet {
+	Set;
 
 	constructor() {
 		this.Set = new Set();
 	}
 
-	public Add(item: T) {
+	Add(item) {
 		this.Set.add(item);
 	}
 
-	public Remove(item: T) {
+	Remove(item) {
 		this.Set.delete(item);
 	}
 
-	public RemoveWhere(filter: (item: T) => boolean) {
+	RemoveWhere(filter: (item) => boolean) {
 		for (const item of this.Set.values()) {
 			if (filter(item)) {
 				this.Set.delete(item);
@@ -98,7 +98,7 @@ export class HashSet<T> implements Iterable<T> {
 		}
 	}
 
-	public Contains(item: T): boolean {
+	public Contains(item) {
 		return this.Set.has(item);
 	}
 
