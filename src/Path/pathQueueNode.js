@@ -1,6 +1,4 @@
-import PathQueue from './PathQueue';
-
-class PathQueueNode {
+export default class PathQueueNode {
   List = null;
   Next = null;
   Previous = null;
