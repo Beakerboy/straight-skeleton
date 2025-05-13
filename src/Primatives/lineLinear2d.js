@@ -35,7 +35,7 @@ export default class LineLinear2d {
 		return WAB === 0 ? Vector2d.Empty : new Vector2d(WBC / WAB, WCA / WAB);
 	}
 
-	Contains(point: Vector2d) {
+	Contains(point) {
 		return Math.abs((point.X * this.A + point.Y * this.B + this.C)) < Number.EPSILON;
 	}
 }
