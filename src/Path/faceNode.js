@@ -1,8 +1,8 @@
-import PathQueueNode from './PathQueueNode';
-import Vertex from '../Circular/Vertex';
-import FaceQueue from './FaceQueue';
+import PathQueueNode from './pathqueuenode';
+import Vertex from '../Circular/vertex';
+import FaceQueue from './facequeue';
 
-class FaceNode extends PathQueueNode {
+export default class FaceNode extends PathQueueNode {
   Vertex = null;
 
   constructor(vertex) {
