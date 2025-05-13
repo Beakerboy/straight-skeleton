@@ -192,7 +192,7 @@ export default class PrimitiveUtils {
     return u.X * v.Y - u.Y * v.X;
   }
 
-   static IsClockwisePolygon(polygon) {
+  static IsClockwisePolygon(polygon) {
     return PrimitiveUtils.Area(polygon) < 0;
   }
 
@@ -205,14 +205,14 @@ export default class PrimitiveUtils {
     return A * 0.5;
   }
 
-   static MakeCounterClockwise(polygon) {
+  static MakeCounterClockwise(polygon) {
     if (PrimitiveUtils.IsClockwisePolygon(polygon))
       polygon.Reverse();
 
     return polygon;
   }
 
-   static IsPointInsidePolygon(point, points) {
+  static IsPointInsidePolygon(point, points) {
     const numpoints = points.Count;
 
     if (numpoints < 3)
