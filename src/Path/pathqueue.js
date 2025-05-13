@@ -1,4 +1,4 @@
-import PathQueueNode from './PathQueueNode';
+import PathQueueNode from './pathqueuenode';
 
 class PathQueue {
   // number
