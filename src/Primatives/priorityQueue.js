@@ -19,7 +19,7 @@ export default class PriorityQueue {
 		while (n !== 0) {
 			const p = Math.floor(n / 2);
 			if (this.comparer.Compare(this.heap[n], (this.heap[p])) >= 0) break;
-			const tmp: T = this.heap[n];
+			const tmp = this.heap[n];
 			this.heap[n] = this.heap[p];
 			this.heap[p] = tmp;
 			n = p;
