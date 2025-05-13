@@ -19,7 +19,7 @@ export default class SkeletinTestUtil {
 
     for (const edgeOutput of sk.Edges) {
       const points = edgeOutput.Polygon;
-      for (vector2d of points) {
+      for (const vector2d of points) {
         if (!this.ContainsEpsilon(ret, vector2d))
           ret.add(vector2d);
       }
