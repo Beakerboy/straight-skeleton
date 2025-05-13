@@ -9,53 +9,53 @@ class Vector2d {
 		this.Y = y;
 	}
 
-	public Negate() {
+	Negate() {
 		this.X = -this.X;
 		this.Y = -this.Y;
 	}
 
-	public DistanceTo(var1) {
+	DistanceTo(var1) {
 		const var2 = this.X - var1.X;
 		const var4 = this.Y - var1.Y;
 		return Math.sqrt(var2 * var2 + var4 * var4);
 	}
 
-	public Normalized() {
+	Normalized() {
 		const var1 = 1 / Math.sqrt(this.X * this.X + this.Y * this.Y);
 		return new Vector2d(this.X * var1, this.Y * var1);
 	}
 
-	public Dot(var1) {
+	Dot(var1) {
 		return this.X * var1.X + this.Y * var1.Y;
 	}
 
-	public DistanceSquared(var1) {
+	DistanceSquared(var1) {
 		const var2 = this.X - var1.X;
 		const var4 = this.Y - var1.Y;
 		return var2 * var2 + var4 * var4;
 	}
 
-	public Add(v) {
+	Add(v) {
 		return new Vector2d(this.X + v.X, this.Y + v.Y);
 	}
 
-	public Sub(v) {
+	Sub(v) {
 		return new Vector2d(this.X - v.X, this.Y - v.Y);
 	}
 
-	public MultiplyScalar(scale): Vector2d {
+	MultiplyScalar(scale): Vector2d {
 		return new Vector2d(this.X * scale, this.Y * scale);
 	}
 
-	public Equals(v) {
+	Equals(v) {
 		return this.X === v.X && this.Y === v.Y;
 	}
 
-	public NotEquals(v) {
+	NotEquals(v) {
 		return !this.Equals(v);
 	}
 
-	public ToString() {
+	ToString() {
 		return `${this.X}, ${this.Y}`;
 	}
 }
