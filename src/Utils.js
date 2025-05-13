@@ -105,19 +105,20 @@ export class HashSet {
 		}
 	}
 
-	public Contains(item) {
+	Contains(item) {
 		return this.Set.has(item);
 	}
 
-	public Clear() {
+	Clear() {
 		this.Set.clear();
 	}
 
-	public* [Symbol.iterator](): Generator<T> {
-		for (const item of this.Set.values()) {
-			yield item;
-		}
-	}
+  *[Symbol.iterator]() {
+    for (const item of this.Set.values()) {
+        yield item;
+    }
+  }
+
 }
 
 export class Dictionary<T1, T2> extends Map<T1, T2> {
