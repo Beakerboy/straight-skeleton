@@ -36,12 +36,18 @@ export class List {
 		return this.arr.length;
 	}
 
+  /**
+   * return true if any elements in the array match the filter
+   *
+   * @param {item => boolean} filter
+   * @return {boolean}
+   */
   Any(filter) {
     if (!filter) {
         filter = () => true;
     }
 
-    for (const item of this) {
+    for (const item of this.arr) {
         if (filter(item)) {
             return true;
         }
