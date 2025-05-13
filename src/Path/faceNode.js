@@ -1,0 +1,24 @@
+import PathQueueNode from './PathQueueNode';
+import Vertex from '../Circular/Vertex';
+import FaceQueue from './FaceQueue';
+
+class FaceNode extends PathQueueNode {
+  Vertex = null;
+
+  constructor(vertex) {
+    super();
+    this.Vertex = vertex;
+  }
+
+  FaceQueue() {
+    return this.List;
+  }
+
+  IsQueueUnconnected() {
+    return this.FaceQueue.IsUnconnected;
+  }
+
+  QueueClose() {
+    this.FaceQueue.Close();
+  }
+}
