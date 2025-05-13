@@ -17,8 +17,8 @@ export default class SkeletinTestUtil {
   getFacePoints(sk) {
     let ret = new List();
 
-    for (edgeOutput of sk.Edges) {
-      points = edgeOutput.Polygon;
+    for (const edgeOutput of sk.Edges) {
+      const points = edgeOutput.Polygon;
       for (vector2d of points) {
         if (!this.ContainsEpsilon(ret, vector2d))
           ret.add(vector2d);
