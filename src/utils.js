@@ -6,11 +6,11 @@ function insertInArray(array, index, item) {
 
 export class List {
   arr;
-  constructor(capacity = 0) {
+  constructor() {
     this.arr = [];
   }
 
-  Add(item) {
+  add(item) {
     this.arr.push(item);
   }
 
@@ -71,7 +71,7 @@ export class List {
     }
   }
 
-  AddRange(list) {
+  addRange(list) {
     for (const item of list) {
       this.Add(item);
     }
