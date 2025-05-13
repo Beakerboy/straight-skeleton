@@ -36,19 +36,20 @@ export class List {
 		return this.arr.length;
 	}
 
-	Any(filter?: (item: T) => boolean) {
-		if (!filter) {
-			filter = T => true;
-		}
+  Any(filter) {
+    if (!filter) {
+        filter = () => true;
+    }
 
-		for (const item of this.arr) {
-			if (filter(item)) {
-				return true;
-			}
-		}
+    for (const item of this) {
+        if (filter(item)) {
+            return true;
+        }
+    }
 
-		return false;
-	}
+    return false;
+  }
+
 
 	RemoveAt(index) {
 		this.arr.splice(index, 1);
