@@ -1,4 +1,4 @@
-import {FaceNode} from './FaceNode';
+import FaceNode from './facenode';
 
 class FaceQueueUtil {
   ConnectQueues(firstFace, secondFace) {
