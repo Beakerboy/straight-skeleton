@@ -1,6 +1,6 @@
-import Edge from './Circular/Edge';
-import Vector2d from './Primitives/Vector2d';
-import {List} from './Utils';
+import Edge from './Circular/edge';
+import Vector2d from './Primitives/vector2d';
+import {List} from './utils';
 
 export default class EdgeResult {
   Edge;
