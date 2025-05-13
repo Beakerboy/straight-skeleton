@@ -4,7 +4,7 @@ class PathQueue {
   // number
   Size = 0;
   // PathQueueNode
-  First = PathQueueNode;
+  First = null;
   AddPush(node, newNode) {
     if (newNode.List !== null)
       throw new Error('Node is already assigned to different list!');
