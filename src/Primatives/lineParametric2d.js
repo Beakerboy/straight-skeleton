@@ -13,7 +13,7 @@ export default class LineParametric2d {
     this.U = pU;
   }
 
-  public CreateLinearForm() {
+  CreateLinearForm() {
     const x = this.A.X;
     const y = this.A.Y;
 
@@ -25,7 +25,7 @@ export default class LineParametric2d {
     return new LineLinear2d().SetFromCoefficients(A, B, C);
   }
 
-  public static Collide(ray, line, epsilon) {
+  static Collide(ray, line, epsilon) {
     const collide = LineLinear2d.Collide(ray.CreateLinearForm(), line);
     if (collide.Equals(Vector2d.Empty)) {
       return Vector2d.Empty;
@@ -35,12 +35,12 @@ export default class LineParametric2d {
     return ray.U.Dot(collideVector) < epsilon ? Vector2d.Empty : collide;
   }
 
-  public IsOnLeftSite(point, epsilon) {
+  IsOnLeftSite(point, epsilon) {
     const direction = point.Sub(this.A);
     return PrimitiveUtils.OrthogonalRight(this.U).Dot(direction) < epsilon;
   }
 
-  public IsOnRightSite(point, epsilon) {
+  IsOnRightSite(point, epsilon) {
     const direction = point.Sub(this.A);
     return PrimitiveUtils.OrthogonalRight(this.U).Dot(direction) > -epsilon;
   }
