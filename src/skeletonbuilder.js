@@ -6,7 +6,6 @@ import Edge from './Circular/edge';
 import Vertex from './Circular/vertex';
 import CircularList from './Circular/circularlist';
 import FaceQueue from './Path/facequeue';
-import SkeletonEvent from './Events/skeletonevent';
 import FaceQueueUtil from './Path/facequeueutil';
 import LavUtil from './lavutil';
 import IChain from './Events/Chains/IChain';
