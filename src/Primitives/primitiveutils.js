@@ -1,6 +1,6 @@
-import Vector2d from './Vector2d';
-import LineParametric2d from './LineParametric2d';
-import {List} from '../Utils';
+import Vector2d from './vector2d';
+import LineParametric2d from './lineparametric2d';
+import {List} from '../utils';
 
 class IntersectPoints {
   Intersect = null;
