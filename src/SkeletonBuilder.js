@@ -396,18 +396,17 @@ export default class SkeletonBuilder {
     for (const edgeChain of edgeChains)
       chains.Add(edgeChain);
 
-    splitEventLoop:
-      while (splitCluster.Any()) {
-        const split = splitCluster[0];
-        splitCluster.RemoveAt(0);
+    splitEventLoop: while (splitCluster.Any()) {
+      const split = splitCluster[0];
+      splitCluster.RemoveAt(0);
 
-        for (const chain of edgeChains) {
-          if (this.IsInEdgeChain(split, chain))
-            continue splitEventLoop; //goto splitEventLoop;
-        }
-
-        chains.Add(new SplitChain(split));
+      for (const chain of edgeChains) {
+        if (this.IsInEdgeChain(split, chain))
+          continue splitEventLoop; //goto splitEventLoop;
       }
+
+      chains.Add(new SplitChain(split));
+    }
 
     return chains;
   }
@@ -425,29 +424,28 @@ export default class SkeletonBuilder {
     edgeList.Add(edgeCluster[0]);
     edgeCluster.RemoveAt(0);
 
-    loop:
-      for (; ;) {
-        const beginVertex = edgeList[0].PreviousVertex;
-        const endVertex = edgeList[edgeList.Count - 1].NextVertex;
+    loop: for (; ;) {
+      const beginVertex = edgeList[0].PreviousVertex;
+      const endVertex = edgeList[edgeList.Count - 1].NextVertex;
 
-        for (let i = 0; i < edgeCluster.Count; i++) {
-          const edge = edgeCluster[i];
-          if (edge.PreviousVertex === endVertex) {
-            edgeCluster.RemoveAt(i);
-            edgeList.Add(edge);
-            //goto loop;
-            continue loop;
+      for (let i = 0; i < edgeCluster.Count; i++) {
+        const edge = edgeCluster[i];
+        if (edge.PreviousVertex === endVertex) {
+          edgeCluster.RemoveAt(i);
+          edgeList.Add(edge);
+          //goto loop;
+          continue loop;
 
-          }
-          if (edge.NextVertex === beginVertex) {
-            edgeCluster.RemoveAt(i);
-            edgeList.Insert(0, edge);
-            //goto loop;
-            continue loop;
-          }
         }
-        break;
+        if (edge.NextVertex === beginVertex) {
+          edgeCluster.RemoveAt(i);
+          edgeList.Insert(0, edge);
+          //goto loop;
+          continue loop;
+        }
       }
+      break;
+    }
 
     return edgeList;
   }
@@ -773,7 +771,7 @@ export default class SkeletonBuilder {
     const edgesCollide = vertexEdge.LineLinear2d.Collide(edge.LineLinear2d);
 
     if (edgesCollide.Equals(Vector2d.Empty))
-      throw new Error("Ups this should not happen");
+      throw new Error('Ups this should not happen');
 
     const edgesBisectorLine = new LineParametric2d(edgesCollide, edgesBisector).CreateLinearForm();
 
@@ -869,7 +867,7 @@ export default class SkeletonBuilder {
       if (PrimitiveUtils.IsPointInsidePolygon(center, points))
         return end;
     }
-    throw new Error("Could not find lav for opposite edge, it could be correct but need some test data to check.");
+    throw new Error('Could not find lav for opposite edge, it could be correct but need some test data to check.');
   }
 
   static FindEdgeLavs(sLav, oppositeEdge, skippedLav) {
