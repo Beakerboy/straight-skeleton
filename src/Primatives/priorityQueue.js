@@ -9,11 +9,11 @@ export default class PriorityQueue {
 		this.comparer = comparer;
 	}
 
-	public Clear() {
+	Clear() {
 		this.heap.Clear();
 	}
 
-	public Add(item) {
+	Add(item) {
 		let n = this.heap.Count;
 		this.heap.Add(item);
 		while (n !== 0) {
