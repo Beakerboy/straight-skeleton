@@ -10,11 +10,11 @@ export class List {
 		this.arr = [];
 	}
 
-	public Add(item: T) {
+	Add(item: T) {
 		this.arr.push(item);
 	}
 
-	public Insert(index: number, item: T) {
+	Insert(index: number, item: T) {
 		const newArr = insertInArray(this.arr, index, item);
 
 		this.arr.length = newArr.length;
