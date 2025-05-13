@@ -1,6 +1,6 @@
-import SkeletonEvent from './SkeletonEvent';
-import Vertex from '../Circular/Vertex';
-import Vector2d from '../Primitives/Vector2d';
+import SkeletonEvent from './skeletonevent';
+import Vertex from '../Circular/vertex';
+import Vector2d from '../Primitives/vector2d';
 
 class EdgeEvent extends SkeletonEvent {
   //Veryex
