@@ -121,7 +121,7 @@ export class HashSet {
 
 }
 
-export class Dictionary<T1, T2> extends Map<T1, T2> {
+export class Dictionary {
 	public ContainsKey(key: T1): boolean {
 		return this.has(key);
 	}
