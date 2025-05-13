@@ -43,7 +43,7 @@ class Vector2d {
 		return new Vector2d(this.X - v.X, this.Y - v.Y);
 	}
 
-	MultiplyScalar(scale): Vector2d {
+	MultiplyScalar(scale) {
 		return new Vector2d(this.X * scale, this.Y * scale);
 	}
 
