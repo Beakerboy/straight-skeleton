@@ -1,4 +1,4 @@
-import {IComparer, List} from '../Utils';
+import {List} from '../utils';
 
 export default class PriorityQueue {
   comparer = null;
