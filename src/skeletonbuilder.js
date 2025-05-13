@@ -8,7 +8,6 @@ import CircularList from './Circular/circularlist';
 import FaceQueue from './Path/facequeue';
 import FaceQueueUtil from './Path/facequeueutil';
 import LavUtil from './lavutil';
-import IChain from './Events/Chains/IChain';
 import PrimitiveUtils from './Primitives/primitiveutils';
 import LineParametric2d from './Primitives/lineparametric2d';
 import {FaceNode} from './Path/facenode';
