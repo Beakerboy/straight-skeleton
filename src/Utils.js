@@ -91,7 +91,7 @@ export class HashSet {
 		this.Set.delete(item);
 	}
 
-	RemoveWhere(filter: (item) => boolean) {
+	RemoveWhere(filter) {
 		for (const item of this.Set.values()) {
 			if (filter(item)) {
 				this.Set.delete(item);
