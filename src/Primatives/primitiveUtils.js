@@ -3,8 +3,8 @@ import LineParametric2d from './LineParametric2d';
 import {List} from '../Utils';
 
 class IntersectPoints {
-   Intersect = null;
-   IntersectEnd = null;
+  Intersect = null;
+  IntersectEnd = null;
 
   constructor(intersect = false, intersectEnd = Vector2d.Empty) {
     if (!intersect) {
@@ -22,19 +22,19 @@ class IntersectPoints {
 
 
 export default class PrimitiveUtils {
-   static FromTo(begin, end) {
+  static FromTo(begin, end) {
     return new Vector2d(end.X - begin.X, end.Y - begin.Y);
   }
 
-   static OrthogonalLeft(v) {
+  static OrthogonalLeft(v) {
     return new Vector2d(-v.Y, v.X);
   }
 
-   static OrthogonalRight(v) {
+  static OrthogonalRight(v) {
     return new Vector2d(v.Y, -v.X);
   }
 
-   static OrthogonalProjection(unitVector, vectorToProject) {
+  static OrthogonalProjection(unitVector, vectorToProject) {
     const n = new Vector2d(unitVector.X, unitVector.Y).Normalized();
 
     const px = vectorToProject.X;
@@ -46,7 +46,7 @@ export default class PrimitiveUtils {
     return new Vector2d(px * ax * ax + py * ax * ay, px * ax * ay + py * ay * ay);
   }
 
-   static BisectorNormalized(norm1, norm2) {
+  static BisectorNormalized(norm1, norm2) {
     const e1v = PrimitiveUtils.OrthogonalLeft(norm1);
     const e2v = PrimitiveUtils.OrthogonalLeft(norm2);
 
@@ -67,7 +67,7 @@ export default class PrimitiveUtils {
 
   static Empty = new IntersectPoints();
 
-   static IsPointOnRay(point, ray, epsilon) {
+  static IsPointOnRay(point, ray, epsilon) {
     const rayDirection = new Vector2d(ray.U.X, ray.U.Y).Normalized();
 
     const pointVector = point.Sub(ray.A);
@@ -86,7 +86,7 @@ export default class PrimitiveUtils {
     return -epsilon < dot && dot < epsilon;
   }
 
-   static IntersectRays2D(r1, r2) {
+  static IntersectRays2D(r1, r2) {
     const s1p0 = r1.A;
     const s1p1 = r1.A.Add(r1.U);
 
