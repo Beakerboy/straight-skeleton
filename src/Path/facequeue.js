@@ -1,9 +1,9 @@
-import PathQueue from './PathQueue';
-import {FaceNode} from './FaceNode';
-import PathQueueNode from './PathQueueNode';
-import Edge from '../Circular/Edge';
+import PathQueue from './pathqueue';
+import {FaceNode} from './facenode';
+import PathQueueNode from './pathqueuenode';
+import Edge from '../Circular/edge';
 
-class FaceQueue extends PathQueue {
+export default class FaceQueue extends PathQueue {
   Edge = null;
   Closed = false;
 
@@ -22,4 +22,3 @@ class FaceQueue extends PathQueue {
     this.Closed = true;
   }
 }
-export {FaceQueue};
