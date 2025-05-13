@@ -1,4 +1,4 @@
-import {Skeleton} from './Skeleton';
+import {Skeleton} from './skeleton';
 import {HashSet, List, IComparer, Dictionary, GeoJSONMultipolygon} from './utils';
 import Vector2d from './Primitives/vector2d';
 import PriorityQueue from './Primitives/priorityqueue';
