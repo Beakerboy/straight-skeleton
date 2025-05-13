@@ -60,4 +60,5 @@ class PriorityQueue {
     }
     return val;
   }
-}export {PriorityQueue};
+}
+export {PriorityQueue};
