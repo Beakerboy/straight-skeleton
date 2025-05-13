@@ -675,7 +675,7 @@ export default class SkeletonBuilder {
     }
   }
 
-  static ComputeSplitEvents(vertex, edge, queue, distanceSquared) {
+  static ComputeSplitEvents(vertex, edges, queue, distanceSquared) {
     const source = vertex.Point;
     const oppositeEdges = this.CalcOppositeEdges(vertex, edges);
 
