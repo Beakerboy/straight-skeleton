@@ -1,5 +1,5 @@
 export default class SkeletinTestUtil {
-  function ContainsEpsilon(List<Vector2d> list, Vector2d p) {
+  containsEpsilon(List<Vector2d> list, Vector2d p) {
     return list.Any(l => EqualEpsilon(l.X, p.X) && EqualEpsilon(l.Y, p.Y));
   }
 
@@ -7,7 +7,7 @@ export default class SkeletinTestUtil {
    * @param
    * @return
    */
-  function getFacePoints(sk) {
+  getFacePoints(sk) {
     let ret = new List();
 
     foreach (edgeOutput in sk.Edges) {
