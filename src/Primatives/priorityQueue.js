@@ -1,6 +1,6 @@
 import {IComparer, List} from '../Utils';
 
-export default class PriorityQueue<T> {
+export default class PriorityQueue {
 	comparer = null;
 	heap = null;
 
