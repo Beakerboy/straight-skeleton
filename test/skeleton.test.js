@@ -1,4 +1,4 @@
-import {SkeletonBuilder} from '../src/straight-skeleton';
+import {SkeletonBuilder} from '../src/skeletonbuilder.js';
 import {List} from '../src/utils.js';
 import Vector2d from '../src/Primatives/vector2d.js';
 import SkeletonTestUtil from './skeletontestutil.js';
