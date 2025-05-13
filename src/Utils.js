@@ -122,11 +122,11 @@ export class HashSet {
 }
 
 export class Dictionary {
-	public ContainsKey(key: T1): boolean {
+	public ContainsKey(key) {
 		return this.has(key);
 	}
 
-	public Add(key: T1, value: T2) {
+	public Add(key, value) {
 		return this.set(key, value);
 	}
 }
