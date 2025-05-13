@@ -44,13 +44,13 @@ export class List {
    */
   Any(filter) {
     if (!filter) {
-        filter = () => true;
+      filter = () => true;
     }
 
     for (const item of this.arr) {
-        if (filter(item)) {
-            return true;
-        }
+      if (filter(item)) {
+        return true;
+      }
     }
 
     return false;
