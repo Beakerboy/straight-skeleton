@@ -16,7 +16,7 @@ export default class LavUtil {
 	}
 
 	static CutLavPart(startVertex, endVertex) {
-		const ret = new List<Vertex>();
+		const ret = new List();
 		const size = startVertex.List.Size;
 		let next = startVertex;
 
