@@ -1,4 +1,4 @@
-function insertInArray(array, inde, item) {
+function insertInArray(array, index, item) {
 	const items = Array.prototype.slice.call(arguments, 2);
 
 	return [].concat(array.slice(0, index), items, array.slice(index));
