@@ -39,7 +39,7 @@ export default class PriorityQueue {
   }
 
   Next() {
-    const val: T = this.heap[0];
+    const val = this.heap[0];
     const nMax = this.heap.Count - 1;
     this.heap[0] = this.heap[nMax];
     this.heap.RemoveAt(nMax);
