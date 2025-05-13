@@ -1,7 +1,7 @@
-import Vector2d from '../Primitives/Vector2d';
+import Vector2d from '../Primitives/vector2d';
 
 // Abstract Class
-class SkeletonEvent {
+export default class SkeletonEvent {
   //Vector2d
   V = null;
   //number
