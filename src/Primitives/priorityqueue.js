@@ -1,6 +1,6 @@
 import {List} from '../utils';
 
-class PriorityQueue {
+export default class PriorityQueue {
   comparer = null;
   heap = null;
 
@@ -61,4 +61,3 @@ class PriorityQueue {
     return val;
   }
 }
-export {PriorityQueue};
