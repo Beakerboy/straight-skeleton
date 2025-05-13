@@ -1,5 +1,5 @@
 class Vector2d {
-	public static Empty: Vector2d = new Vector2d(Number.MIN_VALUE, Number.MIN_VALUE);
+	static Empty = new Vector2d(Number.MIN_VALUE, Number.MIN_VALUE);
 
 	X = 0;
 	Y = 0;
