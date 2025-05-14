@@ -1,5 +1,7 @@
 import { CircularNode } from './circularnode.js'
+import Vector2d from '../Primitives/vector2d'
 import LineLinear2d from '../Primitives/linelinear2d'
+import LineParametric2d from '../Primitives/lineparametric2d'
 
 export default class Edge extends CircularNode {
   /**
