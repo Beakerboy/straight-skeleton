@@ -697,7 +697,7 @@ export default class SkeletonBuilder {
     for (const edgeEntry of edges) {
       const edge = edgeEntry.LineLinear2d
 
-      if (this.EdgeBehindBisector(vertex.Bisector, edge)) { continue }
+      if (this.isEdgeBehindBisector(vertex.Bisector, edge)) { continue }
 
       const candidatePoint = this.CalcCandidatePointForSplit(vertex, edgeEntry)
       if (candidatePoint !== null) { ret.Add(candidatePoint) }
@@ -708,11 +708,11 @@ export default class SkeletonBuilder {
   }
 
   /**
-   * @param {LineParametric2d} bisector
-   * @param {LineLinear2d} edge
-   * @returns {}
+   * @param {LineParametric2d} bisector Bisector
+   * @param {LineLinear2d} edge Edge
+   * @returns {boolean} behind?
    */
-  static edgeBehindBisector (bisector, edge) {
+  static isEdgeBehindBisector (bisector, edge) {
     return LineParametric2d.Collide(bisector, edge, this.SplitEpsilon).Equals(Vector2d.Empty)
   }
 
