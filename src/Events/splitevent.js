@@ -2,23 +2,23 @@ import SkeletonEvent from './skeletonevent';
 
 export default class SplitEvent extends SkeletonEvent {
   //Edge
-  OppositeEdge = null;
+  oppositeEdge = null;
   //Vertex
-  Parent = null;
+  parent = null;
 
   constructor(point, distance, parent, oppositeEdge) {
     super(point, distance);
 
-    this.Parent = parent;
-    this.OppositeEdge = oppositeEdge;
+    this.parent = parent;
+    this.oppositeEdge = oppositeEdge;
   }
 
-  IsObsolete() {
-    return this.Parent.IsProcessed;
+  isObsolete() {
+    return this.parent.isProcessed();
   }
 
   ToString() {
-    return 'SplitEvent [V=' + this.V + ', Parent=' + (this.Parent !== null ? this.Parent.Point.ToString() : 'null') +
-      ', Distance=' + this.Distance + ']';
+    return 'SplitEvent [V=' + this.v + ', Parent=' + (this.parent !== null ? this.parent.point.toString() : 'null') +
+      ', Distance=' + this.distance + ']';
   }
 }
