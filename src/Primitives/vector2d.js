@@ -1,61 +1,61 @@
 export default class Vector2d {
   static Empty = new Vector2d(Number.MIN_VALUE, Number.MIN_VALUE);
 
-  X = 0;
-  Y = 0;
+  x = 0;
+  y = 0;
 
   constructor(x, y) {
-    this.X = x;
-    this.Y = y;
+    this.x = x;
+    this.y = y;
   }
 
-  Negate() {
-    this.X = -this.X;
-    this.Y = -this.Y;
+  negate() {
+    this.x = -this.x;
+    this.y = -this.y;
   }
 
-  DistanceTo(var1) {
-    const var2 = this.X - var1.X;
-    const var4 = this.Y - var1.Y;
+  distanceTo(var1) {
+    const var2 = this.x - var1.x;
+    const var4 = this.y - var1.y;
     return Math.sqrt(var2 * var2 + var4 * var4);
   }
 
-  Normalized() {
-    const var1 = 1 / Math.sqrt(this.X * this.X + this.Y * this.Y);
-    return new Vector2d(this.X * var1, this.Y * var1);
+  normalized() {
+    const var1 = 1 / Math.sqrt(this.x * this.x + this.y * this.y);
+    return new Vector2d(this.x * var1, this.y * var1);
   }
 
-  Dot(var1) {
-    return this.X * var1.X + this.Y * var1.Y;
+  dot(var1) {
+    return this.x * var1.x + this.y * var1.y;
   }
 
-  DistanceSquared(var1) {
-    const var2 = this.X - var1.X;
-    const var4 = this.Y - var1.Y;
+  distanceSquared(var1) {
+    const var2 = this.x - var1.x;
+    const var4 = this.y - var1.y;
     return var2 * var2 + var4 * var4;
   }
 
-  Add(v) {
-    return new Vector2d(this.X + v.X, this.Y + v.Y);
+  add(v) {
+    return new Vector2d(this.d + v.x, this.y + v.y);
   }
 
-  Sub(v) {
-    return new Vector2d(this.X - v.X, this.Y - v.Y);
+  sub(v) {
+    return new Vector2d(this.x - v.x, this.y - v.y);
   }
 
-  MultiplyScalar(scale) {
-    return new Vector2d(this.X * scale, this.Y * scale);
+  multiplyScalar(scale) {
+    return new Vector2d(this.x * scale, this.y * scale);
   }
 
-  Equals(v) {
-    return this.X === v.X && this.Y === v.Y;
+  equals(v) {
+    return this.x === v.x && this.y === v.y;
   }
 
-  NotEquals(v) {
-    return !this.Equals(v);
+  notEquals(v) {
+    return !this.equals(v);
   }
 
-  ToString() {
-    return `${this.X}, ${this.Y}`;
+  toString() {
+    return `${this.x}, ${this.y}`;
   }
 }
