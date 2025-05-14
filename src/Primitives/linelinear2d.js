@@ -7,33 +7,63 @@ import Vector2d from './vector2d';
  */
 
 export default class LineLinear2d {
-  A;
-  B;
-  C;
+  a;
+  b;
+  c;
 
-  constructor(pP1 = Vector2d.Empty, pP2 = Vector2d.Empty) {
-    this.A = pP1.Y - pP2.Y;
-    this.B = pP2.X - pP1.X;
-    this.C = pP1.X * pP2.Y - pP2.X * pP1.Y;
+  /**
+   * Construct a line that passes through the provided points.
+   *
+   * @param {Vector2d}
+   * @param {Vector2d}
+   */
+  constructor(pP1 = Vector2d.empty, pP2 = Vector2d.empty) {
+    this.a = pP1.y - pP2.y;
+    this.b = pP2.x - pP1.x;
+    this.c = pP1.x * pP2.y - pP2.x * pP1.y;
   }
 
-  SetFromCoefficients(a, b, c) {
-    this.A = a;
-    this.B = b;
-    this.C = c;
+  /**
+   * Should this be a static factory method?
+   */
+  setFromCoefficients(a, b, c) {
+    this.a = a;
+    this.b = b;
+    this.c = c;
 
     return this;
   }
 
-  Collide(pLine) {
-    return LineLinear2d.Collide(this, pLine);
+  /**
+   *
+   * @param {LineLinear2d}
+   * @return {Vector2d}
+   */
+  collide(pLine) {
+    return LineLinear2d.collide(this, pLine);
   }
 
-  static Collide(pLine1, pLine2) {
-    return LineLinear2d.CollideCoeff(pLine1.A, pLine1.B, pLine1.C, pLine2.A, pLine2.B, pLine2.C);
+  /**
+   *
+   * @param {LineLinear2d}
+   * @param {LineLinear2d}
+   * @return {Vector2d}
+   */
+  static collide(pLine1, pLine2) {
+    return LineLinear2d.CollideCoeff(pLine1.a, pLine1.b, pLine1.c, pLine2.a, pLine2.b, pLine2.c);
   }
 
-  static CollideCoeff(A1, B1, C1, A2, B2, C2) {
+  /**
+   *
+   * @param {number}
+   * @param {number}
+   * @param {number}
+   * @param {number}
+   * @param {number}
+   * @param {number}
+   * @return {Vector2d}
+   */
+  static collideCoeff(A1, B1, C1, A2, B2, C2) {
     const WAB = A1 * B2 - A2 * B1;
     const WBC = B1 * C2 - B2 * C1;
     const WCA = C1 * A2 - C2 * A1;
@@ -41,7 +71,7 @@ export default class LineLinear2d {
     return WAB === 0 ? Vector2d.Empty : new Vector2d(WBC / WAB, WCA / WAB);
   }
 
-  Contains(point) {
-    return Math.abs((point.X * this.A + point.Y * this.B + this.C)) < Number.EPSILON;
+  contains(point) {
+    return Math.abs((point.x * this.a + point.y * this.b + this.c)) < Number.EPSILON;
   }
 }
