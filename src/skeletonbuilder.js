@@ -343,7 +343,7 @@ export default class SkeletonBuilder {
       if (skeletonEvent instanceof EdgeEvent) {
         edgeCluster.Add(skeletonEvent)
       } else {
-        if (!skeletonEvent instanceof VertexSplitEvent && skeletonEvent instanceof SplitEvent) {
+        if (!(skeletonEvent instanceof VertexSplitEvent) && skeletonEvent instanceof SplitEvent) {
           const splitEvent = skeletonEvent
           vertexEventsParents.Add(splitEvent.Parent)
           splitCluster.Add(splitEvent)
@@ -787,8 +787,10 @@ export default class SkeletonBuilder {
       const beginDot = edgeNorm.Dot(beginVector)
       const endDot = edgeNorm.Dot(endVector)
 
-      if (beginDot < centerDot && centerDot < endDot ||
-        beginDot > centerDot && centerDot > endDot) { return end }
+      if ((beginDot < centerDot && centerDot < endDot) ||
+        (beginDot > centerDot && centerDot > endDot)) {
+        return end
+      }
     }
 
     for (const end of edgeLavs) {
