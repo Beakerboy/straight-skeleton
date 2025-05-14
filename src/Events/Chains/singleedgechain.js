@@ -1,4 +1,4 @@
-import {ChainType} from './ChainType';
+import {ChainType} from './chaintype';
 
 export default class SingleEdgeChain {
   //vertex
