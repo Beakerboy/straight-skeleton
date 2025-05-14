@@ -8,7 +8,7 @@ test('Constructor', () => {
 
 test('Negate', () => {
   const v = new Vector2d(1, 1)
-  const vTest = v.negate()
+  v.negate()
   expect(v.x).toBe(-1)
   expect(v.y).toBe(-1)
 })
