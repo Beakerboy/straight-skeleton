@@ -47,16 +47,19 @@ export default class LavUtil {
   }
 
   /**
+   * Moves all nodes from given vertex lav, to new lav. All moved nodes are
+   * added at the end of lav. The lav end is determined by first added vertex
+   * to lav.
    * @param {Vertex} vertex
-   * @param {CircularList} newLaw
+   * @param {CircularList} newLav
    */
-  static moveAllVertexToLavEnd (vertex, newLaw) {
+  static moveAllVertexToLavEnd (vertex, newLav) {
     const size = vertex.list.size
     for (let i = 0; i < size; i++) {
       const ver = vertex
       vertex = vertex.next
       ver.remove()
-      newLaw.addLast(ver)
+      newLav.addLast(ver)
     }
   }
 }
