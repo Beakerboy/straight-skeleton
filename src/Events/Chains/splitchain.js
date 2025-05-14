@@ -1,8 +1,8 @@
-import Edge from '../../Circular/Edge';
-import Vertex from '../../Circular/Vertex';
-import ChainType from './ChainType';
-import VertexSplitEvent from '../VertexSplitEvent';
-import SplitEvent from '../SplitEvent';
+import Edge from '../../Circular/edge';
+import Vertex from '../../Circular/vertex';
+import ChainType from './chaintype';
+import VertexSplitEvent from '../vertexsplitevent';
+import SplitEvent from '../splitevent';
 
 export default class SplitChain {
   //splitevent
@@ -13,34 +13,34 @@ export default class SplitChain {
     this.splitEvent = event;
   }
 
-  OppositeEdge() {
+  oppositeEdge() {
     if (!(this.splitEvent instanceof VertexSplitEvent))
       return this.splitEvent.oppositeEdge;
 
     return null;
   }
 
-  PreviousEdge() {
+  previousEdge() {
     return this.splitEvent.parent.previousEdge;
   }
 
-  NextEdge() {
+  nextEdge() {
     return this.splitEvent.parent.nextEdge;
   }
 
-  PreviousVertex() {
+  previousVertex() {
     return this.splitEvent.parent.previous;
   }
 
-  NextVertex() {
+  nextVertex() {
     return this.splitEvent.parent.next;
   }
 
-  CurrentVertex() {
+  currentVertex() {
     return this.splitEvent.parent;
   }
 
-  ChainType() {
+  chainType() {
     return ChainType.SPLIT;
   }
 }
