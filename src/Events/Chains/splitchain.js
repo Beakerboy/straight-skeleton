@@ -18,7 +18,7 @@ export default class SplitChain {
   }
 
   /**
-   * @returns {Edge}
+   * @returns {Edge} The opposite edge
    */
   oppositeEdge () {
     if (!(this._splitEvent instanceof VertexSplitEvent)) { return this._splitEvent.oppositeEdge }
@@ -27,35 +27,35 @@ export default class SplitChain {
   }
 
   /**
-   * @returns {Edge}
+   * @returns {Edge} The previous edge
    */
   previousEdge () {
     return this._splitEvent.parent.previousEdge
   }
 
   /**
-   * @returns {Edge}
+   * @returns {Edge} The next edge
    */
   nextEdge () {
     return this._splitEvent.parent.nextEdge
   }
 
   /**
-   * @returns {Vertex}
+   * @returns {Vertex} The previous vertex
    */
   previousVertex () {
     return this._splitEvent.parent.previous
   }
 
   /**
-   * @returns {Vertex}
+   * @returns {Vertex} The next vertex
    */
   nextVertex () {
     return this._splitEvent.parent.next
   }
 
   /**
-   * @returns {Vertex}
+   * @returns {Vertex} The current vertex
    */
   currentVertex () {
     return this._splitEvent.parent
