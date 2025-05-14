@@ -1,51 +1,51 @@
-import CircularNode from './circularnode';
-import Vector2d from '../Primitives/vector2d';
-import LineParametric2d from '../Primitives/lineparametric2d';
-import Edge from './edge';
-import {FaceNode} from '../Path/facenode';
+import CircularNode from './circularnode'
+import Vector2d from '../Primitives/vector2d'
+import LineParametric2d from '../Primitives/lineparametric2d'
+import Edge from './edge'
+import { FaceNode } from '../Path/facenode'
 
 class Vertex extends CircularNode {
-  roundDigitCount = 5;
+  roundDigitCount = 5
 
   /**
    * @type {Vector2d}
    */
-  point = null;
+  point = null
 
   /**
    * @type {number}
    */
-  distance;
+  distance
 
   /**
    * @type {LineParametric2d}
    */
-  bisector = null;
+  bisector = null
 
   /**
    * @type {Edge}
    */
-  nextEdge = null;
+  nextEdge = null
 
   /**
    * @type {Edge}
    */
-  previousEdge = null;
+  previousEdge = null
 
   /**
    * @type {FaceNode}
    */
-  leftFace = null;
+  leftFace = null
 
   /**
    * @type {FaceNode}
    */
-  rightFace = null;
+  rightFace = null
 
   /**
    * @type {boolean}
    */
-  isProcessed;
+  isProcessed
 
   /**
    * @param {Vector2d}
@@ -53,25 +53,30 @@ class Vertex extends CircularNode {
    * @param {LineParametric2d}
    * @param {Edge}
    * @param {Edge}
+   * @param point
+   * @param distance
+   * @param bisector
+   * @param previousEdge
+   * @param nextEdge
    */
-  constructor(point, distance, bisector, previousEdge, nextEdge) {
-    super();
+  constructor (point, distance, bisector, previousEdge, nextEdge) {
+    super()
 
-    this.point = point;
-    this.distance = +distance.toFixed(this.roundDigitCount);
-    this.bisector = bisector;
-    this.previousEdge = previousEdge;
-    this.nextEdge = nextEdge;
+    this.point = point
+    this.distance = +distance.toFixed(this.roundDigitCount)
+    this.bisector = bisector
+    this.previousEdge = previousEdge
+    this.nextEdge = nextEdge
 
-    this.isProcessed = false;
+    this.isProcessed = false
   }
 
   /**
-   * @return {string}
+   * @returns {string}
    */
-  toString() {
+  toString () {
     return 'Vertex [v=' + this.point + ', IsProcessed=' + this.isProcessed +
       ', Bisector=' + this.bisector + ', PreviousEdge=' + this.previousEdge +
-      ', NextEdge=' + this.nextEdge;
+      ', NextEdge=' + this.nextEdge
   }
 }

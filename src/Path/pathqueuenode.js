@@ -1,49 +1,46 @@
 export default class PathQueueNode {
-  List = null;
-  Next = null;
-  Previous = null;
+  List = null
+  Next = null
+  Previous = null
 
-  IsEnd() {
-    return this.Next === null || this.Previous === null;
+  IsEnd () {
+    return this.Next === null || this.Previous === null
   }
 
-  AddPush(node) {
-    this.List.AddPush(this, node);
+  AddPush (node) {
+    this.List.AddPush(this, node)
   }
 
-  AddQueue(queue) {
-    if (this.List === queue.List)
-      return null;
+  AddQueue (queue) {
+    if (this.List === queue.List) { return null }
 
-    let currentQueue = this;
+    let currentQueue = this
 
-    let current = queue;
+    let current = queue
 
     while (current !== null) {
-      const next = current.Pop();
+      const next = current.Pop()
 
-      currentQueue.AddPush(current);
-      currentQueue = current;
+      currentQueue.AddPush(current)
+      currentQueue = current
 
-      current = next;
+      current = next
     }
 
-    return currentQueue;
+    return currentQueue
   }
 
-  FindEnd() {
-    if (this.IsEnd)
-      return this;
+  FindEnd () {
+    if (this.IsEnd) { return this }
 
-    let current = this;
+    let current = this
 
-    while (current.Previous !== null)
-      current = current.Previous;
+    while (current.Previous !== null) { current = current.Previous }
 
-    return current;
+    return current
   }
 
-  Pop() {
-    return this.List.Pop(this);
+  Pop () {
+    return this.List.Pop(this)
   }
 }
