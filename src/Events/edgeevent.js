@@ -3,27 +3,41 @@ import Vertex from '../Circular/vertex'
 import Vector2d from '../Primitives/vector2d'
 
 class EdgeEvent extends SkeletonEvent {
-  // Veryex
-  NextVertex
-  // Vertex
-  PreviousVertex
+  /**
+   * @type {Vertex}
+   */
+  nextVertex
 
-  IsObsolete () {
-    return this.PreviousVertex.IsProcessed || this.NextVertex.IsProcessed
+  /**
+   * @type {Vertex}
+   */
+  previousVertex
+
+  /**
+   * @returns {boolean}
+   */
+  get isObsolete () {
+    return this.previousVertex.isProcessed || this.nextVertex.isProcessed
   }
 
+  /**
+   * @ {}
+   */
   constructor (point, distance, previousVertex, nextVertex) {
     super(point, distance)
 
-    this.PreviousVertex = previousVertex
-    this.NextVertex = nextVertex
+    this.previousVertex = previousVertex
+    this.nextVertex = nextVertex
   }
 
-  ToString () {
+  /**
+   * @returns {string} Object Values
+   */
+  toString () {
     return 'EdgeEvent [V=' + this.V + ', PreviousVertex=' +
-      (this.PreviousVertex !== null ? this.PreviousVertex.Point.ToString() : 'null') +
+      (this.previousVertex !== null ? this.previousVertex.point.toString() : 'null') +
       ', NextVertex=' +
-      (this.NextVertex !== null ? this.NextVertex.Point.ToString() : 'null') + ', Distance=' +
-      this.Distance + ']'
+      (this.nextVertex !== null ? this.nextVertex.point.toString() : 'null') + ', Distance=' +
+      this.distance + ']'
   }
 }
