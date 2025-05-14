@@ -1,4 +1,4 @@
-class Vector2d {
+export class Vector2d {
   static Empty = new Vector2d(Number.MIN_VALUE, Number.MIN_VALUE);
 
   X = 0;
@@ -59,4 +59,3 @@ class Vector2d {
     return `${this.X}, ${this.Y}`;
   }
 }
-export default {Vector2d};
