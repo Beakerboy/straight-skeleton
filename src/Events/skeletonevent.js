@@ -6,7 +6,7 @@ export default class SkeletonEvent {
   // @type {number}
   distance;
 
-  IsObsolete() {
+  isObsolete() {
   }
 
   constructor(point, distance) {
@@ -14,11 +14,11 @@ export default class SkeletonEvent {
     this.distance = distance;
   }
 
-  ToString() {
+  toString() {
     return 'IntersectEntry [V=' + this.v + ', Distance=' + this.distance + ']';
   }
 
-  GetType() {
+  getType() {
     return this.constructor.name;
   }
 }
