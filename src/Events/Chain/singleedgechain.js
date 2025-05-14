@@ -2,7 +2,7 @@ import {Edge} from '../../Circular/Edge.js';
 import {Vertex} from '../../Circular/Vertex.js';
 import {ChainType} from './ChainType';
 
-class SingleEdgeChain {
+export default class SingleEdgeChain {
   //vertex
   nextVertex;
   //edge
@@ -37,8 +37,6 @@ class SingleEdgeChain {
   }
 
   ChainType() {
-    return ChainType.Split;
+    return ChainType.SPLIT;
   }
 }
-
-export {SingleEdgeChain};
