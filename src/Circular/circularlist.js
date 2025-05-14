@@ -13,9 +13,8 @@ class CircularList extends CircularNode {
 
   /**
    * Add newNode after node.
-   *
-   * @param {CircularNode} node
-   * @param {CircularNode} newNode
+   * @param {CircularNode} node Target node
+   * @param {CircularNode} newNode New Node
    */
   addNext (node, newNode) {
     if (newNode.List !== null) {
@@ -35,9 +34,8 @@ class CircularList extends CircularNode {
 
   /**
    * Add a newNode before node.
-   *
-   * @param {CircularNode} node
-   * @param {CircularNode} newNode
+   * @param {CircularNode} node Target Node
+   * @param {CircularNode} newNode New Node
    */
   addPrevious (node, newNode) {
     if (newNode.List !== null) {
