@@ -17,6 +17,7 @@
     "eslint-config-standard": "*",
     "eslint-plugin-import": "*",
     "eslint-plugin-jsdoc": "*",
+    "eslint-plugin-n": "*",
     "jest": "*",
     "jest-environment-jsdom": "*",
     "jest-fetch-mock": "*",
