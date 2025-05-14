@@ -2,7 +2,7 @@
 export default class SkeletonEvent {
   // @type {Vector2d}
   v = null;
-  
+
   // @type {number}
   distance;
 
