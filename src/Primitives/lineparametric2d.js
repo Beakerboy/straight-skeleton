@@ -1,4 +1,5 @@
 import Vector2d from './Vector2d';
+import LineLinear2d from './linelinear2d';
 import PrimitiveUtils from './PrimitiveUtils';
 
 export default class LineParametric2d {
@@ -27,7 +28,7 @@ export default class LineParametric2d {
   static collide(ray, line, epsilon) {
     const collide = LineLinear2d.collide(ray.createLinearForm(), line);
     if (collide.equals(Vector2d.empty)) {
-      return Vector2d.Empty;
+      return Vector2d.empty;
     }
 
     const collideVector = collide.sub(ray.a);
