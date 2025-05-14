@@ -1,16 +1,16 @@
-import SkeletonEvent from './skeletonevent';
+import SkeletonEvent from './skeletonevent'
 
 export default class MultiEdgeEvent extends SkeletonEvent {
-  //EdgeChain
-  chain;
+  // EdgeChain
+  chain
 
-  isObsolete() {
-    return false;
+  isObsolete () {
+    return false
   }
 
-  constructor(point, distance, chain) {
-    super(point, distance);
+  constructor (point, distance, chain) {
+    super(point, distance)
 
-    this.chain = chain;
+    this.chain = chain
   }
 }
