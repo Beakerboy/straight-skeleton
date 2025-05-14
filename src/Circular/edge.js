@@ -1,9 +1,7 @@
 import { CircularNode } from './circularnode.js'
-import { Vector2d } from '../Primitives/vector2d.js'
 import LineLinear2d from '../Primitives/linelinear2d'
-import LineParametric2d from '../Primitives/lineparametric2d'
 
-class Edge extends CircularNode {
+export default class Edge extends CircularNode {
   /**
    * @type {Vector2d}
    */
@@ -22,35 +20,36 @@ class Edge extends CircularNode {
   /**
    * @type {LineLinear2d}
    */
-  LineLinear2d
+  lineLinear2d
 
   /**
    * @type {LineParametric2d}
    */
-  BisectorNext = null
+  bisectorNext = null
 
   /**
    * @type {LineParametric2d}
    */
-  BisectorPrevious = null
+  bisectorPrevious = null
 
   /**
-   * @param {Vector2d}
-   * @param {Vector2d}
-   * @param begin
-   * @param end
+   * @param {Vector2d} begin
+   * @param {Vector2d} end
    */
   constructor (begin, end) {
     super()
 
-    this.Begin = begin
-    this.End = end
+    this.begin = begin
+    this.end = end
 
-    this.LineLinear2d = new LineLinear2d(begin, end)
-    this.Norm = end.Sub(begin).Normalized()
+    this.lineLinear2d = new LineLinear2d(begin, end)
+    this.norm = end.Sub(begin).Normalized()
   }
 
-  ToString () {
+  /**
+   * @returns {string} Edge Description
+   */
+  toString () {
     return `Edge [p1=${this.Begin}, p2=${this.End}]`
   }
 }
