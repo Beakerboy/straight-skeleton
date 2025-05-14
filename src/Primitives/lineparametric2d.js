@@ -3,7 +3,7 @@ import LineLinear2d from './linelinear2d';
 import PrimitiveUtils from './primitiveutils';
 
 export default class LineParametric2d {
-  static empty = new LineParametric2d(Vector2d.Empty, Vector2d.Empty);
+  static empty = new LineParametric2d(Vector2d.empty, Vector2d.empty);
 
   a = null;
   u = null;
