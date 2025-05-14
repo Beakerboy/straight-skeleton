@@ -27,6 +27,10 @@ import ChainType from './Events/Chains/chaintype'
 export default class SkeletonBuilder {
   static SplitEpsilon = 1e-10
 
+  /**
+   * @patam {GeoJSONMultipolygon} multipolygon a multipolygon
+   * @returns {Skeleton} The Skeleton
+   */
   static BuildFromGeoJSON (multipolygon) {
     const allEdges = new List()
     const allDistances = new Dictionary()
