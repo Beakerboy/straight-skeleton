@@ -22,7 +22,7 @@ test('Distance To', () => {
 
 test('Normalized', () => {
   const v1 = new Vector2d(5, 0);
-  const result = v2.normalized(v1);
+  const result = v1.normalized(v1);
   expect(result.x).toBe(1);
   expect(result.y).toBe(0);
 });
