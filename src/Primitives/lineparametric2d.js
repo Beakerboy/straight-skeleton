@@ -12,7 +12,7 @@ export default class LineParametric2d {
     this.u = pU;
   }
 
-  CreateLinearForm() {
+  createLinearForm() {
     const x = this.a.x;
     const y = this.a.y;
 
