@@ -28,7 +28,7 @@ export default class SkeletonBuilder {
   static SplitEpsilon = 1e-10
 
   /**
-   * @patam {GeoJSONMultipolygon} multipolygon a multipolygon
+   * @param {GeoJSONMultipolygon} multipolygon a multipolygon
    * @returns {Skeleton} The Skeleton
    */
   static BuildFromGeoJSON (multipolygon) {
@@ -710,12 +710,18 @@ export default class SkeletonBuilder {
   /**
    * @param {LineParametric2d} bisector
    * @param {LineLinear2d} edge
+   * @returns {}
    */
   static edgeBehindBisector (bisector, edge) {
     return LineParametric2d.Collide(bisector, edge, this.SplitEpsilon).Equals(Vector2d.Empty)
   }
 
-  static CalcCandidatePointForSplit (vertex, edge) {
+  /**
+   * @param {} vertex
+   * @param {} edge
+   * @returns {}
+   */
+  static calcCandidatePointForSplit (vertex, edge) {
     const vertexEdge = this.ChoseLessParallelVertexEdge(vertex, edge)
     if (vertexEdge === null) { return null }
 
