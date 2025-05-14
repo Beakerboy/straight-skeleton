@@ -1,29 +1,30 @@
-import {CircularNode} from './circularnode.js';
+import CircularNode from './circularnode.js'
 
 class CircularList extends CircularNode {
   /**
    * @type {CircularList}
    */
-  first = null;
+  first = null
 
   /**
    * @type {number}
    */
-  size = 0;
+  size = 0
 
-  addNext(node, newNode) {
-    if (newNode.List !== null)
-      throw new Error('Node is already assigned to different list!');
+  addNext (node, newNode) {
+    if (newNode.List !== null) {
+      throw new Error('Node is already assigned to different list!')
+    }
+  
+    newNode.List = this
 
-    newNode.List = this;
-
-    newNode.Previous = node;
+    newNode.Previous = node
     newNode.Next = node.Next;
 
-    node.Next.Previous = newNode;
-    node.Next = newNode;
+    node.Next.Previous = newNode
+    node.Next = newNode
 
-    this.size++;
+    this.size++
   }
 
   /**
