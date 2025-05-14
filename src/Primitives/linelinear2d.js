@@ -1,4 +1,4 @@
-import Vector2d from './Vector2d';
+import Vector2d from './vector2d';
 
 export default class LineLinear2d {
   A;
