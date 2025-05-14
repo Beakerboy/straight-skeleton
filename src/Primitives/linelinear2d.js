@@ -1,5 +1,11 @@
 import Vector2d from './vector2d';
 
+/**
+ * Geometry line in linear form. General form:
+ * Ax + By + C = 0;
+ * <see href="http://en.wikipedia.org/wiki/Linear_equation"/>
+ */
+
 export default class LineLinear2d {
   A;
   B;
