@@ -1,5 +1,3 @@
-import Vector2d from '../Primitives/vector2d';
-
 // Abstract Class
 export default class SkeletonEvent {
   // @type {Vector2d}
