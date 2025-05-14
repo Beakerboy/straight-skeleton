@@ -14,11 +14,11 @@ export default class LavUtil {
   }
 
   /**
-   * @param {Vertex} startVertex
-   * @param {Vertex} endVertex
-   * @returns {List}
+   * @param {Vertex} startVertex Start vertex
+   * @param {Vertex} endVertex End vertex
+   * @returns {List} List of vertex.
    */
-  static CutLavPart (startVertex, endVertex) {
+  static cutLavPart (startVertex, endVertex) {
     const ret = new List()
     const size = startVertex.List.Size
     let next = startVertex
@@ -50,8 +50,8 @@ export default class LavUtil {
    * Moves all nodes from given vertex lav, to new lav. All moved nodes are
    * added at the end of lav. The lav end is determined by first added vertex
    * to lav.
-   * @param {Vertex} vertex
-   * @param {CircularList} newLav
+   * @param {Vertex} vertex Vertex
+   * @param {CircularList} newLav Lav to append Vertexes to.
    */
   static moveAllVertexToLavEnd (vertex, newLav) {
     const size = vertex.list.size
