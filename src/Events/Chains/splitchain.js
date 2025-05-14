@@ -4,7 +4,7 @@ import ChainType from './ChainType';
 import VertexSplitEvent from '../VertexSplitEvent';
 import SplitEvent from '../SplitEvent';
 
-class SplitChain {
+export default class SplitChain {
   //splitevent
   splitEvent;
 
@@ -15,33 +15,32 @@ class SplitChain {
 
   OppositeEdge() {
     if (!(this.splitEvent instanceof VertexSplitEvent))
-      return this.splitEvent.OppositeEdge;
+      return this.splitEvent.oppositeEdge;
 
     return null;
   }
 
   PreviousEdge() {
-    return this.splitEvent.Parent.PreviousEdge;
+    return this.splitEvent.parent.previousEdge;
   }
 
   NextEdge() {
-    return this.splitEvent.Parent.NextEdge;
+    return this.splitEvent.parent.nextEdge;
   }
 
   PreviousVertex() {
-    return this.splitEvent.Parent.Previous;
+    return this.splitEvent.parent.previous;
   }
 
   NextVertex() {
-    return this.splitEvent.Parent.Next;
+    return this.splitEvent.parent.next;
   }
 
   CurrentVertex() {
-    return this.splitEvent.Parent;
+    return this.splitEvent.parent;
   }
 
   ChainType() {
-    return ChainType.Split;
+    return ChainType.SPLIT;
   }
 }
-export {SplitChain};
