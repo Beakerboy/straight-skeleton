@@ -87,8 +87,7 @@ export default class CircularList extends CircularNode {
 
     if (this._size === 1) {
       this._first = null
-    }
-    else {
+    } else {
       if (this._first === node) {
         this._first = this._first.next
       }
@@ -97,27 +96,30 @@ export default class CircularList extends CircularNode {
       node.next.previous = node.previous
     }
 
-    node.previous = null;
-    node.next = null;
+    node.previous = null
+    node.next = null
 
-    this._size--;
+    this._size--
   }
 
   /**
-   * @return {number}
+   * @returns {number}
    */
   get size () {
-    return this._size;
+    return this._size
   }
 
   /**
-   * @return {CircularNode}
+   * @returns {CircularNode}
    */
   get first () {
-    return this._first;
+    return this._first
   }
 
-  *generator () {
+  /**
+   * @yields {CircularNode}
+   */
+  * generator () {
     let current = this._first
     let i = 0
 
