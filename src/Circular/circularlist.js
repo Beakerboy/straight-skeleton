@@ -21,13 +21,13 @@ class CircularList extends CircularNode {
       throw new Error('Node is already assigned to different list!')
     }
 
-    newNode.List = this
+    newNode.list = this
 
-    newNode.Previous = node
-    newNode.Next = node.Next
+    newNode.previous = node
+    newNode.next = node.next
 
-    node.Next.Previous = newNode
-    node.Next = newNode
+    node.next.previous = newNode
+    node.next = newNode
 
     this.size++
   }
@@ -39,15 +39,15 @@ class CircularList extends CircularNode {
    */
   addPrevious (node, newNode) {
     if (newNode.List !== null) {
-      throw new Error('Node is already assigned to different list!');
+      throw new Error('Node is already assigned to different list!')
     }
-    newNode.List = this
+    newNode.list = this
 
-    newNode.Previous = node.Previous
-    newNode.Next = node
+    newNode.previous = node.previous
+    newNode.next = node
 
-    node.Previous.Next = newNode
-    node.Previous = newNode
+    node.previous.next = newNode
+    node.previous = newNode
 
     this.size++
   }
@@ -62,9 +62,9 @@ class CircularList extends CircularNode {
     if (this.first === null) {
       this.first = node
 
-      node.List = this
-      node.Next = node
-      node.Previous = node
+      node.list = this
+      node.next = node
+      node.previous = node
 
       this.size++
     } else {
@@ -77,27 +77,28 @@ class CircularList extends CircularNode {
    * @param {CircularNode}
    */
   remove(node) {
-    if (node.List !== this)
-      throw new Error('Node is not assigned to this list!');
+    if (node.List !== this) {
+      throw new Error('Node is not assigned to this list!')
+    }
+    if (this._size <= 0) {
+      throw new Error('List is empty can\'t remove!')
+    }
+    node.List = null
 
-    if (this._size <= 0)
-      throw new Error('List is empty can\'t remove!');
-
-    node.List = null;
-
-    if (this._size === 1)
-      this.first = null;
-
+    if (this._size === 1) {
+      this.first = null
+    }
     else {
-      if (this.first === node)
-        this.first = this.first.Next;
+      if (this.first === node) {
+        this.first = this.first.Next
+      }
 
-      node.Previous.Next = node.Next;
-      node.Next.Previous = node.Previous;
+      node.previous.next = node.next
+      node.next.previous = node.previous
     }
 
-    node.Previous = null;
-    node.Next = null;
+    node.previous = null;
+    node.next = null;
 
     this.size--;
   }
