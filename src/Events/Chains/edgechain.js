@@ -1,4 +1,3 @@
-import { EdgeEvent } from '../edgeevent'
 import { List } from '../../utils'
 import Edge from '../../Circular/edge'
 import Vertex from '../../Circular/vertex'
@@ -24,14 +23,14 @@ export default class EdgeChain {
   }
 
   /**
-   * @returns {EdgeEvent}
+   * @returns {Edge}
    */
   get previousEdge () {
     return this.edgeList[0].previousVertex.previousEdge
   }
 
   /**
-   * @returns {EdgeEvent}
+   * @returns {Edge}
    */
   get nextEdge () {
     return this.edgeList[this.edgeList.count - 1].nextVertex.nextEdge
