@@ -66,8 +66,8 @@ test('Equals', () => {
 test('Not Equals', () => {
   const v1 = new Vector2d(1, 2);
   const v2 = new Vector2d(2, 1);
-  const result = v1.notEquals(v2)
+  const result = v1.notEquals(v2);
   expect(result).toBe(true);
-  const result = v1.notEquals(v1)
+  const result = v1.notEquals(v1);
   expect(result).toBe(false);
 });
