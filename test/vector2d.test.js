@@ -20,6 +20,13 @@ test('Distance To', () => {
   expect(result).toBe(Math.sqrt(2));
 });
 
+test('Normalized', () => {
+  const v1 = new Vector2d(5, 0);
+  const result = v2.normalized(v1);
+  expect(result.x).toBe(1);
+  expect(result.y).toBe(0);
+});
+
 test('Dot', () => {
   const v1 = new Vector2d(1, 2);
   const v2 = new Vector2d(4, 3);
