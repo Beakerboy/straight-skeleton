@@ -1,4 +1,4 @@
-import SkeletonEvent from './SkeletonEvent';
+import SkeletonEvent from './skeletonevent';
 
 export default class MultiSplitEvent extends SkeletonEvent {
   chains;
