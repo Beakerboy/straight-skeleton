@@ -27,7 +27,7 @@ export default class LineParametric2d {
 
   /**
    *
-   * @return {LineLinear2d}
+   * @returns {LineLinear2d}
    */
   createLinearForm() {
     const x = this.a.x;
@@ -47,7 +47,7 @@ export default class LineParametric2d {
    * @param {LineParametric2d}
    * @param {LineLinear2d}
    * @param {number}
-   * @return {Vector2d}
+   * @returns {Vector2d}
    */
   static collide(ray, line, epsilon) {
     const collide = LineLinear2d.collide(ray.createLinearForm(), line);
@@ -62,7 +62,7 @@ export default class LineParametric2d {
   /**
    * @param {Vector2d}
    * @param {number}
-   * @return {boolean}
+   * @returns {boolean}
    */
   isOnLeftSite(point, epsilon) {
     const direction = point.sub(this.a);
@@ -72,7 +72,7 @@ export default class LineParametric2d {
   /**
    * @param {Vector2d}
    * @param {number}
-   * @return {boolean}
+   * @returns {boolean}
    */
   isOnRightSite(point, epsilon) {
     const direction = point.sub(this.a);
