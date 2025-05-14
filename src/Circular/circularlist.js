@@ -11,15 +11,21 @@ class CircularList extends CircularNode {
    */
   size = 0
 
+  /**
+   * Add newNode after node.
+   *
+   * @param {CircularNode} node
+   * @param {CircularNode} newNode
+   */
   addNext (node, newNode) {
     if (newNode.List !== null) {
       throw new Error('Node is already assigned to different list!')
     }
-  
+
     newNode.List = this
 
     newNode.Previous = node
-    newNode.Next = node.Next;
+    newNode.Next = node.Next
 
     node.Next.Previous = newNode
     node.Next = newNode
@@ -28,41 +34,44 @@ class CircularList extends CircularNode {
   }
 
   /**
-   * @param {CircularNode}
-   * @param {CircularNode}
+   * Add a newNode before node.
+   *
+   * @param {CircularNode} node
+   * @param {CircularNode} newNode
    */
-  addPrevious(node, newNode) {
-    if (newNode.List !== null)
+  addPrevious (node, newNode) {
+    if (newNode.List !== null) {
       throw new Error('Node is already assigned to different list!');
+    }
+    newNode.List = this
 
-    newNode.List = this;
+    newNode.Previous = node.Previous
+    newNode.Next = node
 
-    newNode.Previous = node.Previous;
-    newNode.Next = node;
+    node.Previous.Next = newNode
+    node.Previous = newNode
 
-    node.Previous.Next = newNode;
-    node.Previous = newNode;
-
-    this.size++;
+    this.size++
   }
 
   /**
-   * @param {CircularNode}
+   * @param {CircularNode} node
    */
   addLast(node) {
-    if (node.List !== null)
+    if (node.List !== null) {
       throw new Error('Node is already assigned to different list!');
-
+    }
     if (this.first === null) {
-      this.first = node;
+      this.first = node
 
-      node.List = this;
-      node.Next = node;
-      node.Previous = node;
+      node.List = this
+      node.Next = node
+      node.Previous = node
 
-      this.size++;
-    } else
-      this.AddPrevious(this.first, node);
+      this.size++
+    } else {
+      this.AddPrevious(this.first, node)
+    }
   }
 
   /**
