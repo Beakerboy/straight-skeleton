@@ -4,7 +4,7 @@ import LineParametric2d from '../Primitives/lineparametric2d'
 import Edge from './edge'
 import { FaceNode } from '../Path/facenode'
 
-class Vertex extends CircularNode {
+export default class Vertex extends CircularNode {
   roundDigitCount = 5
 
   /**
@@ -48,16 +48,11 @@ class Vertex extends CircularNode {
   isProcessed
 
   /**
-   * @param {Vector2d}
-   * @param {number}
-   * @param {LineParametric2d}
-   * @param {Edge}
-   * @param {Edge}
-   * @param point
-   * @param distance
-   * @param bisector
-   * @param previousEdge
-   * @param nextEdge
+   * @param {Vector2d} point
+   * @param {number} distance
+   * @param {LineParametric2d} bisector
+   * @param {Edge} previousEdge
+   * @param {Edge} nextEdge
    */
   constructor (point, distance, bisector, previousEdge, nextEdge) {
     super()
