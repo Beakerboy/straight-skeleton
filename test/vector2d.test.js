@@ -78,3 +78,9 @@ test('Not Equals', () => {
   result = v1.notEquals(v1);
   expect(result).toBe(false);
 });
+
+test('To String', () => {
+  const v1 = new Vector2d(1, 2);
+  let result = v1.toString();
+  expect(result).toBe('1, 2');
+});
