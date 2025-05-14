@@ -5,7 +5,7 @@ export default class PickEvent extends SkeletonEvent {
   chain = null;
 
   // @inheritDoc
-  IsObsolete() {
+  isObsolete() {
     return false;
   }
 
