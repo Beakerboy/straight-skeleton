@@ -8,7 +8,7 @@ export default class EdgeChain {
   /**
    * @type {boolean}
    */
-  _closed: boolean;
+  _closed
 
   /**
    * @type {List}
