@@ -10,17 +10,16 @@ export default class SkeletinTestUtil {
   }
 
   /**
-   * @param
-   * @param sk
-   * @returns
+   * @param {Skeleton} sk
+   * @returns {List} List of face points
    */
   getFacePoints (sk) {
     const ret = new List()
 
-    for (const edgeOutput of sk.Edges) {
-      const points = edgeOutput.Polygon
+    for (const edgeOutput of sk.edges) {
+      const points = edgeOutput.polygon
       for (const vector2d of points) {
-        if (!this.ContainsEpsilon(ret, vector2d)) { ret.add(vector2d) }
+        if (!this.containsEpsilon(ret, vector2d)) { ret.add(vector2d) }
       }
     }
     return ret
