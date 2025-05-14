@@ -6,8 +6,8 @@ export default class VertexSplitEvent extends SplitEvent {
   }
 
   ToString() {
-    return 'VertexSplitEvent [V=' + this.V + ', Parent=' +
+    return 'VertexSplitEvent [V=' + this.v + ', Parent=' +
       (this.Parent !== null ? this.Parent.Point.ToString() : 'null')
-      + ', Distance=' + this.Distance + ']';
+      + ', Distance=' + this.distance + ']';
   }
 }
