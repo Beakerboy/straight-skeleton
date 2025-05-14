@@ -13,6 +13,11 @@ export default class LavUtil {
     vertex.Remove()
   }
 
+  /**
+   * @param {Vertex} startVertex
+   * @param {Vertex} endVertex
+   * @returns {List}
+   */
   static CutLavPart (startVertex, endVertex) {
     const ret = new List()
     const size = startVertex.List.Size
@@ -41,13 +46,17 @@ export default class LavUtil {
     }
   }
 
-  static MoveAllVertexToLavEnd (vertex, newLaw) {
-    const size = vertex.List.Size
+  /**
+   * @param {Vertex} vertex
+   * @param {CircularList} newLaw
+   */
+  static moveAllVertexToLavEnd (vertex, newLaw) {
+    const size = vertex.list.size
     for (let i = 0; i < size; i++) {
       const ver = vertex
-      vertex = vertex.Next
-      ver.Remove()
-      newLaw.AddLast(ver)
+      vertex = vertex.next
+      ver.remove()
+      newLaw.addLast(ver)
     }
   }
 }
