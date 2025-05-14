@@ -708,8 +708,8 @@ export default class SkeletonBuilder {
   }
 
   /**
-   * @parama {LineParametric2d} bisector
-   * @params {LineLinear2d} edge
+   * @param {LineParametric2d} bisector
+   * @param {LineLinear2d} edge
    */
   static edgeBehindBisector (bisector, edge) {
     return LineParametric2d.Collide(bisector, edge, this.SplitEpsilon).Equals(Vector2d.Empty)
