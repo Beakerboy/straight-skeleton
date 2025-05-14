@@ -17,7 +17,7 @@ export default class SplitEvent extends SkeletonEvent {
     return this.parent.isProcessed();
   }
 
-  ToString() {
+  toString() {
     return 'SplitEvent [V=' + this.v + ', Parent=' + (this.parent !== null ? this.parent.point.toString() : 'null') +
       ', Distance=' + this.distance + ']';
   }
