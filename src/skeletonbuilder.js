@@ -340,10 +340,10 @@ export default class SkeletonBuilder {
     const vertexEventsParents = new HashSet()
 
     for (const skeletonEvent of cluster) {
-      if (skeletonEvent instanceof EdgeEvent) { edgeCluster.Add(skeletonEvent) } else {
-        if (skeletonEvent instanceof VertexSplitEvent) {
-
-        } else if (skeletonEvent instanceof SplitEvent) {
+      if (skeletonEvent instanceof EdgeEvent) {
+        edgeCluster.Add(skeletonEvent)
+      } else {
+        if (!skeletonEvent instanceof VertexSplitEvent && skeletonEvent instanceof SplitEvent) {
           const splitEvent = skeletonEvent
           vertexEventsParents.Add(splitEvent.Parent)
           splitCluster.Add(splitEvent)
