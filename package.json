@@ -15,6 +15,7 @@
     "c8": "*",
     "eslint": "^8.13",
     "eslint-config-standard": "*",
+    "eslint-plugin-import": "*",
     "eslint-plugin-jsdoc": "*",
     "jest": "*",
     "jest-environment-jsdom": "*",
