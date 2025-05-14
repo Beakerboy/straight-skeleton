@@ -1,6 +1,6 @@
 import PathQueueNode from './pathqueuenode'
 
-class PathQueue {
+export default class PathQueue {
   /**
    * @type {number}
    */
