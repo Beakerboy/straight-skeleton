@@ -707,7 +707,11 @@ export default class SkeletonBuilder {
     return ret
   }
 
-  static EdgeBehindBisector (bisector, edge) {
+  /**
+   * @parama {LineParametric2d} bisector
+   * @params {LineLinear2d} edge
+   */
+  static edgeBehindBisector (bisector, edge) {
     return LineParametric2d.Collide(bisector, edge, this.SplitEpsilon).Equals(Vector2d.Empty)
   }
 
