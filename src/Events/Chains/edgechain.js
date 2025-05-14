@@ -1,8 +1,8 @@
-import {EdgeEvent} from '../EdgeEvent';
-const { List } = require('../../Utils');
-const Edge = require('../../Circular/Edge');
-const Vertex = require('../../Circular/Vertex');
-const ChainType = require('./ChainType');
+import {EdgeEvent} from '../edgeevent';
+const { List } = require('../../utils');
+const Edge = require('../../Circular/edge');
+const Vertex = require('../../Circular/vertex');
+const ChainType = require('./chaintype');
 
 class EdgeChain {
   constructor(edgeList) {
