@@ -1,4 +1,4 @@
-class ChainType {
+export default class ChainType {
   static EDGE = new ChainType('edge');
   static CLOSED_EDGE = new ChainType('closed_edge');
   static SPLIT = new ChainType('split');
@@ -11,5 +11,3 @@ class ChainType {
     return this.value;
   }
 }
-
-export {ChainType};
