@@ -1,15 +1,15 @@
 import SkeletonEvent from './SkeletonEvent';
 
 export default class MultiSplitEvent extends SkeletonEvent {
-  Chains;
+  chains;
 
-  IsObsolete() {
+  isObsolete() {
     return false;
   }
 
   constructor(point, distance, chains) {
     super(point, distance);
 
-    this.Chains = chains;
+    this.chains = chains;
   }
 }
