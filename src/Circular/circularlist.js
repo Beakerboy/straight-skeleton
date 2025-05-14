@@ -2,7 +2,7 @@ import CircularNode from './circularnode.js'
 
 export default class CircularList extends CircularNode {
   /**
-   * @type {CircularList}
+   * @type {CircularNode}
    */
   _first = null
 
@@ -57,7 +57,7 @@ export default class CircularList extends CircularNode {
    */
   addLast (node) {
     if (node.list !== null) {
-      throw new Error('Node is already assigned to different list!');
+      throw new Error('Node is already assigned to different list!')
     }
     if (this._first === null) {
       this._first = node
@@ -73,8 +73,8 @@ export default class CircularList extends CircularNode {
   }
 
   /**
-   * @param {CircularNode}
-   * @param {CircularNode}
+   * Remove a node from the ring.
+   * @param {CircularNode} node Node to remove
    */
   remove (node) {
     if (node.List !== this) {
@@ -90,7 +90,7 @@ export default class CircularList extends CircularNode {
     }
     else {
       if (this._first === node) {
-        this._first = this.first.Next
+        this._first = this._first.next
       }
 
       node.previous.next = node.next
@@ -111,11 +111,11 @@ export default class CircularList extends CircularNode {
   }
 
   /**
-   * @return {T}
+   * @return {CircularNode}
    */
-  //first() {
-  //  return this._first;
-  //}
+  get first () {
+    return this._first;
+  }
 
   *generator () {
     let current = this._first
