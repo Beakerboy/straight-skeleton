@@ -1,5 +1,3 @@
-import {Edge} from '../../Circular/Edge.js';
-import {Vertex} from '../../Circular/Vertex.js';
 import {ChainType} from './ChainType';
 
 export default class SingleEdgeChain {
