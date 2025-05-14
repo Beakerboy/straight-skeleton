@@ -1,5 +1,5 @@
 import {GeoJSONMultipolygon, List} from './Utils';
-import Vector2d from './Primitives/Vector2d';
+import Vector2d from './Primitives/vector2d.js';
 import SkeletonBuilder from './SkeletonBuilder';
 import { Skeleton } from './Skeleton';
 import EdgeResult from './EdgeResult';
