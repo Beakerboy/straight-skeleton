@@ -59,4 +59,4 @@ class Vector2d {
     return `${this.X}, ${this.Y}`;
   }
 }
-export Vector2d;
+export default Vector2d;
