@@ -6,19 +6,19 @@ import SplitEvent from '../splitevent'
 
 export default class SplitChain {
   /**
-   * @
+   * @type {splitEvent}
    */
   splitEvent
 
   /**
-   * @param {splitEvent}
+   * @param {splitEvent} event
    */
   constructor (event) {
     this.splitEvent = event
   }
 
   /**
-   * @returns {}
+   * @returns {Edge}
    */
   oppositeEdge () {
     if (!(this.splitEvent instanceof VertexSplitEvent)) { return this.splitEvent.oppositeEdge }
@@ -27,35 +27,35 @@ export default class SplitChain {
   }
 
   /**
-   * @returns {}
+   * @returns {Edge}
    */
   previousEdge () {
     return this.splitEvent.parent.previousEdge
   }
 
   /**
-   * @returns {}
+   * @returns {Edge}
    */
   nextEdge () {
     return this.splitEvent.parent.nextEdge
   }
 
   /**
-   * @returns {}
+   * @returns {Vertex}
    */
   previousVertex () {
     return this.splitEvent.parent.previous
   }
 
   /**
-   * @returns {}
+   * @returns {Vertex}
    */
   nextVertex () {
     return this.splitEvent.parent.next
   }
 
   /**
-   * @returns {}
+   * @returns {Vertex}
    */
   currentVertex () {
     return this.splitEvent.parent
