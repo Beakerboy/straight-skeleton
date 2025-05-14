@@ -1,15 +1,15 @@
 import CircularNode from './circularnode.js'
 
-class CircularList extends CircularNode {
+export default class CircularList extends CircularNode {
   /**
    * @type {CircularList}
    */
-  first = null
+  _first = null
 
   /**
    * @type {number}
    */
-  size = 0
+  _size = 0
 
   /**
    * Add newNode after node.
@@ -29,7 +29,7 @@ class CircularList extends CircularNode {
     node.next.previous = newNode
     node.next = newNode
 
-    this.size++
+    this._size++
   }
 
   /**
@@ -49,26 +49,26 @@ class CircularList extends CircularNode {
     node.previous.next = newNode
     node.previous = newNode
 
-    this.size++
+    this._size++
   }
 
   /**
-   * @param {CircularNode} node
+   * @param {CircularNode} node New Node
    */
-  addLast(node) {
-    if (node.List !== null) {
+  addLast (node) {
+    if (node.list !== null) {
       throw new Error('Node is already assigned to different list!');
     }
-    if (this.first === null) {
-      this.first = node
+    if (this._first === null) {
+      this._first = node
 
       node.list = this
       node.next = node
       node.previous = node
 
-      this.size++
+      this._size++
     } else {
-      this.AddPrevious(this.first, node)
+      this.addPrevious(this._first, node)
     }
   }
 
@@ -76,7 +76,7 @@ class CircularList extends CircularNode {
    * @param {CircularNode}
    * @param {CircularNode}
    */
-  remove(node) {
+  remove (node) {
     if (node.List !== this) {
       throw new Error('Node is not assigned to this list!')
     }
@@ -86,11 +86,11 @@ class CircularList extends CircularNode {
     node.List = null
 
     if (this._size === 1) {
-      this.first = null
+      this._first = null
     }
     else {
-      if (this.first === node) {
-        this.first = this.first.Next
+      if (this._first === node) {
+        this._first = this.first.Next
       }
 
       node.previous.next = node.next
@@ -100,36 +100,35 @@ class CircularList extends CircularNode {
     node.previous = null;
     node.next = null;
 
-    this.size--;
+    this._size--;
   }
 
   /**
    * @return {number}
    */
-  //get size() {
-  //return this.size;
-  //}
+  get size () {
+    return this._size;
+  }
 
   /**
    * @return {T}
    */
   //first() {
-  //  return this.first;
+  //  return this._first;
   //}
 
-  *generator() {
-    let current = this.first;
-    let i = 0;
+  *generator () {
+    let current = this._first
+    let i = 0
 
     while (current !== null) {
-      yield current;
+      yield current
 
-      if (++i === this.size) {
-        return;
+      if (++i === this._size) {
+        return
       }
 
-      current = current.next;
+      current = current.next
     }
   }
 }
-export {CircularList};
