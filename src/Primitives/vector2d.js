@@ -36,7 +36,7 @@ export default class Vector2d {
   }
 
   add(v) {
-    return new Vector2d(this.d + v.x, this.y + v.y);
+    return new Vector2d(this.x + v.x, this.y + v.y);
   }
 
   sub(v) {
