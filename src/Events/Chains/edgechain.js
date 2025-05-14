@@ -15,7 +15,7 @@ export default class EdgeChain {
   edgeList
 
   /**
-   * @param {EdgeList} edgeList List of edges
+   * @param {List} edgeList List of EdgeEvents
    */
   constructor (edgeList) {
     this.edgeList = edgeList
