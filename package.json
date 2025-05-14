@@ -14,6 +14,7 @@
     "coveralls": "*",
     "c8": "*",
     "eslint": "^8.13",
+    "eslint-config-standard": "*",
     "eslint-plugin-jsdoc": "*",
     "jest": "*",
     "jest-environment-jsdom": "*",
