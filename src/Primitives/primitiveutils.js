@@ -64,6 +64,11 @@ export default class PrimitiveUtils {
 
   static Empty = new IntersectPoints()
 
+  /**
+   * @param {Vector2d} point
+   * @param {LineParametric2d} ray
+   * @param {number} epsilon
+   */
   static IsPointOnRay (point, ray, epsilon) {
     const rayDirection = new Vector2d(ray.U.X, ray.U.Y).Normalized()
 
