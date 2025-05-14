@@ -22,7 +22,7 @@ export default class LineParametric2d {
 
     const c = -(a * x + b * y);
 
-    return new LineLinear2d().setFromCoefficients(A, B, C);
+    return new LineLinear2d().setFromCoefficients(a, b, c);
   }
 
   static collide(ray, line, epsilon) {
