@@ -7,8 +7,13 @@ import Vector2d from './vector2d';
  */
 
 export default class LineLinear2d {
+  // @type {number}
   a;
+
+  // @type {number}
   b;
+
+  // @type {number}
   c;
 
   /**
