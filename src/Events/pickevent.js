@@ -1,3 +1,5 @@
+import SkeletonEvent from './skeletonevent';
+
 export default class PickEvent extends SkeletonEvent {
   // @type {EdgeChain}
   chain = null;
