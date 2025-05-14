@@ -1,6 +1,6 @@
-import Vector2d from './Vector2d';
+import Vector2d from './vector2d';
 import LineLinear2d from './linelinear2d';
-import PrimitiveUtils from './PrimitiveUtils';
+import PrimitiveUtils from './primitiveutils';
 
 export default class LineParametric2d {
   static empty = new LineParametric2d(Vector2d.Empty, Vector2d.Empty);
