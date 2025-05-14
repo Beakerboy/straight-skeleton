@@ -1,13 +1,13 @@
-import SplitEvent from './SplitEvent';
+import SplitEvent from './splitevent';
 
 export default class VertexSplitEvent extends SplitEvent {
   constructor(point, distance, parent) {
     super(point, distance, parent, null);
   }
 
-  ToString() {
+  toString() {
     return 'VertexSplitEvent [V=' + this.v + ', Parent=' +
-      (this.Parent !== null ? this.Parent.Point.ToString() : 'null')
+      (this.parent !== null ? this.parent.point.toString() : 'null')
       + ', Distance=' + this.distance + ']';
   }
 }
