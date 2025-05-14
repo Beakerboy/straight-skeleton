@@ -10,7 +10,7 @@ jobs:
         yarn --prod=false
     - name: Lint
       run: |
-        eslint --init
+        yarn run eslint --init
         yarn run eslint .
     - name: Test
       run: CI=true NODE_OPTIONS="$NODE_OPTIONS --experimental-vm-modules" timeout 20s npm test
