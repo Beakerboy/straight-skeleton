@@ -3,11 +3,22 @@ import Vector2d from './Primitives/vector2d'
 import { List } from './utils'
 
 export default class EdgeResult {
-  Edge
-  Polygon
+  /**
+   * @type {Edge}
+   */
+  edge
 
+  /**
+   * @type {List}
+   */
+  polygon
+
+  /**
+   * @param {Edge} edge
+   * @param {List} polygon
+   */
   constructor (edge, polygon) {
-    this.Edge = edge
-    this.Polygon = polygon
+    this.edge = edge
+    this.polygon = polygon
   }
 }
