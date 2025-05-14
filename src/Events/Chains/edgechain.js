@@ -23,42 +23,42 @@ export default class EdgeChain {
   }
 
   /**
-   * @returns {Edge}
+   * @returns {Edge} The previous edge
    */
   get previousEdge () {
     return this.edgeList[0].previousVertex.previousEdge
   }
 
   /**
-   * @returns {Edge}
+   * @returns {Edge} The next edge
    */
   get nextEdge () {
     return this.edgeList[this.edgeList.count - 1].nextVertex.nextEdge
   }
 
   /**
-   * @returns {Vertex}
+   * @returns {Vertex} The previous vertex
    */
   get previousVertex () {
     return this.EdgeList[0].PreviousVertex
   }
 
   /**
-   * @returns {Vertex}
+   * @returns {Vertex} the next vertex
    */
   get nextVertex () {
     return this.EdgeList[this.EdgeList.Count - 1].NextVertex
   }
 
   /**
-   * @returns {Vertex}
+   * @returns {Vertex} The current vertex
    */
   get currentVertex () {
     return null
   }
 
   /**
-   * @returns {ChainType}
+   * @returns {ChainType} The chain type
    */
   get chainType () {
     return this._closed ? ChainType.CLOSED_EDGE : ChainType.EDGE
