@@ -1,7 +1,4 @@
-import SkeletonEvent from './SkeletonEvent';
-import Edge from '../Circular/Edge';
-import Vertex from '../Circular/Vertex';
-import Vector2d from '../Primitives/Vector2d';
+import SkeletonEvent from './skeletonevent';
 
 export default class SplitEvent extends SkeletonEvent {
   //Edge
