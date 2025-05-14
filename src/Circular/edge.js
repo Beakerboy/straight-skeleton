@@ -3,6 +3,11 @@ import Vector2d from '../Primitives/vector2d'
 import LineLinear2d from '../Primitives/linelinear2d'
 import LineParametric2d from '../Primitives/lineparametric2d'
 
+/**
+ * A line segment
+ * How is this different that LineParametric?
+ * Why does it extend Node?
+ */
 export default class Edge extends CircularNode {
   /**
    * @type {Vector2d}
@@ -35,8 +40,8 @@ export default class Edge extends CircularNode {
   bisectorPrevious = null
 
   /**
-   * @param {Vector2d} begin
-   * @param {Vector2d} end
+   * @param {Vector2d} begin Start Point
+   * @param {Vector2d} end End Point
    */
   constructor (begin, end) {
     super()
