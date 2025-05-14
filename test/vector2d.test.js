@@ -16,21 +16,21 @@ test('Negate', () => {
 test('Distance To', () => {
   const v1 = new Vector2d(0, 0);
   const v2 = new Vector2d(1, 1);
-  result = v2.distanceTo(v1);
+  const result = v2.distanceTo(v1);
   expect(result).toBe(Math.sqrt(2));
 });
 
 test('Dot', () => {
   const v1 = new Vector2d(1, 2);
   const v2 = new Vector2d(4, 3);
-  result = v1.dot(v2);
+  const result = v1.dot(v2);
   expect(result).toBe(10);
 });
 
 test('Distance Squared', () => {
   const v1 = new Vector2d(0, 0);
   const v2 = new Vector2d(1, 1);
-  result = v2.distanceSquared(v1);
+  const result = v2.distanceSquared(v1);
   expect(result).toBe(2);
 });
 
@@ -38,37 +38,36 @@ test('Add', () => {
   const v1 = new Vector2d(1, 2);
   const v2 = new Vector2d(4, 3);
   result = v1.add(v2);
-  expect(result.x).toBe(5);
+  const expect(result.x).toBe(5);
   expect(result.y).toBe(5);
 });
 
 test('Sub', () => {
   const v1 = new Vector2d(1, 2);
   const v2 = new Vector2d(4, 3);
-  result = v2.sub(v1);
+  const result = v2.sub(v1);
   expect(result.x).toBe(3);
   expect(result.y).toBe(1);
 });
 
 test('Add', () => {
   const v1 = new Vector2d(1, 2);
-  result = v1.multiplyScalar(3);
+  const result = v1.multiplyScalar(3);
   expect(result.x).toBe(3);
   expect(result.y).toBe(6);
 });
 
 test('Equals', () => {
   const v1 = new Vector2d(1, 2);
-  result = v1.equals(v1);
+  const result = v1.equals(v1);
   expect(result).toBe(true);
 });
 
 test('Not Equals', () => {
   const v1 = new Vector2d(1, 2);
   const v2 = new Vector2d(2, 1);
-  result = v1.notEquals(v2)
+  const result = v1.notEquals(v2)
   expect(result).toBe(true);
-  result = v1.notEquals(v1)
+  const result = v1.notEquals(v1)
   expect(result).toBe(false);
 });
-
