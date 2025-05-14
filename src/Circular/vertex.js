@@ -4,6 +4,9 @@ import LineParametric2d from '../Primitives/lineparametric2d'
 import Edge from './edge'
 import { FaceNode } from '../Path/facenode'
 
+/**
+ * Do we need to check that the point is on both edges?
+ */
 export default class Vertex extends CircularNode {
   roundDigitCount = 5
 
@@ -48,11 +51,11 @@ export default class Vertex extends CircularNode {
   isProcessed
 
   /**
-   * @param {Vector2d} point
-   * @param {number} distance
-   * @param {LineParametric2d} bisector
-   * @param {Edge} previousEdge
-   * @param {Edge} nextEdge
+   * @param {Vector2d} point A Point
+   * @param {number} distance Distance
+   * @param {LineParametric2d} bisector A Bisector
+   * @param {Edge} previousEdge An Edge
+   * @param {Edge} nextEdge Another Edge
    */
   constructor (point, distance, bisector, previousEdge, nextEdge) {
     super()
@@ -67,7 +70,7 @@ export default class Vertex extends CircularNode {
   }
 
   /**
-   * @returns {string}
+   * @returns {string} Object Data
    */
   toString () {
     return 'Vertex [v=' + this.point + ', IsProcessed=' + this.isProcessed +
