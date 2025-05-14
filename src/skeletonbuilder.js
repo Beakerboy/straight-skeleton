@@ -717,9 +717,9 @@ export default class SkeletonBuilder {
   }
 
   /**
-   * @param {} vertex
-   * @param {} edge
-   * @returns {}
+   * @param {Vertex} vertex Bertex
+   * @param {Edge} edge Esge
+   * @returns {SplitCandidate} Candidate
    */
   static calcCandidatePointForSplit (vertex, edge) {
     const vertexEdge = this.ChoseLessParallelVertexEdge(vertex, edge)
