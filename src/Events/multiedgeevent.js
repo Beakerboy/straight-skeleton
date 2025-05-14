@@ -1,6 +1,4 @@
 import SkeletonEvent from './skeletonevent';
-import Vector2d from '../Primitives/vector2d';
-import EdgeChain from './Chains/edgechain';
 
 export default class MultiEdgeEvent extends SkeletonEvent {
   //EdgeChain
