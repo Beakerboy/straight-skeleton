@@ -1,11 +1,11 @@
-import CircularNode from './CircularNode';
-import Vector2d from '../Primitives/Vector2d';
-import LineParametric2d from '../Primitives/LineParametric2d';
-import Edge from './Edge';
-import {FaceNode} from '../Path/FaceNode';
+import CircularNode from './circularnode';
+import Vector2d from '../Primitives/vector2d';
+import LineParametric2d from '../Primitives/lineparametric2d';
+import Edge from './edge';
+import {FaceNode} from '../Path/facenode';
 
 class Vertex extends CircularNode {
-  RoundDigitCount = 5;
+  roundDigitCount = 5;
 
   /**
    * @type {Vector2d}
@@ -58,7 +58,7 @@ class Vertex extends CircularNode {
     super();
 
     this.point = point;
-    this.distance = +distance.toFixed(this.RoundDigitCount);
+    this.distance = +distance.toFixed(this.roundDigitCount);
     this.bisector = bisector;
     this.previousEdge = previousEdge;
     this.nextEdge = nextEdge;
@@ -70,8 +70,8 @@ class Vertex extends CircularNode {
    * @return {string}
    */
   toString() {
-    return 'Vertex [v=' + this.Point + ', IsProcessed=' + this.IsProcessed +
-      ', Bisector=' + this.Bisector + ', PreviousEdge=' + this.PreviousEdge +
-      ', NextEdge=' + this.NextEdge;
+    return 'Vertex [v=' + this.point + ', IsProcessed=' + this.isProcessed +
+      ', Bisector=' + this.bisector + ', PreviousEdge=' + this.previousEdge +
+      ', NextEdge=' + this.nextEdge;
   }
 }
