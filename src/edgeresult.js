@@ -13,8 +13,8 @@ export default class EdgeResult {
   polygon
 
   /**
-   * @param {Edge} edge
-   * @param {List} polygon
+   * @param {Edge} edge Edge
+   * @param {List} polygon Polygon
    */
   constructor (edge, polygon) {
     this.edge = edge
