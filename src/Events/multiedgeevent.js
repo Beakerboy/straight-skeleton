@@ -6,13 +6,13 @@ export default class MultiEdgeEvent extends SkeletonEvent {
   //EdgeChain
   chain;
 
-  IsObsolete() {
+  isObsolete() {
     return false;
   }
 
   constructor(point, distance, chain) {
     super(point, distance);
 
-    this.Chain = chain;
+    this.chain = chain;
   }
 }
