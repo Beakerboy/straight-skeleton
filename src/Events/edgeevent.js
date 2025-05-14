@@ -2,7 +2,7 @@ import SkeletonEvent from './skeletonevent'
 import Vertex from '../Circular/vertex'
 import Vector2d from '../Primitives/vector2d'
 
-class EdgeEvent extends SkeletonEvent {
+export default class EdgeEvent extends SkeletonEvent {
   /**
    * @type {Vertex}
    */
@@ -21,7 +21,7 @@ class EdgeEvent extends SkeletonEvent {
   }
 
   /**
-   * @ {}
+   * @param {Vector2d} point
    */
   constructor (point, distance, previousVertex, nextVertex) {
     super(point, distance)
