@@ -103,14 +103,14 @@ export default class CircularList extends CircularNode {
   }
 
   /**
-   * @returns {number}
+   * @returns {number} Ring Size
    */
   get size () {
     return this._size
   }
 
   /**
-   * @returns {CircularNode}
+   * @returns {CircularNode} First Node
    */
   get first () {
     return this._first
