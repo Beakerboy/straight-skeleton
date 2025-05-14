@@ -6,32 +6,32 @@ const ChainType = require('./ChainType');
 
 class EdgeChain {
   constructor(edgeList) {
-    this.EdgeList = edgeList;
-    this._closed = this.PreviousVertex === this.NextVertex;
+    this.edgeList = edgeList;
+    this._closed = this.previousVertex === this.nextVertex;
   }
 
-  get PreviousEdge() {
-    return this.EdgeList[0].PreviousVertex.PreviousEdge;
+  get previousEdge() {
+    return this.edgeList[0].previousVertex.previousEdge;
   }
 
-  get NextEdge() {
-    return this.EdgeList[this.EdgeList.Count - 1].NextVertex.NextEdge;
+  get nextEdge() {
+    return this.edgeList[this.edgeList.count - 1].nextVertex.nextEdge;
   }
 
-  get PreviousVertex() {
+  get previousVertex() {
     return this.EdgeList[0].PreviousVertex;
   }
 
-  get NextVertex() {
+  get nextVertex() {
     return this.EdgeList[this.EdgeList.Count - 1].NextVertex;
   }
 
-  get CurrentVertex() {
+  get currentVertex() {
     return null;
   }
 
-  get ChainType() {
-    return this._closed ? ChainType.ClosedEdge : ChainType.Edge;
+  get chainType() {
+    return this._closed ? ChainType.CLOSED_EDGE : ChainType.EDGE;
   }
 }
 
