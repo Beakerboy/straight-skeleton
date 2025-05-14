@@ -224,7 +224,7 @@ export default class PrimitiveUtils {
       const x = point.X
       const y = point.Y
 
-      if (node1.Y < y && node2.Y >= y || node2.Y < y && node1.Y >= y) {
+      if ((node1.Y < y && node2.Y >= y) || (node2.Y < y && node1.Y >= y)) {
         if (node1.X + (y - node1.Y) / (node2.Y - node1.Y) * (node2.X - node1.X) < x) { oddNodes = !oddNodes }
       }
     }
