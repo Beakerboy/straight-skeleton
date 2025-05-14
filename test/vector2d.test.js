@@ -37,8 +37,8 @@ test('Distance Squared', () => {
 test('Add', () => {
   const v1 = new Vector2d(1, 2);
   const v2 = new Vector2d(4, 3);
-  result = v1.add(v2);
-  const expect(result.x).toBe(5);
+  const result = v1.add(v2);
+  expect(result.x).toBe(5);
   expect(result.y).toBe(5);
 });
 
