@@ -1,3 +1,4 @@
+import Skeleton from '../src/skeleton.js'
 import { List } from '../src/utils.js'
 
 export default class SkeletinTestUtil {
@@ -10,7 +11,7 @@ export default class SkeletinTestUtil {
   }
 
   /**
-   * @param {Skeleton} sk
+   * @param {Skeleton} sk The skeleton
    * @returns {List} List of face points
    */
   getFacePoints (sk) {
