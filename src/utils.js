@@ -1,8 +1,9 @@
 /**
  *
- * @param array
- * @param index
- * @param item
+ * @param {} array
+ * @param {} index
+ * @param {} item
+ * @returns {}
  */
 function insertInArray (array, index, item) {
   const items = Array.prototype.slice.call(arguments, 2)
@@ -20,7 +21,7 @@ export class List {
     this.arr.push(item)
   }
 
-  Insert (index, item) {
+  insert (index, item) {
     const newArr = insertInArray(this.arr, index, item)
 
     this.arr.length = newArr.length
@@ -30,15 +31,15 @@ export class List {
     }
   }
 
-  Reverse () {
+  reverse () {
     this.arr.reverse()
   }
 
-  Clear () {
+  clear () {
     this.arr.length = 0
   }
 
-  Count () {
+  count () {
     return this.arr.length
   }
 
@@ -47,7 +48,7 @@ export class List {
    * @param {item => boolean} filter
    * @returns {boolean}
    */
-  Any (filter) {
+  any (filter) {
     if (!filter) {
       filter = () => true
     }
@@ -61,11 +62,11 @@ export class List {
     return false
   }
 
-  RemoveAt (index) {
+  removeAt (index) {
     this.arr.splice(index, 1)
   }
 
-  Remove (itemToRemove) {
+  remove (itemToRemove) {
     const newArr = this.arr.filter(item => item !== itemToRemove)
 
     this.arr.length = newArr.length
@@ -81,27 +82,27 @@ export class List {
     }
   }
 
-  Sort (comparer) {
+  sort (comparer) {
     this.arr.sort(comparer.Compare.bind(comparer))
   }
 }
 
 export class HashSet {
-  Set
+  set
 
   constructor () {
     this.Set = new Set()
   }
 
-  Add (item) {
+  add (item) {
     this.Set.add(item)
   }
 
-  Remove (item) {
+  remove (item) {
     this.Set.delete(item)
   }
 
-  RemoveWhere (filter) {
+  removeWhere (filter) {
     for (const item of this.Set.values()) {
       if (filter(item)) {
         this.Set.delete(item)
@@ -109,12 +110,12 @@ export class HashSet {
     }
   }
 
-  Contains (item) {
-    return this.Set.has(item)
+  contains (item) {
+    return this.set.has(item)
   }
 
-  Clear () {
-    this.Set.clear()
+  clear () {
+    this.set.clear()
   }
 
   * [Symbol.iterator] () {
