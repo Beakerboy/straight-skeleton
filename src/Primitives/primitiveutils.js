@@ -186,11 +186,14 @@ export default class PrimitiveUtils {
     return u.X * v.Y - u.Y * v.X
   }
 
-  static IsClockwisePolygon (polygon) {
-    return PrimitiveUtils.Area(polygon) < 0
+  /**
+   * @param {List} polygon
+   */
+  static isClockwisePolygon (polygon) {
+    return PrimitiveUtils.area(polygon) < 0
   }
 
-  static Area (polygon) {
+  static area (polygon) {
     const n = polygon.Count
     let A = 0
     for (let p = n - 1, q = 0; q < n; p = q++) { A += polygon[p].X * polygon[q].Y - polygon[q].X * polygon[p].Y }
@@ -198,8 +201,8 @@ export default class PrimitiveUtils {
     return A * 0.5
   }
 
-  static MakeCounterClockwise (polygon) {
-    if (PrimitiveUtils.IsClockwisePolygon(polygon)) { polygon.Reverse() }
+  static makeCounterClockwise (polygon) {
+    if (PrimitiveUtils.isClockwisePolygon(polygon)) { polygon.reverse() }
 
     return polygon
   }
