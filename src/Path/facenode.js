@@ -3,22 +3,37 @@ import Vertex from '../Circular/vertex'
 import FaceQueue from './facequeue'
 
 export default class FaceNode extends PathQueueNode {
-  Vertex = null
+  /**
+   * @type {Vertex}
+   */
+  vertex = null
 
+  /**
+   * @param {Vertex} vertex
+   */
   constructor (vertex) {
     super()
-    this.Vertex = vertex
+    this.vertex = vertex
   }
 
-  FaceQueue () {
-    return this.List
+  /**
+   * @returns {FaceQueue}
+   */
+  get faceQueue () {
+    return this.list
   }
 
-  IsQueueUnconnected () {
-    return this.FaceQueue.IsUnconnected
+  /**
+   * @returns {boolean}
+   */
+  get isQueueUnconnected () {
+    return this.faceQueue.isUnconnected
   }
 
+  /**
+   * Does Something
+   */
   QueueClose () {
-    this.FaceQueue.Close()
+    this.faceQueue.close()
   }
 }
