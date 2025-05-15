@@ -16,11 +16,9 @@ export default class LineParametric2d {
   u = null
 
   /**
-   *
-   * @param {Vector2d}
-   * @param {Vector2d}
-   * @param pA
-   * @param pU
+   * Why A and U instead of A and B?
+   * @param {Vector2d} pA Point 1
+   * @param {Vector2d} pU Point 2
    */
   constructor (pA, pU) {
     this.a = pA
@@ -28,8 +26,8 @@ export default class LineParametric2d {
   }
 
   /**
-   *
-   * @returns {LineLinear2d}
+   * Create a ray?
+   * @returns {LineLinear2d} The ray
    */
   createLinearForm () {
     const x = this.a.x
@@ -46,13 +44,10 @@ export default class LineParametric2d {
   /**
    *
    *
-   * @param {LineParametric2d}
-   * @param {LineLinear2d}
-   * @param {number}
-   * @param ray
-   * @param line
-   * @param epsilon
-   * @returns {Vector2d}
+   * @param {LineParametric2d} ray The ray
+   * @param {LineLinear2d} line The line
+   * @param {number} epsilon error
+   * @returns {Vector2d} The interaection point
    */
   static collide (ray, line, epsilon) {
     const collide = LineLinear2d.collide(ray.createLinearForm(), line)
@@ -65,11 +60,9 @@ export default class LineParametric2d {
   }
 
   /**
-   * @param {Vector2d}
-   * @param {number}
-   * @param point
-   * @param epsilon
-   * @returns {boolean}
+   * @param {Vector2d} point The point
+   * @param {number} epsilon error
+   * @returns {boolean} Is it?
    */
   isOnLeftSite (point, epsilon) {
     const direction = point.sub(this.a)
@@ -77,11 +70,9 @@ export default class LineParametric2d {
   }
 
   /**
-   * @param {Vector2d}
-   * @param {number}
-   * @param point
-   * @param epsilon
-   * @returns {boolean}
+   * @param {Vector2d} point The point
+   * @param {number} epsilon error
+   * @returns {boolean} Is it?
    */
   isOnRightSite (point, epsilon) {
     const direction = point.sub(this.a)
