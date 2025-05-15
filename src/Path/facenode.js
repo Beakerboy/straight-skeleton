@@ -2,7 +2,7 @@ import PathQueueNode from './pathqueuenode'
 import Vertex from '../Circular/vertex'
 import FaceQueue from './facequeue'
 
-export default class FaceNode extends PathQueueNode {
+export class FaceNode extends PathQueueNode {
   /**
    * @type {Vertex}
    */
