@@ -1,4 +1,4 @@
-export default class Skeleton {
+export class Skeleton {
   // list(edgeresult)
   Edges = null
   // dict(vector2d, number)
