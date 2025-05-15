@@ -18,10 +18,8 @@ export default class LineLinear2d {
 
   /**
    * Construct a line that passes through the provided points.
-   * @param {Vector2d}
-   * @param {Vector2d}
-   * @param pP1
-   * @param pP2
+   * @param {Vector2d} pP1 Point 1
+   * @param {Vector2d} pP2 Point 2
    */
   constructor (pP1 = Vector2d.empty, pP2 = Vector2d.empty) {
     this.a = pP1.y - pP2.y
@@ -31,9 +29,9 @@ export default class LineLinear2d {
 
   /**
    * Should this be a static factory method?
-   * @param a
-   * @param b
-   * @param c
+   * @param {number} a
+   * @param {number} b
+   * @param {number} c
    */
   setFromCoefficients (a, b, c) {
     this.a = a
@@ -45,9 +43,8 @@ export default class LineLinear2d {
 
   /**
    *
-   * @param {LineLinear2d}
-   * @param pLine
-   * @returns {Vector2d}
+   * @param {LineLinear2d} pLine The line
+   * @returns {Vector2d} A point
    */
   collide (pLine) {
     return LineLinear2d.collide(this, pLine)
@@ -55,31 +52,25 @@ export default class LineLinear2d {
 
   /**
    *
-   * @param {LineLinear2d}
-   * @param {LineLinear2d}
-   * @param pLine1
-   * @param pLine2
-   * @returns {Vector2d}
+   * @param {LineLinear2d} pLine1 Line 1
+   * @param {LineLinear2d} pLine2 Line 2
+   * @returns {Vector2d} Collision point
    */
   static collide (pLine1, pLine2) {
-    return LineLinear2d.CollideCoeff(pLine1.a, pLine1.b, pLine1.c, pLine2.a, pLine2.b, pLine2.c)
+    return LineLinear2d.collideCoeff(pLine1.a, pLine1.b, pLine1.c, pLine2.a, pLine2.b, pLine2.c)
   }
 
   /**
-   *
-   * @param {number}
-   * @param {number}
-   * @param {number}
-   * @param {number}
-   * @param {number}
-   * @param {number}
-   * @param A1
-   * @param B1
-   * @param C1
-   * @param A2
-   * @param B2
-   * @param C2
-   * @returns {Vector2d}
+   * is this ever called from outside the class?
+   * might be better as a private function or
+   * just roll it into collide.
+   * @param {number} A1 Coefficient
+   * @param {number} B1 Coefficient
+   * @param {number} C1 Coefficient
+   * @param {number} A2 Coefficient
+   * @param {number} B2 Coefficient
+   * @param {number} C2 Coefficient
+   * @returns {Vector2d} collision point
    */
   static collideCoeff (A1, B1, C1, A2, B2, C2) {
     const WAB = A1 * B2 - A2 * B1
