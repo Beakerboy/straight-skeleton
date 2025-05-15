@@ -46,8 +46,8 @@ export class List {
 
   /**
    * return true if any elements in the array match the filter
-   * @param {function} filter
-   * @returns {boolean}
+   * @param {Function} filter arrow function
+   * @returns {boolean} result
    */
   any (filter) {
     if (!filter) {
