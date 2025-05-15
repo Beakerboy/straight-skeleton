@@ -2,8 +2,8 @@ import FaceNode from './facenode'
 
 export default class FaceQueueUtil {
   /**
-   * @param {FaceNode} firstFace
-   * @param {FaceNode} secondFace
+   * @param {FaceNode} firstFace Face 1
+   * @param {FaceNode} secondFace Face 2
    */
   static connectQueues (firstFace, secondFace) {
     if (firstFace.list === null) { throw new Error('firstFace.list cannot be null.') }
