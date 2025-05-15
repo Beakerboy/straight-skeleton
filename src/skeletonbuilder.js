@@ -381,7 +381,7 @@ export default class SkeletonBuilder {
       for (const chain of edgeChains) {
         if (this.isInEdgeChain(split, chain)) {
           shouldContinue = true
-          break;
+          break
         }
       }
 
