@@ -1,4 +1,4 @@
-import FaceNode from './facenode'
+import { FaceNode } from './facenode'
 
 export default class FaceQueueUtil {
   /**
