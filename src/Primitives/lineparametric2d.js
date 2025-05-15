@@ -50,6 +50,8 @@ export default class LineParametric2d {
    * @returns {Vector2d} The interaection point
    */
   static collide (ray, line, epsilon) {
+    // can this be changed to the non-static version?
+    // ray.createLinearForm().collide(line)
     const collide = LineLinear2d.collide(ray.createLinearForm(), line)
     if (collide.equals(Vector2d.empty)) {
       return Vector2d.empty
