@@ -33,43 +33,46 @@ export default class PrimitiveUtils {
     return new Vector2d(v.Y, -v.X)
   }
 
-  static OrthogonalProjection (unitVector, vectorToProject) {
-    const n = new Vector2d(unitVector.X, unitVector.Y).Normalized()
+  static orthogonalProjection (unitVector, vectorToProject) {
+    const n = new Vector2d(unitVector.x, unitVector.y).normalized()
 
-    const px = vectorToProject.X
-    const py = vectorToProject.Y
+    const px = vectorToProject.x
+    const py = vectorToProject.y
 
-    const ax = n.X
-    const ay = n.Y
+    const ax = n.x
+    const ay = n.y
 
     return new Vector2d(px * ax * ax + py * ax * ay, px * ax * ay + py * ay * ay)
   }
 
-  static BisectorNormalized (norm1, norm2) {
-    const e1v = PrimitiveUtils.OrthogonalLeft(norm1)
-    const e2v = PrimitiveUtils.OrthogonalLeft(norm2)
+  static bisectorNormalized (norm1, norm2) {
+    const e1v = PrimitiveUtils.orthogonalLeft(norm1)
+    const e2v = PrimitiveUtils.orthogonalLeft(norm2)
 
-    if (norm1.Dot(norm2) > 0) { return e1v.Add(e2v) }
+    if (norm1.dot(norm2) > 0) { return e1v.add(e2v) }
 
-    let ret = new Vector2d(norm1.X, norm1.Y)
-    ret.Negate()
-    ret = ret.Add(norm2)
+    let ret = new Vector2d(norm1.x, norm1.y)
+    ret.negate()
+    ret = ret.add(norm2)
 
-    if (e1v.Dot(norm2) < 0) { ret.Negate() }
+    if (e1v.dot(norm2) < 0) {
+      ret.negate()
+    }
 
     return ret
   }
 
-  static SmallNum = 0.00000001
+  static smallNum = 0.00000001
 
-  static Empty = new IntersectPoints()
+  static empty = new IntersectPoints()
 
   /**
    * @param {Vector2d} point Point
    * @param {LineParametric2d} ray Ray
    * @param {number} epsilon epsilon
+   * @returns {boolean} Is it?
    */
-  static IsPointOnRay (point, ray, epsilon) {
+  static isPointOnRay (point, ray, epsilon) {
     const rayDirection = new Vector2d(ray.U.X, ray.U.Y).Normalized()
 
     const pointVector = point.Sub(ray.A)
@@ -87,7 +90,7 @@ export default class PrimitiveUtils {
     return -epsilon < dot && dot < epsilon
   }
 
-  static IntersectRays2D (r1, r2) {
+  static intersectRays2D (r1, r2) {
     const s1p0 = r1.A
     const s1p1 = r1.A.Add(r1.U)
 
@@ -171,23 +174,24 @@ export default class PrimitiveUtils {
     return new IntersectPoints(IO)
   }
 
-  static InCollinearRay (p, rayStart, rayDirection) {
-    const collideVector = p.Sub(rayStart)
-    const dot = rayDirection.Dot(collideVector)
+  static inCollinearRay (p, rayStart, rayDirection) {
+    const collideVector = p.sub(rayStart)
+    const dot = rayDirection.dot(collideVector)
 
     return !(dot < 0)
   }
 
-  static Dot (u, v) {
-    return u.Dot(v)
+  static dot (u, v) {
+    return u.dot(v)
   }
 
-  static Perp (u, v) {
-    return u.X * v.Y - u.Y * v.X
+  static perp (u, v) {
+    return u.x * v.y - u.y * v.x
   }
 
   /**
-   * @param {List} polygon
+   * @param {List} polygon The shape
+   * @returns {boolean} Is it?
    */
   static isClockwisePolygon (polygon) {
     return PrimitiveUtils.area(polygon) < 0
