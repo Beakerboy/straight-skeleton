@@ -1,5 +1,5 @@
 import { Skeleton } from './skeleton'
-import { HashSet, List, Dictionary, GeoJSONMultipolygon } from './utils'
+import { HashSet, List, Dictionary} from './utils'
 import Vector2d from './Primitives/vector2d.js'
 import PriorityQueue from './Primitives/priorityqueue'
 import Edge from './Circular/edge'
@@ -28,7 +28,7 @@ export default class SkeletonBuilder {
   static SplitEpsilon = 1e-10
 
   /**
-   * @param {GeoJSONMultipolygon} multipolygon a multipolygon
+   * @param {Array} multipolygon a multipolygon
    * @returns {Skeleton} The Skeleton
    */
   static BuildFromGeoJSON (multipolygon) {
