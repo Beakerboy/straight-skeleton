@@ -11,7 +11,7 @@ export default class SplitChain {
   _splitEvent
 
   /**
-   * @param {SplitEvent} event
+   * @param {SplitEvent} event The event
    */
   constructor (event) {
     this._splitEvent = event
