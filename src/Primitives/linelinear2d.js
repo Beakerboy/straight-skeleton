@@ -29,9 +29,9 @@ export default class LineLinear2d {
 
   /**
    * Should this be a static factory method?
-   * @param {number} a
-   * @param {number} b
-   * @param {number} c
+   * @param {number} a Coefficient
+   * @param {number} b Coefficient
+   * @param {number} c Coefficient
    */
   setFromCoefficients (a, b, c) {
     this.a = a
