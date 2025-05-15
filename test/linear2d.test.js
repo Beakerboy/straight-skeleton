@@ -11,13 +11,13 @@ test('Comstructor', () => {
 })
 
 test('Factory', () => {
-  
+
 })
 
 test('Collide', () => {
-  
+
 })
 
 test('Contains', () => {
-  
+
 })
