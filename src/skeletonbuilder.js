@@ -393,34 +393,38 @@ export default class SkeletonBuilder {
     return edgeList.Any(edgeEvent => edgeEvent.PreviousVertex === splitParent || edgeEvent.NextVertex === splitParent)
   }
 
-  static CreateEdgeChain (edgeCluster) {
+  static createEdgeChain (edgeCluster) {
     const edgeList = new List()
 
-    edgeList.Add(edgeCluster[0])
-    edgeCluster.RemoveAt(0)
+    edgeList.add(edgeCluster[0])
+    edgeCluster.removeAt(0)
 
-    loop: for (; ;) {
-      const beginVertex = edgeList[0].PreviousVertex
-      const endVertex = edgeList[edgeList.Count - 1].NextVertex
+    while (true) {
+      const beginVertex = edgeList[0].previousVertex;
+      const endVertex = edgeList[edgeList.count - 1].nextVertex;
 
-      for (let i = 0; i < edgeCluster.Count; i++) {
-        const edge = edgeCluster[i]
-        if (edge.PreviousVertex === endVertex) {
-          edgeCluster.RemoveAt(i)
-          edgeList.Add(edge)
-          // goto loop;
-          continue loop
+      let foundMatch = false;
+
+      for (let i = 0; i < edgeCluster.count; i++) {
+        const edge = edgeCluster[i];
+        if (edge.previousVertex === endVertex) {
+          edgeCluster.removeAt(i);
+          edgeList.add(edge);
+          foundMatch = true;
+          break; // Break inner loop to restart
         }
-        if (edge.NextVertex === beginVertex) {
-          edgeCluster.RemoveAt(i)
-          edgeList.Insert(0, edge)
-          // goto loop;
-          continue loop
+        if (edge.nextVertex === beginVertex) {
+          edgeCluster.removeAt(i);
+          edgeList.insert(0, edge);
+          foundMatch = true;
+          break; // Break inner loop to restart
         }
       }
-      break
-    }
 
+      if (!foundMatch) {
+        break; // Exit outer loop if no edge was added
+      }
+    }
     return edgeList
   }
 
