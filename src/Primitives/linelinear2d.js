@@ -32,6 +32,7 @@ export default class LineLinear2d {
    * @param {number} a Coefficient
    * @param {number} b Coefficient
    * @param {number} c Coefficient
+   * @returns {LineLinear2d} The ray
    */
   setFromCoefficients (a, b, c) {
     this.a = a
