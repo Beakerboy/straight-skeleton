@@ -58,8 +58,9 @@ export default class PathQueue {
   }
 
   /**
-   * @param {PathQueueNode} node
-   * @returns {PathQueueNode}
+   * Remove the specified node from the queue
+   * @param {PathQueueNode} node Target node
+   * @returns {PathQueueNode} New end node?
    */
   pop (node) {
     if (node.list !== this) { throw new Error('Node is not assigned to this list!') }
