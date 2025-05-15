@@ -14,7 +14,7 @@ export default class EdgeEvent extends SkeletonEvent {
   previousVertex
 
   /**
-   * @returns {boolean}
+   * @returns {boolean} Is it?
    */
   get isObsolete () {
     return this.previousVertex.isProcessed || this.nextVertex.isProcessed
