@@ -367,20 +367,20 @@ export default class SkeletonBuilder {
 
     const edgeChains = new List()
 
-    while (edgeCluster.Count > 0) { edgeChains.Add(new EdgeChain(this.CreateEdgeChain(edgeCluster))) }
+    while (edgeCluster.count > 0) { edgeChains.add(new EdgeChain(this.createEdgeChain(edgeCluster))) }
 
-    const chains = new List(edgeChains.Count)
-    for (const edgeChain of edgeChains) { chains.Add(edgeChain) }
+    const chains = new List(edgeChains.count)
+    for (const edgeChain of edgeChains) { chains.add(edgeChain) }
 
-    splitEventLoop: while (splitCluster.Any()) {
+    splitEventLoop: while (splitCluster.any()) {
       const split = splitCluster[0]
-      splitCluster.RemoveAt(0)
+      splitCluster.removeAt(0)
 
       for (const chain of edgeChains) {
-        if (this.IsInEdgeChain(split, chain)) { continue splitEventLoop } // goto splitEventLoop;
+        if (this.isInEdgeChain(split, chain)) { continue splitEventLoop } // goto splitEventLoop;
       }
 
-      chains.Add(new SplitChain(split))
+      chains.add(new SplitChain(split))
     }
 
     return chains
