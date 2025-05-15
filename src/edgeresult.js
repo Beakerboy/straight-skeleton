@@ -1,13 +1,23 @@
-import Edge from './Circular/edge';
-import Vector2d from './Primitives/vector2d';
-import {List} from './utils';
+import Edge from './Circular/edge'
+import { List } from './utils'
 
 export default class EdgeResult {
-  Edge;
-  Polygon;
+  /**
+   * @type {Edge}
+   */
+  edge
 
-  constructor(edge, polygon) {
-    this.Edge = edge;
-    this.Polygon = polygon;
+  /**
+   * @type {List}
+   */
+  polygon
+
+  /**
+   * @param {Edge} edge Edge
+   * @param {List} polygon Polygon
+   */
+  constructor (edge, polygon) {
+    this.edge = edge
+    this.polygon = polygon
   }
 }

@@ -1,29 +1,46 @@
-import SkeletonEvent from './skeletonevent';
-import Vertex from '../Circular/vertex';
-import Vector2d from '../Primitives/vector2d';
+import SkeletonEvent from './skeletonevent'
+import Vertex from '../Circular/vertex'
+import Vector2d from '../Primitives/vector2d'
 
-class EdgeEvent extends SkeletonEvent {
-  //Veryex
-  NextVertex;
-  //Vertex
-  PreviousVertex;
+export default class EdgeEvent extends SkeletonEvent {
+  /**
+   * @type {Vertex}
+   */
+  nextVertex
 
-  IsObsolete() {
-    return this.PreviousVertex.IsProcessed || this.NextVertex.IsProcessed;
+  /**
+   * @type {Vertex}
+   */
+  previousVertex
+
+  /**
+   * @returns {boolean} Is it?
+   */
+  get isObsolete () {
+    return this.previousVertex.isProcessed || this.nextVertex.isProcessed
   }
 
-  constructor(point, distance, previousVertex, nextVertex) {
-    super(point, distance);
+  /**
+   * @param {Vector2d} point The point
+   * @param {number} distance distance
+   * @param {Vertex} previousVertex Vertex
+   * @param {Vertex} nextVertex Vertex
+   */
+  constructor (point, distance, previousVertex, nextVertex) {
+    super(point, distance)
 
-    this.PreviousVertex = previousVertex;
-    this.NextVertex = nextVertex;
+    this.previousVertex = previousVertex
+    this.nextVertex = nextVertex
   }
 
-  ToString() {
-    return 'EdgeEvent [V=' + this.V + ', PreviousVertex='
-      + (this.PreviousVertex !== null ? this.PreviousVertex.Point.ToString() : 'null') +
-      ', NextVertex='
-      + (this.NextVertex !== null ? this.NextVertex.Point.ToString() : 'null') + ', Distance=' +
-      this.Distance + ']';
+  /**
+   * @returns {string} Object Values
+   */
+  toString () {
+    return 'EdgeEvent [V=' + this.V + ', PreviousVertex=' +
+      (this.previousVertex !== null ? this.previousVertex.point.toString() : 'null') +
+      ', NextVertex=' +
+      (this.nextVertex !== null ? this.nextVertex.point.toString() : 'null') + ', Distance=' +
+      this.distance + ']'
   }
 }

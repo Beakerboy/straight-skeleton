@@ -1,18 +1,39 @@
-class CircularNode {
-  list;
-  next;
-  previous;
+import CircularList from './circularlist'
 
-  addNext(node) {
-    this.list.addNext(node);
+export default class CircularNode {
+  /**
+   * @type {CircularList}
+   */
+  list
+
+  /**
+   * @type {CircularNode}
+   */
+  next
+
+  /**
+   * @type {CircularNode}
+   */
+  previous
+
+  /**
+   * @param {CircularNode} node New Node
+   */
+  addNext (node) {
+    this.list.addNext(this, node)
   }
 
-  addPrevious(node) {
-    this.list.addPrevious(node);
+  /**
+   * @param {CircularNode} node New Node
+   */
+  addPrevious (node) {
+    this.list.addPrevious(this, node)
   }
 
-  remove() {
-    this.list.remove(this);
+  /**
+   * Remove a node
+   */
+  remove () {
+    this.list.remove(this)
   }
 }
-export {CircularNode};

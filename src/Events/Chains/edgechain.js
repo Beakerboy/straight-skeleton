@@ -1,38 +1,68 @@
-import {EdgeEvent} from '../edgeevent';
-const { List } = require('../../utils');
-const Edge = require('../../Circular/edge');
-const Vertex = require('../../Circular/vertex');
-const ChainType = require('./chaintype');
+import { List } from '../../utils'
+import Edge from '../../Circular/edge'
+import Vertex from '../../Circular/vertex'
+import ChainType from './chaintype'
 
-class EdgeChain {
-  constructor(edgeList) {
-    this.edgeList = edgeList;
-    this._closed = this.previousVertex === this.nextVertex;
+export default class EdgeChain {
+  /**
+   * @type {boolean}
+   */
+  _closed
+
+  /**
+   * @type {List}
+   */
+  edgeList
+
+  /**
+   * @param {List} edgeList List of EdgeEvents
+   */
+  constructor (edgeList) {
+    this.edgeList = edgeList
+    this._closed = this.previousVertex === this.nextVertex
   }
 
-  get previousEdge() {
-    return this.edgeList[0].previousVertex.previousEdge;
+  /**
+   * @returns {Edge} The previous edge
+   */
+  get previousEdge () {
+    return this.edgeList[0].previousVertex.previousEdge
   }
 
-  get nextEdge() {
-    return this.edgeList[this.edgeList.count - 1].nextVertex.nextEdge;
+  /**
+   * @returns {Edge} The next edge
+   */
+  get nextEdge () {
+    return this.edgeList[this.edgeList.count - 1].nextVertex.nextEdge
   }
 
-  get previousVertex() {
-    return this.EdgeList[0].PreviousVertex;
+  /**
+   * @returns {Vertex} The previous vertex
+   */
+  get previousVertex () {
+    return this.EdgeList[0].PreviousVertex
   }
 
-  get nextVertex() {
-    return this.EdgeList[this.EdgeList.Count - 1].NextVertex;
+  /**
+   * @returns {Vertex} the next vertex
+   */
+  get nextVertex () {
+    return this.EdgeList[this.EdgeList.Count - 1].NextVertex
   }
 
-  get currentVertex() {
-    return null;
+  /**
+   * @returns {Vertex} The current vertex
+   */
+  get currentVertex () {
+    return null
   }
 
-  get chainType() {
-    return this._closed ? ChainType.CLOSED_EDGE : ChainType.EDGE;
+  /**
+   * @returns {ChainType} The chain type
+   */
+  get chainType () {
+    return this._closed ? ChainType.CLOSED_EDGE : ChainType.EDGE
   }
 }
 
-module.exports = EdgeChain;
+module.exports = EdgeChain

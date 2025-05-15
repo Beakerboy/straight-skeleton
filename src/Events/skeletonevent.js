@@ -1,24 +1,24 @@
 // Abstract Class
 export default class SkeletonEvent {
   // @type {Vector2d}
-  v = null;
+  v = null
 
   // @type {number}
-  distance;
+  distance
 
-  isObsolete() {
+  isObsolete () {
   }
 
-  constructor(point, distance) {
-    this.v = point;
-    this.distance = distance;
+  constructor (point, distance) {
+    this.v = point
+    this.distance = distance
   }
 
-  toString() {
-    return 'IntersectEntry [V=' + this.v + ', Distance=' + this.distance + ']';
+  toString () {
+    return 'IntersectEntry [V=' + this.v + ', Distance=' + this.distance + ']'
   }
 
-  getType() {
-    return this.constructor.name;
+  getType () {
+    return this.constructor.name
   }
 }

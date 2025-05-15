@@ -1,77 +1,80 @@
-import CircularNode from './circularnode';
-import Vector2d from '../Primitives/vector2d';
-import LineParametric2d from '../Primitives/lineparametric2d';
-import Edge from './edge';
-import {FaceNode} from '../Path/facenode';
+import CircularNode from './circularnode'
+import Vector2d from '../Primitives/vector2d'
+import LineParametric2d from '../Primitives/lineparametric2d'
+import Edge from './edge'
+import { FaceNode } from '../Path/facenode'
 
-class Vertex extends CircularNode {
-  roundDigitCount = 5;
+/**
+ * Do we need to check that the point is on both edges?
+ */
+export default class Vertex extends CircularNode {
+  roundDigitCount = 5
 
   /**
    * @type {Vector2d}
    */
-  point = null;
+  point = null
 
   /**
    * @type {number}
    */
-  distance;
+  distance
 
   /**
    * @type {LineParametric2d}
    */
-  bisector = null;
+  bisector = null
 
   /**
    * @type {Edge}
    */
-  nextEdge = null;
+  nextEdge = null
 
   /**
    * @type {Edge}
    */
-  previousEdge = null;
+  previousEdge = null
 
   /**
    * @type {FaceNode}
    */
-  leftFace = null;
+  leftFace = null
 
   /**
    * @type {FaceNode}
    */
-  rightFace = null;
+  rightFace = null
 
   /**
    * @type {boolean}
    */
-  isProcessed;
+  isProcessed
 
   /**
-   * @param {Vector2d}
-   * @param {number}
-   * @param {LineParametric2d}
-   * @param {Edge}
-   * @param {Edge}
+   * @param {Vector2d} point A Point
+   * @param {number} distance Distance
+   * @param {LineParametric2d} bisector A Bisector
+   * @param {Edge} previousEdge An Edge
+   * @param {Edge} nextEdge Another Edge
    */
-  constructor(point, distance, bisector, previousEdge, nextEdge) {
-    super();
+  constructor (point, distance, bisector, previousEdge, nextEdge) {
+    super()
 
-    this.point = point;
-    this.distance = +distance.toFixed(this.roundDigitCount);
-    this.bisector = bisector;
-    this.previousEdge = previousEdge;
-    this.nextEdge = nextEdge;
+    this.point = point
+    this.distance = +distance.toFixed(this.roundDigitCount)
+    this.bisector = bisector
+    this.previousEdge = previousEdge
+    this.nextEdge = nextEdge
 
-    this.isProcessed = false;
+    this.isProcessed = false
   }
 
   /**
-   * @return {string}
+   * @returns {string} Object Data
    */
-  toString() {
+  toString () {
     return 'Vertex [v=' + this.point + ', IsProcessed=' + this.isProcessed +
       ', Bisector=' + this.bisector + ', PreviousEdge=' + this.previousEdge +
-      ', NextEdge=' + this.nextEdge;
+      ', NextEdge=' + this.nextEdge
   }
 }

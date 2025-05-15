@@ -1,132 +1,137 @@
-function insertInArray(array, index, item) {
-  const items = Array.prototype.slice.call(arguments, 2);
+/**
+ * insert the specified item at the specified position in
+ * provided array.
+ * @param {Array} array The array
+ * @param {number} index Position
+ * @param {any} item The item
+ * @returns {Array} The new array
+ */
+function insertInArray (array, index, item) {
+  const items = Array.prototype.slice.call(arguments, 2)
 
-  return [].concat(array.slice(0, index), items, array.slice(index));
+  return [].concat(array.slice(0, index), items, array.slice(index))
 }
 
 export class List {
-  arr;
-  constructor() {
-    this.arr = [];
+  arr
+  constructor () {
+    this.arr = []
   }
 
-  add(item) {
-    this.arr.push(item);
+  add (item) {
+    this.arr.push(item)
   }
 
-  Insert(index, item) {
-    const newArr = insertInArray(this.arr, index, item);
+  insert (index, item) {
+    const newArr = insertInArray(this.arr, index, item)
 
-    this.arr.length = newArr.length;
+    this.arr.length = newArr.length
 
     for (let i = 0; i < newArr.length; i++) {
-      this.arr[i] = newArr[i];
+      this.arr[i] = newArr[i]
     }
   }
 
-  Reverse() {
-    this.arr.reverse();
+  reverse () {
+    this.arr.reverse()
   }
 
-  Clear() {
-    this.arr.length = 0;
+  clear () {
+    this.arr.length = 0
   }
 
-  Count() {
-    return this.arr.length;
+  count () {
+    return this.arr.length
   }
 
   /**
    * return true if any elements in the array match the filter
-   *
-   * @param {item => boolean} filter
-   * @return {boolean}
+   * @param {Function} filter arrow function
+   * @returns {boolean} result
    */
-  Any(filter) {
+  any (filter) {
     if (!filter) {
-      filter = () => true;
+      filter = () => true
     }
 
     for (const item of this.arr) {
       if (filter(item)) {
-        return true;
+        return true
       }
     }
 
-    return false;
+    return false
   }
 
-
-  RemoveAt(index) {
-    this.arr.splice(index, 1);
+  removeAt (index) {
+    this.arr.splice(index, 1)
   }
 
-  Remove(itemToRemove) {
-    const newArr = this.arr.filter(item => item !== itemToRemove);
+  remove (itemToRemove) {
+    const newArr = this.arr.filter(item => item !== itemToRemove)
 
-    this.arr.length = newArr.length;
+    this.arr.length = newArr.length
 
     for (let i = 0; i < newArr.length; i++) {
-      this.arr[i] = newArr[i];
+      this.arr[i] = newArr[i]
     }
   }
 
-  addRange(list) {
+  addRange (list) {
     for (const item of list) {
-      this.Add(item);
+      this.Add(item)
     }
   }
 
-  Sort(comparer) {
-    this.arr.sort(comparer.Compare.bind(comparer));
+  sort (comparer) {
+    this.arr.sort(comparer.Compare.bind(comparer))
   }
 }
 
-export class HashSet {
-  Set;
+export class hashSet {
+  set = null
 
-  constructor() {
-    this.Set = new Set();
+  constructor () {
+    this.set = new Set()
   }
 
-  Add(item) {
-    this.Set.add(item);
+  add (item) {
+    this.set.add(item)
   }
 
-  Remove(item) {
-    this.Set.delete(item);
+  remove (item) {
+    this.set.delete(item)
   }
 
-  RemoveWhere(filter) {
+  removeWhere (filter) {
     for (const item of this.Set.values()) {
       if (filter(item)) {
-        this.Set.delete(item);
+        this.Set.delete(item)
       }
     }
   }
 
-  Contains(item) {
-    return this.Set.has(item);
+  contains (item) {
+    return this.set.has(item)
   }
 
-  Clear() {
-    this.Set.clear();
+  clear () {
+    this.set.clear()
   }
 
-  *[Symbol.iterator]() {
+  * [Symbol.iterator] () {
     for (const item of this.Set.values()) {
-      yield item;
+      yield item
     }
   }
-
 }
 
 export class Dictionary {
-  ContainsKey(key) {
-    return this.has(key);
+  ContainsKey (key) {
+    return this.has(key)
   }
 
-  Add(key, value) {
-    return this.set(key, value);
+  Add (key, value) {
+    return this.set(key, value)
   }
 }

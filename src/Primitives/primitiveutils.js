@@ -1,241 +1,238 @@
-import Vector2d from './vector2d';
-import LineParametric2d from './lineparametric2d';
-import {List} from '../utils';
+import Vector2d from './vector2d'
+import LineParametric2d from './lineparametric2d'
+import { List } from '../utils'
 
 class IntersectPoints {
-  Intersect = null;
-  IntersectEnd = null;
+  Intersect = null
+  IntersectEnd = null
 
-  constructor(intersect = false, intersectEnd = Vector2d.Empty) {
+  constructor (intersect = false, intersectEnd = Vector2d.Empty) {
     if (!intersect) {
-      intersect = Vector2d.Empty;
+      intersect = Vector2d.Empty
     }
 
     if (!intersectEnd) {
-      intersectEnd = Vector2d.Empty;
+      intersectEnd = Vector2d.Empty
     }
 
-    this.Intersect = intersect;
-    this.IntersectEnd = intersectEnd;
+    this.Intersect = intersect
+    this.IntersectEnd = intersectEnd
   }
 }
 
-
 export default class PrimitiveUtils {
-  static FromTo(begin, end) {
-    return new Vector2d(end.X - begin.X, end.Y - begin.Y);
+  static FromTo (begin, end) {
+    return new Vector2d(end.X - begin.X, end.Y - begin.Y)
   }
 
-  static OrthogonalLeft(v) {
-    return new Vector2d(-v.Y, v.X);
+  static OrthogonalLeft (v) {
+    return new Vector2d(-v.Y, v.X)
   }
 
-  static OrthogonalRight(v) {
-    return new Vector2d(v.Y, -v.X);
+  static OrthogonalRight (v) {
+    return new Vector2d(v.Y, -v.X)
   }
 
-  static OrthogonalProjection(unitVector, vectorToProject) {
-    const n = new Vector2d(unitVector.X, unitVector.Y).Normalized();
+  static orthogonalProjection (unitVector, vectorToProject) {
+    const n = new Vector2d(unitVector.x, unitVector.y).normalized()
 
-    const px = vectorToProject.X;
-    const py = vectorToProject.Y;
+    const px = vectorToProject.x
+    const py = vectorToProject.y
 
-    const ax = n.X;
-    const ay = n.Y;
+    const ax = n.x
+    const ay = n.y
 
-    return new Vector2d(px * ax * ax + py * ax * ay, px * ax * ay + py * ay * ay);
+    return new Vector2d(px * ax * ax + py * ax * ay, px * ax * ay + py * ay * ay)
   }
 
-  static BisectorNormalized(norm1, norm2) {
-    const e1v = PrimitiveUtils.OrthogonalLeft(norm1);
-    const e2v = PrimitiveUtils.OrthogonalLeft(norm2);
+  static bisectorNormalized (norm1, norm2) {
+    const e1v = PrimitiveUtils.orthogonalLeft(norm1)
+    const e2v = PrimitiveUtils.orthogonalLeft(norm2)
 
-    if (norm1.Dot(norm2) > 0)
-      return e1v.Add(e2v);
+    if (norm1.dot(norm2) > 0) { return e1v.add(e2v) }
 
-    let ret = new Vector2d(norm1.X, norm1.Y);
-    ret.Negate();
-    ret = ret.Add(norm2);
+    let ret = new Vector2d(norm1.x, norm1.y)
+    ret.negate()
+    ret = ret.add(norm2)
 
-    if (e1v.Dot(norm2) < 0)
-      ret.Negate();
+    if (e1v.dot(norm2) < 0) {
+      ret.negate()
+    }
 
-    return ret;
+    return ret
   }
 
-  static SmallNum = 0.00000001;
+  static smallNum = 0.00000001
 
-  static Empty = new IntersectPoints();
+  static empty = new IntersectPoints()
 
-  static IsPointOnRay(point, ray, epsilon) {
-    const rayDirection = new Vector2d(ray.U.X, ray.U.Y).Normalized();
+  /**
+   * @param {Vector2d} point Point
+   * @param {LineParametric2d} ray Ray
+   * @param {number} epsilon epsilon
+   * @returns {boolean} Is it?
+   */
+  static isPointOnRay (point, ray, epsilon) {
+    const rayDirection = new Vector2d(ray.U.X, ray.U.Y).Normalized()
 
-    const pointVector = point.Sub(ray.A);
+    const pointVector = point.Sub(ray.A)
 
-    let dot = rayDirection.Dot(pointVector);
+    let dot = rayDirection.Dot(pointVector)
 
-    if (dot < epsilon)
-      return false;
+    if (dot < epsilon) { return false }
 
-    const x = rayDirection.X;
-    rayDirection.X = rayDirection.Y;
-    rayDirection.Y = -x;
+    const x = rayDirection.X
+    rayDirection.X = rayDirection.Y
+    rayDirection.Y = -x
 
-    dot = rayDirection.Dot(pointVector);
+    dot = rayDirection.Dot(pointVector)
 
-    return -epsilon < dot && dot < epsilon;
+    return -epsilon < dot && dot < epsilon
   }
 
-  static IntersectRays2D(r1, r2) {
-    const s1p0 = r1.A;
-    const s1p1 = r1.A.Add(r1.U);
+  static intersectRays2D (r1, r2) {
+    const s1p0 = r1.A
+    const s1p1 = r1.A.Add(r1.U)
 
-    const s2p0 = r2.A;
+    const s2p0 = r2.A
 
-    const u = r1.U;
-    const v = r2.U;
+    const u = r1.U
+    const v = r2.U
 
-    const w = s1p0.Sub(s2p0);
-    const d = PrimitiveUtils.Perp(u, v);
+    const w = s1p0.Sub(s2p0)
+    const d = PrimitiveUtils.Perp(u, v)
 
     if (Math.abs(d) < PrimitiveUtils.SmallNum) {
-      if (PrimitiveUtils.Perp(u, w) !== 0 || PrimitiveUtils.Perp(v, w) !== 0)
-        return PrimitiveUtils.Empty;
+      if (PrimitiveUtils.Perp(u, w) !== 0 || PrimitiveUtils.Perp(v, w) !== 0) { return PrimitiveUtils.Empty }
 
-      const du = PrimitiveUtils.Dot(u, u);
-      const dv = PrimitiveUtils.Dot(v, v);
+      const du = PrimitiveUtils.Dot(u, u)
+      const dv = PrimitiveUtils.Dot(v, v)
 
       if (du === 0 && dv === 0) {
-        if (s1p0.NotEquals(s2p0))
-          return PrimitiveUtils.Empty;
+        if (s1p0.NotEquals(s2p0)) { return PrimitiveUtils.Empty }
 
-        return new IntersectPoints(s1p0);
+        return new IntersectPoints(s1p0)
       }
       if (du === 0) {
-        if (!PrimitiveUtils.InCollinearRay(s1p0, s2p0, v))
-          return PrimitiveUtils.Empty;
+        if (!PrimitiveUtils.InCollinearRay(s1p0, s2p0, v)) { return PrimitiveUtils.Empty }
 
-        return new IntersectPoints(s1p0);
+        return new IntersectPoints(s1p0)
       }
       if (dv === 0) {
-        if (!PrimitiveUtils.InCollinearRay(s2p0, s1p0, u))
-          return PrimitiveUtils.Empty;
+        if (!PrimitiveUtils.InCollinearRay(s2p0, s1p0, u)) { return PrimitiveUtils.Empty }
 
-        return new IntersectPoints(s2p0);
+        return new IntersectPoints(s2p0)
       }
 
-      let t0, t1;
-      var w2 = s1p1.Sub(s2p0);
+      let t0, t1
+      const w2 = s1p1.Sub(s2p0)
       if (v.X !== 0) {
-        t0 = w.X / v.X;
-        t1 = w2.X / v.X;
+        t0 = w.X / v.X
+        t1 = w2.X / v.X
       } else {
-        t0 = w.Y / v.Y;
-        t1 = w2.Y / v.Y;
+        t0 = w.Y / v.Y
+        t1 = w2.Y / v.Y
       }
       if (t0 > t1) {
-        const t = t0;
-        t0 = t1;
-        t1 = t;
+        const t = t0
+        t0 = t1
+        t1 = t
       }
-      if (t1 < 0)
-        return PrimitiveUtils.Empty;
+      if (t1 < 0) { return PrimitiveUtils.Empty }
 
-      t0 = t0 < 0 ? 0 : t0;
+      t0 = t0 < 0 ? 0 : t0
 
       if (t0 === t1) {
-        let I0 = new Vector2d(v.X, v.Y);
-        I0 = I0.MultiplyScalar(t0);
-        I0 = I0.Add(s2p0);
+        let I0 = new Vector2d(v.X, v.Y)
+        I0 = I0.MultiplyScalar(t0)
+        I0 = I0.Add(s2p0)
 
-        return new IntersectPoints(I0);
+        return new IntersectPoints(I0)
       }
 
-      let I_0 = new Vector2d(v.X, v.Y);
-      I_0 = I_0.MultiplyScalar(t0);
-      I_0 = I_0.Add(s2p0);
+      let I_0 = new Vector2d(v.X, v.Y)
+      I_0 = I_0.MultiplyScalar(t0)
+      I_0 = I_0.Add(s2p0)
 
-      let I1 = new Vector2d(v.X, v.Y);
-      I1 = I1.MultiplyScalar(t1);
-      I1 = I1.Add(s2p0);
+      let I1 = new Vector2d(v.X, v.Y)
+      I1 = I1.MultiplyScalar(t1)
+      I1 = I1.Add(s2p0)
 
-      return new IntersectPoints(I_0, I1);
+      return new IntersectPoints(I_0, I1)
     }
 
-    const sI = PrimitiveUtils.Perp(v, w) / d;
-    if (sI < 0 /* || sI > 1 */)
-      return PrimitiveUtils.Empty;
+    const sI = PrimitiveUtils.Perp(v, w) / d
+    if (sI < 0 /* || sI > 1 */) { return PrimitiveUtils.Empty }
 
-    const tI = PrimitiveUtils.Perp(u, w) / d;
-    if (tI < 0 /* || tI > 1 */)
-      return PrimitiveUtils.Empty;
+    const tI = PrimitiveUtils.Perp(u, w) / d
+    if (tI < 0 /* || tI > 1 */) { return PrimitiveUtils.Empty }
 
-    let IO = new Vector2d(u.X, u.Y);
-    IO = IO.MultiplyScalar(sI);
-    IO = IO.Add(s1p0);
+    let IO = new Vector2d(u.X, u.Y)
+    IO = IO.MultiplyScalar(sI)
+    IO = IO.Add(s1p0)
 
-    return new IntersectPoints(IO);
+    return new IntersectPoints(IO)
   }
 
-  static InCollinearRay(p, rayStart, rayDirection) {
-    const collideVector = p.Sub(rayStart);
-    const dot = rayDirection.Dot(collideVector);
+  static inCollinearRay (p, rayStart, rayDirection) {
+    const collideVector = p.sub(rayStart)
+    const dot = rayDirection.dot(collideVector)
 
-    return !(dot < 0);
+    return !(dot < 0)
   }
 
-  static Dot(u, v) {
-    return u.Dot(v);
+  static dot (u, v) {
+    return u.dot(v)
   }
 
-  static Perp(u, v) {
-    return u.X * v.Y - u.Y * v.X;
+  static perp (u, v) {
+    return u.x * v.y - u.y * v.x
   }
 
-  static IsClockwisePolygon(polygon) {
-    return PrimitiveUtils.Area(polygon) < 0;
+  /**
+   * @param {List} polygon The shape
+   * @returns {boolean} Is it?
+   */
+  static isClockwisePolygon (polygon) {
+    return PrimitiveUtils.area(polygon) < 0
   }
 
-  static Area(polygon) {
-    const n = polygon.Count;
-    let A = 0;
-    for (let p = n - 1, q = 0; q < n; p = q++)
-      A += polygon[p].X * polygon[q].Y - polygon[q].X * polygon[p].Y;
+  static area (polygon) {
+    const n = polygon.Count
+    let A = 0
+    for (let p = n - 1, q = 0; q < n; p = q++) { A += polygon[p].X * polygon[q].Y - polygon[q].X * polygon[p].Y }
 
-    return A * 0.5;
+    return A * 0.5
   }
 
-  static MakeCounterClockwise(polygon) {
-    if (PrimitiveUtils.IsClockwisePolygon(polygon))
-      polygon.Reverse();
+  static makeCounterClockwise (polygon) {
+    if (PrimitiveUtils.isClockwisePolygon(polygon)) { polygon.reverse() }
 
-    return polygon;
+    return polygon
   }
 
-  static IsPointInsidePolygon(point, points) {
-    const numpoints = points.Count;
+  static IsPointInsidePolygon (point, points) {
+    const numpoints = points.Count
 
-    if (numpoints < 3)
-      return false;
+    if (numpoints < 3) { return false }
 
-    let it = 0;
-    const first = points[it];
-    let oddNodes = false;
+    let it = 0
+    const first = points[it]
+    let oddNodes = false
 
     for (let i = 0; i < numpoints; i++) {
-      const node1 = points[it];
-      it++;
-      const node2 = i === numpoints - 1 ? first : points[it];
+      const node1 = points[it]
+      it++
+      const node2 = i === numpoints - 1 ? first : points[it]
 
-      const x = point.X;
-      const y = point.Y;
+      const x = point.X
+      const y = point.Y
 
-      if (node1.Y < y && node2.Y >= y || node2.Y < y && node1.Y >= y) {
-        if (node1.X + (y - node1.Y) / (node2.Y - node1.Y) * (node2.X - node1.X) < x)
-          oddNodes = !oddNodes;
+      if ((node1.Y < y && node2.Y >= y) || (node2.Y < y && node1.Y >= y)) {
+        if (node1.X + (y - node1.Y) / (node2.Y - node1.Y) * (node2.X - node1.X) < x) { oddNodes = !oddNodes }
       }
     }
 
-    return oddNodes;
+    return oddNodes
   }
 }

@@ -1,54 +1,62 @@
-import {CircularNode} from './circularnode.js';
-import {Vector2d} from '../Primitives/vector2d.js';
-import LineLinear2d from '../Primitives/linelinear2d';
-import LineParametric2d from '../Primitives/lineparametric2d';
+import { CircularNode } from './circularnode.js'
+import Vector2d from '../Primitives/vector2d'
+import LineLinear2d from '../Primitives/linelinear2d'
+import LineParametric2d from '../Primitives/lineparametric2d'
 
-class Edge extends CircularNode {
+/**
+ * A line segment
+ * How is this different that LineParametric?
+ * Why does it extend Node?
+ */
+export default class Edge extends CircularNode {
   /**
    * @type {Vector2d}
    */
-  begin;
+  begin
 
   /**
    * @type {Vector2d}
    */
-  end;
+  end
 
   /**
    * @type {Vector2d}
    */
-  norm;
+  norm
 
   /**
    * @type {LineLinear2d}
    */
-  LineLinear2d;
+  lineLinear2d
 
   /**
    * @type {LineParametric2d}
    */
-  BisectorNext = null;
+  bisectorNext = null
 
   /**
    * @type {LineParametric2d}
    */
-  BisectorPrevious = null;
+  bisectorPrevious = null
 
   /**
-   * @param {Vector2d}
-   * @param {Vector2d}
+   * @param {Vector2d} begin Start Point
+   * @param {Vector2d} end End Point
    */
-  constructor(begin, end) {
-    super();
+  constructor (begin, end) {
+    super()
 
-    this.Begin = begin;
-    this.End = end;
+    this.begin = begin
+    this.end = end
 
-    this.LineLinear2d = new LineLinear2d(begin, end);
-    this.Norm = end.Sub(begin).Normalized();
+    this.lineLinear2d = new LineLinear2d(begin, end)
+    this.norm = end.Sub(begin).Normalized()
   }
 
-  ToString() {
-    return `Edge [p1=${this.Begin}, p2=${this.End}]`;
+  /**
+   * @returns {string} Edge Description
+   */
+  toString () {
+    return `Edge [p1=${this.Begin}, p2=${this.End}]`
   }
 }

@@ -1,11 +1,11 @@
 export default class Skeleton {
   // list(edgeresult)
-  Edges = null;
+  Edges = null
   // dict(vector2d, number)
-  Distances = null;
+  Distances = null
 
-  constructor(edges, distances) {
-    this.Edges = edges;
-    this.Distances = distances;
+  constructor (edges, distances) {
+    this.Edges = edges
+    this.Distances = distances
   }
 }

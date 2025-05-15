@@ -1,126 +1,136 @@
-import {CircularNode} from './circularnode.js';
+import CircularNode from './circularnode.js'
 
-class CircularList extends CircularNode {
+export default class CircularList extends CircularNode {
   /**
-   * @type {CircularList}
+   * @type {CircularNode}
    */
-  first = null;
+  _first = null
 
   /**
    * @type {number}
    */
-  size = 0;
-
-  addNext(node, newNode) {
-    if (newNode.List !== null)
-      throw new Error('Node is already assigned to different list!');
-
-    newNode.List = this;
-
-    newNode.Previous = node;
-    newNode.Next = node.Next;
-
-    node.Next.Previous = newNode;
-    node.Next = newNode;
-
-    this.size++;
-  }
+  _size = 0
 
   /**
-   * @param {CircularNode}
-   * @param {CircularNode}
+   * Add newNode after node.
+   * @param {CircularNode} node Target node
+   * @param {CircularNode} newNode New Node
    */
-  addPrevious(node, newNode) {
-    if (newNode.List !== null)
-      throw new Error('Node is already assigned to different list!');
-
-    newNode.List = this;
-
-    newNode.Previous = node.Previous;
-    newNode.Next = node;
-
-    node.Previous.Next = newNode;
-    node.Previous = newNode;
-
-    this.size++;
-  }
-
-  /**
-   * @param {CircularNode}
-   */
-  addLast(node) {
-    if (node.List !== null)
-      throw new Error('Node is already assigned to different list!');
-
-    if (this.first === null) {
-      this.first = node;
-
-      node.List = this;
-      node.Next = node;
-      node.Previous = node;
-
-      this.size++;
-    } else
-      this.AddPrevious(this.first, node);
-  }
-
-  /**
-   * @param {CircularNode}
-   * @param {CircularNode}
-   */
-  remove(node) {
-    if (node.List !== this)
-      throw new Error('Node is not assigned to this list!');
-
-    if (this._size <= 0)
-      throw new Error('List is empty can\'t remove!');
-
-    node.List = null;
-
-    if (this._size === 1)
-      this.first = null;
-
-    else {
-      if (this.first === node)
-        this.first = this.first.Next;
-
-      node.Previous.Next = node.Next;
-      node.Next.Previous = node.Previous;
+  addNext (node, newNode) {
+    if (newNode.List !== null) {
+      throw new Error('Node is already assigned to different list!')
     }
 
-    node.Previous = null;
-    node.Next = null;
+    newNode.list = this
 
-    this.size--;
+    newNode.previous = node
+    newNode.next = node.next
+
+    node.next.previous = newNode
+    node.next = newNode
+
+    this._size++
   }
 
   /**
-   * @return {number}
+   * Add a newNode before node.
+   * @param {CircularNode} node Target Node
+   * @param {CircularNode} newNode New Node
    */
-  //get size() {
-  //return this.size;
-  //}
+  addPrevious (node, newNode) {
+    if (newNode.List !== null) {
+      throw new Error('Node is already assigned to different list!')
+    }
+    newNode.list = this
+
+    newNode.previous = node.previous
+    newNode.next = node
+
+    node.previous.next = newNode
+    node.previous = newNode
+
+    this._size++
+  }
 
   /**
-   * @return {T}
+   * @param {CircularNode} node New Node
    */
-  //first() {
-  //  return this.first;
-  //}
+  addLast (node) {
+    if (node.list !== null) {
+      throw new Error('Node is already assigned to different list!')
+    }
+    if (this._first === null) {
+      this._first = node
 
-  *generator() {
-    let current = this.first;
-    let i = 0;
+      node.list = this
+      node.next = node
+      node.previous = node
 
-    while (current !== null) {
-      yield current;
+      this._size++
+    } else {
+      this.addPrevious(this._first, node)
+    }
+  }
 
-      if (++i === this.size) {
-        return;
+  /**
+   * Remove a node from the ring.
+   * @param {CircularNode} node Node to remove
+   */
+  remove (node) {
+    if (node.List !== this) {
+      throw new Error('Node is not assigned to this list!')
+    }
+    if (this._size <= 0) {
+      throw new Error('List is empty can\'t remove!')
+    }
+    node.List = null
+
+    if (this._size === 1) {
+      this._first = null
+    } else {
+      if (this._first === node) {
+        this._first = this._first.next
       }
 
-      current = current.next;
+      node.previous.next = node.next
+      node.next.previous = node.previous
+    }
+
+    node.previous = null
+    node.next = null
+
+    this._size--
+  }
+
+  /**
+   * @returns {number} Ring Size
+   */
+  get size () {
+    return this._size
+  }
+
+  /**
+   * @returns {CircularNode} First Node
+   */
+  get first () {
+    return this._first
+  }
+
+  /**
+   * @yields {CircularNode}
+   */
+  * generator () {
+    let current = this._first
+    let i = 0
+
+    while (current !== null) {
+      yield current
+
+      if (++i === this._size) {
+        return
+      }
+
+      current = current.next
     }
   }
 }
-export {CircularList};

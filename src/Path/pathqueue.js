@@ -1,101 +1,108 @@
-import PathQueueNode from './pathqueuenode';
+import PathQueueNode from './pathqueuenode'
 
-class PathQueue {
-  // number
-  Size = 0;
-  // PathQueueNode
-  First = null;
-  AddPush(node, newNode) {
-    if (newNode.List !== null)
-      throw new Error('Node is already assigned to different list!');
+export default class PathQueue {
+  /**
+   * @type {number}
+   */
+  size = 0
 
-    if (node.Next !== null && node.Previous !== null)
+  /**
+   * @type {PathQueueNode}
+   */
+  first = null
+
+  /**
+   * Add a new node before the specified node
+   * @param {PathQueueNode} node Target node
+   * @param {PathQueueNode} newNode New node
+   */
+  addPush (node, newNode) {
+    if (newNode.list !== null) { throw new Error('Node is already assigned to different list!') }
+
+    if (node.next !== null && node.previous !== null) {
       throw new Error('Can\'t push new node. Node is inside a Quere. ' +
-                      'New node can by added only at the end of queue.');
+                      'New node can by added only at the end of queue.')
+    }
 
-    newNode.List = this;
-    this.Size++;
+    newNode.list = this
+    this.size++
 
-    if (node.Next === null) {
-      newNode.Previous = node;
-      newNode.Next = null;
+    if (node.next === null) {
+      newNode.previous = node
+      newNode.next = null
 
-      node.Next = newNode;
+      node.next = newNode
     } else {
-      newNode.Previous = null;
-      newNode.Next = node;
+      newNode.previous = null
+      newNode.next = node
 
-      node.Previous = newNode;
+      node.previous = newNode
     }
   }
 
-  AddFirst(node) {
-    if (node.List !== null)
-      throw new Error('Node is already assigned to different list!');
+  /**
+   * Assign a node to the first spot of an empty queue.
+   * @param {PathQueueNode} node The new node
+   */
+  addFirst (node) {
+    if (node.list !== null) { throw new Error('Node is already assigned to different list!') }
 
-    if (this.First === null) {
-      this.First = node;
+    if (this.first === null) {
+      this.first = node
 
-      node.List = this;
-      node.Next = null;
-      node.Previous = null;
-      this.Size++;
-    } else
-      throw new Error('First element already exist!');
+      node.list = this
+      node.next = null
+      node.previous = null
+      this.size++
+    } else { throw new Error('First element already exist!') }
   }
 
-  Pop(node) {
-    if (node.List !== this)
-      throw new Error('Node is not assigned to this list!');
+  /**
+   * Remove the specified node from the queue
+   * @param {PathQueueNode} node Target node
+   * @returns {PathQueueNode} New end node?
+   */
+  pop (node) {
+    if (node.list !== this) { throw new Error('Node is not assigned to this list!') }
 
-    if (this.Size <= 0)
-      throw new Error('List is empty can\'t remove!');
+    if (this.size <= 0) { throw new Error('List is empty can\'t remove!') }
 
-    if (!node.IsEnd)
-      throw new Error('Can pop only from end of queue!');
+    if (!node.isEnd) { throw new Error('Can pop only from end of queue!') }
 
-    node.List = null;
-    let previous = null;
+    node.list = null
+    let previous = null
 
-    if (this.Size === 1)
-      this.First = null;
-    else {
-      if (this.First === node) {
-        if (node.Next !== null)
-          this.First = node.Next;
-        else if (node.Previous !== null)
-          this.First = node.Previous;
-        else
-          throw new Error('Ups ?');
+    if (this.size === 1) { this.first = null } else {
+      if (this.first === node) {
+        if (node.next !== null) { this.first = node.next } else if (node.previous !== null) { this.first = node.previous } else { throw new Error('Ups ?') }
       }
-      if (node.Next !== null) {
-        node.Next.Previous = null;
-        previous = node.Next;
-      } else if (node.Previous !== null) {
-        node.Previous.Next = null;
-        previous = node.Previous;
+      if (node.next !== null) {
+        node.next.previous = null
+        previous = node.next
+      } else if (node.previous !== null) {
+        node.previous.next = null
+        previous = node.previous
       }
     }
 
-    node.Previous = null;
-    node.Next = null;
+    node.previous = null
+    node.next = null
 
-    this.Size--;
+    this.size--
 
-    return previous;
+    return previous
   }
 
-  *Iterate() {
-    let current = (this.First !== null ? this.First.FindEnd() : null);
-    let i = 0;
+  * Iterate () {
+    let current = (this.first !== null ? this.first.findEnd() : null)
+    let i = 0
 
     while (current !== null) {
-      yield current;
+      yield current
 
-      if (++i === this.Size)
-        return;
+      if (++i === this.size) { return }
 
-      current = current.Next;
+      current = current.next
     }
   }
 }

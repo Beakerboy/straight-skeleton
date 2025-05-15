@@ -1,24 +1,40 @@
-import PathQueue from './pathqueue';
-import {FaceNode} from './facenode';
-import PathQueueNode from './pathqueuenode';
-import Edge from '../Circular/edge';
+import PathQueue from './pathqueue'
+import PathQueueNode from './pathqueuenode'
+import Edge from '../Circular/edge'
 
 export default class FaceQueue extends PathQueue {
-  Edge = null;
-  Closed = false;
+  /**
+   * @type {Edge}
+   */
+  edge = null
 
-  IsUnconnected() {
-    return this.Edge === null;
+  /**
+   * @type {boolean}
+   */
+  closed = false
+
+  /**
+   * @returns {boolean} Is it?
+   */
+  get isUnconnected () {
+    return this.edge === null
   }
 
-  AddPush(node, newNode) {
-    if (this.Closed) {
-      throw new Error('Can\'t add node to closed FaceQueue');
+  /**
+   * @param {PathQueueNode} node Node
+   * @param {PathQueueNode} newNode New Node
+   */
+  addPush (node, newNode) {
+    if (this.closed) {
+      throw new Error('Can\'t add node to closed FaceQueue')
     }
-    super.AddPush(node, newNode);
+    super.addPush(node, newNode)
   }
 
-  Close() {
-    this.Closed = true;
+  /**
+   * Does Stuff
+   */
+  close () {
+    this.closed = true
   }
 }

@@ -1,46 +1,70 @@
-import Edge from '../../Circular/edge';
-import Vertex from '../../Circular/vertex';
-import ChainType from './chaintype';
-import VertexSplitEvent from '../vertexsplitevent';
-import SplitEvent from '../splitevent';
+import Edge from '../../Circular/edge'
+import Vertex from '../../Circular/vertex'
+import ChainType from './chaintype'
+import VertexSplitEvent from '../vertexsplitevent'
+import SplitEvent from '../splitevent'
 
 export default class SplitChain {
-  //splitevent
-  splitEvent;
+  /**
+   * @type {SplitEvent}
+   */
+  _splitEvent
 
-  //@param splitEvent
-  constructor(event) {
-    this.splitEvent = event;
+  /**
+   * @param {SplitEvent} event The event
+   */
+  constructor (event) {
+    this._splitEvent = event
   }
 
-  oppositeEdge() {
-    if (!(this.splitEvent instanceof VertexSplitEvent))
-      return this.splitEvent.oppositeEdge;
+  /**
+   * @returns {Edge} The opposite edge
+   */
+  oppositeEdge () {
+    if (!(this._splitEvent instanceof VertexSplitEvent)) { return this._splitEvent.oppositeEdge }
 
-    return null;
+    return null
   }
 
-  previousEdge() {
-    return this.splitEvent.parent.previousEdge;
+  /**
+   * @returns {Edge} The previous edge
+   */
+  previousEdge () {
+    return this._splitEvent.parent.previousEdge
   }
 
-  nextEdge() {
-    return this.splitEvent.parent.nextEdge;
+  /**
+   * @returns {Edge} The next edge
+   */
+  nextEdge () {
+    return this._splitEvent.parent.nextEdge
   }
 
-  previousVertex() {
-    return this.splitEvent.parent.previous;
+  /**
+   * @returns {Vertex} The previous vertex
+   */
+  previousVertex () {
+    return this._splitEvent.parent.previous
   }
 
-  nextVertex() {
-    return this.splitEvent.parent.next;
+  /**
+   * @returns {Vertex} The next vertex
+   */
+  nextVertex () {
+    return this._splitEvent.parent.next
   }
 
-  currentVertex() {
-    return this.splitEvent.parent;
+  /**
+   * @returns {Vertex} The current vertex
+   */
+  currentVertex () {
+    return this._splitEvent.parent
   }
 
-  chainType() {
-    return ChainType.SPLIT;
+  /**
+   * @returns {ChainType} the type
+   */
+  chainType () {
+    return ChainType.SPLIT
   }
 }
