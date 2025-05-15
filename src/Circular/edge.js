@@ -1,4 +1,5 @@
 import CircularNode from './circularnode.js'
+import CircularList from './circularlist.js'
 import Vector2d from '../Primitives/vector2d'
 import LineLinear2d from '../Primitives/linelinear2d'
 import LineParametric2d from '../Primitives/lineparametric2d'
@@ -9,6 +10,11 @@ import LineParametric2d from '../Primitives/lineparametric2d'
  * Why does it extend Node?
  */
 export default class Edge extends CircularNode {
+  /**
+   * @type {CircularList}
+   */
+  list
+  
   /**
    * @type {Vector2d}
    */
