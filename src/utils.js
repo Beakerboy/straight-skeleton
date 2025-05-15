@@ -2,7 +2,7 @@
  * insert the specified item at the specified position in
  * provided array.
  * @param {Array} array The array
- * @param {number} index Position
+ * @param {int} index Position
  * @param {any} item The item
  * @returns {Array} The new array
  */
@@ -46,7 +46,7 @@ export class List {
 
   /**
    * return true if any elements in the array match the filter
-   * @param {item => boolean} filter
+   * @param {function(any)} filter
    * @returns {boolean}
    */
   any (filter) {
