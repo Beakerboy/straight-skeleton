@@ -8,16 +8,16 @@ test('Comstructor', () => {
   expect(lin.a).toBe(-1)
   expect(lin.b).toBe(1)
   expect(lin.c).toBe(0)
-});
+})
 
 test('Factory', () => {
   
-});
+})
 
 test('Collide', () => {
   
-});
+})
 
 test('Contains', () => {
   
-});
+})
