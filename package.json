@@ -5,10 +5,7 @@
   "main": "src/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Beakerboy/OSMBuilding.git"
-  },
-  "dependencies": {
-    "three": "^0.138.3"
+    "url": "https://github.com/Beakerboy/straight-skeleton.git"
   },
   "devDependencies" : {
     "coveralls": "*",
@@ -19,11 +16,7 @@
     "eslint-plugin-jsdoc": "*",
     "eslint-plugin-n": "*",
     "eslint-plugin-promise": "*",
-    "jest": "*",
-    "jest-environment-jsdom": "*",
-    "jest-fetch-mock": "*",
-    "jest-matcher-deep-close-to": "*",
-    "jsdom": "*"
+    "jest": "*"
   },
   "scripts": {
     "test": "c8 jest"
