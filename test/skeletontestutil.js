@@ -1,4 +1,4 @@
-import Skeleton from '../src/skeleton.js'
+import { Skeleton } from '../src/skeleton.js'
 import { List } from '../src/utils.js'
 
 export default class SkeletinTestUtil {
