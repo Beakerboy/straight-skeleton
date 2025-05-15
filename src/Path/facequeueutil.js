@@ -35,8 +35,8 @@ export default class FaceQueueUtil {
   }
 
   /**
-   * @param {FaceNode} firstFace
-   * @param {FaceNode} secondFace
+   * @param {FaceNode} firstFace Face 1
+   * @param {FaceNode} secondFace Face 2
    */
   static moveNodes (firstFace, secondFace) {
     firstFace.addQueue(secondFace)
