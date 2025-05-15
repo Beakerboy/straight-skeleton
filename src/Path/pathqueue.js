@@ -12,8 +12,9 @@ export default class PathQueue {
   first = null
 
   /**
-   * @param {} node
-   * @param {} newNode
+   * Add a new node before the specified node
+   * @param {PathQueueNode} node Target node
+   * @param {PathQueueNode} newNode New node
    */
   addPush (node, newNode) {
     if (newNode.list !== null) { throw new Error('Node is already assigned to different list!') }
@@ -40,7 +41,8 @@ export default class PathQueue {
   }
 
   /**
-   * @param {} node
+   * Assign a node to the first spot of an empty queue.
+   * @param {PathQueueNode} node The new node
    */
   addFirst (node) {
     if (node.list !== null) { throw new Error('Node is already assigned to different list!') }
@@ -56,8 +58,8 @@ export default class PathQueue {
   }
 
   /**
-   * @param {} node
-   * @returns {}
+   * @param {PathQueueNode} node
+   * @returns {PathQueueNode}
    */
   pop (node) {
     if (node.list !== this) { throw new Error('Node is not assigned to this list!') }
