@@ -1,11 +1,4 @@
-import CircularList from './circularlist'
-
 export default class CircularNode {
-  /**
-   * @type {CircularList}
-   */
-  list
-
   /**
    * @type {CircularNode}
    */
