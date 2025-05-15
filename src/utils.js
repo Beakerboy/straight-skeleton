@@ -1,9 +1,10 @@
 /**
- *
- * @param {} array
- * @param {} index
- * @param {} item
- * @returns {}
+ * insert the specified item at the specified position in 
+ * provided array.
+ * @param {Array} array The array
+ * @param {number} index Position
+ * @param {Any} item The item
+ * @returns {Array} The new array
  */
 function insertInArray (array, index, item) {
   const items = Array.prototype.slice.call(arguments, 2)
