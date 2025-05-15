@@ -1,7 +1,7 @@
 import { List } from '../../utils'
 import Edge from '../../Circular/edge'
 import Vertex from '../../Circular/vertex'
-import { ChainType } from './chaintype'
+import ChainType from './chaintype'
 
 export default class EdgeChain {
   /**
