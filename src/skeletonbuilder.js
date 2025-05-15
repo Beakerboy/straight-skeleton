@@ -1,5 +1,5 @@
 import { Skeleton } from './skeleton'
-import { HashSet, List, Dictionary} from './utils'
+import { HashSet, List, Dictionary } from './utils'
 import Vector2d from './Primitives/vector2d.js'
 import PriorityQueue from './Primitives/priorityqueue'
 import Edge from './Circular/edge'
