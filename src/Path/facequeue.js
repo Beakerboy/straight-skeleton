@@ -14,7 +14,7 @@ export default class FaceQueue extends PathQueue {
   closed = false
 
   /**
-   * @returns {Vertex}
+   * @returns {boolean} Is it?
    */
   get isUnconnected () {
     return this.edge === null
@@ -25,10 +25,10 @@ export default class FaceQueue extends PathQueue {
    * @param {PathQueueNode} newNode New Node
    */
   addPush (node, newNode) {
-    if (this.Closed) {
+    if (this.closed) {
       throw new Error('Can\'t add node to closed FaceQueue')
     }
-    super.AddPush(node, newNode)
+    super.addPush(node, newNode)
   }
 
   /**
