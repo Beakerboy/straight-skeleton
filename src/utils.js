@@ -88,7 +88,7 @@ export class List {
   }
 }
 
-export class hashSet {
+export class HashSet {
   set = null
 
   constructor () {
