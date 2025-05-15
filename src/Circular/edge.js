@@ -14,7 +14,7 @@ export default class Edge extends CircularNode {
    * @type {CircularList}
    */
   list
-  
+
   /**
    * @type {Vector2d}
    */
