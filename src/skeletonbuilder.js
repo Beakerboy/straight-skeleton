@@ -400,29 +400,29 @@ export default class SkeletonBuilder {
     edgeCluster.removeAt(0)
 
     while (true) {
-      const beginVertex = edgeList[0].previousVertex;
-      const endVertex = edgeList[edgeList.count - 1].nextVertex;
+      const beginVertex = edgeList[0].previousVertex
+      const endVertex = edgeList[edgeList.count - 1].nextVertex
 
-      let foundMatch = false;
+      let foundMatch = false
 
       for (let i = 0; i < edgeCluster.count; i++) {
-        const edge = edgeCluster[i];
+        const edge = edgeCluster[i]
         if (edge.previousVertex === endVertex) {
-          edgeCluster.removeAt(i);
-          edgeList.add(edge);
-          foundMatch = true;
-          break; // Break inner loop to restart
+          edgeCluster.removeAt(i)
+          edgeList.add(edge)
+          foundMatch = true
+          break // Break inner loop to restart
         }
         if (edge.nextVertex === beginVertex) {
-          edgeCluster.removeAt(i);
-          edgeList.insert(0, edge);
-          foundMatch = true;
-          break; // Break inner loop to restart
+          edgeCluster.removeAt(i)
+          edgeList.insert(0, edge)
+          foundMatch = true
+          break // Break inner loop to restart
         }
       }
 
       if (!foundMatch) {
-        break; // Exit outer loop if no edge was added
+        break // Exit outer loop if no edge was added
       }
     }
     return edgeList
