@@ -87,19 +87,19 @@ export class List {
   }
 }
 
-export class HashSet {
-  set
+export class hashSet {
+  set = null
 
   constructor () {
-    this.Set = new Set()
+    this.set = new Set()
   }
 
   add (item) {
-    this.Set.add(item)
+    this.set.add(item)
   }
 
   remove (item) {
-    this.Set.delete(item)
+    this.set.delete(item)
   }
 
   removeWhere (filter) {
