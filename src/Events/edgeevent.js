@@ -21,7 +21,10 @@ export default class EdgeEvent extends SkeletonEvent {
   }
 
   /**
-   * @param {Vector2d} point
+   * @param {Vector2d} point The point
+   * @param {number} distance distance
+   * @param {Vertex} previousVertex Vertex
+   * @param {Vertex} nextVertex Vertex
    */
   constructor (point, distance, previousVertex, nextVertex) {
     super(point, distance)
