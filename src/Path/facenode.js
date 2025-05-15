@@ -9,7 +9,7 @@ export default class FaceNode extends PathQueueNode {
   vertex = null
 
   /**
-   * @param {Vertex} vertex
+   * @param {Vertex} vertex The vertex node.
    */
   constructor (vertex) {
     super()
@@ -17,14 +17,14 @@ export default class FaceNode extends PathQueueNode {
   }
 
   /**
-   * @returns {FaceQueue}
+   * @returns {FaceQueue} The list
    */
   get faceQueue () {
     return this.list
   }
 
   /**
-   * @returns {boolean}
+   * @returns {boolean} Is it?
    */
   get isQueueUnconnected () {
     return this.faceQueue.isUnconnected
