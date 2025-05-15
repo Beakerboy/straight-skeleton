@@ -372,17 +372,23 @@ export default class SkeletonBuilder {
     const chains = new List(edgeChains.count)
     for (const edgeChain of edgeChains) { chains.add(edgeChain) }
 
-    splitEventLoop: while (splitCluster.any()) {
+    while (splitCluster.any()) {
       const split = splitCluster[0]
       splitCluster.removeAt(0)
 
+      let shouldContinue = false
+
       for (const chain of edgeChains) {
-        if (this.isInEdgeChain(split, chain)) { continue splitEventLoop } // goto splitEventLoop;
+        if (this.isInEdgeChain(split, chain)) {
+          shouldContinue = true
+          break;
+        }
       }
+
+      if (shouldContinue) continue
 
       chains.add(new SplitChain(split))
     }
-
     return chains
   }
 
