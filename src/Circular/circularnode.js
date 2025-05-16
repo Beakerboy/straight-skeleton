@@ -1,4 +1,11 @@
+import CircularList from './circularlist.js'
+
 export default class CircularNode {
+  /**
+   * @type {CircularList}
+   */
+  list
+
   /**
    * @type {CircularNode}
    */
