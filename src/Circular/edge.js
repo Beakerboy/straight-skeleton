@@ -1,4 +1,3 @@
-import CircularList from './circularlist.js'
 import CircularNode from './circularnode.js'
 import Vector2d from '../Primitives/vector2d'
 import LineLinear2d from '../Primitives/linelinear2d'
