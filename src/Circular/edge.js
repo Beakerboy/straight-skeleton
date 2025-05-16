@@ -11,11 +11,6 @@ import LineParametric2d from '../Primitives/lineparametric2d'
  */
 export default class Edge extends CircularNode {
   /**
-   * @type {CircularList}
-   */
-  list
-
-  /**
    * @type {Vector2d}
    */
   begin
