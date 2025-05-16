@@ -1,6 +1,6 @@
 import CircularNode from './circularnode.js'
 
-export default class CircularList extends CircularNode {
+export default class CircularList {
   /**
    * @type {CircularNode}
    */
