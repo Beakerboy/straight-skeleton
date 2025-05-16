@@ -56,13 +56,13 @@ export default class Edge extends CircularNode {
     this.end = end
 
     this.lineLinear2d = new LineLinear2d(begin, end)
-    this.norm = end.Sub(begin).Normalized()
+    this.norm = end.sub(begin).normalized()
   }
 
   /**
    * @returns {string} Edge Description
    */
   toString () {
-    return `Edge [p1=${this.Begin}, p2=${this.End}]`
+    return `Edge [p1=${this.begin}, p2=${this.end}]`
   }
 }
