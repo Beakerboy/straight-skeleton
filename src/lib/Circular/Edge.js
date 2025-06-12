@@ -4,15 +4,15 @@ import LineLinear2d from "../Primitives/LineLinear2d";
 import LineParametric2d from "../Primitives/LineParametric2d";
 
 export default class Edge extends CircularNode {
-	public readonly Begin: Vector2d;
-	public readonly End: Vector2d;
-	public readonly Norm: Vector2d;
+	public readonly Begin;
+	public readonly End;
+	public readonly Norm;
 
-	public readonly LineLinear2d: LineLinear2d;
-	public BisectorNext: LineParametric2d = null;
-	public BisectorPrevious: LineParametric2d = null;
+	public readonly LineLinear2d;
+	public BisectorNext = null;
+	public BisectorPrevious = null;
 
-	constructor(begin: Vector2d, end: Vector2d) {
+	constructor(begin, end) {
 		super();
 
 		this.Begin = begin;
@@ -22,7 +22,7 @@ export default class Edge extends CircularNode {
 		this.Norm = end.Sub(begin).Normalized();
 	}
 
-	public ToString(): string {
+	public ToString() {
 		return `Edge [p1=${this.Begin}, p2=${this.End}]`;
 	}
 }
