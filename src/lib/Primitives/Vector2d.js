@@ -1,8 +1,8 @@
 export default class Vector2d {
-	public static Empty = new Vector2d(Number.MIN_VALUE, Number.MIN_VALUE);
+	static Empty = new Vector2d(Number.MIN_VALUE, Number.MIN_VALUE);
 
-	public X = 0;
-	public Y = 0;
+	X = 0;
+	Y = 0;
 
 	constructor(x, y) {
 		this.X = x;
