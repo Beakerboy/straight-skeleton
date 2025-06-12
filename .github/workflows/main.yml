@@ -1,0 +1,18 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install modules
+      run: |
+        yarn --prod=false
+    - name: Lint
+      run: |
+        yarn run eslint --init
+        yarn run eslint .
+    - name: Test
+      run: CI=true NODE_OPTIONS="$NODE_OPTIONS --experimental-vm-modules" timeout 20s npm test
+    - name: Coveralls
+      uses: coverallsapp/github-action@v2
