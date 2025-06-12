@@ -16,7 +16,11 @@ test('Factory', () => {
 })
 
 test('Collide', () => {
-
+  const lin1 = new LineLinear2d().SetFromCoefficients(1, 0, 3);
+  const lin2 = new LineLinear2d().SetFromCoefficients(0, 1, 4);
+  const vec = lin1.Collide(lin2);
+  expect(vec.X).toBe(-3);
+  expect(vec.Y).toBe(-4);
 })
 
 test('Contains', () => {
