@@ -9,8 +9,8 @@ test('Constructor', () => {
 test('Negate', () => {
   const v = new Vector2d(1, 1)
   v.Negate()
-  expect(v.x).toBe(-1)
-  expect(v.y).toBe(-1)
+  expect(v.X).toBe(-1)
+  expect(v.Y).toBe(-1)
 })
 
 test('Distance To', () => {
@@ -23,8 +23,8 @@ test('Distance To', () => {
 test('Normalized', () => {
   const v1 = new Vector2d(5, 0)
   const result = v1.Normalized(v1)
-  expect(result.x).toBe(1)
-  expect(result.y).toBe(0)
+  expect(result.X).toBe(1)
+  expect(result.Y).toBe(0)
 })
 
 test('Dot', () => {
