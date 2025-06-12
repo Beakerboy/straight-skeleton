@@ -63,9 +63,9 @@ export default class PrimitiveUtils {
 		return ret;
 	}
 
-	static readonly SmallNum = 0.00000001;
+	static SmallNum = 0.00000001;
 
-	static readonly Empty = new IntersectPoints();
+	static Empty = new IntersectPoints();
 
 	static IsPointOnRay(point, ray, epsilon) {
 		const rayDirection = new Vector2d(ray.U.X, ray.U.Y).Normalized();
