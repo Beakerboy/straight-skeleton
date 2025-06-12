@@ -3,17 +3,17 @@ import LineLinear2d from "./LineLinear2d";
 import PrimitiveUtils from "./PrimitiveUtils";
 
 export default class LineParametric2d {
-	public static readonly Empty: LineParametric2d = new LineParametric2d(Vector2d.Empty, Vector2d.Empty);
+	 static readonly Empty = new LineParametric2d(Vector2d.Empty, Vector2d.Empty);
 
-	public A: Vector2d = null;
-	public U: Vector2d = null;
+	 A = null;
+	 U = null;
 
-	constructor(pA: Vector2d, pU: Vector2d) {
+	constructor(pA, pU) {
 		this.A = pA;
 		this.U = pU;
 	}
 
-	public CreateLinearForm(): LineLinear2d {
+	 CreateLinearForm() {
 		const x = this.A.X;
 		const y = this.A.Y;
 
@@ -25,7 +25,7 @@ export default class LineParametric2d {
 		return new LineLinear2d().SetFromCoefficients(A, B, C);
 	}
 
-	public static Collide(ray: LineParametric2d, line: LineLinear2d, epsilon: number): Vector2d {
+	 static Collide(ray, line, epsilon) {
 		const collide = LineLinear2d.Collide(ray.CreateLinearForm(), line);
 		if (collide.Equals(Vector2d.Empty)) {
 			return Vector2d.Empty;
@@ -35,12 +35,12 @@ export default class LineParametric2d {
 		return ray.U.Dot(collideVector) < epsilon ? Vector2d.Empty : collide;
 	}
 
-	public IsOnLeftSite(point: Vector2d, epsilon: number): boolean {
+	 IsOnLeftSite(point, epsilon) {
 		const direction = point.Sub(this.A);
 		return PrimitiveUtils.OrthogonalRight(this.U).Dot(direction) < epsilon;
 	}
 
-	public IsOnRightSite(point: Vector2d, epsilon: number): boolean {
+	 IsOnRightSite(point, epsilon) {
 		const direction = point.Sub(this.A);
 		return PrimitiveUtils.OrthogonalRight(this.U).Dot(direction) > -epsilon;
 	}
