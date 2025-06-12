@@ -12,7 +12,7 @@ test('Create Linear Form', () => {
   const v1 = new Vector2d(0, 0)
   const v2 = new Vector2d(1, 1)
   const l1 = new LineParametric2d(v1, v2).CreateLinearForm();
-  expect(typeof l1).toBe(LineParametric2d);
+  expect(l1.constructor.name).toBe("LineParametric2d");
   expect(l1.Contains(v1)).toBe(true);
 })
 
