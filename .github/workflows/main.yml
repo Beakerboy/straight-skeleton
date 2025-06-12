@@ -7,7 +7,7 @@ jobs:
     - uses: actions/checkout@v4
     - name: Install modules
       run: |
-        yarn --prod=false
+        yarn --prod=false --ignore-engines
     - name: Test
       run: CI=true NODE_OPTIONS="$NODE_OPTIONS --experimental-vm-modules" timeout 20s npm test
     - name: Coveralls
