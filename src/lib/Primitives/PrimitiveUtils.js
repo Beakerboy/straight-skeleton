@@ -3,10 +3,10 @@ import LineParametric2d from "./LineParametric2d";
 import {List} from "../Utils";
 
 class IntersectPoints {
-	public readonly Intersect: Vector2d = null;
-	public readonly IntersectEnd: Vector2d = null;
+	Intersect = null;
+	IntersectEnd = null;
 
-	constructor(intersect?: Vector2d, intersectEnd?: Vector2d) {
+	constructor(intersect = null, intersectEnd = null) {
 		if (!intersect) {
 			intersect = Vector2d.Empty;
 		}
@@ -22,19 +22,19 @@ class IntersectPoints {
 
 
 export default class PrimitiveUtils {
-	public static FromTo(begin: Vector2d, end: Vector2d): Vector2d {
+	static FromTo(begin, end) {
 		return new Vector2d(end.X - begin.X, end.Y - begin.Y);
 	}
 
-	public static OrthogonalLeft(v: Vector2d): Vector2d {
+	static OrthogonalLeft(v) {
 		return new Vector2d(-v.Y, v.X);
 	}
 
-	public static OrthogonalRight(v: Vector2d): Vector2d {
+	static OrthogonalRight(v) {
 		return new Vector2d(v.Y, -v.X);
 	}
 
-	public static OrthogonalProjection(unitVector: Vector2d, vectorToProject: Vector2d): Vector2d {
+	static OrthogonalProjection(unitVector, vectorToProject) {
 		const n = new Vector2d(unitVector.X, unitVector.Y).Normalized();
 
 		const px = vectorToProject.X;
@@ -46,7 +46,7 @@ export default class PrimitiveUtils {
 		return new Vector2d(px * ax * ax + py * ax * ay, px * ax * ay + py * ay * ay);
 	}
 
-	public static BisectorNormalized(norm1: Vector2d, norm2: Vector2d): Vector2d {
+	static BisectorNormalized(norm1, norm2) {
 		const e1v = PrimitiveUtils.OrthogonalLeft(norm1);
 		const e2v = PrimitiveUtils.OrthogonalLeft(norm2);
 
@@ -63,11 +63,11 @@ export default class PrimitiveUtils {
 		return ret;
 	}
 
-	private static readonly SmallNum = 0.00000001;
+	static readonly SmallNum = 0.00000001;
 
-	private static readonly Empty: IntersectPoints = new IntersectPoints();
+	static readonly Empty = new IntersectPoints();
 
-	public static IsPointOnRay(point: Vector2d, ray: LineParametric2d, epsilon: number): boolean {
+	static IsPointOnRay(point, ray, epsilon) {
 		const rayDirection = new Vector2d(ray.U.X, ray.U.Y).Normalized();
 
 		const pointVector = point.Sub(ray.A);
@@ -86,7 +86,7 @@ export default class PrimitiveUtils {
 		return -epsilon < dot && dot < epsilon;
 	}
 
-	public static IntersectRays2D(r1: LineParametric2d, r2: LineParametric2d): IntersectPoints {
+	static IntersectRays2D(r1, r2) {
 		const s1p0 = r1.A;
 		const s1p1 = r1.A.Add(r1.U);
 
@@ -177,26 +177,26 @@ export default class PrimitiveUtils {
 		return new IntersectPoints(IO);
 	}
 
-	private static InCollinearRay(p: Vector2d, rayStart: Vector2d, rayDirection: Vector2d): boolean {
+	static InCollinearRay(p, rayStart, rayDirection) {
 		const collideVector = p.Sub(rayStart);
 		const dot = rayDirection.Dot(collideVector);
 
 		return !(dot < 0);
 	}
 
-	private static Dot(u: Vector2d, v: Vector2d): number {
+	static Dot(u, v) {
 		return u.Dot(v);
 	}
 
-	private static Perp(u: Vector2d, v: Vector2d): number {
+	static Perp(u, v) {
 		return u.X * v.Y - u.Y * v.X;
 	}
 
-	public static IsClockwisePolygon(polygon: List<Vector2d>): boolean {
+	static IsClockwisePolygon(polygon) {
 		return PrimitiveUtils.Area(polygon) < 0;
 	}
 
-	private static Area(polygon: List<Vector2d>): number {
+	static Area(polygon) {
 		const n = polygon.Count;
 		let A = 0;
 		for (let p = n - 1, q = 0; q < n; p = q++)
@@ -205,14 +205,14 @@ export default class PrimitiveUtils {
 		return A * 0.5;
 	}
 
-	public static MakeCounterClockwise(polygon: List<Vector2d>): List<Vector2d> {
+	static MakeCounterClockwise(polygon) {
 		if (PrimitiveUtils.IsClockwisePolygon(polygon))
 			polygon.Reverse();
 
 		return polygon;
 	}
 
-	public static IsPointInsidePolygon(point: Vector2d, points: List<Vector2d>): boolean {
+	static IsPointInsidePolygon(point, points) {
 		const numpoints = points.Count;
 
 		if (numpoints < 3)
