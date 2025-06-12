@@ -30,6 +30,8 @@ test('Collide parallel', () => {
   expect(vec.Equals(Vector2d.Empty)).toBe(true);
 })
 
+/** @todo test Collide overlapping */
+
 test('Contains', () => {
   const lin1 = new LineLinear2d().SetFromCoefficients(1, 0, 3);
   expect(lin1.Contains(new Vector2d(-3, 10))).toBe(true)
