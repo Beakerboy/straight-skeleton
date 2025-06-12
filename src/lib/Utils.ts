@@ -105,7 +105,7 @@ export class HashSet {
 		this.Set.clear();
 	}
 
-	public* [Symbol.iterator]() {
+	* [Symbol.iterator]() {
 		for (const item of this.Set.values()) {
 			yield item;
 		}
