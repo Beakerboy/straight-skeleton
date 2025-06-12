@@ -11,7 +11,8 @@ test('Comstructor', () => {
 })
 
 test('Factory', () => {
-
+  const lin = new LineLinear2d().SetFromCoefficients(1, 2, 3);
+  expect(lin.A).toBe(1)
 })
 
 test('Collide', () => {
