@@ -1,29 +1,19 @@
-function insertInArray<T>(array: Array<T>, index: number, item: T): Array<T> {
+function insertInArray(array, index, item) {
 	const items = Array.prototype.slice.call(arguments, 2);
 
 	return [].concat(array.slice(0, index), items, array.slice(index));
 }
 
-export interface IComparable<T> {
-	CompareTo(other: T): number;
-}
-
-export interface IComparer<T> {
-	Compare(a: T, b: T): number;
-}
-
-export type GeoJSONMultipolygon = [number, number][][][];
-
-export class List<T> extends Array<T> {
+export class List extends Array {
 	constructor(capacity = 0) {
 		super();
 	}
 
-	public Add(item: T) {
+	Add(item) {
 		this.push(item);
 	}
 
-	public Insert(index: number, item: T) {
+	Insert(index, item) {
 		const newArr = insertInArray(this, index, item);
 
 		this.length = newArr.length;
@@ -33,19 +23,19 @@ export class List<T> extends Array<T> {
 		}
 	}
 
-	public Reverse() {
+	Reverse() {
 		this.reverse();
 	}
 
-	public Clear() {
+	Clear() {
 		this.length = 0;
 	}
 
-	get Count(): number {
+	get Count() {
 		return this.length;
 	}
 
-	public Any(filter?: (item: T) => boolean): boolean {
+	Any(filter = null) {
 		if (!filter) {
 			filter = T => true;
 		}
@@ -59,11 +49,11 @@ export class List<T> extends Array<T> {
 		return false;
 	}
 
-	public RemoveAt(index: number) {
+	RemoveAt(index) {
 		this.splice(index, 1);
 	}
 
-	public Remove(itemToRemove: T) {
+	Remove(itemToRemove) {
 		const newArr = this.filter(item => item !== itemToRemove);
 
 		this.length = newArr.length;
@@ -73,33 +63,33 @@ export class List<T> extends Array<T> {
 		}
 	}
 
-	public AddRange(list: List<T>) {
+	AddRange(list) {
 		for (const item of list) {
 			this.Add(item);
 		}
 	}
 
-	public Sort(comparer: IComparer<T>) {
+	Sort(comparer) {
 		this.sort(comparer.Compare.bind(comparer));
 	}
 }
 
-export class HashSet<T> implements Iterable<T> {
-	private Set: Set<T>;
+export class HashSet {
+	Set;
 
 	constructor() {
 		this.Set = new Set();
 	}
 
-	public Add(item: T) {
+	Add(item) {
 		this.Set.add(item);
 	}
 
-	public Remove(item: T) {
+	Remove(item) {
 		this.Set.delete(item);
 	}
 
-	public RemoveWhere(filter: (item: T) => boolean) {
+	RemoveWhere(filter) {
 		for (const item of this.Set.values()) {
 			if (filter(item)) {
 				this.Set.delete(item);
@@ -107,27 +97,27 @@ export class HashSet<T> implements Iterable<T> {
 		}
 	}
 
-	public Contains(item: T): boolean {
+	Contains(item) {
 		return this.Set.has(item);
 	}
 
-	public Clear() {
+	Clear() {
 		this.Set.clear();
 	}
 
-	public* [Symbol.iterator](): Generator<T> {
+	public* [Symbol.iterator]() {
 		for (const item of this.Set.values()) {
 			yield item;
 		}
 	}
 }
 
-export class Dictionary<T1, T2> extends Map<T1, T2> {
-	public ContainsKey(key: T1): boolean {
+export class Dictionary extends Map {
+	ContainsKey(key) {
 		return this.has(key);
 	}
 
-	public Add(key: T1, value: T2) {
+	Add(key, value) {
 		return this.set(key, value);
 	}
 }
