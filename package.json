@@ -1,24 +1,31 @@
 {
-	"name": "straight-skeleton",
-	"version": "1.1.0",
-	"description": "Straight skeleton algorithm implementation",
-	"main": "dist/index.js",
-	"types": "dist/index.d.ts",
-	"scripts": {
-		"build": "tsc --p tsconfig.build.json",
-		"dev": "webpack serve --config webpack.config.js --mode=development",
-		"build-example": "webpack --config webpack.config.js --mode=production",
-		"prepublish": "npm run build && npm run build-example"
-	},
-	"author": "vHawk",
-	"license": "MIT",
-	"devDependencies": {
-		"clean-webpack-plugin": "^4.0.0",
-		"html-webpack-plugin": "^5.5.0",
-		"ts-loader": "^9.2.6",
-		"typescript": "^4.5.2",
-		"webpack": "^5.64.4",
-		"webpack-cli": "^4.9.1",
-		"webpack-dev-server": "^4.6.0"
-	}
+  "name": "straight-skeleton",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Beakerboy/straight-skeleton.git"
+  },
+  "devDependencies" : {
+    "coveralls": "*",
+    "c8": "*",
+    "eslint": "^8.13",
+    "eslint-config-standard": "*",
+    "eslint-plugin-import": "*",
+    "eslint-plugin-jsdoc": "*",
+    "eslint-plugin-n": "*",
+    "eslint-plugin-promise": "*",
+    "jest": "*"
+  },
+  "scripts": {
+    "test": "c8 jest"
+  },
+   "c8": {
+    "all": true,
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ]
+  }
 }
