@@ -72,7 +72,7 @@ export default class SkeletonBuilder {
 
 		const queue = new PriorityQueue(3, new SkeletonEventDistanseComparer());
 		const sLav = new HashSet();
-		const faces = new List<FaceQueue>();
+		const faces = new List();
 		const edges = new List();
 
 		this.InitSlav(polygon, sLav, edges, faces);
@@ -357,18 +357,18 @@ export default class SkeletonBuilder {
 	}
 
 	static CreateChains(cluster) {
-		const edgeCluster = new List<EdgeEvent>();
-		const splitCluster = new List<SplitEvent>();
+		const edgeCluster = new List();
+		const splitCluster = new List();
 		const vertexEventsParents = new HashSet();
 
 		for (const skeletonEvent of cluster) {
 			if (skeletonEvent instanceof EdgeEvent)
-				edgeCluster.Add(<EdgeEvent>skeletonEvent);
+				edgeCluster.Add(skeletonEvent);
 			else {
 				if (skeletonEvent instanceof VertexSplitEvent) {
 
 				} else if (skeletonEvent instanceof SplitEvent) {
-					const splitEvent = <SplitEvent>skeletonEvent;
+					const splitEvent = skeletonEvent;
 					vertexEventsParents.Add(splitEvent.Parent);
 					splitCluster.Add(splitEvent);
 				}
@@ -385,7 +385,7 @@ export default class SkeletonBuilder {
 			}
 		}
 
-		const edgeChains = new List<EdgeChain>();
+		const edgeChains = new List();
 
 		while (edgeCluster.Count > 0)
 			edgeChains.Add(new EdgeChain(this.CreateEdgeChain(edgeCluster)));
@@ -418,7 +418,7 @@ export default class SkeletonBuilder {
 	}
 
 	static CreateEdgeChain(edgeCluster) {
-		const edgeList = new List<EdgeEvent>();
+		const edgeList = new List();
 
 		edgeList.Add(edgeCluster[0]);
 		edgeCluster.RemoveAt(0);
@@ -506,19 +506,19 @@ export default class SkeletonBuilder {
 
 	static IsEventInGroup(parentGroup, event) {
 		if (event instanceof SplitEvent)
-			return parentGroup.Contains((<SplitEvent>event).Parent);
+			return parentGroup.Contains((event).Parent);
 		if (event instanceof EdgeEvent)
-			return parentGroup.Contains((<EdgeEvent>event).PreviousVertex)
-				|| parentGroup.Contains((<EdgeEvent>event).NextVertex);
+			return parentGroup.Contains((event).PreviousVertex)
+				|| parentGroup.Contains((event).NextVertex);
 		return false;
 	}
 
 	static AddEventToGroup(parentGroup, event) {
 		if (event instanceof SplitEvent)
-			parentGroup.Add((<SplitEvent>event).Parent);
+			parentGroup.Add((event).Parent);
 		else if (event instanceof EdgeEvent) {
-			parentGroup.Add((<EdgeEvent>event).PreviousVertex);
-			parentGroup.Add((<EdgeEvent>event).NextVertex);
+			parentGroup.Add((event).PreviousVertex);
+			parentGroup.Add((event).NextVertex);
 		}
 	}
 
@@ -528,9 +528,9 @@ export default class SkeletonBuilder {
 		if (chains.Count === 1) {
 			const chain = chains[0];
 			if (chain.ChainType === ChainType.ClosedEdge)
-				return new PickEvent(eventCenter, distance, <EdgeChain>chain);
+				return new PickEvent(eventCenter, distance, chain);
 			if (chain.ChainType === ChainType.Edge)
-				return new MultiEdgeEvent(eventCenter, distance, <EdgeChain>chain);
+				return new MultiEdgeEvent(eventCenter, distance, chain);
 			if (chain.ChainType === ChainType.Split)
 				return new MultiSplitEvent(eventCenter, distance, chains);
 		}
@@ -639,12 +639,12 @@ export default class SkeletonBuilder {
 	}
 
 	static AddFacesToOutput(faces) {
-		const edgeOutputs = new List<EdgeResult>();
-		const distances = new Dictionary<Vector2d, number>();
+		const edgeOutputs = new List();
+		const distances = new Dictionary();
 
 		for (const face of faces) {
 			if (face.Size > 0) {
-				const faceList = new List<Vector2d>();
+				const faceList = new List();
 
 				for (const fn of face.Iterate()) {
 					const point = fn.Vertex.Point;
@@ -740,7 +740,7 @@ export default class SkeletonBuilder {
 	}
 
 	static CalcOppositeEdges(vertex, edges) {
-		const ret = new List<SplitCandidate>();
+		const ret = new List();
 
 		for (const edgeEntry of edges) {
 			const edge = edgeEntry.LineLinear2d;
