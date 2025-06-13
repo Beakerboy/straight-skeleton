@@ -1,32 +1,32 @@
 import {IComparer, List} from "../Utils";
 
-export default class PriorityQueue<T> {
-	private readonly _comparer: IComparer<T> = null;
-	private readonly _heap: List<T> = null;
+export default class PriorityQueue {
+	_comparer = null;
+	_heap = null;
 
-	constructor(capacity: number, comparer: IComparer<T>) {
-		this._heap = new List<T>(capacity);
+	constructor(capacity, comparer) {
+		this._heap = new List(capacity);
 		this._comparer = comparer;
 	}
 
-	public Clear() {
+	Clear() {
 		this._heap.Clear();
 	}
 
-	public Add(item: T) {
+	Add(item) {
 		let n = this._heap.Count;
 		this._heap.Add(item);
 		while (n !== 0) {
 			const p = Math.floor(n / 2);
 			if (this._comparer.Compare(this._heap[n], (this._heap[p])) >= 0) break;
-			const tmp: T = this._heap[n];
+			const tmp = this._heap[n];
 			this._heap[n] = this._heap[p];
 			this._heap[p] = tmp;
 			n = p;
 		}
 	}
 
-	get Count(): number {
+	get Count() {
 		return this._heap.Count;
 	}
 
@@ -34,12 +34,12 @@ export default class PriorityQueue<T> {
 		return this._heap.Count === 0;
 	}
 
-	public Peek(): T {
+	Peek() {
 		return !this._heap.Any() ? null : this._heap[0];
 	}
 
-	public Next(): T {
-		const val: T = this._heap[0];
+	Next() {
+		const val = this._heap[0];
 		const nMax = this._heap.Count - 1;
 		this._heap[0] = this._heap[nMax];
 		this._heap.RemoveAt(nMax);
@@ -53,7 +53,7 @@ export default class PriorityQueue<T> {
 
 			if (this._comparer.Compare(this._heap[p], (this._heap[c])) <= 0) break;
 
-			const tmp: T = this._heap[p];
+			const tmp = this._heap[p];
 			this._heap[p] = this._heap[c];
 			this._heap[c] = tmp;
 			p = c;
