@@ -176,61 +176,6 @@ describe.each([
 })
 
 /**
-        
-        [Test]
-        public void SkeletonTestB5__()
-        {
-            var polygon = new List<Vector2d>
-            {
-                new Vector2d(0.0, 0.0),
-                new Vector2d(-1.192493260706565, -5.6367673060470285),
-                new Vector2d(2.656302768241665, -5.645493074126799),
-                new Vector2d(7.051209343876594, 2.9401404828825903),
-                new Vector2d(-1.7258603912355601, 6.252730824609899)
-            };
-
-            var expected = new List<Vector2d>
-            {
-                new Vector2d(1.381369, -3.555284),
-                new Vector2d(2.671019, 0.081263),
-                new Vector2d(2.795365, 1.297294)
-            };
-            expected.AddRange(polygon);
-
-            var sk = SkeletonBuilder.Build(polygon);
-
-            SkeletonTestUtil.AssertExpectedPoints(expected, SkeletonTestUtil.GetFacePoints(sk));
-        }
-
-        [Test]
-        public void SkeletonTestB6__()
-        {
-            var polygon = new List<Vector2d>
-            {
-                new Vector2d(0.0, 0.0),
-                new Vector2d(-1.192493260706565, -5.636767306047028),
-                new Vector2d(2.656302768241665, -5.645493074126798),
-                new Vector2d(5.716563703938576, 6.120572646649897),
-                new Vector2d(-5.985367752852362, 6.423111118668768),
-                new Vector2d(-6.297731626436729, -3.6293262553813097),
-                new Vector2d(-3.4580600517873807, 1.3968924313579514)
-            };
-
-            var expected = new List<Vector2d>
-            {
-                new Vector2d(-4.254893, 3.676216),
-                new Vector2d(-3.720036, 4.025044),
-                new Vector2d(1.173593, -3.723313),
-                new Vector2d(1.493460, 2.941709),
-                new Vector2d(2.345444, 1.248630)
-            };
-            expected.AddRange(polygon);
-
-            var sk = SkeletonBuilder.Build(polygon);
-
-            SkeletonTestUtil.AssertExpectedPoints(expected, SkeletonTestUtil.GetFacePoints(sk));
-        }
-
         [Test]
         public void SkeletonTestB7__()
         {
