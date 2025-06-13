@@ -4,13 +4,13 @@ import IChain from "./Chains/IChain";
 import Vector2d from "../Primitives/Vector2d";
 
 export default class MultiSplitEvent extends SkeletonEvent {
-	public readonly Chains: List<IChain>;
+	Chains;
 
-	public override get IsObsolete(): boolean {
+	get IsObsolete() {
 		return false;
 	}
 
-	constructor(point: Vector2d, distance: number, chains: List<IChain>) {
+	constructor(pointd, distance, chains) {
 		super(point, distance);
 
 		this.Chains = chains;
