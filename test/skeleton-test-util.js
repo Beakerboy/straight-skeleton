@@ -7,7 +7,7 @@ export default class SkeletonTestUtil {
   }
 
   static containsEpsilon (list, p) {
-    return list.any(l => this.equalEpsilon(l.x, p.x) && this.equalEpsilon(l.y, p.y))
+    return list.Any(l => this.equalEpsilon(l.X, p.X) && this.equalEpsilon(l.Y, p.Y))
   }
 
   /**
@@ -17,11 +17,11 @@ export default class SkeletonTestUtil {
   static getFacePoints (sk) {
     const ret = new List()
 
-    for (const edgeOutput of sk.edges) {
-      const points = edgeOutput.polygon
+    for (const edgeOutput of sk.Edges) {
+      const points = edgeOutput.Polygon
       for (const vector2d of points) {
         if (!this.containsEpsilon(ret, vector2d)) {
-          ret.add(vector2d)
+          ret.Add(vector2d)
         }
       }
     }
@@ -42,7 +42,7 @@ export default class SkeletonTestUtil {
 
     for (const given of givenList) {
       if (!this.containsEpsilon(expectedList, given)) {
-        sb += `Can't find given point (${given.toString()}) in expected list\n`
+        sb += `Can't find given point (${given.ToString()}) in expected list\n`
       }
     }
     if (sb.length > 0) {
