@@ -3,13 +3,13 @@ import {List} from "./Utils";
 import CircularList from "./Circular/CircularList";
 
 export default class LavUtil {
-	IsSameLav(v1, v2) {
+	static IsSameLav(v1, v2) {
 		if (v1.List === null || v2.List === null)
 			return false;
 		return v1.List === v2.List;
 	}
 
-	RemoveFromLav(vertex) {
+	static RemoveFromLav(vertex) {
 		if (vertex === null || vertex.List === null)
 			return;
 		vertex.Remove();
@@ -33,7 +33,7 @@ export default class LavUtil {
 		throw new Error("End vertex can't be found in start vertex lav");
 	}
 
-	MergeBeforeBaseVertex(base, merged) {
+	static MergeBeforeBaseVertex(base, merged) {
 		const size = merged.List.Size;
 
 		for (let i = 0; i < size; i++) {
@@ -44,7 +44,7 @@ export default class LavUtil {
 		}
 	}
 
-	MoveAllVertexToLavEnd(vertex, newLaw) {
+	static MoveAllVertexToLavEnd(vertex, newLaw) {
 		const size = vertex.List.Size;
 		for (let i = 0; i < size; i++) {
 			const ver = vertex;
