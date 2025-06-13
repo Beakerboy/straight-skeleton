@@ -64,7 +64,7 @@ export default class CircularList {
 
 		else {
 			if (this._first === node)
-				this._first = <T>this._first.Next;
+				this._first = this._first.Next;
 
 			node.Previous.Next = node.Next;
 			node.Next.Previous = node.Previous;
@@ -95,7 +95,7 @@ export default class CircularList {
 				return;
 			}
 
-			current = <T>current.Next;
+			current = current.Next;
 		}
 	}
 }
