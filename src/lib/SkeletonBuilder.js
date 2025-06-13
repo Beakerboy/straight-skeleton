@@ -130,7 +130,7 @@ export default class SkeletonBuilder {
 		for (const lav of sLav) {
 			if (lav.Size === 2) {
 				const first = lav.First();
-				const last = first.Next as Vertex;
+				const last = first.Next;
 
 				FaceQueueUtil.ConnectQueues(first.LeftFace, last.RightFace);
 				FaceQueueUtil.ConnectQueues(first.RightFace, last.LeftFace);
@@ -604,7 +604,7 @@ export default class SkeletonBuilder {
 		}
 
 		for (const edge of edgesList.Iterate()) {
-			const nextEdge = edge.Next as Edge;
+			const nextEdge = edge.Next;
 			const bisector = this.CalcBisector(edge.End, edge, nextEdge);
 
 			edge.BisectorNext = bisector;
@@ -616,13 +616,13 @@ export default class SkeletonBuilder {
 		sLav.Add(lav);
 
 		for (const edge of edgesList.Iterate()) {
-			const nextEdge = edge.Next as Edge;
+			const nextEdge = edge.Next;
 			const vertex = new Vertex(edge.End, 0, edge.BisectorNext, edge, nextEdge);
 			lav.AddLast(vertex);
 		}
 
 		for (const vertex of lav.Iterate()) {
-			const next = vertex.Next as Vertex;
+			const next = vertex.Next;
 			const rightFace = new FaceNode(vertex);
 
 			const faceQueue = new FaceQueue();
@@ -669,7 +669,7 @@ export default class SkeletonBuilder {
 
 		for (const lav of sLav) {
 			for (const vertex of lav.Iterate()) {
-				const nextVertex = vertex.Next as Vertex;
+				const nextVertex = vertex.Next;
 				this.ComputeEdgeEvents(vertex, nextVertex, queue);
 			}
 		}
@@ -702,8 +702,8 @@ export default class SkeletonBuilder {
 	}
 
 	static ComputeCloserEdgeEvent(vertex, queue) {
-		const nextVertex = vertex.Next as Vertex;
-		const previousVertex = vertex.Previous as Vertex;
+		const nextVertex = vertex.Next;
+		const previousVertex = vertex.Previous;
 
 		const point = vertex.Point;
 
@@ -843,7 +843,7 @@ export default class SkeletonBuilder {
 		const centerVector = center.Sub(edgeStart);
 		const centerDot = edgeNorm.Dot(centerVector);
 		for (const end of edgeLavs) {
-			const begin = end.Previous as Vertex;
+			const begin = end.Previous;
 
 			const beginVector = begin.Point.Sub(edgeStart);
 			const endVector = end.Point.Sub(edgeStart);
@@ -862,7 +862,7 @@ export default class SkeletonBuilder {
 			let next = end;
 			for (let i = 0; i < size; i++) {
 				points.Add(next.Point);
-				next = next.Next as Vertex;
+				next = next.Next;
 			}
 			if (PrimitiveUtils.IsPointInsidePolygon(center, points))
 				return end;
