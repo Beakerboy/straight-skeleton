@@ -3,10 +3,10 @@ import Vector2d from "./Primitives/Vector2d";
 import {List} from "./Utils";
 
 export default class EdgeResult {
-	public readonly Edge: Edge;
-	public readonly Polygon: List<Vector2d>;
+	Edge;
+	Polygon;
 
-	constructor(edge: Edge, polygon: List<Vector2d>) {
+	constructor(edge, polygon) {
 		this.Edge = edge;
 		this.Polygon = polygon;
 	}
