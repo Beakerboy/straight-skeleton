@@ -3,11 +3,11 @@ import Vector2d from "../Primitives/Vector2d";
 import Vertex from "../Circular/Vertex";
 
 export default class VertexSplitEvent extends SplitEvent {
-	constructor(point: Vector2d, distance: number, parent: Vertex) {
+	constructor(point, distance, parent) {
 		super(point, distance, parent, null);
 	}
 
-	public override ToString(): string {
+	ToString() {
 		return "VertexSplitEvent [V=" + this.V + ", Parent=" +
 			(this.Parent !== null ? this.Parent.Point.ToString() : "null")
 			+ ", Distance=" + this.Distance + "]";
