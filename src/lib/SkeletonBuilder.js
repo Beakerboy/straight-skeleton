@@ -99,11 +99,11 @@ export default class SkeletonBuilder {
 				if (event instanceof SplitEvent)
 					throw new Error("All split events should be converted to MultiSplitEvents for given level");
 				if (event instanceof MultiSplitEvent)
-					this.MultiSplitEvent(<MultiSplitEvent>event, sLav, queue, edges);
+					this.MultiSplitEvent(event, sLav, queue, edges);
 				else if (event instanceof PickEvent)
-					this.PickEvent(<PickEvent>event);
+					this.PickEvent(event);
 				else if (event instanceof MultiEdgeEvent)
-					this.MultiEdgeEvent(<MultiEdgeEvent>event, queue, edges);
+					this.MultiEdgeEvent(event, queue, edges);
 				else
 					throw new Error("Unknown event type: " + event.GetType());
 			}
