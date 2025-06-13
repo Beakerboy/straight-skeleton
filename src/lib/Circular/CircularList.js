@@ -84,7 +84,7 @@ export default class CircularList {
 		return this._first;
 	}
 
-	public* Iterate() {
+	* Iterate() {
 		let current = this._first;
 		let i = 0;
 
