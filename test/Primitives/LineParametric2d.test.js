@@ -37,7 +37,7 @@ test('Left Side', () => {
   const v2 = new Vector2d(1, 0)
   const v3 = new Vector2d(1, 1)
   const r1 = new LineParametric2d(v1, v2)
-  const result = r1.IsOnLeftSide(v3, .0001)
+  const result = r1.IsOnLeftSite(v3, .0001)
   expect(result).toBe(true);
 })
 
