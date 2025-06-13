@@ -39,7 +39,7 @@ export default class CircularList {
 			throw new Error("Node is already assigned to different list!");
 
 		if (this._first === null) {
-			this._first = node as T;
+			this._first = node;
 
 			node.List = this;
 			node.Next = node;
