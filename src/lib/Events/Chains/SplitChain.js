@@ -1,45 +1,44 @@
-import IChain from "./IChain";
 import Edge from "../../Circular/Edge";
 import Vertex from "../../Circular/Vertex";
 import ChainType from "./ChainType";
 import VertexSplitEvent from "../VertexSplitEvent";
 import SplitEvent from "../SplitEvent";
 
-export default class SplitChain implements IChain {
-	private readonly _splitEvent: SplitEvent;
+export default class SplitChain {
+	 _splitEvent;
 
-	constructor(event: SplitEvent) {
+	constructor(event) {
 		this._splitEvent = event;
 	}
 
-	public get OppositeEdge(): Edge {
+	get OppositeEdge() {
 		if (!(this._splitEvent instanceof VertexSplitEvent))
 			return this._splitEvent.OppositeEdge;
 
 		return null;
 	}
 
-	public get PreviousEdge(): Edge {
+	get PreviousEdge() {
 		return this._splitEvent.Parent.PreviousEdge;
 	}
 
-	public get NextEdge(): Edge {
+	get NextEdge() {
 		return this._splitEvent.Parent.NextEdge;
 	}
 
-	public get PreviousVertex(): Vertex {
+	get PreviousVertex() {
 		return this._splitEvent.Parent.Previous as Vertex;
 	}
 
-	public get NextVertex(): Vertex {
+	get NextVertex() {
 		return this._splitEvent.Parent.Next as Vertex;
 	}
 
-	public get CurrentVertex(): Vertex {
+	get CurrentVertex() {
 		return this._splitEvent.Parent;
 	}
 
-	public get ChainType(): ChainType {
+	get ChainType() {
 		return ChainType.Split;
 	}
 }
