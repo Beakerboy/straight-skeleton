@@ -3,21 +3,21 @@ import Vertex from "../Circular/Vertex";
 import Vector2d from "../Primitives/Vector2d";
 
 export default class EdgeEvent extends SkeletonEvent {
-	public readonly NextVertex: Vertex;
-	public readonly PreviousVertex: Vertex;
+	NextVertex;
+	PreviousVertex;
 
-	public override get IsObsolete(): boolean {
+	get IsObsolete() {
 		return this.PreviousVertex.IsProcessed || this.NextVertex.IsProcessed;
 	}
 
-	constructor(point: Vector2d, distance: number, previousVertex: Vertex, nextVertex: Vertex) {
+	constructor(point, distance, previousVertex, nextVertex) {
 		super(point, distance);
 
 		this.PreviousVertex = previousVertex;
 		this.NextVertex = nextVertex;
 	}
 
-	public override ToString(): string {
+	ToString() {
 		return "EdgeEvent [V=" + this.V + ", PreviousVertex="
 			+ (this.PreviousVertex !== null ? this.PreviousVertex.Point.ToString() : "null") +
 			", NextVertex="
