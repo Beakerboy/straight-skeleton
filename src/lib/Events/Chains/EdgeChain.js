@@ -5,36 +5,36 @@ import Edge from "../../Circular/Edge";
 import Vertex from "../../Circular/Vertex";
 import ChainType from "./ChainType";
 
-export default class EdgeChain implements IChain {
-	private readonly _closed: boolean;
-	public EdgeList: List<EdgeEvent>;
+export default class EdgeChain {
+	_closed;
+	EdgeList;
 
-	constructor(edgeList: List<EdgeEvent>) {
+	constructor(edgeList) {
 		this.EdgeList = edgeList;
 		this._closed = this.PreviousVertex === this.NextVertex;
 	}
 
-	public get PreviousEdge(): Edge {
+	get PreviousEdge() {
 		return this.EdgeList[0].PreviousVertex.PreviousEdge;
 	}
 
-	public get NextEdge(): Edge {
+	get NextEdge() {
 		return this.EdgeList[this.EdgeList.Count - 1].NextVertex.NextEdge;
 	}
 
-	public get PreviousVertex(): Vertex {
+	get PreviousVertex() {
 		return this.EdgeList[0].PreviousVertex;
 	}
 
-	public get NextVertex(): Vertex {
+	get NextVertex() {
 		return this.EdgeList[this.EdgeList.Count - 1].NextVertex;
 	}
 
-	public get CurrentVertex(): Vertex {
+	get CurrentVertex() {
 		return null;
 	}
 
-	public get ChainType(): ChainType {
+	get ChainType() {
 		return this._closed ? ChainType.ClosedEdge : ChainType.Edge;
 	}
 }
