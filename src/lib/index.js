@@ -1,4 +1,4 @@
-import {GeoJSONMultipolygon, List} from "./Utils";
+import {List} from "./Utils";
 import Vector2d from "./Primitives/Vector2d";
 import SkeletonBuilder from "./SkeletonBuilder";
 import { Skeleton } from "./Skeleton";
