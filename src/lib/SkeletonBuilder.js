@@ -1,5 +1,5 @@
 import {Skeleton} from "./Skeleton";
-import {HashSet, List, Dictionary, GeoJSONMultipolygon} from "./Utils";
+import {HashSet, List, Dictionary} from "./Utils";
 import Vector2d from "./Primitives/Vector2d";
 import PriorityQueue from "./Primitives/PriorityQueue";
 import Edge from "./Circular/Edge";
