@@ -4,8 +4,8 @@ import Vector2d from '../../src/lib/Primitives/Vector2d'
 test('Constructor', () => {
   const v1 = new Vector2d(0, 0)
   const v2 = new Vector2d(1, 1)
-  const l1 = new LineParametric2d(v1, v2)
-  expect(l1.A.X).toBe(0)
+  const r1 = new LineParametric2d(v1, v2)
+  expect(r1.A.X).toBe(0)
 })
 
 test('Create Linear Form', () => {
@@ -17,7 +17,19 @@ test('Create Linear Form', () => {
 })
 
 test('Collide', () => {
+  const v1 = new Vector2d(0, 0);
+  const v2 = new Vector2d(1, 1);
+  const v3 = new Vector2d(1, 2);
+  const r1 = new LineParametric2d(v1, v2);
+  const l1 = new LineLinear2d(v2, v3);
+  const epsilon = .0001;
+  const result = LineParametric2d.Collide(ray, line, epsilon);
+  expect(result.X).toBe(1);
 })
+
+/** @todo test fail to collide */
+
+/** @todo test colinear lines */
 
 test('Left Side', () => {
 })
