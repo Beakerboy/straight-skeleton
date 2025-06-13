@@ -187,7 +187,7 @@ export default class SkeletonBuilder {
 		}
 	}
 
-	static PickEvent(event: PickEvent) {
+	static PickEvent(event) {
 		const center = event.V;
 		const edgeList = event.Chain.EdgeList;
 
@@ -197,7 +197,7 @@ export default class SkeletonBuilder {
 		this.AddMultiBackFaces(edgeList, vertex);
 	}
 
-	static MultiSplitEvent(event: MultiSplitEvent, sLav, queue, edges) {
+	static MultiSplitEvent(event, sLav, queue, edges) {
 		const chains = event.Chains;
 		const center = event.V;
 
