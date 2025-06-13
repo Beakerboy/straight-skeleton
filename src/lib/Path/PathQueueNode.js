@@ -1,23 +1,23 @@
 import PathQueue from "./PathQueue";
 
-export default class PathQueueNode<T extends PathQueueNode<T>> {
-	public List: PathQueue<T> = null;
-	public Next: PathQueueNode<T> = null;
-	public Previous: PathQueueNode<T> = null;
+export default class PathQueueNode {
+	List = null;
+	Next = null;
+	Previous = null;
 
-	public get IsEnd(): boolean {
+	get IsEnd() {
 		return this.Next === null || this.Previous === null;
 	}
 
-	public AddPush(node: PathQueueNode<T>) {
+	AddPush(node) {
 		this.List.AddPush(this, node);
 	}
 
-	public AddQueue(queue: PathQueueNode<T>): PathQueueNode<T> {
+	AddQueue(queue) {
 		if (this.List === queue.List)
 			return null;
 
-		let currentQueue: PathQueueNode<T> = this;
+		let currentQueue = this;
 
 		let current = queue;
 
@@ -33,11 +33,11 @@ export default class PathQueueNode<T extends PathQueueNode<T>> {
 		return currentQueue;
 	}
 
-	public FindEnd(): PathQueueNode<T> {
+	FindEnd() {
 		if (this.IsEnd)
 			return this;
 
-		let current: PathQueueNode<T> = this;
+		let current = this;
 
 		while (current.Previous !== null)
 			current = current.Previous;
@@ -45,7 +45,7 @@ export default class PathQueueNode<T extends PathQueueNode<T>> {
 		return current;
 	}
 
-	public Pop(): PathQueueNode<T> {
+	Pop() {
 		return this.List.Pop(this);
 	}
 }
