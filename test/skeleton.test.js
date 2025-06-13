@@ -176,37 +176,6 @@ describe.each([
 })
 
 /**
-
-        [Test]
-        public void SkeletonTestB11_b()
-        {
-            var polygon = new List<Vector2d>
-            {
-                new Vector2d(4.899343591400031, 14.19306411217788),
-                new Vector2d(4.873615853393824, 2.8449682126970464),
-                new Vector2d(3.4878348313988496, 2.8481099737474747),
-                new Vector2d(3.4812833647560453, -0.04163770013738066),
-                new Vector2d(4.964494009365636, -0.04500034901230876),
-                new Vector2d(4.95897480112971, -2.4794352197829106),
-                new Vector2d(8.807770830090442, -2.4881609878627096),
-                new Vector2d(8.823006374999641, 4.231995455388115)
-            };
-
-            var expected = new List<Vector2d>(polygon)
-            {
-                new Vector2d(6.8490390285892975, 3.8595532917064257),
-                new Vector2d(6.315213958119228, 1.396818641879405),
-                new Vector2d(6.844650538271922, 1.9238600368574004),
-                new Vector2d(4.929432935568722, 1.3999604034575501),
-                new Vector2d(6.893254906247293, 1.875034782130368),
-                new Vector2d(6.8877356980830235, -0.5594000893968922)
-            };
-
-            var sk = SkeletonBuilder.Build(polygon);
-
-            SkeletonTestUtil.AssertExpectedPoints(expected, SkeletonTestUtil.GetFacePoints(sk));
-        }
-
         [Test]
         public void SkeletonTestB12()
         {
