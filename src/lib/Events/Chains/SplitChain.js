@@ -27,11 +27,11 @@ export default class SplitChain {
 	}
 
 	get PreviousVertex() {
-		return this._splitEvent.Parent.Previous as Vertex;
+		return this._splitEvent.Parent.Previous;
 	}
 
 	get NextVertex() {
-		return this._splitEvent.Parent.Next as Vertex;
+		return this._splitEvent.Parent.Next;
 	}
 
 	get CurrentVertex() {
