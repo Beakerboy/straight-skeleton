@@ -9,7 +9,7 @@ export default class MultiSplitEvent extends SkeletonEvent {
 		return false;
 	}
 
-	constructor(pointd, distance, chains) {
+	constructor(point, distance, chains) {
 		super(point, distance);
 
 		this.Chains = chains;
