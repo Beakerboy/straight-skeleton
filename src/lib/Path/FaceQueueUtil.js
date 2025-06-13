@@ -1,7 +1,7 @@
 import {FaceNode} from "./FaceNode";
 
 export default class FaceQueueUtil {
-	public static ConnectQueues(firstFace: FaceNode, secondFace: FaceNode) {
+	static ConnectQueues(firstFace, secondFace) {
 		if (firstFace.List === null)
 			throw new Error("firstFace.list cannot be null.");
 		if (secondFace.List === null)
@@ -33,7 +33,7 @@ export default class FaceQueueUtil {
 		}
 	}
 
-	private static MoveNodes(firstFace: FaceNode, secondFace: FaceNode) {
+	static MoveNodes(firstFace, secondFace) {
 		firstFace.AddQueue(secondFace);
 	}
 }
