@@ -165,7 +165,7 @@ describe.each([
       for (const point of hPoints) {
         inner.Add(new Vector2d(point[0], point[1]))
       }
-      innerList.add(inner)
+      innerList.Add(inner)
       expected.AddRange(inner)
     }
 
