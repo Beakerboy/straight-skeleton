@@ -328,7 +328,7 @@ export default class SkeletonBuilder {
 
 		for (const chain of chains) {
 			if (chain instanceof SplitChain) {
-				const splitChain = <SplitChain>chain;
+				const splitChain = chain;
 				const oppositeEdge = splitChain.OppositeEdge;
 
 				if (oppositeEdge !== null && !oppositeEdges.Contains(oppositeEdge)) {
