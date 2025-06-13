@@ -1,5 +1,3 @@
-import {ICircularList} from "./CircularList";
-
 export default class CircularNode {
 	List = null;
 	Next = null;
