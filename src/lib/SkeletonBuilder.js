@@ -410,7 +410,7 @@ export default class SkeletonBuilder {
 		return chains;
 	}
 
-	static IsInEdgeChain(split: SplitEvent, chain) {
+	static IsInEdgeChain(split, chain) {
 		const splitParent = split.Parent;
 		const edgeList = chain.EdgeList;
 
@@ -757,7 +757,7 @@ export default class SkeletonBuilder {
 		return ret;
 	}
 
-	static EdgeBehindBisector(bisector, edge: LineLinear2d) {
+	static EdgeBehindBisector(bisector, edge) {
 		return LineParametric2d.Collide(bisector, edge, this.SplitEpsilon).Equals(Vector2d.Empty);
 	}
 
