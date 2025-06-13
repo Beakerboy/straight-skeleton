@@ -1,10 +1,10 @@
 import CircularNode from "./CircularNode";
 
 export default class CircularList {
-	private _first = null;
-	private _size = 0;
+	_first = null;
+	_size = 0;
 
-	public AddNext(node, newNode) {
+	AddNext(node, newNode) {
 		if (newNode.List !== null)
 			throw new Error("Node is already assigned to different list!");
 
@@ -76,11 +76,11 @@ export default class CircularList {
 		this._size--;
 	}
 
-	public get Size() {
+	get Size() {
 		return this._size;
 	}
 
-	public First() {
+	First() {
 		return this._first;
 	}
 
