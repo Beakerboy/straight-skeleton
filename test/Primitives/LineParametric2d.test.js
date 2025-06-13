@@ -1,3 +1,4 @@
+import LineLinear2d from '../../src/lib/Primitives/LineLinear2d'
 import LineParametric2d from '../../src/lib/Primitives/LineParametric2d'
 import Vector2d from '../../src/lib/Primitives/Vector2d'
 
