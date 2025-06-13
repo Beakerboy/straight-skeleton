@@ -966,7 +966,7 @@ class ChainComparer {
 	}
 }
 
-class SplitCandidateCompare {
+class SplitCandidateComparer {
 	Compare(left, right) {
 		if (left.Distance > right.Distance)
 			return 1;
