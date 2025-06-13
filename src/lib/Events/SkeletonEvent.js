@@ -5,7 +5,7 @@ export default class SkeletonEvent {
 
 	Distance;
 
-	protected constructor(point, distance) {
+	constructor(point, distance) {
 		this.V = point;
 		this.Distance = distance;
 	}
