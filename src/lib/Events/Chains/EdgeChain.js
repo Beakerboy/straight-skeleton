@@ -1,4 +1,3 @@
-import IChain from "./IChain";
 import EdgeEvent from "../EdgeEvent";
 import {List} from "../../Utils";
 import Edge from "../../Circular/Edge";
