@@ -1,10 +1,10 @@
 import PathQueueNode from "./PathQueueNode";
 
-export default class PathQueue<T extends PathQueueNode<T>> {
-	public Size: number = 0;
-	public First: PathQueueNode<T> = null;
+export default class PathQueue {
+	Size = 0;
+	First = null;
 
-	public AddPush(node: PathQueueNode<T>, newNode: PathQueueNode<T>) {
+	AddPush(node, newNode) {
 		if (newNode.List !== null)
 			throw new Error("Node is already assigned to different list!");
 
@@ -28,7 +28,7 @@ export default class PathQueue<T extends PathQueueNode<T>> {
 		}
 	}
 
-	public AddFirst(node: T) {
+	AddFirst(node) {
 		if (node.List !== null)
 			throw new Error("Node is already assigned to different list!");
 
@@ -44,7 +44,7 @@ export default class PathQueue<T extends PathQueueNode<T>> {
 			throw new Error("First element already exist!");
 	}
 
-	public Pop(node: PathQueueNode<T>): PathQueueNode<T> {
+	Pop(node) {
 		if (node.List !== this)
 			throw new Error("Node is not assigned to this list!");
 
@@ -56,7 +56,7 @@ export default class PathQueue<T extends PathQueueNode<T>> {
 
 		node.List = null;
 
-		let previous: PathQueueNode<T> = null;
+		let previous = null;
 
 		if (this.Size === 1)
 			this.First = null;
@@ -86,8 +86,8 @@ export default class PathQueue<T extends PathQueueNode<T>> {
 		return previous;
 	}
 
-	public* Iterate(): Generator<T> {
-		let current: T = <T>(this.First !== null ? this.First.FindEnd() : null);
+	* Iterate() {
+		let current = (this.First !== null ? this.First.FindEnd() : null);
 		let i = 0;
 
 		while (current !== null)
