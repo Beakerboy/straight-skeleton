@@ -42,4 +42,10 @@ test('Left Side', () => {
 })
 
 test('Right Side', () => {
+  const v1 = new Vector2d(0, 0)
+  const v2 = new Vector2d(1, 0)
+  const v3 = new Vector2d(1, -1)
+  const r1 = new LineParametric2d(v1, v2)
+  const result = r1.IsOnRightSite(v3, .0001)
+  expect(result).toBe(true);
 })
