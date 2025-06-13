@@ -3,13 +3,13 @@ import Vector2d from "../Primitives/Vector2d";
 import EdgeChain from "./Chains/EdgeChain";
 
 export default class MultiEdgeEvent extends SkeletonEvent {
-	public readonly Chain: EdgeChain;
+	Chain;
 
-	public override get IsObsolete(): boolean {
+	get IsObsolete() {
 		return false;
 	}
 
-	constructor(point: Vector2d, distance: number, chain: EdgeChain) {
+	constructor(point, distance, chain) {
 		super(point, distance);
 
 		this.Chain = chain;
