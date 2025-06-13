@@ -136,15 +136,13 @@ describe.each([
     null,
     [[0.367496, -1.375942], [1.434035, -6.223122], [6.380715, -11.177062]],
     'SkeletonTestB8__'
-  ]
-/**
+  ],
   [
-    [],
+    [[80.8806, -8.9725], [81.0041, -8.8169], [56.051, 72.1197], [17.2096, 0.9978], [16.475, -0.3011], [15.0244, 0.2603], [23.9762, 39.6003], [-18.0879, 10.6703], [-19.1437, 9.961], [-20.173, 11.2989], [8.0439, 36.0416], [8.0445, 36.0529], [23.813, 64.5547], [-0.7203, 71.8831], [-0.7564, 71.8911], [-68.8682, 48.1444], [-4.8991, 53.0675], [-3.5566, 53.1622], [-3.0501, 51.9918], [-46.0636, 12.2109], [13.8633, -67.41]],
     null,
     [],
     'SkeletonTestC1'
   ]
-  */
 ])('No Holes', (pPoints, hPoints, ePoints, description) => {
   test(`${description}`, () => {
     const polygon = new List()
@@ -174,87 +172,3 @@ describe.each([
     SkeletonTestUtil.assertExpectedPoints(expected, SkeletonTestUtil.getFacePoints(sk))
   })
 })
-
-/**
-        [Test]
-        public void SkeletonTestB7__()
-        {
-            var polygon = new List<Vector2d>
-            {
-                new Vector2d(0.0, 0.0),
-                new Vector2d(-1.1889778921584675, -7.356451670462243),
-                new Vector2d(5.7257149714503175, -12.035132476438635),
-                new Vector2d(11.739705976732338, -17.194940549920428),
-                new Vector2d(0.8357970425329011, -1.0288592710693223),
-                new Vector2d(7.360455718922119, -6.229013606285628)
-            };
-
-            var expected = new List<Vector2d>
-            {
-                new Vector2d(0.159929, -0.432595),
-                new Vector2d(0.228431, -0.371176),
-                new Vector2d(1.434035, -6.223122),
-                new Vector2d(6.380715, -11.177062)
-            };
-            expected.AddRange(polygon);
-
-            var sk = SkeletonBuilder.Build(polygon);
-
-            SkeletonTestUtil.AssertExpectedPoints(expected, SkeletonTestUtil.GetFacePoints(sk));
-        }
-
-        [Test]
-        public void SkeletonTestB8__()
-        {
-            var polygon = new List<Vector2d>
-            {
-                new Vector2d(0.0, 0.0),
-                new Vector2d(-1.1889778921584675, -7.356451670462243),
-                new Vector2d(5.7257149714503175, -12.035132476438635),
-                new Vector2d(11.739705976732338, -17.194940549920428),
-                new Vector2d(0.8357970425329011, -1.0288592710693223)
-            };
-            var expected = new List<Vector2d>
-            {
-                new Vector2d(0.367496, -1.375942),
-                new Vector2d(1.434035, -6.223122),
-                new Vector2d(6.380715, -11.177062)
-            };
-            expected.AddRange(polygon);
-
-            var sk = SkeletonBuilder.Build(polygon);
-
-            SkeletonTestUtil.AssertExpectedPoints(expected, SkeletonTestUtil.GetFacePoints(sk));
-        }
-
-        [Test]
-        public void SkeletonTestC1()
-        {
-            var polygon = new List<Vector2d>
-            {
-                new Vector2d(80.8806, -8.9725),
-                new Vector2d(81.0041, -8.8169),
-                new Vector2d(56.051, 72.1197),
-                new Vector2d(17.2096, 0.9978),
-                new Vector2d(16.475, -0.3011),
-                new Vector2d(15.0244, 0.2603),
-                new Vector2d(23.9762, 39.6003),
-                new Vector2d(-18.0879, 10.6703),
-                new Vector2d(-19.1437, 9.961),
-                new Vector2d(-20.173, 11.2989),
-                new Vector2d(8.0439, 36.0416),
-                new Vector2d(8.0445, 36.0529),
-                new Vector2d(23.813, 64.5547),
-                new Vector2d(-0.7203, 71.8831),
-                new Vector2d(-0.7564, 71.8911),
-                new Vector2d(-68.8682, 48.1444),
-                new Vector2d(-4.8991, 53.0675),
-                new Vector2d(-3.5566, 53.1622),
-                new Vector2d(-3.0501, 51.9918),
-                new Vector2d(-46.0636, 12.2109),
-                new Vector2d(13.8633, -67.41)
-            };
-
-            // just check that this runs without throwing an exception
-            var sk = SkeletonBuilder.Build(polygon);
-          */
