@@ -149,27 +149,27 @@ describe.each([
   test(`${description}`, () => {
     const polygon = new List()
     for (const point of pPoints) {
-      polygon.add(new Vector2d(...point))
+      polygon.Add(new Vector2d(...point))
     }
 
     const expected = new List()
     for (const point of ePoints) {
-      expected.add(new Vector2d(...point))
+      expected.Add(new Vector2d(...point))
     }
-    expected.addRange(polygon)
+    expected.AddRange(polygon)
 
     let innerList = null
     if (hPoints !== null) {
       innerList = new List()
       const inner = new List()
       for (const point of hPoints) {
-        inner.add(new Vector2d(point[0], point[1]))
+        inner.Add(new Vector2d(point[0], point[1]))
       }
       innerList.add(inner)
-      expected.addRange(inner)
+      expected.AddRange(inner)
     }
 
-    const sk = SkeletonBuilder.build(polygon, innerList)
+    const sk = SkeletonBuilder.Build(polygon, innerList)
 
     SkeletonTestUtil.assertExpectedPoints(expected, SkeletonTestUtil.getFacePoints(sk))
   })
