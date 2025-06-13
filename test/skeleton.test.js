@@ -1,6 +1,7 @@
 /* eslint-disable */
-import SkeletonBuilder, Vector2d from 'straight-skeleton'
-import { List } from 'straight-skeleton'
+import SkeletonBuilder from '../../src/lib/SkeletonBuilder';
+import Vector2d from '../../src/lib/Primitives/Vector2d'
+import { List } from '../../src/lib/Util'
 import SkeletonTestUtil from './skeletontestutil.js'
 
 describe.each([
