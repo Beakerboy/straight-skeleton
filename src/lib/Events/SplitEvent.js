@@ -4,22 +4,22 @@ import Vertex from "../Circular/Vertex";
 import Vector2d from "../Primitives/Vector2d";
 
 export default class SplitEvent extends SkeletonEvent {
-	public readonly OppositeEdge: Edge = null;
-	public readonly Parent: Vertex = null;
+	OppositeEdge = null;
+	Parent = null;
 
-	constructor(point: Vector2d, distance: number, parent: Vertex, oppositeEdge: Edge) {
+	constructor(point, distance, parent, oppositeEdge) {
 		super(point, distance);
 
 		this.Parent = parent;
 		this.OppositeEdge = oppositeEdge;
 	}
 
-	public override get IsObsolete(): boolean {
+	get IsObsolete() {
 		return this.Parent.IsProcessed;
 	}
 
 
-	public override ToString(): string {
+	ToString() {
 		return "SplitEvent [V=" + this.V + ", Parent=" + (this.Parent !== null ? this.Parent.Point.ToString() : "null") +
 			", Distance=" + this.Distance + "]";
 	}
