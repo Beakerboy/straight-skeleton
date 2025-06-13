@@ -3,22 +3,22 @@ import {FaceNode} from "./FaceNode";
 import PathQueueNode from "./PathQueueNode";
 import Edge from "../Circular/Edge";
 
-export default class FaceQueue extends PathQueue<FaceNode> {
-	public Edge: Edge = null;
-	public Closed: boolean = false;
+export default class FaceQueue extends PathQueue {
+	Edge = null;
+	Closed = false;
 
-	public get IsUnconnected(): boolean {
+	get IsUnconnected() {
 		return this.Edge === null;
 	}
 
-	public override AddPush(node: PathQueueNode<FaceNode>, newNode: PathQueueNode<FaceNode>) {
+	AddPush(node, newNode) {
 		if (this.Closed)
 			throw new Error("Can't add node to closed FaceQueue");
 
 		super.AddPush(node, newNode);
 	}
 
-	public Close() {
+	Close() {
 		this.Closed = true;
 	}
 }
