@@ -97,7 +97,7 @@ export default class PathQueue {
 			if (++i === this.Size)
 				return;
 
-			current = <T>current.Next;
+			current = current.Next;
 		}
 	}
 }
