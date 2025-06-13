@@ -5,21 +5,21 @@ import Edge from "./Edge";
 import {FaceNode} from "../Path/FaceNode";
 
 export default class Vertex extends CircularNode {
-	readonly RoundDigitCount = 5;
+	RoundDigitCount = 5;
 
-	public Point: Vector2d = null;
-	public readonly Distance: number;
-	public readonly Bisector: LineParametric2d = null;
+	Point = null;
+	Distance;
+	Bisector = null;
 
-	public readonly NextEdge: Edge = null;
-	public readonly PreviousEdge: Edge = null;
+	NextEdge = null;
+	PreviousEdge = null;
 
-	public LeftFace: FaceNode = null;
-	public RightFace: FaceNode = null;
+	LeftFace = null;
+	RightFace = null;
 
-	public IsProcessed: boolean;
+	IsProcessed;
 
-	constructor(point: Vector2d, distance: number, bisector: LineParametric2d, previousEdge: Edge, nextEdge: Edge) {
+	constructor(point, distance, bisector, previousEdge, nextEdge) {
 		super();
 
 		this.Point = point;
@@ -31,7 +31,7 @@ export default class Vertex extends CircularNode {
 		this.IsProcessed = false;
 	}
 
-	public ToString(): string {
+	ToString() {
 		return "Vertex [v=" + this.Point + ", IsProcessed=" + this.IsProcessed +
 			", Bisector=" + this.Bisector + ", PreviousEdge=" + this.PreviousEdge +
 			", NextEdge=" + this.NextEdge;
