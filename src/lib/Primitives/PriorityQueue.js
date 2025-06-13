@@ -30,7 +30,7 @@ export default class PriorityQueue {
 		return this._heap.Count;
 	}
 
-	get Empty(): boolean {
+	get Empty() {
 		return this._heap.Count === 0;
 	}
 
