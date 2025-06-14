@@ -5,12 +5,9 @@ function insertInArray(array, index, item) {
 }
 
 export class List extends Array {
-	constructor(capacity = null) {
-		if (capacity !== null) {
-			//throw new Error("cannot specify capacity: " + capacity)
-		}
-		super();
-	}
+	// constructor(capacity) {
+	//	super();
+	// }
 	
 	Insert(index, item) {
 		const newArr = insertInArray(this, index, item);
