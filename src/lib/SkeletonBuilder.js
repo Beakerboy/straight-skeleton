@@ -470,7 +470,7 @@ export default class SkeletonBuilder {
 		const parentGroup = new HashSet();
 
 		while (levelEvents.length > 0) {
-			parentGroup.Clear();
+			parentGroup.clear();
 
 			const event = levelEvents[0];
 			levelEvents.splice(0, 1);
