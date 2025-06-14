@@ -834,7 +834,7 @@ export default class SkeletonBuilder {
 	}
 
 	static ChooseOppositeEdgeLav(edgeLavs, oppositeEdge, center) {
-		if (!edgeLavs.some())
+		if (edgeLavs.length === 0)
 			return null;
 
 		if (edgeLavs.length === 1)
