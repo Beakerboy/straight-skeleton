@@ -21,10 +21,6 @@ export class HashSet extends Set {
 		this.add(item);
 	}
 
-	Remove(item) {
-		this.delete(item);
-	}
-
 	RemoveWhere(filter) {
 		for (const item of this.values()) {
 			if (filter(item)) {
