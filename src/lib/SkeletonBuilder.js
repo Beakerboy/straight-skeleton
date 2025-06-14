@@ -208,7 +208,8 @@ export default class SkeletonBuilder {
 
 		this.CreateOppositeEdgeChains(sLav, chains, center);
 
-		chains.Sort(new ChainComparer(center));
+		const comparer = new ChainComparer(center);
+		chains.sort(comparer.Compare.bind(comparer));
 
 		let lastFaceNode = null;
 
@@ -759,8 +760,8 @@ export default class SkeletonBuilder {
 			if (candidatePoint !== null)
 				ret.push(candidatePoint);
 		}
-
-		ret.Sort(new SplitCandidateComparer());
+		const comparer = new SplitCandidateComparer();
+		ret.sort(comparer.Compare.bind(comparer));
 		return ret;
 	}
 
