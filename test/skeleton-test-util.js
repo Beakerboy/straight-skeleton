@@ -7,7 +7,7 @@ export default class SkeletonTestUtil {
   }
 
   static containsEpsilon (list, p) {
-    return list.Any(l => this.equalEpsilon(l.X, p.X) && this.equalEpsilon(l.Y, p.Y))
+    return list.some(l => this.equalEpsilon(l.X, p.X) && this.equalEpsilon(l.Y, p.Y))
   }
 
   /**
