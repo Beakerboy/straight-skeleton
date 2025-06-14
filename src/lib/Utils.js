@@ -9,10 +9,6 @@ export class List extends Array {
 		super();
 	}
 
-	Add(item) {
-		this.push(item);
-	}
-
 	Insert(index, item) {
 		const newArr = insertInArray(this, index, item);
 
@@ -21,10 +17,6 @@ export class List extends Array {
 		for(let i = 0; i < newArr.length; i++) {
 			this[i] = newArr[i];
 		}
-	}
-
-	Reverse() {
-		this.reverse();
 	}
 
 	Clear() {
