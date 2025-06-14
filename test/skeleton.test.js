@@ -154,7 +154,7 @@ describe.each([
     for (const point of ePoints) {
       expected.push(new Vector2d(...point))
     }
-    expected.AddRange(polygon)
+    expected.push(...polygon)
 
     let innerList = null
     if (hPoints !== null) {
