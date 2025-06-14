@@ -1,5 +1,5 @@
 import {Skeleton} from "./Skeleton";
-import {HashSet, List, Dictionary} from "./Utils";
+import {HashSet, List} from "./Utils";
 import Vector2d from "./Primitives/Vector2d";
 import PriorityQueue from "./Primitives/PriorityQueue";
 import Edge from "./Circular/Edge";
@@ -30,7 +30,7 @@ export default class SkeletonBuilder {
 
 	static BuildFromGeoJSON(multipolygon) {
 		const allEdges = new List();
-		const allDistances = new Dictionary();
+		const allDistances = new Map();
 
 		for (const polygon of multipolygon) {
 			if (polygon.length > 0) {
@@ -642,7 +642,7 @@ export default class SkeletonBuilder {
 
 	static AddFacesToOutput(faces) {
 		const edgeOutputs = new List();
-		const distances = new Dictionary();
+		const distances = new Map();
 
 		for (const face of faces) {
 			if (face.Size > 0) {
