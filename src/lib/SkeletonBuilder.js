@@ -579,7 +579,8 @@ export default class SkeletonBuilder {
 		if (holes === null)
 			return null;
 
-		const ret = new List(holes.length);
+		// const ret = new List(holes.length);
+		const ret = new List();
 		for (const hole of holes) {
 			if (PrimitiveUtils.IsClockwisePolygon(hole))
 				ret.push(hole);
@@ -859,7 +860,8 @@ export default class SkeletonBuilder {
 
 		for (const end of edgeLavs) {
 			const size = end.List.Size;
-			const points = new List(size);
+			// const points = new List(size);
+			const points = new List();
 			let next = end;
 			for (let i = 0; i < size; i++) {
 				points.Add(next.Point);
