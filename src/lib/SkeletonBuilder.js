@@ -145,7 +145,12 @@ export default class SkeletonBuilder {
 	}
 
 	static RemoveEmptyLav(sLav) {
-		sLav.RemoveWhere(circularList => circularList.Size === 0);
+		const filter = circularList => circularList.Size === 0;
+		for (const item of sLav) {
+			if (filter(item)) {
+				sLav.delete(item);
+			}
+		}
 	}
 
 	static MultiEdgeEvent(event, queue, edges) {
