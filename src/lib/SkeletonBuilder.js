@@ -38,17 +38,17 @@ export default class SkeletonBuilder {
 				const holes = new List();
 
 				for (let i = 1; i < polygon.length; i++) {
-					holes.Add(this.ListFromCoordinatesArray(polygon[i]));
+					holes.push(this.ListFromCoordinatesArray(polygon[i]));
 				}
 
 				const skeleton = this.Build(outer, holes);
 
 				for (const edge of skeleton.Edges) {
-					allEdges.Add(edge);
+					allEdges.push(edge);
 				}
 
 				for (const [key, distance] of skeleton.Distances.entries()) {
-					allDistances.Add(key, distance);
+					allDistances.push(key, distance);
 				}
 			}
 		}
@@ -60,7 +60,7 @@ export default class SkeletonBuilder {
 		const list = new List();
 
 		for (const [x, y] of arr) {
-			list.Add(new Vector2d(x, y));
+			list.push(new Vector2d(x, y));
 		}
 
 		return list;
@@ -363,14 +363,14 @@ export default class SkeletonBuilder {
 
 		for (const skeletonEvent of cluster) {
 			if (skeletonEvent instanceof EdgeEvent)
-				edgeCluster.Add(skeletonEvent);
+				edgeCluster.push(skeletonEvent);
 			else {
 				if (skeletonEvent instanceof VertexSplitEvent) {
 
 				} else if (skeletonEvent instanceof SplitEvent) {
 					const splitEvent = skeletonEvent;
 					vertexEventsParents.Add(splitEvent.Parent);
-					splitCluster.Add(splitEvent);
+					splitCluster.push(splitEvent);
 				}
 			}
 		}
@@ -380,19 +380,19 @@ export default class SkeletonBuilder {
 				const vertexEvent = skeletonEvent;
 				if (!vertexEventsParents.Contains(vertexEvent.Parent)) {
 					vertexEventsParents.Add(vertexEvent.Parent);
-					splitCluster.Add(vertexEvent);
+					splitCluster.push(vertexEvent);
 				}
 			}
 		}
 
 		const edgeChains = new List();
 
-		while (edgeCluster.Count > 0)
-			edgeChains.Add(new EdgeChain(this.CreateEdgeChain(edgeCluster)));
+		while (edgeCluster.length > 0)
+			edgeChains.push(new EdgeChain(this.CreateEdgeChain(edgeCluster)));
 
-		const chains = new List(edgeChains.Count);
+		const chains = new List(edgeChains.length);
 		for (const edgeChain of edgeChains)
-			chains.Add(edgeChain);
+			chains.push(edgeChain);
 
 		splitEventLoop:
 			while (splitCluster.Any()) {
@@ -404,7 +404,7 @@ export default class SkeletonBuilder {
 						continue splitEventLoop; //goto splitEventLoop;
 				}
 
-				chains.Add(new SplitChain(split));
+				chains.push(new SplitChain(split));
 			}
 
 		return chains;
@@ -420,7 +420,7 @@ export default class SkeletonBuilder {
 	static CreateEdgeChain(edgeCluster) {
 		const edgeList = new List();
 
-		edgeList.Add(edgeCluster[0]);
+		edgeList.push(edgeCluster[0]);
 		edgeCluster.RemoveAt(0);
 
 		loop:
@@ -479,7 +479,7 @@ export default class SkeletonBuilder {
 			this.AddEventToGroup(parentGroup, event);
 
 			const cluster = new List();
-			cluster.Add(event);
+			cluster.push(event);
 
 			for (let j = 0; j < levelEvents.Count; j++) {
 				const test = levelEvents[j];
@@ -487,19 +487,19 @@ export default class SkeletonBuilder {
 				if (this.IsEventInGroup(parentGroup, test)) {
 					const item = levelEvents[j];
 					levelEvents.RemoveAt(j);
-					cluster.Add(item);
+					cluster.push(item);
 					this.AddEventToGroup(parentGroup, test);
 					j--;
 				} else if (eventCenter.DistanceTo(test.V) < this.SplitEpsilon) {
 					const item = levelEvents[j];
 					levelEvents.RemoveAt(j);
-					cluster.Add(item);
+					cluster.push(item);
 					this.AddEventToGroup(parentGroup, test);
 					j--;
 				}
 			}
 
-			ret.Add(this.CreateLevelEvent(eventCenter, distance, cluster));
+			ret.push(this.CreateLevelEvent(eventCenter, distance, cluster));
 		}
 		return ret;
 	}
@@ -555,14 +555,14 @@ export default class SkeletonBuilder {
 
 		const levelStartHeight = levelStart.Distance;
 
-		level.Add(levelStart);
+		level.push(levelStart);
 
 		let event;
 		while ((event = queue.Peek()) !== null &&
 		Math.abs(event.Distance - levelStartHeight) < this.SplitEpsilon) {
 			const nextLevelEvent = queue.Next();
 			if (!nextLevelEvent.IsObsolete)
-				level.Add(nextLevelEvent);
+				level.push(nextLevelEvent);
 		}
 		return level;
 	}
@@ -581,10 +581,10 @@ export default class SkeletonBuilder {
 		const ret = new List(holes.Count);
 		for (const hole of holes) {
 			if (PrimitiveUtils.IsClockwisePolygon(hole))
-				ret.Add(hole);
+				ret.push(hole);
 			else {
 				hole.Reverse();
-				ret.Add(hole);
+				ret.push(hole);
 			}
 		}
 		return ret;
@@ -655,7 +655,7 @@ export default class SkeletonBuilder {
 						distances.Add(point, fn.Vertex.Distance);
 				}
 
-				edgeOutputs.Add(new EdgeResult(face.Edge, faceList));
+				edgeOutputs.push(new EdgeResult(face.Edge, faceList));
 			}
 		}
 		return new Skeleton(edgeOutputs, distances);
