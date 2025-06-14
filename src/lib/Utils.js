@@ -17,10 +17,6 @@ export class List extends Array {
 
 export class HashSet extends Set {
 
-	Add(item) {
-		this.add(item);
-	}
-
 	RemoveWhere(filter) {
 		for (const item of this.values()) {
 			if (filter(item)) {
