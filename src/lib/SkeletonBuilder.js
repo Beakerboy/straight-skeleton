@@ -440,7 +440,7 @@ export default class SkeletonBuilder {
 					}
 					if (edge.NextVertex === beginVertex) {
 						edgeCluster.splice(i, 1);
-						edgeList.Insert(0, edge);
+						edgeList.unshift(edge);
 						//goto loop;
 						continue loop;
 					}
