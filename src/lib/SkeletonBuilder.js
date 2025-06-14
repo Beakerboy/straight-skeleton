@@ -398,7 +398,7 @@ export default class SkeletonBuilder {
 		splitEventLoop:
 			while (splitCluster.Any()) {
 				const split = splitCluster[0];
-				splitCluster.RemoveAt(0);
+				splitCluster.splice(0, 1);
 
 				for (const chain of edgeChains) {
 					if (this.IsInEdgeChain(split, chain))
