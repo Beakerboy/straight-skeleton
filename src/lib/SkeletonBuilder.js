@@ -507,10 +507,10 @@ export default class SkeletonBuilder {
 
 	static IsEventInGroup(parentGroup, event) {
 		if (event instanceof SplitEvent)
-			return parentGroup.Contains((event).Parent);
+			return parentGroup.has((event).Parent);
 		if (event instanceof EdgeEvent)
-			return parentGroup.Contains((event).PreviousVertex)
-				|| parentGroup.Contains((event).NextVertex);
+			return parentGroup.has((event).PreviousVertex)
+				|| parentGroup.has((event).NextVertex);
 		return false;
 	}
 
