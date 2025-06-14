@@ -120,7 +120,7 @@ export default class SkeletonBuilder {
 		if (polygon === null)
 			throw new Error("polygon can't be null");
 
-		if (polygon[0].Equals(polygon[polygon.Count - 1]))
+		if (polygon[0].Equals(polygon[polygon.length - 1]))
 			throw new Error("polygon can't start and end with the same point");
 
 		return this.MakeCounterClockwise(polygon);
