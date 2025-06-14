@@ -24,7 +24,7 @@ export default class LavUtil {
 			const current = next;
 			next = current.Next;
 			current.Remove();
-			ret.Add(current);
+			ret.push(current);
 
 			if (current === endVertex)
 				return ret;
