@@ -15,39 +15,34 @@ export class List extends Array {
 	}
 }
 
-export class HashSet {
-	Set;
-
-	constructor() {
-		this.Set = new Set();
-	}
+export class HashSet extemds Set {
 
 	Add(item) {
-		this.Set.add(item);
+		this.add(item);
 	}
 
 	Remove(item) {
-		this.Set.delete(item);
+		this.delete(item);
 	}
 
 	RemoveWhere(filter) {
-		for (const item of this.Set.values()) {
+		for (const item of this.values()) {
 			if (filter(item)) {
-				this.Set.delete(item);
+				this.delete(item);
 			}
 		}
 	}
 
 	Contains(item) {
-		return this.Set.has(item);
+		return this.has(item);
 	}
 
 	Clear() {
-		this.Set.clear();
+		this.clear();
 	}
 
 	* [Symbol.iterator]() {
-		for (const item of this.Set.values()) {
+		for (const item of this.values()) {
 			yield item;
 		}
 	}
