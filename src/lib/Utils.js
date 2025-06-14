@@ -10,7 +10,7 @@ export class List extends Array {
 	}
 
 	get Count() {
-		thow new Error("Count Depricated")
+		throw new Error("Count Depricated")
 	}
 	
 	Insert(index, item) {
