@@ -335,10 +335,10 @@ export default class SkeletonBuilder {
 					const nextVertex = this.FindOppositeEdgeLav(sLav, oppositeEdge, center);
 
 					if (nextVertex !== null)
-						oppositeEdgeChains.Add(new SingleEdgeChain(oppositeEdge, nextVertex));
+						oppositeEdgeChains.push(new SingleEdgeChain(oppositeEdge, nextVertex));
 					else {
 						this.FindOppositeEdgeLav(sLav, oppositeEdge, center);
-						chainsForRemoval.Add(chain);
+						chainsForRemoval.push(chain);
 					}
 					oppositeEdges.Add(oppositeEdge);
 				}
