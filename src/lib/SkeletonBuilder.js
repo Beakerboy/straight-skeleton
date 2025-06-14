@@ -428,7 +428,7 @@ export default class SkeletonBuilder {
 				const beginVertex = edgeList[0].PreviousVertex;
 				const endVertex = edgeList[edgeList.length - 1].NextVertex;
 
-				for (let i = 0; i < edgeCluster.Count; i++) {
+				for (let i = 0; i < edgeCluster.length; i++) {
 					const edge = edgeCluster[i];
 					if (edge.PreviousVertex === endVertex) {
 						edgeCluster.RemoveAt(i);
