@@ -5,12 +5,11 @@ function insertInArray(array, index, item) {
 }
 
 export class List extends Array {
-	constructor(capacity = 0) {
+	constructor(capacity = null) {
+		if (capacity !== null) {
+			throw new Error("cannot specify capacity")
+		}
 		super();
-	}
-
-	get Count() {
-		throw new Error("Count Depricated")
 	}
 	
 	Insert(index, item) {
