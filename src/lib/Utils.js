@@ -24,10 +24,4 @@ export class HashSet extends Set {
 			}
 		}
 	}
-
-	* [Symbol.iterator]() {
-		for (const item of this.values()) {
-			yield item;
-		}
-	}
 }
