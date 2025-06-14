@@ -223,7 +223,7 @@ export default class SkeletonBuilder {
 				const lavPart = LavUtil.CutLavPart(beginNextVertex, endPreviousVertex);
 
 				const lav = new CircularList();
-				sLav.Add(lav);
+				sLav.add(lav);
 				lav.AddLast(newVertex);
 				for (const vertex of lavPart)
 					lav.AddLast(vertex);
@@ -340,7 +340,7 @@ export default class SkeletonBuilder {
 						this.FindOppositeEdgeLav(sLav, oppositeEdge, center);
 						chainsForRemoval.push(chain);
 					}
-					oppositeEdges.Add(oppositeEdge);
+					oppositeEdges.add(oppositeEdge);
 				}
 			}
 		}
@@ -369,7 +369,7 @@ export default class SkeletonBuilder {
 
 				} else if (skeletonEvent instanceof SplitEvent) {
 					const splitEvent = skeletonEvent;
-					vertexEventsParents.Add(splitEvent.Parent);
+					vertexEventsParents.add(splitEvent.Parent);
 					splitCluster.push(splitEvent);
 				}
 			}
@@ -379,7 +379,7 @@ export default class SkeletonBuilder {
 			if (skeletonEvent instanceof VertexSplitEvent) {
 				const vertexEvent = skeletonEvent;
 				if (!vertexEventsParents.Contains(vertexEvent.Parent)) {
-					vertexEventsParents.Add(vertexEvent.Parent);
+					vertexEventsParents.add(vertexEvent.Parent);
 					splitCluster.push(vertexEvent);
 				}
 			}
@@ -615,7 +615,7 @@ export default class SkeletonBuilder {
 		}
 
 		const lav = new CircularList();
-		sLav.Add(lav);
+		sLav.add(lav);
 
 		for (const edge of edgesList.Iterate()) {
 			const nextEdge = edge.Next;
