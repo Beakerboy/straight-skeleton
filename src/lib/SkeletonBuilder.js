@@ -378,7 +378,7 @@ export default class SkeletonBuilder {
 		for (let skeletonEvent of cluster) {
 			if (skeletonEvent instanceof VertexSplitEvent) {
 				const vertexEvent = skeletonEvent;
-				if (!vertexEventsParents.Contains(vertexEvent.Parent)) {
+				if (!vertexEventsParents.has(vertexEvent.Parent)) {
 					vertexEventsParents.add(vertexEvent.Parent);
 					splitCluster.push(vertexEvent);
 				}
