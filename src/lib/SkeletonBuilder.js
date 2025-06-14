@@ -396,7 +396,7 @@ export default class SkeletonBuilder {
 			chains.push(edgeChain);
 
 		splitEventLoop:
-			while (splitCluster.some()) {
+			while (splitCluster.length > 0) {
 				const split = splitCluster[0];
 				splitCluster.splice(0, 1);
 
