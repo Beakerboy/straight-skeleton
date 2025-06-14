@@ -36,10 +36,6 @@ export class List extends Array {
 		return false;
 	}
 
-	RemoveAt(index) {
-		this.splice(index, 1);
-	}
-
 	Remove(itemToRemove) {
 		const newArr = this.filter(item => item !== itemToRemove);
 
