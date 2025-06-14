@@ -516,10 +516,10 @@ export default class SkeletonBuilder {
 
 	static AddEventToGroup(parentGroup, event) {
 		if (event instanceof SplitEvent)
-			parentGroup.Add((event).Parent);
+			parentGroup.add((event).Parent);
 		else if (event instanceof EdgeEvent) {
-			parentGroup.Add((event).PreviousVertex);
-			parentGroup.Add((event).NextVertex);
+			parentGroup.add((event).PreviousVertex);
+			parentGroup.add((event).NextVertex);
 		}
 	}
 
