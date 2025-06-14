@@ -5,10 +5,6 @@ function insertInArray(array, index, item) {
 }
 
 export class List extends Array {
-	
-	Insert(index, item) {
-		this.splice(index, 0, item);
-	}
 
 	Any(filter = null) {
 		if (!filter) {
