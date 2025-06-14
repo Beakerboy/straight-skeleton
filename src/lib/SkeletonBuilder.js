@@ -583,7 +583,7 @@ export default class SkeletonBuilder {
 			if (PrimitiveUtils.IsClockwisePolygon(hole))
 				ret.push(hole);
 			else {
-				hole.Reverse();
+				hole.reverse();
 				ret.push(hole);
 			}
 		}
