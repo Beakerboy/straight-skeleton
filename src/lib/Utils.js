@@ -5,9 +5,6 @@ function insertInArray(array, index, item) {
 }
 
 export class List extends Array {
-	// constructor(capacity) {
-	//	super();
-	// }
 	
 	Insert(index, item) {
 		const newArr = insertInArray(this, index, item);
