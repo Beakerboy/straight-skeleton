@@ -37,10 +37,6 @@ export class HashSet extends Set {
 		return this.has(item);
 	}
 
-	Clear() {
-		this.clear();
-	}
-
 	* [Symbol.iterator]() {
 		for (const item of this.values()) {
 			yield item;
