@@ -473,7 +473,7 @@ export default class SkeletonBuilder {
 			parentGroup.Clear();
 
 			const event = levelEvents[0];
-			levelEvents.RemoveAt(0);
+			levelEvents.splice(0, 1);
 			const eventCenter = event.V;
 			const distance = event.Distance;
 
@@ -487,13 +487,13 @@ export default class SkeletonBuilder {
 
 				if (this.IsEventInGroup(parentGroup, test)) {
 					const item = levelEvents[j];
-					levelEvents.RemoveAt(j);
+					levelEvents.splice(j, 1);
 					cluster.push(item);
 					this.AddEventToGroup(parentGroup, test);
 					j--;
 				} else if (eventCenter.DistanceTo(test.V) < this.SplitEpsilon) {
 					const item = levelEvents[j];
-					levelEvents.RemoveAt(j);
+					levelEvents.splice(j, 1);
 					cluster.push(item);
 					this.AddEventToGroup(parentGroup, test);
 					j--;
