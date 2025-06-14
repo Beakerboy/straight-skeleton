@@ -25,10 +25,6 @@ export class HashSet extends Set {
 		}
 	}
 
-	Contains(item) {
-		return this.has(item);
-	}
-
 	* [Symbol.iterator]() {
 		for (const item of this.values()) {
 			yield item;
