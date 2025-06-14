@@ -17,11 +17,4 @@ export class List extends Array {
 
 export class HashSet extends Set {
 
-	RemoveWhere(filter) {
-		for (const item of this) {
-			if (filter(item)) {
-				this.delete(item);
-			}
-		}
-	}
 }
