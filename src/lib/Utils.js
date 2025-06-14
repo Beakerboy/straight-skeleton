@@ -52,13 +52,3 @@ export class HashSet {
 		}
 	}
 }
-
-export class Dictionary extends Map {
-	ContainsKey(key) {
-		return this.has(key);
-	}
-
-	Add(key, value) {
-		return this.set(key, value);
-	}
-}
