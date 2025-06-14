@@ -6,10 +6,6 @@ function insertInArray(array, index, item) {
 
 export class List extends Array {
 
-	Any(filter = () => true) {
-		return this.some(filter);
-	}
-
 	Remove(itemToRemove) {
 		const newArr = this.filter(item => item !== itemToRemove);
 
