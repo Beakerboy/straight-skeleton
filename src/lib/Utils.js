@@ -7,7 +7,7 @@ function insertInArray(array, index, item) {
 export class List extends Array {
 	constructor(capacity = null) {
 		if (capacity !== null) {
-			throw new Error("cannot specify capacity")
+			throw new Error("cannot specify capacity: " + capacity)
 		}
 		super();
 	}
