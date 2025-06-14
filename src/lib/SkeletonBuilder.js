@@ -236,7 +236,7 @@ export default class SkeletonBuilder {
 			lastFaceNode = this.AddSplitFaces(lastFaceNode, chainBegin, chainEnd, newVertex);
 		}
 
-		edgeListSize = chains.Count;
+		edgeListSize = chains.length;
 		for (let i = 0; i < edgeListSize; i++) {
 			const chainBegin = chains[i];
 			const chainEnd = chains[(i + 1) % edgeListSize];
