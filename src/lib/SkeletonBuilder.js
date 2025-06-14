@@ -432,7 +432,7 @@ export default class SkeletonBuilder {
 					const edge = edgeCluster[i];
 					if (edge.PreviousVertex === endVertex) {
 						edgeCluster.RemoveAt(i);
-						edgeList.Add(edge);
+						edgeList.push(edge);
 						//goto loop;
 						continue loop;
 
