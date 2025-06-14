@@ -63,12 +63,6 @@ export class List extends Array {
 		}
 	}
 
-	AddRange(list) {
-		for (const item of list) {
-			this.Add(item);
-		}
-	}
-
 	Sort(comparer) {
 		this.sort(comparer.Compare.bind(comparer));
 	}
