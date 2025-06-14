@@ -9,6 +9,10 @@ export class List extends Array {
 		super();
 	}
 
+	get Count() {
+		thow new Error("Count Depricated")
+	}
+	
 	Insert(index, item) {
 		const newArr = insertInArray(this, index, item);
 
