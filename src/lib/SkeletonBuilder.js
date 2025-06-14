@@ -835,7 +835,7 @@ export default class SkeletonBuilder {
 		if (!edgeLavs.Any())
 			return null;
 
-		if (edgeLavs.Count === 1)
+		if (edgeLavs.length === 1)
 			return edgeLavs[0];
 
 		const edgeStart = oppositeEdge.Begin;
