@@ -750,7 +750,7 @@ export default class SkeletonBuilder {
 
 			const candidatePoint = this.CalcCandidatePointForSplit(vertex, edgeEntry);
 			if (candidatePoint !== null)
-				ret.Add(candidatePoint);
+				ret.push(candidatePoint);
 		}
 
 		ret.Sort(new SplitCandidateComparer());
