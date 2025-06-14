@@ -578,7 +578,7 @@ export default class SkeletonBuilder {
 		if (holes === null)
 			return null;
 
-		const ret = new List(holes.Count);
+		const ret = new List(holes.length);
 		for (const hole of holes) {
 			if (PrimitiveUtils.IsClockwisePolygon(hole))
 				ret.push(hole);
