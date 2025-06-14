@@ -1,6 +1,6 @@
 import Vector2d from "./Primitives/Vector2d";
 import EdgeResult from "./EdgeResult";
-import {Dictionary, List} from "./Utils";
+import {List} from "./Utils";
 
 export class Skeleton {
 	Edges = null;
