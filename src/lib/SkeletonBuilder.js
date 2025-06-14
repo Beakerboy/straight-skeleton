@@ -649,7 +649,7 @@ export default class SkeletonBuilder {
 				for (const fn of face.Iterate()) {
 					const point = fn.Vertex.Point;
 
-					faceList.Add(point);
+					faceList.push(point);
 
 					if (!distances.ContainsKey(point))
 						distances.Add(point, fn.Vertex.Distance);
@@ -878,7 +878,7 @@ export default class SkeletonBuilder {
 
 			const vertexInLav = this.GetEdgeInLav(lav, oppositeEdge);
 			if (vertexInLav !== null)
-				edgeLavs.Add(vertexInLav);
+				edgeLavs.push(vertexInLav);
 		}
 		return edgeLavs;
 	}
