@@ -654,7 +654,7 @@ export default class SkeletonBuilder {
 					faceList.push(point);
 
 					if (!distances.has(point))
-						distances.Add(point, fn.Vertex.Distance);
+						distances.set(point, fn.Vertex.Distance);
 				}
 
 				edgeOutputs.push(new EdgeResult(face.Edge, faceList));
