@@ -42,7 +42,7 @@ export default class PriorityQueue {
 		const val = this._heap[0];
 		const nMax = this._heap.length - 1;
 		this._heap[0] = this._heap[nMax];
-		this._heap.RemoveAt(nMax);
+		this._heap.splice(nMax, 1);
 
 		let p = 0;
 		while (true) {
