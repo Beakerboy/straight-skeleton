@@ -35,7 +35,7 @@ export default class PriorityQueue {
 	}
 
 	Peek() {
-		return !this._heap.Any() ? null : this._heap[0];
+		return this._heap.length === 0 ? null : this._heap[0];
 	}
 
 	Next() {
