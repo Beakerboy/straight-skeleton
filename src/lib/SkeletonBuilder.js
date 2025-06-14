@@ -609,7 +609,7 @@ export default class SkeletonBuilder {
 
 			edge.BisectorNext = bisector;
 			nextEdge.BisectorPrevious = bisector;
-			edges.Add(edge);
+			edges.push(edge);
 		}
 
 		const lav = new CircularList();
