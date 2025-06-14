@@ -1,5 +1,5 @@
 import {Skeleton} from "./Skeleton";
-import {HashSet, List} from "./Utils";
+import {List} from "./Utils";
 import Vector2d from "./Primitives/Vector2d";
 import PriorityQueue from "./Primitives/PriorityQueue";
 import Edge from "./Circular/Edge";
@@ -71,7 +71,7 @@ export default class SkeletonBuilder {
 		holes = this.MakeClockwise(holes);
 
 		const queue = new PriorityQueue(3, new SplitCandidateComparer());
-		const sLav = new HashSet();
+		const sLav = new Set();
 		const faces = new List();
 		const edges = new List();
 
@@ -326,7 +326,7 @@ export default class SkeletonBuilder {
 	}
 
 	static CreateOppositeEdgeChains(sLav, chains, center) {
-		const oppositeEdges = new HashSet();
+		const oppositeEdges = new Set();
 
 		const oppositeEdgeChains = new List();
 		const chainsForRemoval = new List();
@@ -364,7 +364,7 @@ export default class SkeletonBuilder {
 	static CreateChains(cluster) {
 		const edgeCluster = new List();
 		const splitCluster = new List();
-		const vertexEventsParents = new HashSet();
+		const vertexEventsParents = new Set();
 
 		for (const skeletonEvent of cluster) {
 			if (skeletonEvent instanceof EdgeEvent)
@@ -472,7 +472,7 @@ export default class SkeletonBuilder {
 	static GroupLevelEvents(levelEvents) {
 		const ret = new List();
 
-		const parentGroup = new HashSet();
+		const parentGroup = new Set();
 
 		while (levelEvents.length > 0) {
 			parentGroup.clear();
