@@ -934,17 +934,6 @@ export default class SkeletonBuilder {
 	}
 }
 
-class SkeletonEventDistanseComparer {
-	Compare(left, right) {
-		if (left.Distance > right.Distance)
-			return 1;
-		if (left.Distance < right.Distance)
-			return -1;
-
-		return 0;
-	}
-}
-
 class ChainComparer {
 	_center;
 
