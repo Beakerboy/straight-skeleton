@@ -331,7 +331,7 @@ export default class SkeletonBuilder {
 				const splitChain = chain;
 				const oppositeEdge = splitChain.OppositeEdge;
 
-				if (oppositeEdge !== null && !oppositeEdges.Contains(oppositeEdge)) {
+				if (oppositeEdge !== null && !oppositeEdges.has(oppositeEdge)) {
 					const nextVertex = this.FindOppositeEdgeLav(sLav, oppositeEdge, center);
 
 					if (nextVertex !== null)
