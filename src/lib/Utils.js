@@ -7,13 +7,7 @@ function insertInArray(array, index, item) {
 export class List extends Array {
 	
 	Insert(index, item) {
-		const newArr = insertInArray(this, index, item);
-
-		this.length = newArr.length;
-
-		for(let i = 0; i < newArr.length; i++) {
-			this[i] = newArr[i];
-		}
+		this.splice(index, 0, item);
 	}
 
 	Any(filter = null) {
