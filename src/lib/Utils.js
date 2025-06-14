@@ -14,7 +14,3 @@ export class List extends Array {
 		this.sort(comparer.Compare.bind(comparer));
 	}
 }
-
-export class HashSet extends Set {
-
-}
