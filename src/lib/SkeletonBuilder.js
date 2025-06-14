@@ -396,7 +396,7 @@ export default class SkeletonBuilder {
 			chains.push(edgeChain);
 
 		splitEventLoop:
-			while (splitCluster.Any()) {
+			while (splitCluster.some()) {
 				const split = splitCluster[0];
 				splitCluster.splice(0, 1);
 
@@ -415,7 +415,7 @@ export default class SkeletonBuilder {
 		const splitParent = split.Parent;
 		const edgeList = chain.EdgeList;
 
-		return edgeList.Any(edgeEvent => edgeEvent.PreviousVertex === splitParent || edgeEvent.NextVertex === splitParent);
+		return edgeList.some(edgeEvent => edgeEvent.PreviousVertex === splitParent || edgeEvent.NextVertex === splitParent);
 	}
 
 	static CreateEdgeChain(edgeCluster) {
@@ -536,7 +536,7 @@ export default class SkeletonBuilder {
 				return new MultiSplitEvent(eventCenter, distance, chains);
 		}
 
-		if (chains.Any(chain => chain.ChainType === ChainType.ClosedEdge))
+		if (chains.some(chain => chain.ChainType === ChainType.ClosedEdge))
 			throw new Error("Found closed chain of events for single point, but found more then one chain");
 		return new MultiSplitEvent(eventCenter, distance, chains);
 	}
@@ -834,7 +834,7 @@ export default class SkeletonBuilder {
 	}
 
 	static ChooseOppositeEdgeLav(edgeLavs, oppositeEdge, center) {
-		if (!edgeLavs.Any())
+		if (!edgeLavs.some())
 			return null;
 
 		if (edgeLavs.length === 1)
