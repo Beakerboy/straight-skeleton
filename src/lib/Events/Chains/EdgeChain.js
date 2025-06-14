@@ -26,7 +26,7 @@ export default class EdgeChain {
 	}
 
 	get NextVertex() {
-		return this.EdgeList[this.EdgeList.Count - 1].NextVertex;
+		return this.EdgeList[this.EdgeList.length - 1].NextVertex;
 	}
 
 	get CurrentVertex() {
