@@ -597,7 +597,7 @@ export default class SkeletonBuilder {
 	static InitSlav(polygon, sLav, edges, faces) {
 		const edgesList = new CircularList();
 
-		const size = polygon.Count;
+		const size = polygon.length;
 		for (let i = 0; i < size; i++) {
 			const j = (i + 1) % size;
 			edgesList.AddLast(new Edge(polygon[i], polygon[j]));
