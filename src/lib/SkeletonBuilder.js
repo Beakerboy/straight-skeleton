@@ -653,7 +653,7 @@ export default class SkeletonBuilder {
 
 					faceList.push(point);
 
-					if (!distances.ContainsKey(point))
+					if (!distances.has(point))
 						distances.Add(point, fn.Vertex.Distance);
 				}
 
