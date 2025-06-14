@@ -19,14 +19,6 @@ export class List extends Array {
 		}
 	}
 
-	Clear() {
-		this.length = 0;
-	}
-
-	get Count() {
-		return this.length;
-	}
-
 	Any(filter = null) {
 		if (!filter) {
 			filter = T => true;
