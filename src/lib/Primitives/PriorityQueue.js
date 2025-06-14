@@ -5,7 +5,7 @@ export default class PriorityQueue {
 	_heap = null;
 
 	constructor(capacity, comparer) {
-		this._heap = new List(capacity);
+		this._heap = new List();
 		this._comparer = comparer;
 	}
 
