@@ -426,7 +426,7 @@ export default class SkeletonBuilder {
 		loop:
 			for (; ;) {
 				const beginVertex = edgeList[0].PreviousVertex;
-				const endVertex = edgeList[edgeList.Count - 1].NextVertex;
+				const endVertex = edgeList[edgeList.length - 1].NextVertex;
 
 				for (let i = 0; i < edgeCluster.Count; i++) {
 					const edge = edgeCluster[i];
