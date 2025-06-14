@@ -390,7 +390,8 @@ export default class SkeletonBuilder {
 		while (edgeCluster.length > 0)
 			edgeChains.push(new EdgeChain(this.CreateEdgeChain(edgeCluster)));
 
-		const chains = new List(edgeChains.length);
+		// const chains = new List(edgeChains.length);
+		const chains = new List();
 		for (const edgeChain of edgeChains)
 			chains.push(edgeChain);
 
