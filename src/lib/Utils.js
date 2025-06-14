@@ -9,8 +9,4 @@ export class List extends Array {
 			this[i] = newArr[i];
 		}
 	}
-
-	Sort(comparer) {
-		this.sort(comparer.Compare.bind(comparer));
-	}
 }
