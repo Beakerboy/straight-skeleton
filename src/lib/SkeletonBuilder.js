@@ -691,7 +691,7 @@ export default class SkeletonBuilder {
 			const point = oppositeEdge.Point;
 
 			if (Math.abs(distanceSquared - (-1)) > this.SplitEpsilon) {
-				if (source.DistanceSquared(point) > distanceSquared + this.SplitEpsilon) {
+				if (source.distanceToSquared(point) > distanceSquared + this.SplitEpsilon) {
 					continue;
 				}
 			}
@@ -725,9 +725,9 @@ export default class SkeletonBuilder {
 		let distance2 = Number.MAX_VALUE;
 
 		if (!point1.equals(Vector2d.Empty))
-			distance1 = point.DistanceSquared(point1);
+			distance1 = point.distanceToSquared(point1);
 		if (!point2.equals(Vector2d.Empty))
-			distance2 = point.DistanceSquared(point2);
+			distance2 = point.distanceToSquared(point2);
 
 		if (Math.abs(distance1 - this.SplitEpsilon) < distance2)
 			queue.Add(this.CreateEdgeEvent(point1, vertex, nextVertex));
