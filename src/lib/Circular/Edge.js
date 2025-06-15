@@ -19,7 +19,7 @@ export default class Edge extends CircularNode {
 		this.End = end;
 
 		this.LineLinear2d = new LineLinear2d(begin, end);
-		this.Norm = end.Sub(begin).Normalized();
+		this.Norm = end.clone().sub(begin).normalize();
 	}
 
 	ToString() {
