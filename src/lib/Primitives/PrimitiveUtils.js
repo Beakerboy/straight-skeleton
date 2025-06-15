@@ -22,7 +22,7 @@ class IntersectPoints {
 
 export default class PrimitiveUtils {
 	static FromTo(begin, end) {
-		return new Vector2d(end.X - begin.X, end.Y - begin.Y);
+		return end.clone().sub(begin);
 	}
 
 	static OrthogonalLeft(v) {
