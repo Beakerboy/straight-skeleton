@@ -848,7 +848,7 @@ export default class SkeletonBuilder {
 
 		const edgeStart = oppositeEdge.Begin;
 		const edgeNorm = oppositeEdge.Norm;
-		const centerVector = center.Sub(edgeStart);
+		const centerVector = center.clone().sub(edgeStart);
 		const centerDot = edgeNorm.dot(centerVector);
 		for (const end of edgeLavs) {
 			const begin = end.Previous;
