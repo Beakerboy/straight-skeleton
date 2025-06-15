@@ -7,6 +7,7 @@ export default class Vector2d extends Vector2 {
 	Y = 0;
 
 	constructor(x, y) {
+		super(x, y);
 		this.X = x;
 		this.Y = y;
 	}
