@@ -696,7 +696,7 @@ export default class SkeletonBuilder {
 				}
 			}
 
-			if (oppositeEdge.OppositePoint.NotEquals(Vector2d.Empty)) {
+			if (!oppositeEdge.OppositePoint.equals(Vector2d.Empty)) {
 				queue.Add(new VertexSplitEvent(point, oppositeEdge.Distance, vertex));
 				continue;
 			}
@@ -724,9 +724,9 @@ export default class SkeletonBuilder {
 		let distance1 = Number.MAX_VALUE;
 		let distance2 = Number.MAX_VALUE;
 
-		if (point1.NotEquals(Vector2d.Empty))
+		if (!point1.equals(Vector2d.Empty))
 			distance1 = point.DistanceSquared(point1);
-		if (point2.NotEquals(Vector2d.Empty))
+		if (!point2.equals(Vector2d.Empty))
 			distance2 = point.DistanceSquared(point2);
 
 		if (Math.abs(distance1 - this.SplitEpsilon) < distance2)
@@ -743,7 +743,7 @@ export default class SkeletonBuilder {
 
 	static ComputeEdgeEvents(previousVertex, nextVertex, queue) {
 		const point = this.ComputeIntersectionBisectors(previousVertex, nextVertex);
-		if (point.NotEquals(Vector2d.Empty))
+		if (!point.equals(Vector2d.Empty))
 			queue.Add(this.CreateEdgeEvent(point, previousVertex, nextVertex));
 	}
 
