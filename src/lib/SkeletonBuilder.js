@@ -1,5 +1,4 @@
 import {Skeleton} from "./Skeleton";
-import {List} from "./Utils";
 import Vector2d from "./Primitives/Vector2d";
 import PriorityQueue from "./Primitives/PriorityQueue";
 import Edge from "./Circular/Edge";
