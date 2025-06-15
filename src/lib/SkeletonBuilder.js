@@ -264,8 +264,8 @@ export default class SkeletonBuilder {
 			throw new Error();
 
 		if (beginEdge.Norm.dot(endEdge.Norm) < -0.97) {
-			const n1 = PrimitiveUtils.FromTo(endPreviousVertex.Point, bisector.A).Normalized();
-			const n2 = PrimitiveUtils.FromTo(bisector.A, beginNextVertex.Point).Normalized();
+			const n1 = PrimitiveUtils.FromTo(endPreviousVertex.Point, bisector.A).normalize();
+			const n2 = PrimitiveUtils.FromTo(bisector.A, beginNextVertex.Point).normalize();
 			const bisectorPrediction = this.CalcVectorBisector(n1, n2);
 
 			if (bisector.U.dot(bisectorPrediction) < 0)
