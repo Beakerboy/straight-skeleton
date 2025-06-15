@@ -23,10 +23,6 @@ export default class Vector2d extends Vector2 {
 		return this.clone().normalize();
 	}
 
-	 DistanceSquared(var1) {
-		return this.distanceToSquared(var1);
-	}
-
 	 Add(v) {
 		return this.clone().add(v)
 	}
