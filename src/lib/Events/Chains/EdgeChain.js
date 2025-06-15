@@ -1,5 +1,4 @@
 import EdgeEvent from "../EdgeEvent";
-import {List} from "../../Utils";
 import Edge from "../../Circular/Edge";
 import Vertex from "../../Circular/Vertex";
 import ChainType from "./ChainType";
