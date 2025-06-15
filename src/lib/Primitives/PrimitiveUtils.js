@@ -86,15 +86,15 @@ export default class PrimitiveUtils {
 	}
 
 	static IntersectRays2D(r1, r2) {
-		const s1p0 = r1.A;
-		const s1p1 = r1.A.Add(r1.U);
+		const s1p0 = r1.A.clone();
+		const s1p1 = r1.A.clone().add(r1.U);
 
 		const s2p0 = r2.A;
 
 		const u = r1.U;
 		const v = r2.U;
 
-		const w = s1p0.Sub(s2p0);
+		const w = s1p0.clone().sub(s2p0);
 		const d = PrimitiveUtils.Perp(u, v);
 
 		if (Math.abs(d) < PrimitiveUtils.SmallNum) {
@@ -124,13 +124,13 @@ export default class PrimitiveUtils {
 			}
 
 			let t0, t1;
-			var w2 = s1p1.Sub(s2p0);
+			var w2 = s1p1.clone().sub(s2p0);
 			if (v.X !== 0) {
-				t0 = w.X / v.X;
-				t1 = w2.X / v.X;
+				t0 = w.x / v.x;
+				t1 = w2.x / v.x;
 			} else {
-				t0 = w.Y / v.Y;
-				t1 = w2.Y / v.Y;
+				t0 = w.y / v.y;
+				t1 = w2.y / v.y;
 			}
 			if (t0 > t1) {
 				const t = t0;
@@ -143,20 +143,20 @@ export default class PrimitiveUtils {
 			t0 = t0 < 0 ? 0 : t0;
 
 			if (t0 === t1) {
-				let I0 = new Vector2d(v.X, v.Y);
+				let I0 = v.clone();
 				I0 = I0.MultiplyScalar(t0);
-				I0 = I0.Add(s2p0);
+				I0.add(s2p0);
 
 				return new IntersectPoints(I0);
 			}
 
-			let I_0 = new Vector2d(v.X, v.Y);
+			let I_0 = v.clone();
 			I_0 = I_0.MultiplyScalar(t0);
-			I_0 = I_0.Add(s2p0);
+			I_0.add(s2p0);
 
-			let I1 = new Vector2d(v.X, v.Y);
+			let I1 = v.clone();
 			I1 = I1.MultiplyScalar(t1);
-			I1 = I1.Add(s2p0);
+			I1.add(s2p0);
 
 			return new IntersectPoints(I_0, I1);
 		}
@@ -169,9 +169,9 @@ export default class PrimitiveUtils {
 		if (tI < 0 /* || tI > 1 */)
 			return PrimitiveUtils.Empty;
 
-		let IO = new Vector2d(u.X, u.Y);
+		let IO = u.clone();
 		IO = IO.MultiplyScalar(sI);
-		IO = IO.Add(s1p0);
+		IO.add(s1p0);
 
 		return new IntersectPoints(IO);
 	}
