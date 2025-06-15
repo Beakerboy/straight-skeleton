@@ -269,7 +269,7 @@ export default class SkeletonBuilder {
 			const bisectorPrediction = this.CalcVectorBisector(n1, n2);
 
 			if (bisector.U.dot(bisectorPrediction) < 0)
-				bisector.U.Negate();
+				bisector.U.negate();
 		}
 	}
 
