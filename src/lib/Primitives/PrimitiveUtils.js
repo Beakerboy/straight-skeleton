@@ -105,7 +105,7 @@ export default class PrimitiveUtils {
 			const dv = v.dot(v);
 
 			if (du === 0 && dv === 0) {
-				if (s1p0.NotEquals(s2p0))
+				if (!s1p0.equals(s2p0))
 					return PrimitiveUtils.Empty;
 
 				return new IntersectPoints(s1p0);
