@@ -19,10 +19,6 @@ export default class Vector2d extends Vector2 {
 		this.y = value;
 	}
 
-	 DistanceTo(var1) {
-		return this.distanceTo(var1);
-	}
-
 	 Normalized() {
 		return this.clone().normalize();
 	}
