@@ -49,14 +49,14 @@ export default class PrimitiveUtils {
 		const e1v = PrimitiveUtils.OrthogonalLeft(norm1);
 		const e2v = PrimitiveUtils.OrthogonalLeft(norm2);
 
-		if (norm1.Dot(norm2) > 0)
+		if (norm1.dot(norm2) > 0)
 			return e1v.Add(e2v);
 
 		let ret = new Vector2d(norm1.X, norm1.Y);
 		ret.Negate();
 		ret = ret.Add(norm2);
 
-		if (e1v.Dot(norm2) < 0)
+		if (e1v.dot(norm2) < 0)
 			ret.Negate();
 
 		return ret;
@@ -71,7 +71,7 @@ export default class PrimitiveUtils {
 
 		const pointVector = point.Sub(ray.A);
 
-		let dot = rayDirection.Dot(pointVector);
+		let dot = rayDirection.dot(pointVector);
 
 		if (dot < epsilon)
 			return false;
@@ -80,7 +80,7 @@ export default class PrimitiveUtils {
 		rayDirection.X = rayDirection.Y;
 		rayDirection.Y = -x;
 
-		dot = rayDirection.Dot(pointVector);
+		dot = rayDirection.dot(pointVector);
 
 		return -epsilon < dot && dot < epsilon;
 	}
@@ -178,13 +178,9 @@ export default class PrimitiveUtils {
 
 	static InCollinearRay(p, rayStart, rayDirection) {
 		const collideVector = p.Sub(rayStart);
-		const dot = rayDirection.Dot(collideVector);
+		const dot = rayDirection.dot(collideVector);
 
 		return !(dot < 0);
-	}
-
-	static Dot(u, v) {
-		return u.Dot(v);
 	}
 
 	static Perp(u, v) {
