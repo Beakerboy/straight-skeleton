@@ -26,11 +26,11 @@ export default class PrimitiveUtils {
 	}
 
 	static OrthogonalLeft(v) {
-		return new Vector2d(-v.Y, v.X);
+		return new Vector2d(-v.y, v.x);
 	}
 
 	static OrthogonalRight(v) {
-		return new Vector2d(v.Y, -v.X);
+		return new Vector2d(v.y, -v.x);
 	}
 
 	static OrthogonalProjection(unitVector, vectorToProject) {
