@@ -48,10 +48,6 @@ export default class Vector2d extends Vector2 {
 		return new Vector2d(this.X * var1, this.Y * var1);
 	}
 
-	 Dot(var1) {
-		return this.dot(var1);
-	}
-
 	 DistanceSquared(var1) {
 		const var2 = this.X - var1.X;
 		const var4 = this.Y - var1.Y;
