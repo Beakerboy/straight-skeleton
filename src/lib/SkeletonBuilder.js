@@ -497,7 +497,7 @@ export default class SkeletonBuilder {
 					cluster.push(item);
 					this.AddEventToGroup(parentGroup, test);
 					j--;
-				} else if (eventCenter.DistanceTo(test.V) < this.SplitEpsilon) {
+				} else if (eventCenter.distanceTo(test.V) < this.SplitEpsilon) {
 					const item = levelEvents[j];
 					levelEvents.splice(j, 1);
 					cluster.push(item);
@@ -924,7 +924,7 @@ export default class SkeletonBuilder {
 		const vector = intersect.Sub(currentEdge.Begin);
 
 		const pointOnVector = PrimitiveUtils.OrthogonalProjection(edge, vector);
-		return vector.DistanceTo(pointOnVector);
+		return vector.distanceTo(pointOnVector);
 	}
 
 	static CalcBisector(p, e1, e2) {
