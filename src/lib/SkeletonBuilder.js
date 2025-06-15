@@ -29,13 +29,13 @@ export default class SkeletonBuilder {
 	static SplitEpsilon = 1e-10;
 
 	static BuildFromGeoJSON(multipolygon) {
-		const allEdges = new List();
+		const allEdges = [];
 		const allDistances = new Map();
 
 		for (const polygon of multipolygon) {
 			if (polygon.length > 0) {
 				const outer = this.ListFromCoordinatesArray(polygon[0]);
-				const holes = new List();
+				const holes = [];
 
 				for (let i = 1; i < polygon.length; i++) {
 					holes.push(this.ListFromCoordinatesArray(polygon[i]));
@@ -72,8 +72,8 @@ export default class SkeletonBuilder {
 
 		const queue = new PriorityQueue(3, new SplitCandidateComparer());
 		const sLav = new Set();
-		const faces = new List();
-		const edges = new List();
+		const faces = [];
+		const edges = [];
 
 		this.InitSlav(polygon, sLav, edges, faces);
 
@@ -329,8 +329,8 @@ export default class SkeletonBuilder {
 	static CreateOppositeEdgeChains(sLav, chains, center) {
 		const oppositeEdges = new Set();
 
-		const oppositeEdgeChains = new List();
-		const chainsForRemoval = new List();
+		const oppositeEdgeChains = [];
+		const chainsForRemoval = [];
 
 		for (const chain of chains) {
 			if (chain instanceof SplitChain) {
@@ -364,8 +364,8 @@ export default class SkeletonBuilder {
 	}
 
 	static CreateChains(cluster) {
-		const edgeCluster = new List();
-		const splitCluster = new List();
+		const edgeCluster = [];
+		const splitCluster = [];
 		const vertexEventsParents = new Set();
 
 		for (const skeletonEvent of cluster) {
@@ -398,7 +398,7 @@ export default class SkeletonBuilder {
 			edgeChains.push(new EdgeChain(this.CreateEdgeChain(edgeCluster)));
 
 		// const chains = new List(edgeChains.length);
-		const chains = new List();
+		const chains = [];
 		for (const edgeChain of edgeChains)
 			chains.push(edgeChain);
 
@@ -426,7 +426,7 @@ export default class SkeletonBuilder {
 	}
 
 	static CreateEdgeChain(edgeCluster) {
-		const edgeList = new List();
+		const edgeList = [];
 
 		edgeList.push(edgeCluster[0]);
 		edgeCluster.splice(0, 1);
@@ -472,7 +472,7 @@ export default class SkeletonBuilder {
 	}
 
 	static GroupLevelEvents(levelEvents) {
-		const ret = new List();
+		const ret = [];
 
 		const parentGroup = new Set();
 
@@ -549,7 +549,7 @@ export default class SkeletonBuilder {
 	}
 
 	static LoadLevelEvents(queue) {
-		const level = new List();
+		const level = [];
 		let levelStart;
 
 		do {
@@ -587,7 +587,7 @@ export default class SkeletonBuilder {
 			return null;
 
 		// const ret = new List(holes.length);
-		const ret = new List();
+		const ret = [];
 		for (const hole of holes) {
 			if (PrimitiveUtils.IsClockwisePolygon(hole))
 				ret.push(hole);
@@ -648,7 +648,7 @@ export default class SkeletonBuilder {
 	}
 
 	static AddFacesToOutput(faces) {
-		const edgeOutputs = new List();
+		const edgeOutputs = [];
 		const distances = new Map();
 
 		for (const face of faces) {
@@ -749,7 +749,7 @@ export default class SkeletonBuilder {
 	}
 
 	static CalcOppositeEdges(vertex, edges) {
-		const ret = new List();
+		const ret = [];
 
 		for (const edgeEntry of edges) {
 			const edge = edgeEntry.LineLinear2d;
@@ -881,7 +881,7 @@ export default class SkeletonBuilder {
 	}
 
 	static FindEdgeLavs(sLav, oppositeEdge, skippedLav) {
-		const edgeLavs = new List();
+		const edgeLavs = [];
 		for (const lav of sLav) {
 			if (lav === skippedLav)
 				continue;
