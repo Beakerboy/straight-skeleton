@@ -1,5 +1,4 @@
 import { Skeleton } from '../src/lib/Skeleton'
-import { List } from '../src/lib/Utils'
 
 export default class SkeletonTestUtil {
   static equalEpsilon (d1, d2) {
@@ -15,7 +14,7 @@ export default class SkeletonTestUtil {
    * @returns {List} List of face points
    */
   static getFacePoints (sk) {
-    const ret = new List()
+    const ret = []
 
     for (const edgeOutput of sk.Edges) {
       const points = edgeOutput.Polygon
