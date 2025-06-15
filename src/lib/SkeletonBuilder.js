@@ -263,12 +263,12 @@ export default class SkeletonBuilder {
 		if (beginEdge !== beginEdge2 || endEdge !== endEdge2)
 			throw new Error();
 
-		if (beginEdge.Norm.Dot(endEdge.Norm) < -0.97) {
+		if (beginEdge.Norm.dot(endEdge.Norm) < -0.97) {
 			const n1 = PrimitiveUtils.FromTo(endPreviousVertex.Point, bisector.A).Normalized();
 			const n2 = PrimitiveUtils.FromTo(bisector.A, beginNextVertex.Point).Normalized();
 			const bisectorPrediction = this.CalcVectorBisector(n1, n2);
 
-			if (bisector.U.Dot(bisectorPrediction) < 0)
+			if (bisector.U.dot(bisectorPrediction) < 0)
 				bisector.U.Negate();
 		}
 	}
@@ -809,8 +809,8 @@ export default class SkeletonBuilder {
 
 		let vertexEdge = edgeA;
 
-		const edgeADot = Math.abs(edge.Norm.Dot(edgeA.Norm));
-		const edgeBDot = Math.abs(edge.Norm.Dot(edgeB.Norm));
+		const edgeADot = Math.abs(edge.Norm.dot(edgeA.Norm));
+		const edgeBDot = Math.abs(edge.Norm.dot(edgeB.Norm));
 
 		if (edgeADot + edgeBDot >= 2 - this.SplitEpsilon)
 			return null;
@@ -849,15 +849,15 @@ export default class SkeletonBuilder {
 		const edgeStart = oppositeEdge.Begin;
 		const edgeNorm = oppositeEdge.Norm;
 		const centerVector = center.Sub(edgeStart);
-		const centerDot = edgeNorm.Dot(centerVector);
+		const centerDot = edgeNorm.dot(centerVector);
 		for (const end of edgeLavs) {
 			const begin = end.Previous;
 
 			const beginVector = begin.Point.Sub(edgeStart);
 			const endVector = end.Point.Sub(edgeStart);
 
-			const beginDot = edgeNorm.Dot(beginVector);
-			const endDot = edgeNorm.Dot(endVector);
+			const beginDot = edgeNorm.dot(beginVector);
+			const endDot = edgeNorm.dot(endVector);
 
 			if (beginDot < centerDot && centerDot < endDot ||
 				beginDot > centerDot && centerDot > endDot)
