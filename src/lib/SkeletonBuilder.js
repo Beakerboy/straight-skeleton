@@ -57,7 +57,7 @@ export default class SkeletonBuilder {
 	}
 
 	static ListFromCoordinatesArray(arr) {
-		const list = new List();
+		const list = [];
 
 		for (const [x, y] of arr) {
 			list.push(new Vector2d(x, y));
@@ -392,7 +392,7 @@ export default class SkeletonBuilder {
 			}
 		}
 
-		const edgeChains = new List();
+		const edgeChains = [];
 
 		while (edgeCluster.length > 0)
 			edgeChains.push(new EdgeChain(this.CreateEdgeChain(edgeCluster)));
@@ -486,7 +486,7 @@ export default class SkeletonBuilder {
 
 			this.AddEventToGroup(parentGroup, event);
 
-			const cluster = new List();
+			const cluster = [];
 			cluster.push(event);
 
 			for (let j = 0; j < levelEvents.length; j++) {
@@ -653,7 +653,7 @@ export default class SkeletonBuilder {
 
 		for (const face of faces) {
 			if (face.Size > 0) {
-				const faceList = new List();
+				const faceList = [];
 
 				for (const fn of face.Iterate()) {
 					const point = fn.Vertex.Point;
@@ -868,7 +868,7 @@ export default class SkeletonBuilder {
 		for (const end of edgeLavs) {
 			const size = end.List.Size;
 			// const points = new List(size);
-			const points = new List();
+			const points = [];
 			let next = end;
 			for (let i = 0; i < size; i++) {
 				points.Add(next.Point);
