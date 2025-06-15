@@ -144,12 +144,12 @@ describe.each([
   ]
 ])('No Holes', (pPoints, hPoints, ePoints, description) => {
   test(`${description}`, () => {
-    const polygon = new List()
+    const polygon = []
     for (const point of pPoints) {
       polygon.push(new Vector2d(...point))
     }
 
-    const expected = new List()
+    const expected = []
     for (const point of ePoints) {
       expected.push(new Vector2d(...point))
     }
@@ -157,8 +157,8 @@ describe.each([
 
     let innerList = null
     if (hPoints !== null) {
-      innerList = new List()
-      const inner = new List()
+      innerList = []
+      const inner = []
       for (const point of hPoints) {
         inner.push(new Vector2d(point[0], point[1]))
       }
