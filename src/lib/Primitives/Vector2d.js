@@ -19,10 +19,6 @@ export default class Vector2d extends Vector2 {
 		this.y = value;
 	}
 
-	 Normalized() {
-		return this.clone().normalize();
-	}
-
 	 Add(v) {
 		return this.clone().add(v)
 	}
