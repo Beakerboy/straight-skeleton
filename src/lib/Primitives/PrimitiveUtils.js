@@ -101,8 +101,8 @@ export default class PrimitiveUtils {
 			if (PrimitiveUtils.Perp(u, w) !== 0 || PrimitiveUtils.Perp(v, w) !== 0)
 				return PrimitiveUtils.Empty;
 
-			const du = PrimitiveUtils.Dot(u, u);
-			const dv = PrimitiveUtils.Dot(v, v);
+			const du = u.dot(u);
+			const dv = v.dot(v);
 
 			if (du === 0 && dv === 0) {
 				if (s1p0.NotEquals(s2p0))
