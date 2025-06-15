@@ -70,10 +70,6 @@ export default class Vector2d extends Vector2 {
 		return this.equals(v);
 	}
 
-	 NotEquals(v) {
-		return !this.Equals(v);
-	}
-
 	 ToString() {
 		return `${this.X}, ${this.Y}`;
 	}
