@@ -32,16 +32,16 @@ export default class LineParametric2d {
 		}
 
 		const collideVector = collide.Sub(ray.A);
-		return ray.U.Dot(collideVector) < epsilon ? Vector2d.Empty : collide;
+		return ray.U.dot(collideVector) < epsilon ? Vector2d.Empty : collide;
 	}
 
 	 IsOnLeftSite(point, epsilon) {
 		const direction = point.Sub(this.A);
-		return PrimitiveUtils.OrthogonalRight(this.U).Dot(direction) < epsilon;
+		return PrimitiveUtils.OrthogonalRight(this.U).dot(direction) < epsilon;
 	}
 
 	 IsOnRightSite(point, epsilon) {
 		const direction = point.Sub(this.A);
-		return PrimitiveUtils.OrthogonalRight(this.U).Dot(direction) > -epsilon;
+		return PrimitiveUtils.OrthogonalRight(this.U).dot(direction) > -epsilon;
 	}
 }
