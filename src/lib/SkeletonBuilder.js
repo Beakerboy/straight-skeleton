@@ -351,8 +351,9 @@ export default class SkeletonBuilder {
 			}
 		}
 
-		for (let chain of chainsForRemoval)
-			chains.Remove(chain);
+		for (const chain of chainsForRemoval) {
+			chains = chains.filter(item => item !== chain);
+		}
 
 		chains.push(...oppositeEdgeChains);
 	}
