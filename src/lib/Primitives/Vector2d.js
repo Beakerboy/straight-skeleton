@@ -67,7 +67,7 @@ export default class Vector2d extends Vector2 {
 	}
 
 	 Equals(v) {
-		return this.X === v.X && this.Y === v.Y;
+		return this.equals(v);
 	}
 
 	 NotEquals(v) {
