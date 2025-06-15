@@ -3,38 +3,24 @@ import {Vector2} from 'three';
 export default class Vector2d extends Vector2 {
 	static Empty = new Vector2d(Number.MIN_VALUE, Number.MIN_VALUE);
 
-	X = 0;
-	Y = 0;
-
-	constructor(x, y) {
-		super(x, y);
-		this.X = x;
-		this.Y = y;
+	get X() {
+		return this.x;
 	}
 
-	get x() {
-		return this.X;
+	get Y() {
+		return this.y;
 	}
 
-	get y() {
-		return this.Y;
+	set X(value) {
+		this.x = value;
 	}
 
-	set x(value) {
-		this.X = value;
-	}
-
-	set y(value) {
-		this.Y = value;
-	}
-
-	clone() {
-		return new Vector2d(this.X, this.Y);
+	set Y(value) {
+		this.y = value;
 	}
 
 	Negate() {
-		this.X = -this.X;
-		this.Y = -this.Y;
+		this.negate();
 	}
 
 	 DistanceTo(var1) {
