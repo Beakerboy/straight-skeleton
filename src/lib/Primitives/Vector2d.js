@@ -1,6 +1,6 @@
 import {Vector2} from 'three';
 
-export default class Vector2d {
+export default class Vector2d extends Vector2 {
 	static Empty = new Vector2d(Number.MIN_VALUE, Number.MIN_VALUE);
 
 	X = 0;
@@ -11,7 +11,27 @@ export default class Vector2d {
 		this.Y = y;
 	}
 
-	 Negate() {
+	get x() {
+		return this.X;
+	}
+
+	get y() {
+		return this.Y;
+	}
+
+	set x(value) {
+		this.X = value;
+	}
+
+	set y(value) {
+		this.Y = value;
+	}
+
+	clone() {
+		return new Vector2d(this.X, this.Y);
+	}
+
+	Negate() {
 		this.X = -this.X;
 		this.Y = -this.Y;
 	}
@@ -38,7 +58,7 @@ export default class Vector2d {
 	}
 
 	 Add(v) {
-		return new Vector2d(this.X + v.X, this.Y + v.Y);
+		return this.clone().add(v)
 	}
 
 	 Sub(v) {
