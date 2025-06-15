@@ -24,8 +24,7 @@ export default class Vector2d extends Vector2 {
 	}
 
 	 Normalized() {
-		const var1 = 1 / Math.sqrt(this.X * this.X + this.Y * this.Y);
-		return new Vector2d(this.X * var1, this.Y * var1);
+		return this.clone().normalize();
 	}
 
 	 DistanceSquared(var1) {
