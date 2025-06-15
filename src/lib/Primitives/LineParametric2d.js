@@ -36,7 +36,7 @@ export default class LineParametric2d {
 	}
 
 	 IsOnLeftSite(point, epsilon) {
-		const direction = point.Sub(this.A);
+		const direction = point.clone().sub(this.A);
 		return PrimitiveUtils.OrthogonalRight(this.U).dot(direction) < epsilon;
 	}
 
