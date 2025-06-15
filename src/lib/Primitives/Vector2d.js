@@ -19,10 +19,6 @@ export default class Vector2d extends Vector2 {
 		this.y = value;
 	}
 
-	 Add(v) {
-		return this.clone().add(v)
-	}
-
 	 Sub(v) {
 		return this.clone().sub(v)
 	}
