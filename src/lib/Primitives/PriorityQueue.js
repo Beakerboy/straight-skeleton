@@ -1,11 +1,9 @@
-import {List} from "../Utils";
-
 export default class PriorityQueue {
 	_comparer = null;
 	_heap = null;
 
 	constructor(capacity, comparer) {
-		this._heap = new List();
+		this._heap = [];
 		this._comparer = comparer;
 	}
 
