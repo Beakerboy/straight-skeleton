@@ -26,7 +26,7 @@ export default class PrimitiveUtils {
 	}
 
 	static OrthogonalLeft(v) {
-		return new Vector2d(-v.y, v.x);
+		return v.clone().setX(-v.y).setY(v.x);
 	}
 
 	static OrthogonalRight(v) {
