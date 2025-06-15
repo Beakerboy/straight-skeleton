@@ -1,7 +1,7 @@
 import {Vector2} from 'three';
 
 export default class Vector2d extends Vector2 {
-	static Empty = new Vector2d(Number.MIN_VALUE, Number.MIN_VALUE);
+	static Empty = new Vector2d(null, null);
         // static Empty = null;
 	get X() {
 		return this.x;
