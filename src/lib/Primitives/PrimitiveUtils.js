@@ -34,13 +34,13 @@ export default class PrimitiveUtils {
 	}
 
 	static OrthogonalProjection(unitVector, vectorToProject) {
-		const n = new Vector2d(unitVector.X, unitVector.Y).Normalized();
+		const n = unitVector.clone().normalize();
 
-		const px = vectorToProject.X;
-		const py = vectorToProject.Y;
+		const px = vectorToProject.x;
+		const py = vectorToProject.y;
 
-		const ax = n.X;
-		const ay = n.Y;
+		const ax = n.x;
+		const ay = n.y;
 
 		return new Vector2d(px * ax * ax + py * ax * ay, px * ax * ay + py * ay * ay);
 	}
