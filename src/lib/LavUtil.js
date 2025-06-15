@@ -1,5 +1,4 @@
 import Vertex from "./Circular/Vertex";
-import {List} from "./Utils";
 import CircularList from "./Circular/CircularList";
 
 export default class LavUtil {
@@ -16,7 +15,7 @@ export default class LavUtil {
 	}
 
 	static CutLavPart(startVertex, endVertex) {
-		const ret = new List();
+		const ret = [];
 		const size = startVertex.List.Size;
 		let next = startVertex;
 
