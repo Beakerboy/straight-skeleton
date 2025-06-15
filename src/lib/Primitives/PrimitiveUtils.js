@@ -50,14 +50,14 @@ export default class PrimitiveUtils {
 		const e2v = PrimitiveUtils.OrthogonalLeft(norm2);
 
 		if (norm1.dot(norm2) > 0)
-			return e1v.Add(e2v);
+			return e1v.add(e2v);
 
-		let ret = new Vector2d(norm1.X, norm1.Y);
-		ret.Negate();
-		ret = ret.Add(norm2);
+		let ret = norm1.clone();
+		ret.negate();
+		ret.add(norm2);
 
 		if (e1v.dot(norm2) < 0)
-			ret.Negate();
+			ret.negate();
 
 		return ret;
 	}
