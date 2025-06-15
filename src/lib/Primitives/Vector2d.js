@@ -24,9 +24,7 @@ export default class Vector2d extends Vector2 {
 	}
 
 	 DistanceTo(var1) {
-		const var2 = this.X - var1.X;
-		const var4 = this.Y - var1.Y;
-		return Math.sqrt(var2 * var2 + var4 * var4);
+		return this.distanceTo(var1);
 	}
 
 	 Normalized() {
