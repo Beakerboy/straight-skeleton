@@ -7,6 +7,9 @@
     "type": "git",
     "url": "https://github.com/Beakerboy/straight-skeleton.git"
   },
+  "dependencies": {
+    "three": "^0.138.3"
+  },
   "devDependencies" : {
     "coveralls": "*",
     "c8": "*",
