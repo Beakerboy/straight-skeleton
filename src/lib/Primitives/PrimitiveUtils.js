@@ -1,6 +1,5 @@
 import Vector2d from "./Vector2d";
 import LineParametric2d from "./LineParametric2d";
-import {List} from "../Utils";
 
 class IntersectPoints {
 	Intersect = null;
