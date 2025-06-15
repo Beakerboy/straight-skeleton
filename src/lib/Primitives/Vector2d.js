@@ -49,7 +49,7 @@ export default class Vector2d extends Vector2 {
 	}
 
 	 Dot(var1) {
-		return this.X * var1.X + this.Y * var1.Y;
+		return this.dot(var1);
 	}
 
 	 DistanceSquared(var1) {
@@ -63,11 +63,11 @@ export default class Vector2d extends Vector2 {
 	}
 
 	 Sub(v) {
-		return new Vector2d(this.X - v.X, this.Y - v.Y);
+		return this.clone().sub(v)
 	}
 
 	 MultiplyScalar(scale) {
-		return new Vector2d(this.X * scale, this.Y * scale);
+		return this.clone().multiplyScalar(v)
 	}
 
 	 Equals(v) {
