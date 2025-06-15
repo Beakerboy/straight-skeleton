@@ -1,3 +1,5 @@
+import {Vector2} from 'three';
+
 export default class Vector2d {
 	static Empty = new Vector2d(Number.MIN_VALUE, Number.MIN_VALUE);
 
