@@ -162,10 +162,8 @@ export default class PrimitiveUtils {
 		if (tI < 0 /* || tI > 1 */)
 			return PrimitiveUtils.Empty;
 
-		let IO = u.clone();
-		IO = IO.MultiplyScalar(sI);
-		IO.add(s1p0);
-
+		let IO = u.clone().multiplyScalar(sI).add(s1p0);
+	
 		return new IntersectPoints(IO);
 	}
 
