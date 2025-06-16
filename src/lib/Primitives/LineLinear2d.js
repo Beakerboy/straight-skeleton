@@ -1,5 +1,5 @@
 import Vector2 from "three";
-import PrimitiveUtils from "PrimitiveUtils";
+import PrimitiveUtils from "./PrimitiveUtils";
 
 export default class LineLinear2d {
 	 A;
