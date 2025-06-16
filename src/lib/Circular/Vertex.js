@@ -1,5 +1,5 @@
 import CircularNode from "./CircularNode";
-import Vector2d from "../Primitives/Vector2d";
+import {Vector2} from "three";
 import LineParametric2d from "../Primitives/LineParametric2d";
 import Edge from "./Edge";
 import {FaceNode} from "../Path/FaceNode";
