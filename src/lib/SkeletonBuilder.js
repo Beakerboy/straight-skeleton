@@ -119,7 +119,7 @@ export default class SkeletonBuilder {
 		if (polygon === null)
 			throw new Error("polygon can't be null");
 
-		if (polygon[0].Equals(polygon[polygon.length - 1]))
+		if (polygon[0].equals(polygon[polygon.length - 1]))
 			throw new Error("polygon can't start and end with the same point");
 
 		return this.MakeCounterClockwise(polygon);
@@ -718,7 +718,7 @@ export default class SkeletonBuilder {
 		const point1 = this.ComputeIntersectionBisectors(vertex, nextVertex);
 		const point2 = this.ComputeIntersectionBisectors(previousVertex, vertex);
 
-		if (point1.Equals(Vector2d.Empty) && point2.Equals(Vector2d.Empty))
+		if (point1.equals(Vector2d.Empty) && point2.equals(Vector2d.Empty))
 			return -1;
 
 		let distance1 = Number.MAX_VALUE;
@@ -766,7 +766,7 @@ export default class SkeletonBuilder {
 	}
 
 	static EdgeBehindBisector(bisector, edge) {
-		return LineParametric2d.Collide(bisector, edge, this.SplitEpsilon).Equals(Vector2d.Empty);
+		return LineParametric2d.Collide(bisector, edge, this.SplitEpsilon).equals(Vector2d.Empty);
 	}
 
 	static CalcCandidatePointForSplit(vertex, edge) {
@@ -778,14 +778,14 @@ export default class SkeletonBuilder {
 		const edgesBisector = this.CalcVectorBisector(vertexEdteNormNegate, edge.Norm);
 		const edgesCollide = vertexEdge.LineLinear2d.Collide(edge.LineLinear2d);
 
-		if (edgesCollide.Equals(Vector2d.Empty))
+		if (edgesCollide.equals(Vector2d.Empty))
 			throw new Error("Ups this should not happen");
 
 		const edgesBisectorLine = new LineParametric2d(edgesCollide, edgesBisector).CreateLinearForm();
 
 		const candidatePoint = LineParametric2d.Collide(vertex.Bisector, edgesBisectorLine, this.SplitEpsilon);
 
-		if (candidatePoint.Equals(Vector2d.Empty))
+		if (candidatePoint.equals(Vector2d.Empty))
 			return null;
 
 		if (edge.BisectorPrevious.IsOnRightSite(candidatePoint, this.SplitEpsilon)
@@ -828,7 +828,7 @@ export default class SkeletonBuilder {
 		const intersectRays2d = PrimitiveUtils.IntersectRays2D(bisectorPrevious, bisectorNext);
 		const intersect = intersectRays2d.Intersect;
 
-		if (vertexPrevious.Point.Equals(intersect) || vertexNext.Point.Equals(intersect))
+		if (vertexPrevious.Point.equals(intersect) || vertexNext.Point.equals(intersect))
 			return Vector2d.Empty;
 
 		return intersect;
