@@ -718,7 +718,7 @@ export default class SkeletonBuilder {
 		const point1 = this.ComputeIntersectionBisectors(vertex, nextVertex);
 		const point2 = this.ComputeIntersectionBisectors(previousVertex, vertex);
 
-		if (point1.equals(Vector2d.Empty) && point2.equals(Vector2d.Empty))
+		if (point1.equals(Vector2d.Empty) && point2.equals(PrimitiveUtils.EmptyVector))
 			return -1;
 
 		let distance1 = Number.MAX_VALUE;
