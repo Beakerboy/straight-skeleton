@@ -1,5 +1,5 @@
 import Edge from "./Circular/Edge";
-import Vector2d from "./Primitives/Vector2d";
+import Vector2 from "three";
 
 export default class EdgeResult {
 	Edge;
