@@ -26,7 +26,7 @@ export default class LineParametric2d {
 	}
 
 	 static Collide(ray, line, epsilon) {
-		const collide = LineLinear2d.Collide(ray.CreateLinearForm(), line);
+		const collide = ray.CreateLinearForm().Collide(line);
 		if (collide.equals(PrimitiveUtils.EmptyVector)) {
 			return PrimitiveUtils.EmptyVector;
 		}
