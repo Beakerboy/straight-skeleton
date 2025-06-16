@@ -1,5 +1,4 @@
 import SplitEvent from "./SplitEvent";
-import Vector2d from "../Primitives/Vector2d";
 import Vertex from "../Circular/Vertex";
 
 export default class VertexSplitEvent extends SplitEvent {
