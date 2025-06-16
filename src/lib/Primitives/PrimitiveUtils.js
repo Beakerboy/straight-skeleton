@@ -1,4 +1,4 @@
-import Vector2 from "three";
+import {Vector2} from "three";
 import LineParametric2d from "./LineParametric2d";
 
 class IntersectPoints {
