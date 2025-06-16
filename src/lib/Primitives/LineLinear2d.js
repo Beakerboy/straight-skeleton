@@ -7,9 +7,9 @@ export default class LineLinear2d {
 	 C;
 
 	constructor(pP1 = PrimitiveUtils.EmptyVector, pP2 = PrimitiveUtils.EmptyVector) {
-		this.A = pP1.Y - pP2.Y;
-		this.B = pP2.X - pP1.X;
-		this.C = pP1.X * pP2.Y - pP2.X * pP1.Y;
+		this.A = pP1.y - pP2.y;
+		this.B = pP2.x - pP1.x;
+		this.C = pP1.x * pP2.y - pP2.x * pP1.y;
 	}
 
 	 SetFromCoefficients(a, b, c) {
@@ -37,6 +37,6 @@ export default class LineLinear2d {
 	}
 
 	 Contains(point) {
-		return Math.abs((point.X * this.A + point.Y * this.B + this.C)) < Number.EPSILON;
+		return Math.abs((point.x * this.A + point.y * this.B + this.C)) < Number.EPSILON;
 	}
 }
