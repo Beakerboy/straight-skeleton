@@ -1,6 +1,6 @@
 /* eslint-disable */
 import SkeletonBuilder from '../src/lib/SkeletonBuilder';
-import Vector2d from '../src/lib/Primitives/Vector2d'
+import {Vector2} from 'three'
 import SkeletonTestUtil from './skeleton-test-util.js'
 
 describe.each([
@@ -146,12 +146,12 @@ describe.each([
   test(`${description}`, () => {
     const polygon = []
     for (const point of pPoints) {
-      polygon.push(new Vector2d(...point))
+      polygon.push(new Vector2(...point))
     }
 
     const expected = []
     for (const point of ePoints) {
-      expected.push(new Vector2d(...point))
+      expected.push(new Vector2(...point))
     }
     expected.push(...polygon)
 
@@ -160,7 +160,7 @@ describe.each([
       innerList = []
       const inner = []
       for (const point of hPoints) {
-        inner.push(new Vector2d(point[0], point[1]))
+        inner.push(new Vector2(point[0], point[1]))
       }
       innerList.push(inner)
       expected.push(...inner)
