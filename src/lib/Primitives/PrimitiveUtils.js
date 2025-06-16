@@ -143,21 +143,14 @@ export default class PrimitiveUtils {
 			t0 = t0 < 0 ? 0 : t0;
 
 			if (t0 === t1) {
-				let I0 = v.clone();
-				I0 = I0.MultiplyScalar(t0);
-				I0.add(s2p0);
-
+				let I0 = v.clone().multiplyScalar(t0).add(s2p0);
 				return new IntersectPoints(I0);
 			}
 
-			let I_0 = v.clone();
-			I_0 = I_0.MultiplyScalar(t0);
-			I_0.add(s2p0);
+			let I_0 = v.clone().multiplyScalar(t0).add(s2p0);
 
-			let I1 = v.clone();
-			I1 = I1.MultiplyScalar(t1);
-			I1.add(s2p0);
-
+			let I1 = v.clone().multiplyScalar(t1).add(s2p0);
+	
 			return new IntersectPoints(I_0, I1);
 		}
 
