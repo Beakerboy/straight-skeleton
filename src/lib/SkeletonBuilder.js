@@ -853,8 +853,8 @@ export default class SkeletonBuilder {
 		for (const end of edgeLavs) {
 			const begin = end.Previous;
 
-			const beginVector = begin.Point.Sub(edgeStart);
-			const endVector = end.Point.Sub(edgeStart);
+			const beginVector = begin.Point.clone().sub(edgeStart);
+			const endVector = end.Point.clone().sub(edgeStart);
 
 			const beginDot = edgeNorm.dot(beginVector);
 			const endDot = edgeNorm.dot(endVector);
@@ -920,8 +920,8 @@ export default class SkeletonBuilder {
 	}
 
 	static CalcDistance(intersect, currentEdge) {
-		const edge = currentEdge.End.Sub(currentEdge.Begin);
-		const vector = intersect.Sub(currentEdge.Begin);
+		const edge = currentEdge.End.clone().sub(currentEdge.Begin);
+		const vector = intersect.clone().sub(currentEdge.Begin);
 
 		const pointOnVector = PrimitiveUtils.OrthogonalProjection(edge, vector);
 		return vector.distanceTo(pointOnVector);
