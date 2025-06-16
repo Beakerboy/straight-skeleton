@@ -1,5 +1,3 @@
-import Vector2d from "../Primitives/Vector2d";
-
 export default class SkeletonEvent {
 	V = null;
 
