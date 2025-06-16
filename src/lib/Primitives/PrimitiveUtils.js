@@ -7,11 +7,11 @@ class IntersectPoints {
 
 	constructor(intersect = null, intersectEnd = null) {
 		if (!intersect) {
-			intersect = PrimitiveUtils.EmptyVector;
+			intersect = new Vector2(null, null);
 		}
 
 		if (!intersectEnd) {
-			intersectEnd = PrimitiveUtils.EmptyVector;
+			intersectEnd = new Vector2(null, null);
 		}
 
 		this.Intersect = intersect;
