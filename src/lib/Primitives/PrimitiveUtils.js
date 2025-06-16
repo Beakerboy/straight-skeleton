@@ -31,7 +31,7 @@ export default class PrimitiveUtils {
 	}
 
 	static OrthogonalRight(v) {
-		return new Vector2d(v.y, -v.x);
+		return new Vector2(v.y, -v.x);
 	}
 
 	static OrthogonalProjection(unitVector, vectorToProject) {
@@ -43,7 +43,7 @@ export default class PrimitiveUtils {
 		const ax = n.x;
 		const ay = n.y;
 
-		return new Vector2d(px * ax * ax + py * ax * ay, px * ax * ay + py * ay * ay);
+		return new Vector2(px * ax * ax + py * ax * ay, px * ax * ay + py * ay * ay);
 	}
 
 	static BisectorNormalized(norm1, norm2) {
