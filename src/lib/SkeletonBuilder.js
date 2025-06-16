@@ -718,15 +718,15 @@ export default class SkeletonBuilder {
 		const point1 = this.ComputeIntersectionBisectors(vertex, nextVertex);
 		const point2 = this.ComputeIntersectionBisectors(previousVertex, vertex);
 
-		if (point1.equals(Vector2d.Empty) && point2.equals(PrimitiveUtils.EmptyVector))
+		if (point1.equals(PrimitiveUtils.EmptyVector) && point2.equals(PrimitiveUtils.EmptyVector))
 			return -1;
 
 		let distance1 = Number.MAX_VALUE;
 		let distance2 = Number.MAX_VALUE;
 
-		if (!point1.equals(Vector2d.Empty))
+		if (!point1.equals(PrimitiveUtils.EmptyVector))
 			distance1 = point.distanceToSquared(point1);
-		if (!point2.equals(Vector2d.Empty))
+		if (!point2.equals(PrimitiveUtils.EmptyVector))
 			distance2 = point.distanceToSquared(point2);
 
 		if (Math.abs(distance1 - this.SplitEpsilon) < distance2)
@@ -797,7 +797,7 @@ export default class SkeletonBuilder {
 			if (edge.BisectorNext.IsOnRightSite(candidatePoint, this.SplitEpsilon))
 				return new SplitCandidate(candidatePoint, distance, null, edge.Begin);
 
-			return new SplitCandidate(candidatePoint, distance, edge, Vector2d.Empty);
+			return new SplitCandidate(candidatePoint, distance, edge, PrimitiveUtils.EmptyVector);
 		}
 
 		return null;
@@ -829,7 +829,7 @@ export default class SkeletonBuilder {
 		const intersect = intersectRays2d.Intersect;
 
 		if (vertexPrevious.Point.equals(intersect) || vertexNext.Point.equals(intersect))
-			return Vector2d.Empty;
+			return PrimitiveUtils.EmptyVector;
 
 		return intersect;
 	}
