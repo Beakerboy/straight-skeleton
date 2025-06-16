@@ -1,5 +1,4 @@
 import SkeletonEvent from "./SkeletonEvent";
-import Vector2d from "../Primitives/Vector2d";
 
 export default class MultiSplitEvent extends SkeletonEvent {
 	Chains;
