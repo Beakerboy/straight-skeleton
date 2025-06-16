@@ -1,4 +1,3 @@
-import Vector2 from "three";
 import EdgeResult from "./EdgeResult";
 
 export class Skeleton {
