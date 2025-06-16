@@ -27,7 +27,7 @@ test('Collide parallel', () => {
   const lin1 = new LineLinear2d().SetFromCoefficients(1, 0, 3);
   const lin2 = new LineLinear2d().SetFromCoefficients(1, 0, 4);
   const vec = lin1.Collide(lin2);
-  expect(vec.Equals(Vector2d.Empty)).toBe(true);
+  expect(vec.equals(Vector2d.Empty)).toBe(true);
 })
 
 /** @todo test Collide overlapping */
