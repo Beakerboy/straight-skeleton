@@ -696,7 +696,7 @@ export default class SkeletonBuilder {
 				}
 			}
 
-			if (!oppositeEdge.OppositePoint.equals(Vector2d.Empty)) {
+			if (!oppositeEdge.OppositePoint.equals(PrimitiveUtils.EmptyVector)) {
 				queue.Add(new VertexSplitEvent(point, oppositeEdge.Distance, vertex));
 				continue;
 			}
