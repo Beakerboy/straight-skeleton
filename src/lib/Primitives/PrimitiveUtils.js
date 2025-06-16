@@ -67,18 +67,18 @@ export default class PrimitiveUtils {
 	static Empty = new IntersectPoints();
 
 	static IsPointOnRay(point, ray, epsilon) {
-		const rayDirection = new Vector2d(ray.U.X, ray.U.Y).Normalized();
+		const rayDirection = ray.U.clone().normalize();
 
-		const pointVector = point.Sub(ray.A);
+		const pointVector = point.clone().sub(ray.A);
 
 		let dot = rayDirection.dot(pointVector);
 
 		if (dot < epsilon)
 			return false;
 
-		const x = rayDirection.X;
-		rayDirection.X = rayDirection.Y;
-		rayDirection.Y = -x;
+		const x = rayDirection.x;
+		rayDirection.x = rayDirection.y;
+		rayDirection.y = -x;
 
 		dot = rayDirection.dot(pointVector);
 
@@ -168,14 +168,14 @@ export default class PrimitiveUtils {
 	}
 
 	static InCollinearRay(p, rayStart, rayDirection) {
-		const collideVector = p.Sub(rayStart);
+		const collideVector = p.clone().sub(rayStart);
 		const dot = rayDirection.dot(collideVector);
 
 		return !(dot < 0);
 	}
 
 	static Perp(u, v) {
-		return u.X * v.Y - u.Y * v.X;
+		return u.x * v.y - u.y * v.x;
 	}
 
 	static IsClockwisePolygon(polygon) {
@@ -186,7 +186,7 @@ export default class PrimitiveUtils {
 		const n = polygon.length;
 		let A = 0;
 		for (let p = n - 1, q = 0; q < n; p = q++)
-			A += polygon[p].X * polygon[q].Y - polygon[q].X * polygon[p].Y;
+			A += polygon[p].x * polygon[q].y - polygon[q].x * polygon[p].y;
 
 		return A * 0.5;
 	}
@@ -213,11 +213,11 @@ export default class PrimitiveUtils {
 			it++;
 			const node2 = i === numpoints - 1 ? first : points[it];
 
-			const x = point.X;
-			const y = point.Y;
+			const x = point.x;
+			const y = point.y;
 
-			if (node1.Y < y && node2.Y >= y || node2.Y < y && node1.Y >= y) {
-				if (node1.X + (y - node1.Y) / (node2.Y - node1.Y) * (node2.X - node1.X) < x)
+			if (node1.y < y && node2.y >= y || node2.y < y && node1.y >= y) {
+				if (node1.x + (y - node1.y) / (node2.y - node1.y) * (node2.x - node1.x) < x)
 					oddNodes = !oddNodes;
 			}
 		}
