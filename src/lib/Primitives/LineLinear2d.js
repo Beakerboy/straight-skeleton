@@ -21,14 +21,10 @@ export default class LineLinear2d {
 	}
 
 	 Collide(pLine) {
-		return LineLinear2d.Collide(this, pLine);
+		return LineLinear2d.CollideCoeff(this.A, this.B, this.C, pLine.A, pLine.B, pLine.C);
 	}
 
-	 static Collide(pLine1, pLine2) {
-		return LineLinear2d.CollideCoeff(pLine1.A, pLine1.B, pLine1.C, pLine2.A, pLine2.B, pLine2.C);
-	}
-
-	 static CollideCoeff(A1, B1, C1, A2, B2, C2) {
+	static CollideCoeff(A1, B1, C1, A2, B2, C2) {
 		const WAB = A1 * B2 - A2 * B1;
 		const WBC = B1 * C2 - B2 * C1;
 		const WCA = C1 * A2 - C2 * A1;
