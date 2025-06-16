@@ -958,8 +958,8 @@ class ChainComparer {
 	}
 
 	static Angle(p0, p1) {
-		const dx = p1.X - p0.X;
-		const dy = p1.Y - p0.Y;
+		const dx = p1.x - p0.x;
+		const dy = p1.y - p0.y;
 		return Math.atan2(dy, dx);
 	}
 }
