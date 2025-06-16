@@ -22,7 +22,7 @@ test('Collide', () => {
   const v2 = new Vector2(1, 1);
   const v3 = new Vector2(1, 2);
   const r1 = new LineParametric2d(v1, v2);
-  const l1 = new LineLinear2(v2, v3);
+  const l1 = new LineLinear2d(v2, v3);
   const epsilon = .0001;
   const result = LineParametric2d.Collide(r1, l1, epsilon);
   expect(result.x).toBe(1);
