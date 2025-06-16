@@ -1,4 +1,4 @@
-import Vector2d from "./Vector2d";
+import Vector2 from "three";
 import LineParametric2d from "./LineParametric2d";
 
 class IntersectPoints {
@@ -21,6 +21,7 @@ class IntersectPoints {
 
 
 export default class PrimitiveUtils {
+	static EmptyVector = new Vector2(null, null);
 	static FromTo(begin, end) {
 		return end.clone().sub(begin);
 	}
