@@ -31,7 +31,7 @@ export default class LineParametric2d {
 			return Vector2d.Empty;
 		}
 
-		const collideVector = collide.Sub(ray.A);
+		const collideVector = collide.clone().sub(ray.A);
 		return ray.U.dot(collideVector) < epsilon ? Vector2d.Empty : collide;
 	}
 
@@ -41,7 +41,7 @@ export default class LineParametric2d {
 	}
 
 	 IsOnRightSite(point, epsilon) {
-		const direction = point.Sub(this.A);
+		const direction = point.clone().sub(this.A);
 		return PrimitiveUtils.OrthogonalRight(this.U).dot(direction) > -epsilon;
 	}
 }
