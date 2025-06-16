@@ -14,11 +14,11 @@ export default class LineParametric2d {
 	}
 
 	 CreateLinearForm() {
-		const x = this.A.X;
-		const y = this.A.Y;
+		const x = this.A.x;
+		const y = this.A.y;
 
-		const B = -this.U.X;
-		const A = this.U.Y;
+		const B = -this.U.x;
+		const A = this.U.y;
 
 		const C = -(A * x + B * y);
 
@@ -27,7 +27,7 @@ export default class LineParametric2d {
 
 	 static Collide(ray, line, epsilon) {
 		const collide = LineLinear2d.Collide(ray.CreateLinearForm(), line);
-		if (collide.Equals(Vector2d.Empty)) {
+		if (collide.equals(Vector2d.Empty)) {
 			return Vector2d.Empty;
 		}
 
