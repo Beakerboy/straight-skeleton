@@ -1,9 +1,9 @@
-import Vector2d from "./Vector2d";
+import Vector2 from "three";
 import LineLinear2d from "./LineLinear2d";
 import PrimitiveUtils from "./PrimitiveUtils";
 
 export default class LineParametric2d {
-	 static Empty = new LineParametric2d(Vector2d.Empty, Vector2d.Empty);
+	 static Empty = new LineParametric2d(PrimitiveUtils.EmptyVector, PrimitiveUtils.EmptyVector);
 
 	 A = null;
 	 U = null;
@@ -27,12 +27,12 @@ export default class LineParametric2d {
 
 	 static Collide(ray, line, epsilon) {
 		const collide = LineLinear2d.Collide(ray.CreateLinearForm(), line);
-		if (collide.equals(Vector2d.Empty)) {
-			return Vector2d.Empty;
+		if (collide.equals(PrimitiveUtils.EmptyVector)) {
+			return PrimitiveUtils.EmptyVector;
 		}
 
 		const collideVector = collide.clone().sub(ray.A);
-		return ray.U.dot(collideVector) < epsilon ? Vector2d.Empty : collide;
+		return ray.U.dot(collideVector) < epsilon ? PrimitiveUtils.EmptyVector : collide;
 	}
 
 	 IsOnLeftSite(point, epsilon) {
