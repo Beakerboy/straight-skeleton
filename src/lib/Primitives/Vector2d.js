@@ -18,8 +18,4 @@ export default class Vector2d extends Vector2 {
 	set Y(value) {
 		this.y = value;
 	}
-
-	 ToString() {
-		return `${this.X}, ${this.Y}`;
-	}
 }
