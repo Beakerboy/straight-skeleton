@@ -1,4 +1,4 @@
-import Vector2d from "./Primitives/Vector2d";
+import Vector2 from "three";
 import EdgeResult from "./EdgeResult";
 
 export class Skeleton {
