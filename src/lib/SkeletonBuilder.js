@@ -1,5 +1,5 @@
 import {Skeleton} from "./Skeleton";
-import Vector2d from "./Primitives/Vector2d";
+import {Vector2} from "three";
 import PriorityQueue from "./Primitives/PriorityQueue";
 import Edge from "./Circular/Edge";
 import Vertex from "./Circular/Vertex";
@@ -59,7 +59,7 @@ export default class SkeletonBuilder {
 		const list = [];
 
 		for (const [x, y] of arr) {
-			list.push(new Vector2d(x, y));
+			list.push(new Vector2(x, y));
 		}
 
 		return list;
@@ -743,7 +743,7 @@ export default class SkeletonBuilder {
 
 	static ComputeEdgeEvents(previousVertex, nextVertex, queue) {
 		const point = this.ComputeIntersectionBisectors(previousVertex, nextVertex);
-		if (!point.equals(Vector2d.Empty))
+		if (!point.equals(PrimitiveUtils.EmptyVector))
 			queue.Add(this.CreateEdgeEvent(point, previousVertex, nextVertex));
 	}
 
@@ -766,7 +766,7 @@ export default class SkeletonBuilder {
 	}
 
 	static EdgeBehindBisector(bisector, edge) {
-		return LineParametric2d.Collide(bisector, edge, this.SplitEpsilon).equals(Vector2d.Empty);
+		return LineParametric2d.Collide(bisector, edge, this.SplitEpsilon).equals(PrimitiveUtils.EmptyVector);
 	}
 
 	static CalcCandidatePointForSplit(vertex, edge) {
@@ -778,14 +778,14 @@ export default class SkeletonBuilder {
 		const edgesBisector = this.CalcVectorBisector(vertexEdteNormNegate, edge.Norm);
 		const edgesCollide = vertexEdge.LineLinear2d.Collide(edge.LineLinear2d);
 
-		if (edgesCollide.equals(Vector2d.Empty))
+		if (edgesCollide.equals(PrimitiveUtils.EmptyVector))
 			throw new Error("Ups this should not happen");
 
 		const edgesBisectorLine = new LineParametric2d(edgesCollide, edgesBisector).CreateLinearForm();
 
 		const candidatePoint = LineParametric2d.Collide(vertex.Bisector, edgesBisectorLine, this.SplitEpsilon);
 
-		if (candidatePoint.equals(Vector2d.Empty))
+		if (candidatePoint.equals(PrimitiveUtils.EmptyVector))
 			return null;
 
 		if (edge.BisectorPrevious.IsOnRightSite(candidatePoint, this.SplitEpsilon)
