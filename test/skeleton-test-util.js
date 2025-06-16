@@ -6,7 +6,7 @@ export default class SkeletonTestUtil {
   }
 
   static containsEpsilon (list, p) {
-    return list.some(l => this.equalEpsilon(l.X, p.X) && this.equalEpsilon(l.Y, p.Y))
+    return list.some(l => this.equalEpsilon(l.x, p.x) && this.equalEpsilon(l.y, p.y))
   }
 
   /**
@@ -28,20 +28,20 @@ export default class SkeletonTestUtil {
   }
 
   /**
-   * @param {List} expectedList Expected Vector2d[]
-   * @param {List} givenList Given Vector2d[]
+   * @param {Vector2[]} expectedList - Expected
+   * @param {Vector2[]} givenList - Given
    */
   static assertExpectedPoints (expectedList, givenList) {
     let sb = ''
     for (const expected of expectedList) {
       if (!this.containsEpsilon(givenList, expected)) {
-        sb += `Can't find expected point (${expected.toString()}) in given list\n`
+        sb += `Can't find expected point (${expected.x + ", " + expected.y}) in given list\n`
       }
     }
 
     for (const given of givenList) {
       if (!this.containsEpsilon(expectedList, given)) {
-        sb += `Can't find given point (${given.ToString()}) in expected list\n`
+        sb += `Can't find given point (${given.x + ", " + given.y}) in expected list\n`
       }
     }
     if (sb.length > 0) {
