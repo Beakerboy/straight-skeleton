@@ -205,14 +205,11 @@ export default class PrimitiveUtils {
 		if (numpoints < 3)
 			return false;
 
-		let it = 0;
-		const first = points[it];
 		let oddNodes = false;
 
 		for (let i = 0; i < numpoints; i++) {
-			const node1 = points[it];
-			it++;
-			const node2 = i === numpoints - 1 ? first : points[it];
+			const node1 = points[i];
+			const node2 = points[(i + 1) % numpoints];
 
 			const x = point.x;
 			const y = point.y;
