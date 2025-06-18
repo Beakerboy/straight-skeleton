@@ -71,10 +71,9 @@ describe.each([
     }
     expected.AddRange(polygon)
 
-    let innerList = null
+    let innerList = new List();
     if (hPoints !== null) {
       for (holepoints of hPoints) {
-        innerList = new List()
         const inner = new List()
         for (const point of holepoints) {
           inner.Add(new Vector2d(...point))
