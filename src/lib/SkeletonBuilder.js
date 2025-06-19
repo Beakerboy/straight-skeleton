@@ -9,7 +9,7 @@ import SkeletonEvent from "./Events/SkeletonEvent";
 import FaceQueueUtil from "./Path/FaceQueueUtil";
 import LavUtil from "./LavUtil";
 import PrimitiveUtils from "./Primitives/PrimitiveUtils";
-import LineParametric2d from "./Primitives/LineParametric2d";
+import Ray2 from "./Primitives/Ray2";
 import {FaceNode} from "./Path/FaceNode";
 import MultiEdgeEvent from "./Events/MultiEdgeEvent";
 import EdgeEvent from "./Events/EdgeEvent";
@@ -195,7 +195,7 @@ export default class SkeletonBuilder {
 		const center = event.V;
 		const edgeList = event.Chain.EdgeList;
 
-		const vertex = new Vertex(center, event.Distance, LineParametric2d.Empty, null, null);
+		const vertex = new Vertex(center, event.Distance, Ray2.Empty, null, null);
 		vertex.IsProcessed = true;
 
 		this.AddMultiBackFaces(edgeList, vertex);
@@ -766,7 +766,7 @@ export default class SkeletonBuilder {
 	}
 
 	static EdgeBehindBisector(bisector, edge) {
-		return LineParametric2d.Collide(bisector, edge, this.SplitEpsilon).equals(PrimitiveUtils.EmptyVector);
+		return Ray2.Collide(bisector, edge, this.SplitEpsilon).equals(PrimitiveUtils.EmptyVector);
 	}
 
 	static CalcCandidatePointForSplit(vertex, edge) {
@@ -781,9 +781,9 @@ export default class SkeletonBuilder {
 		if (edgesCollide.equals(PrimitiveUtils.EmptyVector))
 			throw new Error("Ups this should not happen");
 
-		const edgesBisectorLine = new LineParametric2d(edgesCollide, edgesBisector).CreateLinearForm();
+		const edgesBisectorLine = new Ray2(edgesCollide, edgesBisector).CreateLinearForm();
 
-		const candidatePoint = LineParametric2d.Collide(vertex.Bisector, edgesBisectorLine, this.SplitEpsilon);
+		const candidatePoint = Ray2.Collide(vertex.Bisector, edgesBisectorLine, this.SplitEpsilon);
 
 		if (candidatePoint.equals(PrimitiveUtils.EmptyVector))
 			return null;
@@ -932,7 +932,7 @@ export default class SkeletonBuilder {
 		const norm2 = e2.Norm;
 
 		const bisector = this.CalcVectorBisector(norm1, norm2);
-		return new LineParametric2d(p, bisector);
+		return new Ray2(p, bisector);
 	}
 
 	static CalcVectorBisector(norm1, norm2) {
