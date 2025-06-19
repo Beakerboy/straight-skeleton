@@ -5,14 +5,6 @@ import PrimitiveUtils from "./PrimitiveUtils";
 export default class Ray2 {
 	 static Empty = new Ray2(new Vector2(null, null), new Vector2(null, null));
 
-	 origin = null;
-	 direction = null;
-
-	constructor(pA, pU) {
-		this.origin = pA;
-		this.direction = pU;
-	}
-
 	 static Collide(ray, line, epsilon) {
 		const collide = PrimitiveUtils.CreateLineFromRay(ray).Collide(line);
 		if (collide.equals(PrimitiveUtils.EmptyVector)) {
