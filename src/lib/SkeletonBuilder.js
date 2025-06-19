@@ -1,5 +1,5 @@
 import {Skeleton} from "./Skeleton";
-import {Vector2} from "three";
+import {Vector2, Ray} from "three";
 import PriorityQueue from "./Primitives/PriorityQueue";
 import Edge from "./Circular/Edge";
 import Vertex from "./Circular/Vertex";
@@ -9,7 +9,6 @@ import SkeletonEvent from "./Events/SkeletonEvent";
 import FaceQueueUtil from "./Path/FaceQueueUtil";
 import LavUtil from "./LavUtil";
 import PrimitiveUtils from "./Primitives/PrimitiveUtils";
-import Ray2 from "./Primitives/Ray2";
 import {FaceNode} from "./Path/FaceNode";
 import MultiEdgeEvent from "./Events/MultiEdgeEvent";
 import EdgeEvent from "./Events/EdgeEvent";
@@ -195,7 +194,7 @@ export default class SkeletonBuilder {
 		const center = event.V;
 		const edgeList = event.Chain.EdgeList;
 
-		const vertex = new Vertex(center, event.Distance, Ray2.Empty, null, null);
+		const vertex = new Vertex(center, event.Distance, new Ray(new Vector2(null, null), new Vector2(null, null)), null, null);
 		vertex.IsProcessed = true;
 
 		this.AddMultiBackFaces(edgeList, vertex);
@@ -781,7 +780,7 @@ export default class SkeletonBuilder {
 		if (edgesCollide.equals(PrimitiveUtils.EmptyVector))
 			throw new Error("Ups this should not happen");
 
-		const edgesBisectorLine = PrimitiveUtils.CreateLineFromRay(new Ray2(edgesCollide, edgesBisector));
+		const edgesBisectorLine = PrimitiveUtils.CreateLineFromRay(new Ray(edgesCollide, edgesBisector));
 
 		const candidatePoint = PrimitiveUtils.Collide(vertex.Bisector, edgesBisectorLine, this.SplitEpsilon);
 
@@ -933,7 +932,7 @@ export default class SkeletonBuilder {
 		const norm2 = e2.Norm;
 
 		const bisector = this.CalcVectorBisector(norm1, norm2);
-		return new Ray2(p, bisector);
+		return new Ray(p, bisector);
 	}
 
 	static CalcVectorBisector(norm1, norm2) {
