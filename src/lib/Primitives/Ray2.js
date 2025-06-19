@@ -2,7 +2,7 @@ import {Vector2} from "three";
 import LineLinear2d from "./LineLinear2d";
 import PrimitiveUtils from "./PrimitiveUtils";
 
-export default class LineParametric2d {
+export default class Ray2 {
 	 static Empty = new LineParametric2d(new Vector2(null, null), new Vector2(null, null));
 
 	 origin = null;
