@@ -6,7 +6,7 @@ test('Constructor', () => {
   const v1 = new Vector2(0, 0)
   const v2 = new Vector2(1, 1)
   const r1 = new LineParametric2d(v1, v2)
-  expect(r1.A.x).toBe(0)
+  expect(r1.origin.x).toBe(0)
 })
 
 test('Create Linear Form', () => {
