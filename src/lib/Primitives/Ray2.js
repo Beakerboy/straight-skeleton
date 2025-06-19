@@ -1,24 +1,13 @@
 import {Vector2, Ray} from "three";
 import LineLinear2d from "./LineLinear2d";
+
 import PrimitiveUtils from "./PrimitiveUtils";
 
 export default class Ray2 extends Ray {
 	 static Empty = new Ray2(new Vector2(null, null), new Vector2(null, null));
 
-	 CreateLinearForm() {
-		const x = this.origin.x;
-		const y = this.origin.y;
-
-		const B = -this.direction.x;
-		const A = this.direction.y;
-
-		const C = -(A * x + B * y);
-
-		return new LineLinear2d().SetFromCoefficients(A, B, C);
-	}
-
 	 static Collide(ray, line, epsilon) {
-		const collide = ray.CreateLinearForm().Collide(line);
+		const collide = PrimitiveUtils.CreateLineFromRay(ray).Collide(line);
 		if (collide.equals(PrimitiveUtils.EmptyVector)) {
 			return PrimitiveUtils.EmptyVector;
 		}

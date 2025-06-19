@@ -781,7 +781,7 @@ export default class SkeletonBuilder {
 		if (edgesCollide.equals(PrimitiveUtils.EmptyVector))
 			throw new Error("Ups this should not happen");
 
-		const edgesBisectorLine = new Ray2(edgesCollide, edgesBisector).CreateLinearForm();
+		const edgesBisectorLine = PrimitiveUtils.CreateLineFromRay(new Ray2(edgesCollide, edgesBisector));
 
 		const candidatePoint = Ray2.Collide(vertex.Bisector, edgesBisectorLine, this.SplitEpsilon);
 
