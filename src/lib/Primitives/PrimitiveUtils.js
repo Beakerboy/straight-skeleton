@@ -244,4 +244,14 @@ export default class PrimitiveUtils {
 		const direction = point.clone().sub(ray.origin);
 		return this.OrthogonalRight(ray.direction).dot(direction) > -epsilon;
 	}
+
+	static Collide(ray, line, epsilon) {
+		const collide = this.CreateLineFromRay(ray).Collide(line);
+		if (collide.equals(this.EmptyVector)) {
+			return this.EmptyVector;
+		}
+
+		const collideVector = collide.clone().sub(ray.origin);
+		return ray.direction.dot(collideVector) < epsilon ? this.EmptyVector : collide;
+	}
 }
