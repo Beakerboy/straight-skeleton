@@ -233,12 +233,12 @@ export default class PrimitiveUtils {
 
 	 static IsOnLeftSite(ray, point, epsilon) {
 		const direction = point.clone().sub(ray.origin);
-		return this.OrthogonalRight(ray.direction).dot(direction) < epsilon;
+		return ray.direction.clone().rotateAround(new Vector2(0, 0), -Math.PI / 2).dot(direction) < epsilon;
 	}
 
 	 static IsOnRightSite(ray, point, epsilon) {
 		const direction = point.clone().sub(ray.origin);
-		return this.OrthogonalRight(ray.direction).dot(direction) > -epsilon;
+		return ray.direction.clone().rotateAround(new Vector2(0, 0), -Math.PI / 2).dot(direction) > -epsilon;
 	}
 
 	static Collide(ray, line, epsilon) {
