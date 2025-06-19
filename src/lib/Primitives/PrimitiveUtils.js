@@ -1,4 +1,5 @@
 import {Vector2} from "three";
+import LineLinear2d from "./LineLinear2d";
 
 class IntersectPoints {
 	Intersect = null;
