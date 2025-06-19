@@ -1,18 +1,10 @@
-import {Vector2} from "three";
+import {Vector2, Ray3} from "three";
 import LineLinear2d from "./LineLinear2d";
 import PrimitiveUtils from "./PrimitiveUtils";
 
-export default class Ray2 {
+export default class Ray2 extends Ray3 {
 	 static Empty = new Ray2(new Vector2(null, null), new Vector2(null, null));
 
-	 origin = null;
-	 direction = null;
-
-	constructor(pA, pU) {
-		this.origin = pA;
-		this.direction = pU;
-	}
-	
 	 CreateLinearForm() {
 		const x = this.origin.x;
 		const y = this.origin.y;
