@@ -19,15 +19,10 @@ class IntersectPoints {
 	}
 }
 
-
 export default class PrimitiveUtils {
 	static EmptyVector = new Vector2(null, null);
 	static FromTo(begin, end) {
 		return end.clone().sub(begin);
-	}
-
-	static OrthogonalRight(v) {
-		return v.clone().rotateAround(new Vector2(0, 0), -Math.PI / 2);
 	}
 
 	static OrthogonalProjection(unitVector, vectorToProject) {
