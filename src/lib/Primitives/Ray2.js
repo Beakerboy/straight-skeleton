@@ -1,5 +1,4 @@
 import {Vector2} from "three";
-import LineLinear2d from "./LineLinear2d";
 import PrimitiveUtils from "./PrimitiveUtils";
 
 export default class Ray2 {
