@@ -1,5 +1,4 @@
 import {Vector2} from "three";
-import LineParametric2d from "./LineParametric2d";
 
 class IntersectPoints {
 	Intersect = null;
@@ -68,9 +67,9 @@ export default class PrimitiveUtils {
 	static Empty = new IntersectPoints();
 
 	static IsPointOnRay(point, ray, epsilon) {
-		const rayDirection = ray.U.clone().normalize();
+		const rayDirection = ray.direction.clone().normalize();
 
-		const pointVector = point.clone().sub(ray.A);
+		const pointVector = point.clone().sub(ray.origin);
 
 		let dot = rayDirection.dot(pointVector);
 
@@ -87,13 +86,13 @@ export default class PrimitiveUtils {
 	}
 
 	static IntersectRays2D(r1, r2) {
-		const s1p0 = r1.A.clone();
-		const s1p1 = r1.A.clone().add(r1.U);
+		const s1p0 = r1.origin.clone();
+		const s1p1 = r1.origin.clone().add(r1.direction);
 
-		const s2p0 = r2.A;
+		const s2p0 = r2.origin;
 
-		const u = r1.U;
-		const v = r2.U;
+		const u = r1.direction;
+		const v = r2.direction;
 
 		const w = s1p0.clone().sub(s2p0);
 		const d = PrimitiveUtils.Perp(u, v);
