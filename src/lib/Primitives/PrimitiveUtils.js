@@ -27,11 +27,11 @@ export default class PrimitiveUtils {
 	}
 
 	static OrthogonalLeft(v) {
-		return v.clone().setX(-v.y).setY(v.x);
+		return v.clone().rotateAround(new Vector(0, 0), Math.PI / 2);
 	}
 
 	static OrthogonalRight(v) {
-		return new Vector2(v.y, -v.x);
+		return v.clone().rotateAround(new Vector(0, 0), -Math.PI / 2);
 	}
 
 	static OrthogonalProjection(unitVector, vectorToProject) {
