@@ -12,14 +12,6 @@ export default class Ray2 {
 		this.origin = pA;
 		this.direction = pU;
 	}
-
-	get U() {
-		return this.direction;
-	}
-
-	get A() {
-		return this.origin;
-	}
 	
 	 CreateLinearForm() {
 		const x = this.origin.x;
