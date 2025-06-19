@@ -789,13 +789,13 @@ export default class SkeletonBuilder {
 			return null;
 		}
 
-		if (edge.BisectorPrevious.IsOnRightSite(candidatePoint, this.SplitEpsilon)
-			&& edge.BisectorNext.IsOnLeftSite(candidatePoint, this.SplitEpsilon)) {
+		if (PrimitiveUtils.IsOnRightSite(edge.BisectorPrevious, candidatePoint, this.SplitEpsilon)
+			&& PrimitiveUtils.IsOnLeftSite(edge.BisectorNextcandidatePoint, this.SplitEpsilon)) {
 			const distance = this.CalcDistance(candidatePoint, edge);
 
-			if (edge.BisectorPrevious.IsOnLeftSite(candidatePoint, this.SplitEpsilon))
+			if (PrimitiveUtils.IsOnLeftSite(edge.BisectorPrevious, candidatePoint, this.SplitEpsilon))
 				return new SplitCandidate(candidatePoint, distance, null, edge.Begin);
-			if (edge.BisectorNext.IsOnRightSite(candidatePoint, this.SplitEpsilon))
+			if (PrimitiveUtils.IsOnRightSite(edge.BisectorNext, candidatePoint, this.SplitEpsilon))
 				return new SplitCandidate(candidatePoint, distance, null, edge.Begin);
 
 			return new SplitCandidate(candidatePoint, distance, edge, PrimitiveUtils.EmptyVector);
