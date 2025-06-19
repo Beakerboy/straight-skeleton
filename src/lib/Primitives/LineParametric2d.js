@@ -5,20 +5,28 @@ import PrimitiveUtils from "./PrimitiveUtils";
 export default class LineParametric2d {
 	 static Empty = new LineParametric2d(new Vector2(null, null), new Vector2(null, null));
 
-	 A = null;
-	 U = null;
+	 origin = null;
+	 direction = null;
 
 	constructor(pA, pU) {
-		this.A = pA;
-		this.U = pU;
+		this.origin = pA;
+		this.direction = pU;
 	}
 
-	 CreateLinearForm() {
-		const x = this.A.x;
-		const y = this.A.y;
+	get U() {
+		return this.direction;
+	}
 
-		const B = -this.U.x;
-		const A = this.U.y;
+	get A() {
+		return this.origin;
+	}
+	
+	 CreateLinearForm() {
+		const x = this.origin.x;
+		const y = this.origin.y;
+
+		const B = -this.direction.x;
+		const A = this.direction.y;
 
 		const C = -(A * x + B * y);
 
@@ -31,17 +39,17 @@ export default class LineParametric2d {
 			return PrimitiveUtils.EmptyVector;
 		}
 
-		const collideVector = collide.clone().sub(ray.A);
-		return ray.U.dot(collideVector) < epsilon ? PrimitiveUtils.EmptyVector : collide;
+		const collideVector = collide.clone().sub(ray.origin);
+		return ray.direction.dot(collideVector) < epsilon ? PrimitiveUtils.EmptyVector : collide;
 	}
 
 	 IsOnLeftSite(point, epsilon) {
-		const direction = point.clone().sub(this.A);
-		return PrimitiveUtils.OrthogonalRight(this.U).dot(direction) < epsilon;
+		const direction = point.clone().sub(this.origin);
+		return PrimitiveUtils.OrthogonalRight(this.direction).dot(direction) < epsilon;
 	}
 
 	 IsOnRightSite(point, epsilon) {
-		const direction = point.clone().sub(this.A);
-		return PrimitiveUtils.OrthogonalRight(this.U).dot(direction) > -epsilon;
+		const direction = point.clone().sub(this.origin);
+		return PrimitiveUtils.OrthogonalRight(this.direction).dot(direction) > -epsilon;
 	}
 }
