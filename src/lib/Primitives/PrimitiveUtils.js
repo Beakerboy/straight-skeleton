@@ -221,4 +221,16 @@ export default class PrimitiveUtils {
 
 		return oddNodes;
 	}
+
+	static CreateLineFromRay(ray) {
+		const x = ray.origin.x;
+		const y = ray.origin.y;
+
+		const B = -ray.direction.x;
+		const A = ray.direction.y;
+
+		const C = -(A * x + B * y);
+
+		return new LineLinear2d().SetFromCoefficients(A, B, C);
+	}
 }
