@@ -785,8 +785,9 @@ export default class SkeletonBuilder {
 
 		const candidatePoint = PrimitiveUtils.Collide(vertex.Bisector, edgesBisectorLine, this.SplitEpsilon);
 
-		if (candidatePoint === null))
+		if (candidatePoint === null) {
 			return null;
+		}
 
 		if (edge.BisectorPrevious.IsOnRightSite(candidatePoint, this.SplitEpsilon)
 			&& edge.BisectorNext.IsOnLeftSite(candidatePoint, this.SplitEpsilon)) {
