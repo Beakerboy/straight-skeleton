@@ -766,7 +766,7 @@ export default class SkeletonBuilder {
 	}
 
 	static EdgeBehindBisector(bisector, edge) {
-		return Ray2.Collide(bisector, edge, this.SplitEpsilon).equals(PrimitiveUtils.EmptyVector);
+		return PrimitiveUtils.Collide(bisector, edge, this.SplitEpsilon) === null;
 	}
 
 	static CalcCandidatePointForSplit(vertex, edge) {
@@ -783,9 +783,9 @@ export default class SkeletonBuilder {
 
 		const edgesBisectorLine = PrimitiveUtils.CreateLineFromRay(new Ray2(edgesCollide, edgesBisector));
 
-		const candidatePoint = Ray2.Collide(vertex.Bisector, edgesBisectorLine, this.SplitEpsilon);
+		const candidatePoint = PrimitiveUtils.Collide(vertex.Bisector, edgesBisectorLine, this.SplitEpsilon);
 
-		if (candidatePoint.equals(PrimitiveUtils.EmptyVector))
+		if (candidatePoint === null))
 			return null;
 
 		if (edge.BisectorPrevious.IsOnRightSite(candidatePoint, this.SplitEpsilon)
