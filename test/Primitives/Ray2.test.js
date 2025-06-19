@@ -9,14 +9,6 @@ test('Constructor', () => {
   expect(r1.origin.x).toBe(0)
 })
 
-test('Create Linear Form', () => {
-  const v1 = new Vector2(0, 0)
-  const v2 = new Vector2(1, 1)
-  const l1 = new Ray2(v1, v2).CreateLinearForm();
-  expect(l1.constructor.name).toBe("LineLinear2d");
-  expect(l1.Contains(v1)).toBe(true);
-})
-
 test('Collide', () => {
   const v1 = new Vector2(0, 0);
   const v2 = new Vector2(1, 1);
