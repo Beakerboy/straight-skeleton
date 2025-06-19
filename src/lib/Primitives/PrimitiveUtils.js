@@ -248,10 +248,10 @@ export default class PrimitiveUtils {
 	static Collide(ray, line, epsilon) {
 		const collide = this.CreateLineFromRay(ray).Collide(line);
 		if (collide.equals(this.EmptyVector)) {
-			return this.EmptyVector;
+			return null;
 		}
 
 		const collideVector = collide.clone().sub(ray.origin);
-		return ray.direction.dot(collideVector) < epsilon ? this.EmptyVector : collide;
+		return ray.direction.dot(collideVector) < epsilon ? null : collide;
 	}
 }
