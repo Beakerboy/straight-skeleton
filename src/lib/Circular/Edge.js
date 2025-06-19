@@ -1,7 +1,5 @@
 import CircularNode from "./CircularNode";
-import {Vector2} from "three";
 import LineLinear2d from "../Primitives/LineLinear2d";
-import LineParametric2d from "../Primitives/LineParametric2d";
 
 export default class Edge extends CircularNode {
 	Begin;
