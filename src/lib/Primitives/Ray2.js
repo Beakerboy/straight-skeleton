@@ -16,13 +16,4 @@ export default class Ray2 extends Ray {
 		return ray.direction.dot(collideVector) < epsilon ? PrimitiveUtils.EmptyVector : collide;
 	}
 
-	 IsOnLeftSite(point, epsilon) {
-		const direction = point.clone().sub(this.origin);
-		return PrimitiveUtils.OrthogonalRight(this.direction).dot(direction) < epsilon;
-	}
-
-	 IsOnRightSite(point, epsilon) {
-		const direction = point.clone().sub(this.origin);
-		return PrimitiveUtils.OrthogonalRight(this.direction).dot(direction) > -epsilon;
-	}
 }
