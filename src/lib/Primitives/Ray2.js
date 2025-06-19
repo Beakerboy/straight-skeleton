@@ -1,7 +1,9 @@
-import {Vector2} from "three";
+import {Vector2, Ray} from "three";
+import LineLinear2d from "./LineLinear2d";
+
 import PrimitiveUtils from "./PrimitiveUtils";
 
-export default class Ray2 {
+export default class Ray2 extends Ray {
 	 static Empty = new Ray2(new Vector2(null, null), new Vector2(null, null));
 
 	 static Collide(ray, line, epsilon) {
