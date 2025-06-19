@@ -234,4 +234,14 @@ export default class PrimitiveUtils {
 
 		return new LineLinear2d().SetFromCoefficients(A, B, C);
 	}
+
+	 static IsOnLeftSite(ray, point, epsilon) {
+		const direction = point.clone().sub(ray.origin);
+		return this.OrthogonalRight(ray.direction).dot(direction) < epsilon;
+	}
+
+	 static IsOnRightSite(ray, point, epsilon) {
+		const direction = point.clone().sub(ray.origin);
+		return this.OrthogonalRight(ray.direction).dot(direction) > -epsilon;
+	}
 }
