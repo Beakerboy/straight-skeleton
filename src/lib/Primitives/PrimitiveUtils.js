@@ -26,10 +26,6 @@ export default class PrimitiveUtils {
 		return end.clone().sub(begin);
 	}
 
-	static OrthogonalLeft(v) {
-		return v.clone().rotateAround(new Vector2(0, 0), Math.PI / 2);
-	}
-
 	static OrthogonalRight(v) {
 		return v.clone().rotateAround(new Vector2(0, 0), -Math.PI / 2);
 	}
@@ -47,8 +43,8 @@ export default class PrimitiveUtils {
 	}
 
 	static BisectorNormalized(norm1, norm2) {
-		const e1v = PrimitiveUtils.OrthogonalLeft(norm1);
-		const e2v = PrimitiveUtils.OrthogonalLeft(norm2);
+		const e1v = norm1.clone().rotateAround(new Vector2(0, 0), Math.PI / 2);
+		const e2v = norm2.clone().rotateAround(new Vector2(0, 0), Math.PI / 2);
 
 		if (norm1.dot(norm2) > 0)
 			return e1v.add(e2v);
