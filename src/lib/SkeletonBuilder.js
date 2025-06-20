@@ -870,7 +870,7 @@ export default class SkeletonBuilder {
 			const points = [];
 			let next = end;
 			for (let i = 0; i < size; i++) {
-				points.Add(next.Point);
+				points.push(next.Point);
 				next = next.Next;
 			}
 			if (PrimitiveUtils.IsPointInsidePolygon(center, points))
