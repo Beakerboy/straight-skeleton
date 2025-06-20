@@ -57,27 +57,6 @@ export default class PrimitiveUtils {
 
 	static Empty = new IntersectPoints();
 
-	static IsPointOnRay2(point, ray, epsilon) {
-		// if ray.direction is already normalized, this could be:
-		// const rayDirection = ray.direction
-		const rayDirection = ray.direction.clone().normalize();
-
-		const pointVector = point.clone().sub(ray.origin);
-
-		let dot = rayDirection.dot(pointVector);
-
-		if (dot < epsilon)
-			return false;
-
-		const x = rayDirection.x;
-		rayDirection.x = rayDirection.y;
-		rayDirection.y = -x;
-
-		dot = rayDirection.dot(pointVector);
-
-		return -epsilon < dot && dot < epsilon;
-	}
-
 	static IntersectRays2D(r1, r2) {
 		const s1p0 = r1.origin.clone();
 		const s1p1 = r1.origin.clone().add(r1.direction);
