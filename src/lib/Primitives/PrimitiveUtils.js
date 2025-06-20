@@ -45,8 +45,7 @@ export default class PrimitiveUtils {
 			return e1v.add(e2v);
 
 		let ret = norm1.clone();
-		ret.negate();
-		ret.add(norm2);
+		ret.negate().add(norm2);
 
 		if (e1v.dot(norm2) < 0)
 			ret.negate();
@@ -59,6 +58,8 @@ export default class PrimitiveUtils {
 	static Empty = new IntersectPoints();
 
 	static IsPointOnRay(point, ray, epsilon) {
+		// if ray.direction is already normalized, this could be:
+		// const rayDirection = ray.direction
 		const rayDirection = ray.direction.clone().normalize();
 
 		const pointVector = point.clone().sub(ray.origin);
