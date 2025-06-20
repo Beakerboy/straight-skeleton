@@ -57,7 +57,7 @@ export default class PrimitiveUtils {
 
 	static Empty = new IntersectPoints();
 
-	static IsPointOnRay(point, ray, epsilon) {
+	static IsPointOnRay2(point, ray, epsilon) {
 		// if ray.direction is already normalized, this could be:
 		// const rayDirection = ray.direction
 		const rayDirection = ray.direction.clone().normalize();
