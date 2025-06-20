@@ -66,25 +66,6 @@ export default class PrimitiveUtils {
 
 	static Empty = new IntersectPoints();
 
-	static IsPointOnRay(point, ray, epsilon) {
-		const rayDirection = new Vector2d(ray.U.X, ray.U.Y).Normalized();
-
-		const pointVector = point.Sub(ray.A);
-
-		let dot = rayDirection.Dot(pointVector);
-
-		if (dot < epsilon)
-			return false;
-
-		const x = rayDirection.X;
-		rayDirection.X = rayDirection.Y;
-		rayDirection.Y = -x;
-
-		dot = rayDirection.Dot(pointVector);
-
-		return -epsilon < dot && dot < epsilon;
-	}
-
 	static IntersectRays2D(r1, r2) {
 		const s1p0 = r1.A;
 		const s1p1 = r1.A.Add(r1.U);
