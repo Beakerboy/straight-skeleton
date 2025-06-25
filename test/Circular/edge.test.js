@@ -6,8 +6,8 @@ const v2 = new Vector2d(1, 1)
 const edge = new Edge(v1, v2)
 
 test('Constructor', () => {
-  expect(edge.Begin.toString()).toBe('0, 0')
-  expect(edge.End.toString()).toBe('1, 1')
+  expect(edge.Begin.ToString()).toBe('0, 0')
+  expect(edge.End.ToString()).toBe('1, 1')
 })
 
 test('Norm', () => {
