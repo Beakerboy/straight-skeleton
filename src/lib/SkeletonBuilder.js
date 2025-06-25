@@ -609,7 +609,7 @@ export default class SkeletonBuilder {
 
 			edge.BisectorNext = bisector;
 			nextEdge.BisectorPrevious = bisector;
-			edges.Add(edge);
+			edges.push(edge);
 		}
 
 		const lav = new CircularList();
@@ -629,7 +629,7 @@ export default class SkeletonBuilder {
 			faceQueue.Edge = (vertex.NextEdge);
 
 			faceQueue.AddFirst(rightFace);
-			faces.Add(faceQueue);
+			faces.push(faceQueue);
 			vertex.RightFace = rightFace;
 
 			const leftFace = new FaceNode(next);

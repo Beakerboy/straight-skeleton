@@ -9,10 +9,6 @@ export class List extends Array {
 		super();
 	}
 
-	Add(item) {
-		this.push(item);
-	}
-
 	Insert(index, item) {
 		const newArr = insertInArray(this, index, item);
 
@@ -64,9 +60,7 @@ export class List extends Array {
 	}
 
 	AddRange(list) {
-		for (const item of list) {
-			this.Add(item);
-		}
+		this.push(...list);
 	}
 
 	Sort(comparer) {

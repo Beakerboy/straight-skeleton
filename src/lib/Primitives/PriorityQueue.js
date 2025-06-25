@@ -14,8 +14,8 @@ export default class PriorityQueue {
 	}
 
 	Add(item) {
-		let n = this._heap.Count;
-		this._heap.Add(item);
+		let n = this._heap.length;
+		this._heap.push(item);
 		while (n !== 0) {
 			const p = Math.floor(n / 2);
 			if (this._comparer.Compare(this._heap[n], (this._heap[p])) >= 0) break;
@@ -27,11 +27,11 @@ export default class PriorityQueue {
 	}
 
 	get Count() {
-		return this._heap.Count;
+		return this._heap.length;
 	}
 
 	get Empty() {
-		return this._heap.Count === 0;
+		return this._heap.length === 0;
 	}
 
 	Peek() {
@@ -40,7 +40,7 @@ export default class PriorityQueue {
 
 	Next() {
 		const val = this._heap[0];
-		const nMax = this._heap.Count - 1;
+		const nMax = this._heap.length - 1;
 		this._heap[0] = this._heap[nMax];
 		this._heap.RemoveAt(nMax);
 
