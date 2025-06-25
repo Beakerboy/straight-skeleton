@@ -472,7 +472,9 @@ export default class SkeletonBuilder {
 			parentGroup.Clear();
 
 			const event = levelEvents[0];
-			levelEvents.RemoveAt(0);
+
+			// Replace with shift()?
+			levelEvents.splice(0, 1);
 			const eventCenter = event.V;
 			const distance = event.Distance;
 
