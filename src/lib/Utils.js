@@ -64,7 +64,7 @@ export class List extends Array {
 	}
 
 	AddRange(list) {
-		this.push(...item);
+		this.push(...list);
 	}
 
 	Sort(comparer) {
