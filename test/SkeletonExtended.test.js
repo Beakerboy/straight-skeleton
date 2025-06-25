@@ -64,7 +64,7 @@ describe.each([
 
     const expected = [];
     for (const point of ePoints) {
-      expected.push(new Vector2d(...point))
+      expected.push(new Vector2(...point))
     }
     expected.push(...polygon)
 
