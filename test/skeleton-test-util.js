@@ -21,7 +21,7 @@ export default class SkeletonTestUtil {
       const points = edgeOutput.Polygon
       for (const vector2d of points) {
         if (!this.containsEpsilon(ret, vector2d)) {
-          ret.Add(vector2d)
+          ret.push(vector2d)
         }
       }
     }
