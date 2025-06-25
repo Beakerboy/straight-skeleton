@@ -14,7 +14,7 @@ export default class PriorityQueue {
 	}
 
 	Add(item) {
-		let n = this._heap.Count;
+		let n = this._heap.length;
 		this._heap.push(item);
 		while (n !== 0) {
 			const p = Math.floor(n / 2);
