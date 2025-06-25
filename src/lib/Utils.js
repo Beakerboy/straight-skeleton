@@ -33,10 +33,6 @@ export class List extends Array {
 		return false;
 	}
 
-	RemoveAt(index) {
-		throw new error("deprecated");
-	}
-
 	Remove(itemToRemove) {
 		const newArr = this.filter(item => item !== itemToRemove);
 
