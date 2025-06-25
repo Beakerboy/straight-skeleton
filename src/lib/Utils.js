@@ -10,7 +10,7 @@ export class List extends Array {
 	}
 
 	Add(item) {
-		this.push(item);
+		throw new Error("deprecated");
 	}
 
 	Insert(index, item) {
