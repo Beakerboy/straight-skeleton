@@ -15,7 +15,7 @@ export default class PriorityQueue {
 
 	Add(item) {
 		let n = this._heap.Count;
-		this._heap.Add(item);
+		this._heap.push(item);
 		while (n !== 0) {
 			const p = Math.floor(n / 2);
 			if (this._comparer.Compare(this._heap[n], (this._heap[p])) >= 0) break;
