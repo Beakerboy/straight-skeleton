@@ -421,7 +421,7 @@ export default class SkeletonBuilder {
 		const edgeList = new List();
 
 		edgeList.push(edgeCluster[0]);
-		edgeCluster.RemoveAt(0);
+		edgeCluster.splice(0, 1);  // shift()?
 
 		loop:
 			for (; ;) {
