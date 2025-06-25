@@ -66,24 +66,24 @@ describe.each([
   test(`${description}`, () => {
     const polygon = new List()
     for (const point of pPoints) {
-      polygon.Add(new Vector2d(...point))
+      polygon.push(new Vector2d(...point))
     }
 
     const expected = new List()
     for (const point of ePoints) {
-      expected.Add(new Vector2d(...point))
+      expected.push(new Vector2d(...point))
     }
-    expected.AddRange(polygon)
+    expected.push(...polygon)
 
     let innerList = new List();
     if (hPoints !== null) {
       for (holepoints of hPoints) {
         const inner = new List()
         for (const point of holepoints) {
-          inner.Add(new Vector2d(...point))
+          inner.push(new Vector2d(...point))
         }
-        innerList.Add(inner)
-        expected.AddRange(inner)
+        innerList.push(inner)
+        expected.push(...inner)
       }
     }
 
