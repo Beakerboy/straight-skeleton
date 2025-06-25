@@ -27,11 +27,11 @@ export default class PriorityQueue {
 	}
 
 	get Count() {
-		return this._heap.Count;
+		return this._heap.length;
 	}
 
 	get Empty() {
-		return this._heap.Count === 0;
+		return this._heap.length === 0;
 	}
 
 	Peek() {
