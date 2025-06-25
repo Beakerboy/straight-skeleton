@@ -351,7 +351,11 @@ export default class SkeletonBuilder {
 		}
 
 		for (const chain of chainsForRemoval) {
-			chains = chains.filter(item => item !== chain);
+			const newArr = chains.filter(item => item !== chain);
+			chains.length = newArr.length;
+			for(let i = 0; i < newArr.length; i++) {
+				chains[i] = newArr[i];
+			}
 		}
 
 		chains.push(...oppositeEdgeChains);
