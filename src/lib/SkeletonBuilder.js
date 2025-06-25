@@ -468,7 +468,7 @@ export default class SkeletonBuilder {
 
 		const parentGroup = new HashSet();
 
-		while (levelEvents.Count > 0) {
+		while (levelEvents.length > 0) {
 			parentGroup.Clear();
 
 			const event = levelEvents[0];
@@ -481,7 +481,7 @@ export default class SkeletonBuilder {
 			const cluster = new List();
 			cluster.push(event);
 
-			for (let j = 0; j < levelEvents.Count; j++) {
+			for (let j = 0; j < levelEvents.length; j++) {
 				const test = levelEvents[j];
 
 				if (this.IsEventInGroup(parentGroup, test)) {
