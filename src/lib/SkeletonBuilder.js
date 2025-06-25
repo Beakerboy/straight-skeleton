@@ -397,7 +397,7 @@ export default class SkeletonBuilder {
 		splitEventLoop:
 			while (splitCluster.Any()) {
 				const split = splitCluster[0];
-				splitCluster.RemoveAt(0);
+				splitCluster.splice(0, 1); // shift()?
 
 				for (const chain of edgeChains) {
 					if (this.IsInEdgeChain(split, chain))
@@ -488,13 +488,13 @@ export default class SkeletonBuilder {
 
 				if (this.IsEventInGroup(parentGroup, test)) {
 					const item = levelEvents[j];
-					levelEvents.RemoveAt(j);
+					levelEvents.splice(j, 1);
 					cluster.push(item);
 					this.AddEventToGroup(parentGroup, test);
 					j--;
 				} else if (eventCenter.DistanceTo(test.V) < this.SplitEpsilon) {
 					const item = levelEvents[j];
-					levelEvents.RemoveAt(j);
+					levelEvents.splice(j, 1);
 					cluster.push(item);
 					this.AddEventToGroup(parentGroup, test);
 					j--;
