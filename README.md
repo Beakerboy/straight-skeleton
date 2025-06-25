@@ -11,7 +11,7 @@ This port, like the original library, doesn't rely on any external math libs. Th
 
 ## Installation
 
-`npm i straight-skeleton@1`
+@todo
 
 ## Usage
 
