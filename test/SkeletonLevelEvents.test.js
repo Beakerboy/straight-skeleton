@@ -55,7 +55,7 @@ describe.each([
   test(`${description}`, () => {
     const polygon = []
     for (const point of pPoints) {
-      polygon.push(new Vector2d(...point))
+      polygon.push(new Vector2(...point))
     }
 
     const expected = []
