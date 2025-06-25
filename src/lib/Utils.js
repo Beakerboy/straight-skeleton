@@ -60,7 +60,7 @@ export class List extends Array {
 	}
 
 	AddRange(list) {
-		this.push(...list);
+		throw new Error("deprecated");
 	}
 
 	Sort(comparer) {
