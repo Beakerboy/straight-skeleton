@@ -20,7 +20,7 @@ export class List extends Array {
 	}
 
 	Reverse() {
-		this.reverse();
+		throw new Error("deprecated");
 	}
 
 	Clear() {
@@ -57,10 +57,6 @@ export class List extends Array {
 		for(let i = 0; i < newArr.length; i++) {
 			this[i] = newArr[i];
 		}
-	}
-
-	AddRange(list) {
-		throw new Error("deprecated");
 	}
 
 	Sort(comparer) {
