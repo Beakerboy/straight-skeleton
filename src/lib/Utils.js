@@ -19,16 +19,12 @@ export class List extends Array {
 		}
 	}
 
-	Reverse() {
-		throw new Error("deprecated");
-	}
-
 	Clear() {
 		this.length = 0;
 	}
 
 	get Count() {
-		return this.length;
+		throw new Error("deprecated")
 	}
 
 	Any(filter = null) {
