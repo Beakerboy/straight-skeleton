@@ -23,10 +23,6 @@ export class List extends Array {
 		this.length = 0;
 	}
 
-	get Count() {
-		throw new Error("deprecated")
-	}
-
 	Any(filter = null) {
 		if (!filter) {
 			filter = T => true;
