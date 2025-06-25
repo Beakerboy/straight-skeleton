@@ -207,7 +207,7 @@ export default class PrimitiveUtils {
 
 	static MakeCounterClockwise(polygon) {
 		if (PrimitiveUtils.IsClockwisePolygon(polygon))
-			polygon.Reverse();
+			polygon.reverse();
 
 		return polygon;
 	}
