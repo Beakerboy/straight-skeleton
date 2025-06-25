@@ -1,3 +1,5 @@
+import ChainType from "./ChainType";
+
 export default class EdgeChain {
 	_closed;
 	EdgeList;
