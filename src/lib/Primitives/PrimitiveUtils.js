@@ -197,7 +197,7 @@ export default class PrimitiveUtils {
 	}
 
 	static Area(polygon) {
-		const n = polygon.Count;
+		const n = polygon.length;
 		let A = 0;
 		for (let p = n - 1, q = 0; q < n; p = q++)
 			A += polygon[p].X * polygon[q].Y - polygon[q].X * polygon[p].Y;
