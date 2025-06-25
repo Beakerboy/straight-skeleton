@@ -1,5 +1,5 @@
-import Edge from '../../src/Circular/Edge'
-import Vector2d from '../../src/Primitives/Vector2d'
+import Edge from '../../src/lib/Circular/Edge'
+import Vector2d from '../../src/lib/Primitives/Vector2d'
 
 const v1 = new Vector2d(0, 0)
 const v2 = new Vector2d(1, 1)
