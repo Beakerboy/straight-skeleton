@@ -525,7 +525,7 @@ export default class SkeletonBuilder {
 	static CreateLevelEvent(eventCenter, distance, eventCluster) {
 		const chains = this.CreateChains(eventCluster);
 
-		if (chains.lergth === 1) {
+		if (chains.length === 1) {
 			const chain = chains[0];
 			if (chain.ChainType === ChainType.ClosedEdge)
 				return new PickEvent(eventCenter, distance, chain);
