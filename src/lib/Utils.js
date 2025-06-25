@@ -20,7 +20,7 @@ export class List extends Array {
 	}
 
 	Clear() {
-		this.length = 0;
+		throw new error("deprecated");
 	}
 
 	Any(filter = null) {
