@@ -19,16 +19,12 @@ export class List extends Array {
 		}
 	}
 
-	Reverse() {
-		this.reverse();
-	}
-
 	Clear() {
 		this.length = 0;
 	}
 
 	get Count() {
-		return this.length;
+		throw new Error("deprecated")
 	}
 
 	Any(filter = null) {
@@ -57,10 +53,6 @@ export class List extends Array {
 		for(let i = 0; i < newArr.length; i++) {
 			this[i] = newArr[i];
 		}
-	}
-
-	AddRange(list) {
-		this.push(...list);
 	}
 
 	Sort(comparer) {

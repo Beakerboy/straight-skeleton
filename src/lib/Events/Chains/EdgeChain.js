@@ -1,7 +1,3 @@
-import EdgeEvent from "../EdgeEvent";
-import {List} from "../../Utils";
-import Edge from "../../Circular/Edge";
-import Vertex from "../../Circular/Vertex";
 import ChainType from "./ChainType";
 
 export default class EdgeChain {
@@ -18,7 +14,7 @@ export default class EdgeChain {
 	}
 
 	get NextEdge() {
-		return this.EdgeList[this.EdgeList.Count - 1].NextVertex.NextEdge;
+		return this.EdgeList[this.EdgeList.length - 1].NextVertex.NextEdge;
 	}
 
 	get PreviousVertex() {
@@ -26,7 +22,7 @@ export default class EdgeChain {
 	}
 
 	get NextVertex() {
-		return this.EdgeList[this.EdgeList.Count - 1].NextVertex;
+		return this.EdgeList[this.EdgeList.length - 1].NextVertex;
 	}
 
 	get CurrentVertex() {

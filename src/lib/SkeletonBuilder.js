@@ -120,7 +120,7 @@ export default class SkeletonBuilder {
 		if (polygon === null)
 			throw new Error("polygon can't be null");
 
-		if (polygon[0].Equals(polygon[polygon.Count - 1]))
+		if (polygon[0].Equals(polygon[polygon.length - 1]))
 			throw new Error("polygon can't start and end with the same point");
 
 		return this.MakeCounterClockwise(polygon);
@@ -207,7 +207,7 @@ export default class SkeletonBuilder {
 
 		let lastFaceNode = null;
 
-		let edgeListSize = chains.Count;
+		let edgeListSize = chains.length;
 		for (let i = 0; i < edgeListSize; i++) {
 			const chainBegin = chains[i];
 			const chainEnd = chains[(i + 1) % edgeListSize];
@@ -236,7 +236,7 @@ export default class SkeletonBuilder {
 			lastFaceNode = this.AddSplitFaces(lastFaceNode, chainBegin, chainEnd, newVertex);
 		}
 
-		edgeListSize = chains.Count;
+		edgeListSize = chains.length;
 		for (let i = 0; i < edgeListSize; i++) {
 			const chainBegin = chains[i];
 			const chainEnd = chains[(i + 1) % edgeListSize];
@@ -348,7 +348,7 @@ export default class SkeletonBuilder {
 		for (let chain of chainsForRemoval)
 			chains.Remove(chain);
 
-		chains.AddRange(oppositeEdgeChains);
+		chains.push(...oppositeEdgeChains);
 	}
 
 	static CreateMultiSplitVertex(nextEdge, previousEdge, center, distance) {
@@ -387,10 +387,10 @@ export default class SkeletonBuilder {
 
 		const edgeChains = new List();
 
-		while (edgeCluster.Count > 0)
+		while (edgeCluster.length > 0)
 			edgeChains.push(new EdgeChain(this.CreateEdgeChain(edgeCluster)));
 
-		const chains = new List(edgeChains.Count);
+		const chains = new List(edgeChains.length);
 		for (const edgeChain of edgeChains)
 			chains.push(edgeChain);
 
@@ -426,9 +426,9 @@ export default class SkeletonBuilder {
 		loop:
 			for (; ;) {
 				const beginVertex = edgeList[0].PreviousVertex;
-				const endVertex = edgeList[edgeList.Count - 1].NextVertex;
+				const endVertex = edgeList[edgeList.length - 1].NextVertex;
 
-				for (let i = 0; i < edgeCluster.Count; i++) {
+				for (let i = 0; i < edgeCluster.length; i++) {
 					const edge = edgeCluster[i];
 					if (edge.PreviousVertex === endVertex) {
 						edgeCluster.RemoveAt(i);
@@ -468,7 +468,7 @@ export default class SkeletonBuilder {
 
 		const parentGroup = new HashSet();
 
-		while (levelEvents.Count > 0) {
+		while (levelEvents.length > 0) {
 			parentGroup.Clear();
 
 			const event = levelEvents[0];
@@ -481,7 +481,7 @@ export default class SkeletonBuilder {
 			const cluster = new List();
 			cluster.push(event);
 
-			for (let j = 0; j < levelEvents.Count; j++) {
+			for (let j = 0; j < levelEvents.length; j++) {
 				const test = levelEvents[j];
 
 				if (this.IsEventInGroup(parentGroup, test)) {
@@ -525,7 +525,7 @@ export default class SkeletonBuilder {
 	static CreateLevelEvent(eventCenter, distance, eventCluster) {
 		const chains = this.CreateChains(eventCluster);
 
-		if (chains.Count === 1) {
+		if (chains.length === 1) {
 			const chain = chains[0];
 			if (chain.ChainType === ChainType.ClosedEdge)
 				return new PickEvent(eventCenter, distance, chain);
@@ -578,12 +578,12 @@ export default class SkeletonBuilder {
 		if (holes === null)
 			return null;
 
-		const ret = new List(holes.Count);
+		const ret = new List();
 		for (const hole of holes) {
 			if (PrimitiveUtils.IsClockwisePolygon(hole))
 				ret.push(hole);
 			else {
-				hole.Reverse();
+				hole.reverse();
 				ret.push(hole);
 			}
 		}
@@ -597,7 +597,7 @@ export default class SkeletonBuilder {
 	static InitSlav(polygon, sLav, edges, faces) {
 		const edgesList = new CircularList();
 
-		const size = polygon.Count;
+		const size = polygon.length;
 		for (let i = 0; i < size; i++) {
 			const j = (i + 1) % size;
 			edgesList.AddLast(new Edge(polygon[i], polygon[j]));
@@ -835,7 +835,7 @@ export default class SkeletonBuilder {
 		if (!edgeLavs.Any())
 			return null;
 
-		if (edgeLavs.Count === 1)
+		if (edgeLavs.length === 1)
 			return edgeLavs[0];
 
 		const edgeStart = oppositeEdge.Begin;
