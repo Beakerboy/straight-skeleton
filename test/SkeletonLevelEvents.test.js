@@ -65,15 +65,16 @@ describe.each([
     }
     expected.AddRange(polygon)
 
-    let innerList = null
+    let innerList = new List();
     if (hPoints !== null) {
-      innerList = new List()
-      const inner = new List()
-      for (const point of hPoints) {
-        inner.Add(new Vector2d(point[0], point[1]))
+      for (holepoints of hPoints) {
+        const inner = new List()
+        for (const point of holepoints) {
+          inner.Add(new Vector2d(...point))
+        }
+        innerList.Add(inner)
+        expected.AddRange(inner)
       }
-      innerList.Add(inner)
-      expected.AddRange(inner)
     }
 
     const sk = SkeletonBuilder.Build(polygon, innerList)
