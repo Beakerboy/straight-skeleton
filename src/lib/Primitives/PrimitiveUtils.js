@@ -213,7 +213,7 @@ export default class PrimitiveUtils {
 	}
 
 	static IsPointInsidePolygon(point, points) {
-		const numpoints = points.Count;
+		const numpoints = points.length;
 
 		if (numpoints < 3)
 			return false;
