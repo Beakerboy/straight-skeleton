@@ -19,10 +19,6 @@ export class List extends Array {
 		}
 	}
 
-	Clear() {
-		throw new error("deprecated");
-	}
-
 	Any(filter = null) {
 		if (!filter) {
 			filter = T => true;
@@ -38,7 +34,7 @@ export class List extends Array {
 	}
 
 	RemoveAt(index) {
-		this.splice(index, 1);
+		throw new error("deprecated");
 	}
 
 	Remove(itemToRemove) {
