@@ -9,10 +9,6 @@ export class List extends Array {
 		super();
 	}
 
-	Add(item) {
-		throw new Error("deprecated");
-	}
-
 	Insert(index, item) {
 		const newArr = insertInArray(this, index, item);
 
