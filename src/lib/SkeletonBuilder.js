@@ -348,7 +348,7 @@ export default class SkeletonBuilder {
 		for (let chain of chainsForRemoval)
 			chains.Remove(chain);
 
-		chains.AddRange(oppositeEdgeChains);
+		chains.push(...oppositeEdgeChains);
 	}
 
 	static CreateMultiSplitVertex(nextEdge, previousEdge, center, distance) {
