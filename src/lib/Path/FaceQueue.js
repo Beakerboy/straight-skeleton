@@ -13,7 +13,7 @@ export default class FaceQueue extends PathQueue {
 
 	AddPush(node, newNode) {
 		if (this.Closed)
-			throw new Error("Can't add node to closed FaceQueue");
+			throw new Error("Can't add node to closed FaceQueue Node: " + node.ToString() + " NewNode: " + newNode.ToString());
 
 		super.AddPush(node, newNode);
 	}
