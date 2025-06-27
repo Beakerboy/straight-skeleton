@@ -55,7 +55,7 @@ export default class Vector2d {
 		return !this.Equals(v);
 	}
 
-	 ToString() {
+	 toString() {
 		return `${this.X}, ${this.Y}`;
 	}
 }
