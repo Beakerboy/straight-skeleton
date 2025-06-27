@@ -31,7 +31,7 @@ export default class Vertex extends CircularNode {
 		this.IsProcessed = false;
 	}
 
-	ToString() {
+	toString() {
 		return "Vertex [v=" + this.Point + ", IsProcessed=" + this.IsProcessed +
 			", Bisector=" + this.Bisector + ", PreviousEdge=" + this.PreviousEdge +
 			", NextEdge=" + this.NextEdge;
