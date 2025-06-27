@@ -22,7 +22,7 @@ export default class Edge extends CircularNode {
 		this.Norm = end.Sub(begin).Normalized();
 	}
 
-	ToString() {
+	toString() {
 		return `Edge [p1=${this.Begin.ToString()}, p2=${this.End.ToString()}]`;
 	}
 }
