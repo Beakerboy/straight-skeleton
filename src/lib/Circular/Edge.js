@@ -23,6 +23,6 @@ export default class Edge extends CircularNode {
 	}
 
 	toString() {
-		return `Edge [p1=${this.Begin.ToString()}, p2=${this.End.ToString()}]`;
+		return `Edge [p1=${this.Begin}, p2=${this.End}]`;
 	}
 }
