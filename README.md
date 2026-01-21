@@ -1,3 +1,5 @@
+![Badge](https://github.com/Beakerboy/straight-skeleton/actions/workflows/main.yml/badge.svg)
+[![Coverage Status](https://coveralls.io/repos/github/Beakerboy/straight-skeleton/badge.svg?branch=1.x)](https://coveralls.io/github/Beakerboy/straight-skeleton?branch=1.x)
 # straight-skeleton
 
 ![](https://i.imgur.com/ecT8io4.png)
