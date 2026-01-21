@@ -1,5 +1,5 @@
-![Badge](https://github.com/Beakerboy/straight-skeleton/actions/workflows/main.yml/badge.svg?branch=three.js)
-[![Coverage Status](https://coveralls.io/repos/github/Beakerboy/straight-skeleton/badge.svg?branch=threejs](https://coveralls.io/github/Beakerboy/straight-skeleton?branch=threejs)
+[![CI](https://github.com/Beakerboy/straight-skeleton/actions/workflows/main.yml/badge.svg?branch=threejs)](https://github.com/Beakerboy/straight-skeleton/actions/workflows/main.yml)
+[![Coverage Status](https://coveralls.io/repos/github/Beakerboy/straight-skeleton/badge.svg?branch=threejs)](https://coveralls.io/github/Beakerboy/straight-skeleton?branch=threejs)
 # straight-skeleton
 
 ![](https://i.imgur.com/ecT8io4.png)
